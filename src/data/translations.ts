@@ -1283,8 +1283,30 @@ export const translations: Record<Language, Translations> = {
     },
     services: {
       title: 'Nuestros Servicios de Transporte',
-      subtitle: 'Soluciones completas para todas tus necesidades de transporte internacional, desde express hasta marítimo, con seguimiento personalizado.',
+      subtitle: 'Soluciones completas y personalizadas para todas tus necesidades de transporte internacional. Experiencia, confiabilidad e innovación.',
+      mainTitle: 'Servicios Principales',
+      mainSubtitle: 'Tres modos de transporte complementarios para responder a todas tus necesidades logísticas',
+      specialTitle: 'Servicios Especializados',
+      specialSubtitle: 'Soluciones avanzadas para necesidades específicas',
+      processTitle: '¿Cómo funciona?',
+      processSubtitle: 'Un proceso simple y transparente en 4 pasos',
+      ctaTitle: '¿Listo para empezar?',
+      ctaSubtitle: 'Obtén una cotización gratuita y personalizada para tu próximo envío',
+      quoteButton: 'Solicitar Cotización',
+      trackButton: 'Seguir Paquete',
       learnMore: 'Saber más',
+      discover: 'Descubrir',
+      destinations: {
+        europe: 'Europa',
+        worldwide: 'Mundial',
+        international: 'Internacional'
+      },
+      process: [
+        { step: '01', title: 'Cotización', description: 'Recibe una cotización personalizada en menos de 2 horas' },
+        { step: '02', title: 'Recogida', description: 'Recogida en tu dirección a los horarios acordados' },
+        { step: '03', title: 'Transporte', description: 'Seguimiento en tiempo real de tu envío' },
+        { step: '04', title: 'Entrega', description: 'Recepción confirmada con prueba de entrega' }
+      ],
       items: {
         road: {
           title: 'Transporte Terrestre',
@@ -1299,7 +1321,7 @@ export const translations: Record<Language, Translations> = {
         sea: {
           title: 'Transporte Marítimo',
           description: 'Soluciones económicas para tus expediciones en contenedores completos o groupage.',
-          features: ['FCL y LCL', 'Económico', 'Ecológico']
+          features: ['FCL y LCL', 'Económico', 'Ecológico', 'Puerto a Puerto']
         },
         express: {
           title: 'Logística Express',
@@ -1993,8 +2015,30 @@ export const translations: Record<Language, Translations> = {
     },
     services: {
       title: 'Unsere Transport-Dienstleistungen',
-      subtitle: 'Komplette Lösungen für alle Ihre internationalen Transportbedürfnisse, von Express bis Seefracht, mit personalisierter Verfolgung.',
+      subtitle: 'Komplette und personalisierte Lösungen für alle Ihre internationalen Transportbedürfnisse. Expertise, Zuverlässigkeit und Innovation.',
+      mainTitle: 'Hauptdienstleistungen',
+      mainSubtitle: 'Drei ergänzende Transportmodi für alle Ihre logistischen Bedürfnisse',
+      specialTitle: 'Spezialdienste',
+      specialSubtitle: 'Fortschrittliche Lösungen für spezifische Bedürfnisse',
+      processTitle: 'Wie funktioniert es?',
+      processSubtitle: 'Ein einfacher und transparenter Prozess in 4 Schritten',
+      ctaTitle: 'Bereit anzufangen?',
+      ctaSubtitle: 'Erhalten Sie ein kostenloses und personalisiertes Angebot für Ihre nächste Sendung',
+      quoteButton: 'Angebot Anfordern',
+      trackButton: 'Paket Verfolgen',
       learnMore: 'Mehr erfahren',
+      discover: 'Entdecken',
+      destinations: {
+        europe: 'Europa',
+        worldwide: 'Weltweit',
+        international: 'International'
+      },
+      process: [
+        { step: '01', title: 'Angebot', description: 'Erhalten Sie ein personalisiertes Angebot in weniger als 2 Stunden' },
+        { step: '02', title: 'Abholung', description: 'Abholung an Ihrer Adresse zu vereinbarten Zeiten' },
+        { step: '03', title: 'Transport', description: 'Echtzeit-Verfolgung Ihrer Sendung' },
+        { step: '04', title: 'Lieferung', description: 'Bestätigte Zustellung mit Liefernachweis' }
+      ],
       items: {
         road: {
           title: 'Straßentransport',
@@ -2004,7 +2048,7 @@ export const translations: Record<Language, Translations> = {
         air: {
           title: 'Lufttransport',
           description: 'Schneller und sicherer Luftfracht zu allen weltweiten Destinationen.',
-          features: ['Express 24h', 'Weltweit', 'Empfindliche Produkte']
+          features: ['Express 24h', 'Weltweit', 'Empfindliche Produkte', 'Temperaturkontrolle']
         },
         sea: {
           title: 'Seetransport',
