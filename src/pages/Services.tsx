@@ -3,59 +3,64 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Truck, Plane, Ship, Zap, Settings, Clock, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/data/translations';
 
-const mainServices = [
+const getMainServices = (t: any) => [
   {
     icon: Truck,
-    title: 'Transport Routier',
-    description: 'Solutions complètes de transport terrestre pour l\'Europe avec suivi GPS en temps réel.',
-    price: 'À partir de 150€',
-    features: ['Livraison 24-48h', 'Suivi GPS temps réel', 'Assurance incluse', 'Véhicules adaptés'],
-    destinations: 'Europe',
+    title: t.services.items.road.title,
+    description: t.services.items.road.description,
+    features: t.services.items.road.features,
+    destinations: t.services.destinations.europe,
     href: '/services/road-transport'
   },
   {
     icon: Plane,
-    title: 'Transport Aérien',
-    description: 'Fret aérien express pour vos expéditions urgentes vers toutes destinations mondiales.',
-    price: 'À partir de 89€',
-    features: ['Express 6-24h', 'Mondial', 'Produits sensibles', 'Dédouanement'],
-    destinations: 'Mondial',
+    title: t.services.items.air.title,
+    description: t.services.items.air.description,
+    features: t.services.items.air.features,
+    destinations: t.services.destinations.worldwide,
     href: '/services/air-transport'
   },
   {
     icon: Ship,
-    title: 'Transport Maritime',
-    description: 'Solutions économiques FCL et LCL pour vos expéditions en conteneurs.',
-    price: 'À partir de 890€',
-    features: ['FCL & LCL', 'Économique', 'Écologique', 'Port à port'],
-    destinations: 'International',
+    title: t.services.items.sea.title,
+    description: t.services.items.sea.description,
+    features: t.services.items.sea.features,
+    destinations: t.services.destinations.international,
     href: '/services/sea-transport'
   }
 ];
 
-const specialServices = [
+const getSpecialServices = (t: any) => [
   {
     icon: Zap,
-    title: 'Logistique Express',
-    description: 'Service premium avec engagement de délais pour vos expéditions critiques.',
+    title: t.services.items.express.title,
+    description: t.services.items.express.description,
     href: '/services/express'
   },
   {
     icon: Settings,
-    title: 'Solutions Sur Mesure',
-    description: 'Solutions personnalisées pour les industries spécialisées.',
+    title: t.services.items.custom.title,
+    description: t.services.items.custom.description,
     href: '/services/custom'
   },
   {
     icon: Clock,
-    title: 'Suivi Avancé',
-    description: 'Plateforme de tracking avec alertes et notifications personnalisées.',
+    title: t.services.items.support.title,
+    description: t.services.items.support.description,
     href: '/tracking'
   }
 ];
 
 export default function Services() {
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
+  
+  const mainServices = getMainServices(t);
+  const specialServices = getSpecialServices(t);
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -63,17 +68,16 @@ export default function Services() {
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6">
-              Nos Services de Transport
+              {t.services.title}
             </h1>
             <p className="text-xl text-white/90 mb-8">
-              Des solutions complètes et personnalisées pour tous vos besoins 
-              de transport international. Expertise, fiabilité et innovation.
+              {t.services.subtitle}
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <Badge variant="secondary" className="text-base px-4 py-2">Transport Routier</Badge>
-              <Badge variant="secondary" className="text-base px-4 py-2">Transport Aérien</Badge>
-              <Badge variant="secondary" className="text-base px-4 py-2">Transport Maritime</Badge>
-              <Badge variant="secondary" className="text-base px-4 py-2">Solutions Express</Badge>
+              <Badge variant="secondary" className="text-base px-4 py-2">{t.services.items.road.title}</Badge>
+              <Badge variant="secondary" className="text-base px-4 py-2">{t.services.items.air.title}</Badge>
+              <Badge variant="secondary" className="text-base px-4 py-2">{t.services.items.sea.title}</Badge>
+              <Badge variant="secondary" className="text-base px-4 py-2">{t.services.items.express.title}</Badge>
             </div>
           </div>
         </div>
@@ -83,9 +87,9 @@ export default function Services() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Services Principaux</h2>
+            <h2 className="text-3xl font-bold mb-4">{t.services.mainTitle}</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Trois modes de transport complémentaires pour répondre à tous vos besoins logistiques
+              {t.services.mainSubtitle}
             </p>
           </div>
           
@@ -102,7 +106,6 @@ export default function Services() {
                       <Badge variant="outline">{service.destinations}</Badge>
                     </div>
                     <CardTitle className="text-2xl">{service.title}</CardTitle>
-                    <div className="text-2xl font-bold text-primary">{service.price}</div>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground mb-6">{service.description}</p>
@@ -118,7 +121,7 @@ export default function Services() {
                     
                     <Button className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors" asChild>
                       <Link to={service.href}>
-                        En savoir plus
+                        {t.services.learnMore}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
@@ -134,9 +137,9 @@ export default function Services() {
       <section className="py-20 bg-gradient-card">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Services Spécialisés</h2>
+            <h2 className="text-3xl font-bold mb-4">{t.services.specialTitle}</h2>
             <p className="text-xl text-muted-foreground">
-              Solutions avancées pour des besoins spécifiques
+              {t.services.specialSubtitle}
             </p>
           </div>
           
@@ -153,7 +156,7 @@ export default function Services() {
                     <p className="text-muted-foreground mb-6">{service.description}</p>
                     <Button variant="outline" className="group-hover:bg-accent group-hover:text-accent-foreground transition-colors" asChild>
                       <Link to={service.href}>
-                        Découvrir
+                        {t.services.discover}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
@@ -169,19 +172,14 @@ export default function Services() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Comment ça marche ?</h2>
+            <h2 className="text-3xl font-bold mb-4">{t.services.processTitle}</h2>
             <p className="text-xl text-muted-foreground">
-              Un processus simple et transparent en 4 étapes
+              {t.services.processSubtitle}
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { step: '01', title: 'Devis', description: 'Recevez un devis personnalisé en moins de 2 heures' },
-              { step: '02', title: 'Enlèvement', description: 'Collecte à votre adresse aux horaires convenus' },
-              { step: '03', title: 'Transport', description: 'Suivi en temps réel de votre expédition' },
-              { step: '04', title: 'Livraison', description: 'Réception confirmée avec preuve de livraison' }
-            ].map((item, index) => (
+            {t.services.process.map((item: any, index: number) => (
               <div key={item.step} className="text-center animate-fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
                 <div className="mb-4 mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground text-xl font-bold">
                   {item.step}
@@ -198,21 +196,21 @@ export default function Services() {
       <section className="py-20 bg-brand-navy text-white">
         <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Prêt à commencer ?
+            {t.services.ctaTitle}
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Obtenez un devis gratuit et personnalisé pour votre prochaine expédition
+            {t.services.ctaSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" asChild>
               <Link to="/contact">
-                Demander un Devis
+                {t.services.quoteButton}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
               <Link to="/tracking">
-                Suivre un Colis
+                {t.services.trackButton}
               </Link>
             </Button>
           </div>
