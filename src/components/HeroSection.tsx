@@ -32,8 +32,8 @@ export const HeroSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src="/lovable-uploads/153d63ed-773a-44c8-b766-5a0becb516d2.png" 
-          alt="Transport international - avion, navire et camion"
+          src="/lovable-uploads/dcf3fff5-8b38-4b74-bb10-ad9faab69d5c.png" 
+          alt="Transport logistique - conteneurs, camions, navire et localisation"
           className="w-full h-full object-cover opacity-80"
         />
         <div className="absolute inset-0 bg-gradient-hero/20" />
