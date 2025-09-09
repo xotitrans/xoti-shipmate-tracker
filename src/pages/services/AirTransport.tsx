@@ -3,35 +3,39 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Plane, Globe, Clock, Shield, CheckCircle, Star, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const services = [
-  {
-    title: 'Express 6h',
-    description: 'Livraison ultra-rapide pour vos urgences',
-    features: ['6h chrono', 'Mondial', 'Priorité absolue', 'Suivi premium']
-  },
-  {
-    title: 'Standard 24h',
-    description: 'Solution équilibrée rapidité/prix',
-    features: ['24h garanti', 'International', 'Assurance incluse', 'Suivi temps réel']
-  },
-  {
-    title: 'Économique 48h',
-    description: 'Option économique pour délais flexibles',
-    features: ['48-72h', 'Groupage', 'Solution optimisée', 'Suivi standard']
-  }
-];
-
-const destinations = [
-  { region: 'Europe', time: '6-24h', description: 'Capitales européennes' },
-  { region: 'Amérique du Nord', time: '12-48h', description: 'USA, Canada, Mexique' },
-  { region: 'Asie', time: '24-72h', description: 'Chine, Japon, Singapour' },
-  { region: 'Moyen-Orient', time: '18-48h', description: 'EAU, Arabie Saoudite' },
-  { region: 'Afrique', time: '24-72h', description: 'Afrique du Nord et Ouest' },
-  { region: 'Océanie', time: '48-96h', description: 'Australie, Nouvelle-Zélande' }
-];
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/data/translations';
 
 export default function AirTransport() {
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
+
+  const services = [
+    {
+      title: t.airTransport.services.express.title,
+      description: t.airTransport.services.express.description,
+      features: t.airTransport.services.express.features
+    },
+    {
+      title: t.airTransport.services.standard.title,
+      description: t.airTransport.services.standard.description,
+      features: t.airTransport.services.standard.features
+    },
+    {
+      title: t.airTransport.services.economy.title,
+      description: t.airTransport.services.economy.description,
+      features: t.airTransport.services.economy.features
+    }
+  ];
+
+  const destinations = [
+    { region: t.airTransport.destinations.regions.europe.name, time: t.airTransport.destinations.regions.europe.time, description: t.airTransport.destinations.regions.europe.description },
+    { region: t.airTransport.destinations.regions.northAmerica.name, time: t.airTransport.destinations.regions.northAmerica.time, description: t.airTransport.destinations.regions.northAmerica.description },
+    { region: t.airTransport.destinations.regions.asia.name, time: t.airTransport.destinations.regions.asia.time, description: t.airTransport.destinations.regions.asia.description },
+    { region: t.airTransport.destinations.regions.middleEast.name, time: t.airTransport.destinations.regions.middleEast.time, description: t.airTransport.destinations.regions.middleEast.description },
+    { region: t.airTransport.destinations.regions.africa.name, time: t.airTransport.destinations.regions.africa.time, description: t.airTransport.destinations.regions.africa.description },
+    { region: t.airTransport.destinations.regions.oceania.name, time: t.airTransport.destinations.regions.oceania.time, description: t.airTransport.destinations.regions.oceania.description }
+  ];
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -41,31 +45,30 @@ export default function AirTransport() {
             <div className="flex items-center gap-4 mb-6">
               <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-primary" asChild>
                 <Link to="/services">
-                  ← Services
+                  {t.airTransport.hero.backButton}
                 </Link>
               </Button>
               <Badge variant="secondary">
                 <Plane className="w-4 h-4 mr-2" />
-                Transport Aérien
+                {t.airTransport.hero.badge}
               </Badge>
             </div>
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6">
-              Fret Aérien International
+              {t.airTransport.hero.title}
             </h1>
             <p className="text-xl text-white/90 mb-8">
-              Solutions express pour vos expéditions urgentes vers toutes les destinations mondiales. 
-              Rapidité, sécurité et fiabilité garanties.
+              {t.airTransport.hero.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" variant="secondary" asChild>
                 <Link to="/contact">
-                  Devis Express
+                  {t.airTransport.hero.quoteButton}
                   <Zap className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
                 <Link to="/tracking">
-                  Suivre un Vol
+                  {t.airTransport.hero.trackButton}
                 </Link>
               </Button>
             </div>
@@ -77,9 +80,9 @@ export default function AirTransport() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Nos Solutions Aériennes</h2>
+            <h2 className="text-3xl font-bold mb-4">{t.airTransport.services.title}</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Trois niveaux de service pour répondre à tous vos besoins de rapidité
+              {t.airTransport.services.subtitle}
             </p>
           </div>
           
@@ -90,7 +93,7 @@ export default function AirTransport() {
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                     <Badge className="bg-red-500">
                       <Zap className="w-3 h-3 mr-1" />
-                      Le plus rapide
+                      {t.airTransport.services.express.badge}
                     </Badge>
                   </div>
                 )}
@@ -109,7 +112,9 @@ export default function AirTransport() {
                   </div>
                   <Button className="w-full mt-6" variant={index === 0 ? "default" : "outline"} asChild>
                     <Link to="/contact">
-                      Choisir ce service
+                      {index === 0 ? t.airTransport.services.express.button : 
+                       index === 1 ? t.airTransport.services.standard.button : 
+                       t.airTransport.services.economy.button}
                     </Link>
                   </Button>
                 </CardContent>
@@ -123,9 +128,9 @@ export default function AirTransport() {
       <section className="py-20 bg-gradient-card">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Destinations Mondiales</h2>
+            <h2 className="text-3xl font-bold mb-4">{t.airTransport.destinations.title}</h2>
             <p className="text-xl text-muted-foreground">
-              Plus de 200 destinations dans le monde entier
+              {t.airTransport.destinations.subtitle}
             </p>
           </div>
           
@@ -143,7 +148,7 @@ export default function AirTransport() {
                   <p className="text-muted-foreground text-sm mb-4">{dest.description}</p>
                   <div className="flex items-center gap-2">
                     <Globe className="h-4 w-4 text-primary" />
-                    <span className="text-sm font-medium">Connexions quotidiennes</span>
+                    <span className="text-sm font-medium">{t.airTransport.destinations.connections}</span>
                   </div>
                 </CardContent>
               </Card>
@@ -157,28 +162,28 @@ export default function AirTransport() {
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Pourquoi choisir le fret aérien ?</h2>
+              <h2 className="text-3xl font-bold mb-6">{t.airTransport.advantages.title}</h2>
               <div className="space-y-6">
                 {[
                   {
                     icon: Zap,
-                    title: 'Rapidité inégalée',
-                    description: 'Livraison en 6h à 72h selon la destination'
+                    title: t.airTransport.advantages.items.speed.title,
+                    description: t.airTransport.advantages.items.speed.description
                   },
                   {
                     icon: Shield,
-                    title: 'Sécurité maximale',
-                    description: 'Standards aéroportuaires et assurance tous risques'
+                    title: t.airTransport.advantages.items.security.title,
+                    description: t.airTransport.advantages.items.security.description
                   },
                   {
                     icon: Globe,
-                    title: 'Couverture mondiale',
-                    description: 'Plus de 200 destinations via notre réseau de partenaires'
+                    title: t.airTransport.advantages.items.coverage.title,
+                    description: t.airTransport.advantages.items.coverage.description
                   },
                   {
                     icon: CheckCircle,
-                    title: 'Suivi précis',
-                    description: 'Tracking vol par vol avec notifications temps réel'
+                    title: t.airTransport.advantages.items.tracking.title,
+                    description: t.airTransport.advantages.items.tracking.description
                   }
                 ].map((advantage, index) => {
                   const Icon = advantage.icon;
@@ -199,14 +204,11 @@ export default function AirTransport() {
             <div className="relative">
               <div className="aspect-square rounded-lg bg-gradient-hero p-8 text-white">
                 <Plane className="h-16 w-16 mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Service Premium</h3>
+                <h3 className="text-2xl font-bold mb-4">{t.airTransport.advantages.premium.title}</h3>
                 <ul className="space-y-3 text-sm">
-                  <li>• Collecte et livraison J+1</li>
-                  <li>• Dédouanement express</li>
-                  <li>• Emballage spécialisé</li>
-                  <li>• Produits dangereux acceptés</li>
-                  <li>• Température contrôlée</li>
-                  <li>• Service porte-à-porte</li>
+                  {t.airTransport.advantages.premium.features.map((feature, index) => (
+                    <li key={index}>• {feature}</li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -218,31 +220,31 @@ export default function AirTransport() {
       <section className="py-20 bg-brand-navy text-white">
         <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Votre expédition ne peut pas attendre ?
+            {t.airTransport.cta.title}
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Plus de 5 000 expéditions aériennes par mois. Délais respectés à 99.8%.
+            {t.airTransport.cta.subtitle}
           </p>
           <div className="flex items-center justify-center gap-8 mb-8">
             <div className="text-center">
-              <div className="text-2xl font-bold">6h</div>
-              <div className="text-white/70 text-sm">Express minimum</div>
+              <div className="text-2xl font-bold">{t.airTransport.cta.stats.express.value}</div>
+              <div className="text-white/70 text-sm">{t.airTransport.cta.stats.express.label}</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold">200+</div>
-              <div className="text-white/70 text-sm">Destinations</div>
+              <div className="text-2xl font-bold">{t.airTransport.cta.stats.destinations.value}</div>
+              <div className="text-white/70 text-sm">{t.airTransport.cta.stats.destinations.label}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold flex items-center justify-center gap-1">
                 <Star className="h-5 w-5 fill-current" />
                 4.9/5
               </div>
-              <div className="text-white/70 text-sm">Satisfaction</div>
+              <div className="text-white/70 text-sm">{t.airTransport.cta.stats.satisfaction.label}</div>
             </div>
           </div>
           <Button size="lg" variant="secondary" asChild>
             <Link to="/contact">
-              Expédier maintenant
+              {t.airTransport.cta.button}
               <Plane className="ml-2 h-4 w-4" />
             </Link>
           </Button>

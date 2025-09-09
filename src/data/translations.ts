@@ -223,6 +223,75 @@ export interface Translations {
       };
     };
   };
+  airTransport: {
+    hero: {
+      backButton: string;
+      badge: string;
+      title: string;
+      subtitle: string;
+      quoteButton: string;
+      trackButton: string;
+    };
+    services: {
+      title: string;
+      subtitle: string;
+      express: {
+        title: string;
+        description: string;
+        badge: string;
+        features: [string, string, string, string];
+        button: string;
+      };
+      standard: {
+        title: string;
+        description: string;
+        features: [string, string, string, string];
+        button: string;
+      };
+      economy: {
+        title: string;
+        description: string;
+        features: [string, string, string, string];
+        button: string;
+      };
+    };
+    destinations: {
+      title: string;
+      subtitle: string;
+      regions: {
+        europe: { name: string; time: string; description: string; };
+        northAmerica: { name: string; time: string; description: string; };
+        asia: { name: string; time: string; description: string; };
+        middleEast: { name: string; time: string; description: string; };
+        africa: { name: string; time: string; description: string; };
+        oceania: { name: string; time: string; description: string; };
+      };
+      connections: string;
+    };
+    advantages: {
+      title: string;
+      items: {
+        speed: { title: string; description: string; };
+        security: { title: string; description: string; };
+        coverage: { title: string; description: string; };
+        tracking: { title: string; description: string; };
+      };
+      premium: {
+        title: string;
+        features: [string, string, string, string, string, string];
+      };
+    };
+    cta: {
+      title: string;
+      subtitle: string;
+      button: string;
+      stats: {
+        express: { value: string; label: string; };
+        destinations: { value: string; label: string; };
+        satisfaction: { label: string; };
+      };
+    };
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -509,6 +578,119 @@ export const translations: Record<Language, Translations> = {
           },
           rating: {
             label: 'Note client'
+          }
+        }
+      }
+    },
+    airTransport: {
+      hero: {
+        backButton: '← Services',
+        badge: 'Transport Aérien',
+        title: 'Fret Aérien International',
+        subtitle: 'Solutions express pour vos expéditions urgentes vers toutes les destinations mondiales. Rapidité, sécurité et fiabilité garanties.',
+        quoteButton: 'Devis Express',
+        trackButton: 'Suivre un Vol'
+      },
+      services: {
+        title: 'Nos Solutions Aériennes',
+        subtitle: 'Trois niveaux de service pour répondre à tous vos besoins de rapidité',
+        express: {
+          title: 'Express 6h',
+          description: 'Livraison ultra-rapide pour vos urgences',
+          badge: 'Le plus rapide',
+          features: ['6h chrono', 'Mondial', 'Priorité absolue', 'Suivi premium'],
+          button: 'Choisir ce service'
+        },
+        standard: {
+          title: 'Standard 24h',
+          description: 'Solution équilibrée rapidité/prix',
+          features: ['24h garanti', 'International', 'Assurance incluse', 'Suivi temps réel'],
+          button: 'Choisir ce service'
+        },
+        economy: {
+          title: 'Économique 48h',
+          description: 'Option économique pour délais flexibles',
+          features: ['48-72h', 'Groupage', 'Solution optimisée', 'Suivi standard'],
+          button: 'Choisir ce service'
+        }
+      },
+      destinations: {
+        title: 'Destinations Mondiales',
+        subtitle: 'Plus de 200 destinations dans le monde entier',
+        regions: {
+          europe: {
+            name: 'Europe',
+            time: '6-24h',
+            description: 'Capitales européennes'
+          },
+          northAmerica: {
+            name: 'Amérique du Nord',
+            time: '12-48h',
+            description: 'USA, Canada, Mexique'
+          },
+          asia: {
+            name: 'Asie',
+            time: '24-72h',
+            description: 'Chine, Japon, Singapour'
+          },
+          middleEast: {
+            name: 'Moyen-Orient',
+            time: '18-48h',
+            description: 'EAU, Arabie Saoudite'
+          },
+          africa: {
+            name: 'Afrique',
+            time: '24-72h',
+            description: 'Afrique du Nord et Ouest'
+          },
+          oceania: {
+            name: 'Océanie',
+            time: '48-96h',
+            description: 'Australie, Nouvelle-Zélande'
+          }
+        },
+        connections: 'Connexions quotidiennes'
+      },
+      advantages: {
+        title: 'Pourquoi choisir le fret aérien ?',
+        items: {
+          speed: {
+            title: 'Rapidité inégalée',
+            description: 'Livraison en 6h à 72h selon la destination'
+          },
+          security: {
+            title: 'Sécurité maximale',
+            description: 'Standards aéroportuaires et assurance tous risques'
+          },
+          coverage: {
+            title: 'Couverture mondiale',
+            description: 'Plus de 200 destinations via notre réseau de partenaires'
+          },
+          tracking: {
+            title: 'Suivi précis',
+            description: 'Tracking vol par vol avec notifications temps réel'
+          }
+        },
+        premium: {
+          title: 'Service Premium',
+          features: ['Collecte et livraison J+1', 'Dédouanement express', 'Emballage spécialisé', 'Produits dangereux acceptés', 'Température contrôlée', 'Service porte-à-porte']
+        }
+      },
+      cta: {
+        title: 'Votre expédition ne peut pas attendre ?',
+        subtitle: 'Plus de 5 000 expéditions aériennes par mois. Délais respectés à 99.8%.',
+        button: 'Expédier maintenant',
+        stats: {
+          express: {
+            value: '6h',
+            label: 'Express minimum'
+          },
+          destinations: {
+            value: '200+',
+            label: 'Destinations'
+          },
+          satisfaction: {
+            label: 'Satisfaction'
           }
         }
       }
@@ -800,6 +982,119 @@ export const translations: Record<Language, Translations> = {
           }
         }
       }
+    },
+    airTransport: {
+      hero: {
+        backButton: '← Servicios',
+        badge: 'Transporte Aéreo',
+        title: 'Flete Aéreo Internacional',
+        subtitle: 'Soluciones express para tus envíos urgentes hacia todos los destinos mundiales. Rapidez, seguridad y confiabilidad garantizadas.',
+        quoteButton: 'Cotización Express',
+        trackButton: 'Rastrear Vuelo'
+      },
+      services: {
+        title: 'Nuestras Soluciones Aéreas',
+        subtitle: 'Tres niveles de servicio para satisfacer todas tus necesidades de rapidez',
+        express: {
+          title: 'Express 6h',
+          description: 'Entrega ultra-rápida para tus urgencias',
+          badge: 'El más rápido',
+          features: ['6h garantizado', 'Mundial', 'Prioridad absoluta', 'Seguimiento premium'],
+          button: 'Elegir este servicio'
+        },
+        standard: {
+          title: 'Estándar 24h',
+          description: 'Solución equilibrada rapidez/precio',
+          features: ['24h garantizado', 'Internacional', 'Seguro incluido', 'Seguimiento tiempo real'],
+          button: 'Elegir este servicio'
+        },
+        economy: {
+          title: 'Económico 48h',
+          description: 'Opción económica para plazos flexibles',
+          features: ['48-72h', 'Groupage', 'Solución optimizada', 'Seguimiento estándar'],
+          button: 'Elegir este servicio'
+        }
+      },
+      destinations: {
+        title: 'Destinos Mundiales',
+        subtitle: 'Más de 200 destinos en todo el mundo',
+        regions: {
+          europe: {
+            name: 'Europa',
+            time: '6-24h',
+            description: 'Capitales europeas'
+          },
+          northAmerica: {
+            name: 'América del Norte',
+            time: '12-48h',
+            description: 'EE.UU., Canadá, México'
+          },
+          asia: {
+            name: 'Asia',
+            time: '24-72h',
+            description: 'China, Japón, Singapur'
+          },
+          middleEast: {
+            name: 'Medio Oriente',
+            time: '18-48h',
+            description: 'EAU, Arabia Saudí'
+          },
+          africa: {
+            name: 'África',
+            time: '24-72h',
+            description: 'África del Norte y Oeste'
+          },
+          oceania: {
+            name: 'Oceanía',
+            time: '48-96h',
+            description: 'Australia, Nueva Zelanda'
+          }
+        },
+        connections: 'Conexiones diarias'
+      },
+      advantages: {
+        title: '¿Por qué elegir el flete aéreo?',
+        items: {
+          speed: {
+            title: 'Rapidez inigualable',
+            description: 'Entrega en 6h a 72h según el destino'
+          },
+          security: {
+            title: 'Seguridad máxima',
+            description: 'Estándares aeroportuarios y seguro todo riesgo'
+          },
+          coverage: {
+            title: 'Cobertura mundial',
+            description: 'Más de 200 destinos a través de nuestra red de socios'
+          },
+          tracking: {
+            title: 'Seguimiento preciso',
+            description: 'Tracking vuelo por vuelo con notificaciones tiempo real'
+          }
+        },
+        premium: {
+          title: 'Servicio Premium',
+          features: ['Recogida y entrega D+1', 'Despacho express', 'Embalaje especializado', 'Productos peligrosos aceptados', 'Temperatura controlada', 'Servicio puerta a puerta']
+        }
+      },
+      cta: {
+        title: '¿Tu envío no puede esperar?',
+        subtitle: 'Más de 5,000 envíos aéreos por mes. Plazos respetados al 99.8%.',
+        button: 'Enviar ahora',
+        stats: {
+          express: {
+            value: '6h',
+            label: 'Express mínimo'
+          },
+          destinations: {
+            value: '200+',
+            label: 'Destinos'
+          },
+          satisfaction: {
+            label: 'Satisfacción'
+          }
+        }
+      }
     }
   },
   de: {
@@ -1085,6 +1380,119 @@ export const translations: Record<Language, Translations> = {
           },
           rating: {
             label: 'Kundenbewertung'
+          }
+        }
+      }
+    },
+    airTransport: {
+      hero: {
+        backButton: '← Dienstleistungen',
+        badge: 'Lufttransport',
+        title: 'Internationale Luftfracht',
+        subtitle: 'Express-Lösungen für Ihre dringenden Sendungen zu allen weltweiten Destinationen. Geschwindigkeit, Sicherheit und Zuverlässigkeit garantiert.',
+        quoteButton: 'Express-Angebot',
+        trackButton: 'Flug verfolgen'
+      },
+      services: {
+        title: 'Unsere Luftfracht-Lösungen',
+        subtitle: 'Drei Service-Level für alle Ihre Geschwindigkeitsanforderungen',
+        express: {
+          title: 'Express 6h',
+          description: 'Ultra-schnelle Lieferung für Ihre Notfälle',
+          badge: 'Das Schnellste',
+          features: ['6h garantiert', 'Weltweit', 'Absolute Priorität', 'Premium-Tracking'],
+          button: 'Diesen Service wählen'
+        },
+        standard: {
+          title: 'Standard 24h',
+          description: 'Ausgewogene Lösung Geschwindigkeit/Preis',
+          features: ['24h garantiert', 'International', 'Versicherung inklusive', 'Echtzeit-Tracking'],
+          button: 'Diesen Service wählen'
+        },
+        economy: {
+          title: 'Wirtschaftlich 48h',
+          description: 'Wirtschaftliche Option für flexible Zeiten',
+          features: ['48-72h', 'Groupage', 'Optimierte Lösung', 'Standard-Tracking'],
+          button: 'Diesen Service wählen'
+        }
+      },
+      destinations: {
+        title: 'Weltweite Destinationen',
+        subtitle: 'Über 200 Destinationen weltweit',
+        regions: {
+          europe: {
+            name: 'Europa',
+            time: '6-24h',
+            description: 'Europäische Hauptstädte'
+          },
+          northAmerica: {
+            name: 'Nordamerika',
+            time: '12-48h',
+            description: 'USA, Kanada, Mexiko'
+          },
+          asia: {
+            name: 'Asien',
+            time: '24-72h',
+            description: 'China, Japan, Singapur'
+          },
+          middleEast: {
+            name: 'Naher Osten',
+            time: '18-48h',
+            description: 'VAE, Saudi-Arabien'
+          },
+          africa: {
+            name: 'Afrika',
+            time: '24-72h',
+            description: 'Nordafrika und Westafrika'
+          },
+          oceania: {
+            name: 'Ozeanien',
+            time: '48-96h',
+            description: 'Australien, Neuseeland'
+          }
+        },
+        connections: 'Tägliche Verbindungen'
+      },
+      advantages: {
+        title: 'Warum Luftfracht wählen?',
+        items: {
+          speed: {
+            title: 'Unübertroffene Geschwindigkeit',
+            description: 'Lieferung in 6h bis 72h je nach Destination'
+          },
+          security: {
+            title: 'Maximale Sicherheit',
+            description: 'Flughafen-Standards und Vollkaskoversicherung'
+          },
+          coverage: {
+            title: 'Weltweite Abdeckung',
+            description: 'Über 200 Destinationen über unser Partnernetzwerk'
+          },
+          tracking: {
+            title: 'Präzises Tracking',
+            description: 'Flug-für-Flug-Verfolgung mit Echtzeit-Benachrichtigungen'
+          }
+        },
+        premium: {
+          title: 'Premium-Service',
+          features: ['Abholung und Lieferung T+1', 'Express-Zollabfertigung', 'Spezialverpackung', 'Gefahrgut akzeptiert', 'Temperaturkontrolle', 'Tür-zu-Tür-Service']
+        }
+      },
+      cta: {
+        title: 'Ihre Sendung kann nicht warten?',
+        subtitle: 'Über 5.000 Luftfrachtsendungen pro Monat. Termine zu 99,8% eingehalten.',
+        button: 'Jetzt versenden',
+        stats: {
+          express: {
+            value: '6h',
+            label: 'Express-Minimum'
+          },
+          destinations: {
+            value: '200+',
+            label: 'Destinationen'
+          },
+          satisfaction: {
+            label: 'Zufriedenheit'
           }
         }
       }
@@ -1376,6 +1784,119 @@ export const translations: Record<Language, Translations> = {
           }
         }
       }
+    },
+    airTransport: {
+      hero: {
+        backButton: '← Servizi',
+        badge: 'Trasporto Aereo',
+        title: 'Trasporto Aereo Internazionale',
+        subtitle: 'Soluzioni express per le tue spedizioni urgenti verso tutte le destinazioni mondiali. Velocità, sicurezza e affidabilità garantite.',
+        quoteButton: 'Preventivo Express',
+        trackButton: 'Traccia Volo'
+      },
+      services: {
+        title: 'Le Nostre Soluzioni Aeree',
+        subtitle: 'Tre livelli di servizio per soddisfare tutte le tue esigenze di velocità',
+        express: {
+          title: 'Express 6h',
+          description: 'Consegna ultra-rapida per le tue urgenze',
+          badge: 'Il più veloce',
+          features: ['6h garantito', 'Mondiale', 'Priorità assoluta', 'Tracciamento premium'],
+          button: 'Scegli questo servizio'
+        },
+        standard: {
+          title: 'Standard 24h',
+          description: 'Soluzione equilibrata velocità/prezzo',
+          features: ['24h garantito', 'Internazionale', 'Assicurazione inclusa', 'Tracciamento tempo reale'],
+          button: 'Scegli questo servizio'
+        },
+        economy: {
+          title: 'Economico 48h',
+          description: 'Opzione economica per tempi flessibili',
+          features: ['48-72h', 'Groupage', 'Soluzione ottimizzata', 'Tracciamento standard'],
+          button: 'Scegli questo servizio'
+        }
+      },
+      destinations: {
+        title: 'Destinazioni Mondiali',
+        subtitle: 'Oltre 200 destinazioni in tutto il mondo',
+        regions: {
+          europe: {
+            name: 'Europa',
+            time: '6-24h',
+            description: 'Capitali europee'
+          },
+          northAmerica: {
+            name: 'Nord America',
+            time: '12-48h',
+            description: 'USA, Canada, Messico'
+          },
+          asia: {
+            name: 'Asia',
+            time: '24-72h',
+            description: 'Cina, Giappone, Singapore'
+          },
+          middleEast: {
+            name: 'Medio Oriente',
+            time: '18-48h',
+            description: 'EAU, Arabia Saudita'
+          },
+          africa: {
+            name: 'Africa',
+            time: '24-72h',
+            description: 'Nord Africa e Africa Occidentale'
+          },
+          oceania: {
+            name: 'Oceania',
+            time: '48-96h',
+            description: 'Australia, Nuova Zelanda'
+          }
+        },
+        connections: 'Connessioni giornaliere'
+      },
+      advantages: {
+        title: 'Perché scegliere il trasporto aereo?',
+        items: {
+          speed: {
+            title: 'Velocità ineguagliabile',
+            description: 'Consegna da 6h a 72h secondo la destinazione'
+          },
+          security: {
+            title: 'Sicurezza massima',
+            description: 'Standard aeroportuali e assicurazione tutti i rischi'
+          },
+          coverage: {
+            title: 'Copertura mondiale',
+            description: 'Oltre 200 destinazioni attraverso la nostra rete di partner'
+          },
+          tracking: {
+            title: 'Tracciamento preciso',
+            description: 'Tracking volo per volo con notifiche tempo reale'
+          }
+        },
+        premium: {
+          title: 'Servizio Premium',
+          features: ['Ritiro e consegna G+1', 'Sdoganamento express', 'Imballaggio specializzato', 'Merci pericolose accettate', 'Temperatura controllata', 'Servizio porta a porta']
+        }
+      },
+      cta: {
+        title: 'La tua spedizione non può aspettare?',
+        subtitle: 'Oltre 5.000 spedizioni aeree al mese. Tempi rispettati al 99,8%.',
+        button: 'Spedisci ora',
+        stats: {
+          express: {
+            value: '6h',
+            label: 'Express minimo'
+          },
+          destinations: {
+            value: '200+',
+            label: 'Destinazioni'
+          },
+          satisfaction: {
+            label: 'Soddisfazione'
+          }
+        }
+      }
     }
   },
   pt: {
@@ -1661,6 +2182,119 @@ export const translations: Record<Language, Translations> = {
           },
           rating: {
             label: 'Avaliação do cliente'
+          }
+        }
+      }
+    },
+    airTransport: {
+      hero: {
+        backButton: '← Serviços',
+        badge: 'Transporte Aéreo',
+        title: 'Transporte Aéreo Internacional',
+        subtitle: 'Soluções expressas para seus envios urgentes para todos os destinos mundiais. Rapidez, segurança e confiabilidade garantidas.',
+        quoteButton: 'Orçamento Express',
+        trackButton: 'Rastrear Voo'
+      },
+      services: {
+        title: 'Nossas Soluções Aéreas',
+        subtitle: 'Três níveis de serviço para atender todas as suas necessidades de rapidez',
+        express: {
+          title: 'Express 6h',
+          description: 'Entrega ultra-rápida para suas urgências',
+          badge: 'O mais rápido',
+          features: ['6h garantido', 'Mundial', 'Prioridade absoluta', 'Rastreamento premium'],
+          button: 'Escolher este serviço'
+        },
+        standard: {
+          title: 'Padrão 24h',
+          description: 'Solução equilibrada rapidez/preço',
+          features: ['24h garantido', 'Internacional', 'Seguro incluído', 'Rastreamento tempo real'],
+          button: 'Escolher este serviço'
+        },
+        economy: {
+          title: 'Econômico 48h',
+          description: 'Opção econômica para prazos flexíveis',
+          features: ['48-72h', 'Groupage', 'Solução otimizada', 'Rastreamento padrão'],
+          button: 'Escolher este serviço'
+        }
+      },
+      destinations: {
+        title: 'Destinos Mundiais',
+        subtitle: 'Mais de 200 destinos em todo o mundo',
+        regions: {
+          europe: {
+            name: 'Europa',
+            time: '6-24h',
+            description: 'Capitais europeias'
+          },
+          northAmerica: {
+            name: 'América do Norte',
+            time: '12-48h',
+            description: 'EUA, Canadá, México'
+          },
+          asia: {
+            name: 'Ásia',
+            time: '24-72h',
+            description: 'China, Japão, Singapura'
+          },
+          middleEast: {
+            name: 'Oriente Médio',
+            time: '18-48h',
+            description: 'EAU, Arábia Saudita'
+          },
+          africa: {
+            name: 'África',
+            time: '24-72h',
+            description: 'África do Norte e Ocidental'
+          },
+          oceania: {
+            name: 'Oceania',
+            time: '48-96h',
+            description: 'Austrália, Nova Zelândia'
+          }
+        },
+        connections: 'Conexões diárias'
+      },
+      advantages: {
+        title: 'Por que escolher o transporte aéreo?',
+        items: {
+          speed: {
+            title: 'Rapidez incomparável',
+            description: 'Entrega de 6h a 72h segundo o destino'
+          },
+          security: {
+            title: 'Segurança máxima',
+            description: 'Padrões aeroportuários e seguro todos os riscos'
+          },
+          coverage: {
+            title: 'Cobertura mundial',
+            description: 'Mais de 200 destinos através da nossa rede de parceiros'
+          },
+          tracking: {
+            title: 'Rastreamento preciso',
+            description: 'Tracking voo por voo com notificações tempo real'
+          }
+        },
+        premium: {
+          title: 'Serviço Premium',
+          features: ['Coleta e entrega D+1', 'Desembaraço express', 'Embalagem especializada', 'Produtos perigosos aceitos', 'Temperatura controlada', 'Serviço porta a porta']
+        }
+      },
+      cta: {
+        title: 'Seu envio não pode esperar?',
+        subtitle: 'Mais de 5.000 envios aéreos por mês. Prazos respeitados em 99,8%.',
+        button: 'Enviar agora',
+        stats: {
+          express: {
+            value: '6h',
+            label: 'Express mínimo'
+          },
+          destinations: {
+            value: '200+',
+            label: 'Destinos'
+          },
+          satisfaction: {
+            label: 'Satisfação'
           }
         }
       }
