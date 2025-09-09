@@ -74,6 +74,8 @@ const NewShipment = () => {
       emergency_contact_name: formData.get('emergencyContactName') as string || null,
       emergency_contact_phone: formData.get('emergencyContactPhone') as string || null,
       current_location: formData.get('currentLocation') as string || null,
+      current_latitude: parseFloat(formData.get('currentLatitude') as string) || null,
+      current_longitude: parseFloat(formData.get('currentLongitude') as string) || null,
       delivery_instructions: formData.get('deliveryInstructions') as string || null,
       preferred_delivery_time: formData.get('preferredDeliveryTime') as string || null,
       special_instructions: formData.get('specialInstructions') as string || null,
@@ -344,6 +346,33 @@ const NewShipment = () => {
                   placeholder="Centre de tri Paris, France"
                 />
               </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="currentLatitude">Latitude GPS</Label>
+                  <Input 
+                    id="currentLatitude" 
+                    name="currentLatitude" 
+                    type="number"
+                    step="any"
+                    placeholder="48.8566"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="currentLongitude">Longitude GPS</Label>
+                  <Input 
+                    id="currentLongitude" 
+                    name="currentLongitude" 
+                    type="number"
+                    step="any"
+                    placeholder="2.3522"
+                  />
+                </div>
+              </div>
+              
+              <p className="text-xs text-muted-foreground">
+                💡 Les coordonnées GPS permettront un affichage précis sur la carte de suivi
+              </p>
             </CardContent>
           </Card>
 
