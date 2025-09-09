@@ -26,13 +26,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
-        
-        if (event === 'SIGNED_IN') {
-          toast({
-            title: "Connexion réussie",
-            description: "Vous êtes maintenant connecté.",
-          });
-        }
       }
     );
 
@@ -88,6 +81,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         title: "Erreur de connexion",
         description: error.message,
         variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Connexion réussie",
+        description: "Vous êtes maintenant connecté.",
       });
     }
 
