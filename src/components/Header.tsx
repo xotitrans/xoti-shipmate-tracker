@@ -2,14 +2,16 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Package, Truck, Globe, Users, Search } from 'lucide-react';
+import { Menu, Package, Truck, Globe, Users, Search, LogIn, LogOut, LayoutDashboard } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { translations } from '@/data/translations';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { currentLanguage } = useLanguage();
+  const { user, signOut } = useAuth();
   const t = translations[currentLanguage];
 
   const navigation = [
@@ -52,6 +54,29 @@ export const Header = () => {
         <div className="ml-auto flex items-center gap-4">
           <LanguageSelector />
           
+          {/* Auth buttons */}
+          {user ? (
+            <div className="hidden md:flex items-center gap-2">
+              <Link to="/dashboard">
+                <Button variant="ghost" size="sm">
+                  <LayoutDashboard className="h-4 w-4 mr-2" />
+                  Dashboard
+                </Button>
+              </Link>
+              <Button variant="ghost" size="sm" onClick={signOut}>
+                <LogOut className="h-4 w-4 mr-2" />
+                Déconnexion
+              </Button>
+            </div>
+          ) : (
+            <Link to="/auth" className="hidden md:block">
+              <Button size="sm">
+                <LogIn className="h-4 w-4 mr-2" />
+                Connexion
+              </Button>
+            </Link>
+          )}
+          
           {/* Mobile menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -76,6 +101,41 @@ export const Header = () => {
                     </Link>
                   );
                 })}
+                
+                {/* Mobile auth buttons */}
+                <div className="border-t pt-4 mt-4">
+                  {user ? (
+                    <>
+                      <Link
+                        to="/dashboard"
+                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <LayoutDashboard className="h-4 w-4" />
+                        Dashboard
+                      </Link>
+                      <button
+                        onClick={() => {
+                          signOut();
+                          setIsOpen(false);
+                        }}
+                        className="w-full flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
+                      >
+                        <LogOut className="h-4 w-4" />
+                        Déconnexion
+                      </button>
+                    </>
+                  ) : (
+                    <Link
+                      to="/auth"
+                      className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <LogIn className="h-4 w-4" />
+                      Connexion
+                    </Link>
+                  )}
+                </div>
               </nav>
             </SheetContent>
           </Sheet>
