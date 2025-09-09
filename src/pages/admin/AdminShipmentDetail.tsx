@@ -9,6 +9,7 @@ import { ArrowLeft, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckC
 import { toast } from "@/hooks/use-toast";
 import ShipmentMap from "@/components/ShipmentMap";
 import UpdateLocationForm from "@/components/UpdateLocationForm";
+import AutoTrackingControls from "@/components/AutoTrackingControls";
 
 interface ShipmentDetail {
   id: string;
@@ -334,6 +335,16 @@ export default function AdminShipmentDetail() {
             currentLocation={shipment.current_location}
             currentLatitude={shipment.current_latitude}
             currentLongitude={shipment.current_longitude}
+            onLocationUpdated={fetchShipmentDetail}
+          />
+
+          {/* Auto Tracking Controls */}
+          <AutoTrackingControls
+            shipmentId={shipment.id}
+            trackingNumber={shipment.tracking_number}
+            senderAddress={shipment.sender_address}
+            recipientAddress={shipment.recipient_address}
+            transportType={shipment.transport_type}
             onLocationUpdated={fetchShipmentDetail}
           />
         </div>
