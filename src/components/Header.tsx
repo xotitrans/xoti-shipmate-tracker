@@ -63,6 +63,12 @@ export const Header = () => {
                   Dashboard
                 </Button>
               </Link>
+              <Link to="/admin">
+                <Button variant="ghost" size="sm">
+                  <Users className="h-4 w-4 mr-2" />
+                  Administration
+                </Button>
+              </Link>
               <Button variant="ghost" size="sm" onClick={signOut}>
                 <LogOut className="h-4 w-4 mr-2" />
                 Déconnexion
@@ -113,6 +119,14 @@ export const Header = () => {
                       >
                         <LayoutDashboard className="h-4 w-4" />
                         Dashboard
+                      </Link>
+                      <Link
+                        to="/admin"
+                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <Users className="h-4 w-4" />
+                        Administration
                       </Link>
                       <button
                         onClick={() => {
