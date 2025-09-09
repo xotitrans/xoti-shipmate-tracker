@@ -468,6 +468,35 @@ export interface Translations {
     contactExpert: string;
     downloadBrochure: string;
   };
+  about: {
+    heroTitle: string;
+    heroDescription: string;
+    stats: {
+      experience: string;
+      countries: string;
+      clients: string;
+    };
+    missionTitle: string;
+    missionDescription1: string;
+    missionDescription2: string;
+    servicesButton: string;
+    commitmentTitle: string;
+    commitmentItems: [string, string, string, string];
+    valuesTitle: string;
+    valuesDescription: string;
+    values: {
+      excellence: { title: string; description: string; };
+      punctuality: { title: string; description: string; };
+      international: { title: string; description: string; };
+      service: { title: string; description: string; };
+    };
+    historyTitle: string;
+    historyDescription: string;
+    timeline: Array<{ year: string; event: string; }>;
+    ctaTitle: string;
+    ctaDescription: string;
+    contactButton: string;
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -1127,6 +1156,58 @@ export const translations: Record<Language, Translations> = {
       ctaDescription: "Nos experts analysent gratuitement vos besoins et vous proposent une solution sur mesure.",
       contactExpert: "Contacter un expert",
       downloadBrochure: "Télécharger la brochure"
+    },
+    about: {
+      heroTitle: "À propos de XOTI",
+      heroDescription: "Depuis 1999, XOTI (eXport Overseas Transport International) accompagne les entreprises dans leurs défis logistiques avec expertise et innovation.",
+      stats: {
+        experience: "Années d'expérience",
+        countries: "Pays desservis",
+        clients: "Clients satisfaits"
+      },
+      missionTitle: "Notre Mission",
+      missionDescription1: "Chez XOTI, nous croyons que chaque expédition est unique et mérite une attention particulière. Notre mission est de simplifier la logistique internationale en offrant des solutions personnalisées et innovantes.",
+      missionDescription2: "Nous combinons l'expertise humaine avec les dernières technologies pour garantir à nos clients une expérience de transport exceptionnelle, du premier contact jusqu'à la livraison finale.",
+      servicesButton: "Découvrir nos services",
+      commitmentTitle: "Notre Engagement",
+      commitmentItems: [
+        "Transparence totale sur nos services",
+        "Innovation constante de nos solutions", 
+        "Respect de l'environnement",
+        "Formation continue de nos équipes"
+      ],
+      valuesTitle: "Nos Valeurs",
+      valuesDescription: "Les principes qui guident notre action au quotidien",
+      values: {
+        excellence: {
+          title: "Excellence",
+          description: "Nous nous engageons à fournir des services de transport de la plus haute qualité."
+        },
+        punctuality: {
+          title: "Ponctualité",
+          description: "Respect des délais et livraisons dans les temps convenus avec nos clients."
+        },
+        international: {
+          title: "International",
+          description: "Une expertise reconnue dans le transport international depuis plus de 25 ans."
+        },
+        service: {
+          title: "Service Client",
+          description: "Une équipe dédiée disponible 24/7 pour répondre à toutes vos questions."
+        }
+      },
+      historyTitle: "Notre Histoire",
+      historyDescription: "Un quart de siècle d'innovation dans le transport international",
+      timeline: [
+        { year: "1999", event: "Création de XOTI avec une vision européenne du transport" },
+        { year: "2005", event: "Expansion vers le transport aérien et maritime" },
+        { year: "2012", event: "Lancement de la plateforme de suivi en temps réel" },
+        { year: "2018", event: "Ouverture de 5 nouveaux hubs européens" },
+        { year: "2024", event: "Plus de 15,000 expéditions mensuelles" }
+      ],
+      ctaTitle: "Rejoignez les 2000+ entreprises qui nous font confiance",
+      ctaDescription: "Découvrez comment XOTI peut optimiser votre chaîne logistique",
+      contactButton: "Contactez-nous"
     }
   },
   es: {
@@ -1785,6 +1866,58 @@ export const translations: Record<Language, Translations> = {
       ctaDescription: "Nuestros expertos analizan gratuitamente sus necesidades y le proponen una solución a medida.",
       contactExpert: "Contactar un experto",
       downloadBrochure: "Descargar el folleto"
+    },
+    about: {
+      heroTitle: "Acerca de XOTI",
+      heroDescription: "Desde 1999, XOTI (eXport Overseas Transport International) acompaña a las empresas en sus desafíos logísticos con experiencia e innovación.",
+      stats: {
+        experience: "Años de experiencia",
+        countries: "Países servidos",
+        clients: "Clientes satisfechos"
+      },
+      missionTitle: "Nuestra Misión",
+      missionDescription1: "En XOTI, creemos que cada envío es único y merece una atención particular. Nuestra misión es simplificar la logística internacional ofreciendo soluciones personalizadas e innovadoras.",
+      missionDescription2: "Combinamos la experiencia humana con las últimas tecnologías para garantizar a nuestros clientes una experiencia de transporte excepcional, desde el primer contacto hasta la entrega final.",
+      servicesButton: "Descubrir nuestros servicios",
+      commitmentTitle: "Nuestro Compromiso",
+      commitmentItems: [
+        "Transparencia total en nuestros servicios",
+        "Innovación constante de nuestras soluciones",
+        "Respeto al medio ambiente",
+        "Formación continua de nuestros equipos"
+      ],
+      valuesTitle: "Nuestros Valores",
+      valuesDescription: "Los principios que guían nuestra acción diaria",
+      values: {
+        excellence: {
+          title: "Excelencia",
+          description: "Nos comprometemos a brindar servicios de transporte de la más alta calidad."
+        },
+        punctuality: {
+          title: "Puntualidad",
+          description: "Respeto de plazos y entregas en los tiempos acordados con nuestros clientes."
+        },
+        international: {
+          title: "Internacional",
+          description: "Una experiencia reconocida en el transporte internacional desde hace más de 25 años."
+        },
+        service: {
+          title: "Servicio al Cliente",
+          description: "Un equipo dedicado disponible 24/7 para responder a todas sus preguntas."
+        }
+      },
+      historyTitle: "Nuestra Historia",
+      historyDescription: "Un cuarto de siglo de innovación en el transporte internacional",
+      timeline: [
+        { year: "1999", event: "Creación de XOTI con una visión europea del transporte" },
+        { year: "2005", event: "Expansión hacia el transporte aéreo y marítimo" },
+        { year: "2012", event: "Lanzamiento de la plataforma de seguimiento en tiempo real" },
+        { year: "2018", event: "Apertura de 5 nuevos hubs europeos" },
+        { year: "2024", event: "Más de 15,000 expediciones mensuales" }
+      ],
+      ctaTitle: "Únase a las 2000+ empresas que confían en nosotros",
+      ctaDescription: "Descubra cómo XOTI puede optimizar su cadena logística",
+      contactButton: "Contáctenos"
     }
   },
   de: {
@@ -2443,6 +2576,58 @@ export const translations: Record<Language, Translations> = {
       ctaDescription: "Unsere Experten analysieren kostenlos Ihre Bedürfnisse und schlagen Ihnen eine maßgeschneiderte Lösung vor.",
       contactExpert: "Experten kontaktieren",
       downloadBrochure: "Broschüre herunterladen"
+    },
+    about: {
+      heroTitle: "Über XOTI",
+      heroDescription: "Seit 1999 begleitet XOTI (eXport Overseas Transport International) Unternehmen bei ihren logistischen Herausforderungen mit Expertise und Innovation.",
+      stats: {
+        experience: "Jahre Erfahrung",
+        countries: "Bediente Länder",
+        clients: "Zufriedene Kunden"
+      },
+      missionTitle: "Unsere Mission",
+      missionDescription1: "Bei XOTI glauben wir, dass jede Sendung einzigartig ist und besondere Aufmerksamkeit verdient. Unsere Mission ist es, die internationale Logistik zu vereinfachen, indem wir personalisierte und innovative Lösungen anbieten.",
+      missionDescription2: "Wir kombinieren menschliche Expertise mit den neuesten Technologien, um unseren Kunden ein außergewöhnliches Transporterlebnis zu garantieren, vom ersten Kontakt bis zur endgültigen Lieferung.",
+      servicesButton: "Unsere Services entdecken",
+      commitmentTitle: "Unser Engagement",
+      commitmentItems: [
+        "Vollständige Transparenz unserer Services",
+        "Konstante Innovation unserer Lösungen",
+        "Umweltschutz",
+        "Kontinuierliche Schulung unserer Teams"
+      ],
+      valuesTitle: "Unsere Werte",
+      valuesDescription: "Die Prinzipien, die unser tägliches Handeln leiten",
+      values: {
+        excellence: {
+          title: "Exzellenz",
+          description: "Wir verpflichten uns, Transportdienstleistungen höchster Qualität zu liefern."
+        },
+        punctuality: {
+          title: "Pünktlichkeit",
+          description: "Einhaltung von Terminen und Lieferungen zu den mit unseren Kunden vereinbarten Zeiten."
+        },
+        international: {
+          title: "International",
+          description: "Anerkannte Expertise im internationalen Transport seit über 25 Jahren."
+        },
+        service: {
+          title: "Kundenservice",
+          description: "Ein engagiertes Team, das 24/7 verfügbar ist, um alle Ihre Fragen zu beantworten."
+        }
+      },
+      historyTitle: "Unsere Geschichte",
+      historyDescription: "Ein Vierteljahrhundert Innovation im internationalen Transport",
+      timeline: [
+        { year: "1999", event: "Gründung von XOTI mit einer europäischen Vision für den Transport" },
+        { year: "2005", event: "Expansion in Luft- und Seetransport" },
+        { year: "2012", event: "Einführung der Echtzeit-Verfolgungsplattform" },
+        { year: "2018", event: "Eröffnung von 5 neuen europäischen Hubs" },
+        { year: "2024", event: "Über 15.000 monatliche Sendungen" }
+      ],
+      ctaTitle: "Schließen Sie sich den 2000+ Unternehmen an, die uns vertrauen",
+      ctaDescription: "Entdecken Sie, wie XOTI Ihre Lieferkette optimieren kann",
+      contactButton: "Kontaktieren Sie uns"
     }
   },
   it: {
@@ -3101,6 +3286,58 @@ export const translations: Record<Language, Translations> = {
       ctaDescription: "I nostri esperti analizzano gratuitamente le tue esigenze e ti propongono una soluzione su misura.",
       contactExpert: "Contatta un esperto",
       downloadBrochure: "Scarica la brochure"
+    },
+    about: {
+      heroTitle: "Chi siamo - XOTI",
+      heroDescription: "Dal 1999, XOTI (eXport Overseas Transport International) accompagna le aziende nelle loro sfide logistiche con competenza e innovazione.",
+      stats: {
+        experience: "Anni di esperienza",
+        countries: "Paesi serviti",
+        clients: "Clienti soddisfatti"
+      },
+      missionTitle: "La Nostra Missione",
+      missionDescription1: "In XOTI, crediamo che ogni spedizione sia unica e meriti un'attenzione particolare. La nostra missione è semplificare la logistica internazionale offrendo soluzioni personalizzate e innovative.",
+      missionDescription2: "Combiniamo l'expertise umana con le ultime tecnologie per garantire ai nostri clienti un'esperienza di trasporto eccezionale, dal primo contatto fino alla consegna finale.",
+      servicesButton: "Scopri i nostri servizi",
+      commitmentTitle: "Il Nostro Impegno",
+      commitmentItems: [
+        "Trasparenza totale sui nostri servizi",
+        "Innovazione costante delle nostre soluzioni",
+        "Rispetto dell'ambiente",
+        "Formazione continua dei nostri team"
+      ],
+      valuesTitle: "I Nostri Valori",
+      valuesDescription: "I principi che guidano la nostra azione quotidiana",
+      values: {
+        excellence: {
+          title: "Eccellenza",
+          description: "Ci impegniamo a fornire servizi di trasporto della massima qualità."
+        },
+        punctuality: {
+          title: "Puntualità",
+          description: "Rispetto dei tempi e consegne nei tempi concordati con i nostri clienti."
+        },
+        international: {
+          title: "Internazionale",
+          description: "Un'expertise riconosciuta nel trasporto internazionale da oltre 25 anni."
+        },
+        service: {
+          title: "Servizio Clienti",
+          description: "Un team dedicato disponibile 24/7 per rispondere a tutte le vostre domande."
+        }
+      },
+      historyTitle: "La Nostra Storia",
+      historyDescription: "Un quarto di secolo di innovazione nel trasporto internazionale",
+      timeline: [
+        { year: "1999", event: "Creazione di XOTI con una visione europea del trasporto" },
+        { year: "2005", event: "Espansione verso il trasporto aereo e marittimo" },
+        { year: "2012", event: "Lancio della piattaforma di tracciamento in tempo reale" },
+        { year: "2018", event: "Apertura di 5 nuovi hub europei" },
+        { year: "2024", event: "Oltre 15.000 spedizioni mensili" }
+      ],
+      ctaTitle: "Unisciti alle 2000+ aziende che si fidano di noi",
+      ctaDescription: "Scopri come XOTI può ottimizzare la tua catena logistica",
+      contactButton: "Contattaci"
     }
   },
   pt: {
@@ -3759,6 +3996,58 @@ export const translations: Record<Language, Translations> = {
       ctaDescription: "Nossos especialistas analisam gratuitamente suas necessidades e propõem uma solução sob medida.",
       contactExpert: "Contatar um especialista",
       downloadBrochure: "Baixar o folheto"
+    },
+    about: {
+      heroTitle: "Sobre a XOTI",
+      heroDescription: "Desde 1999, a XOTI (eXport Overseas Transport International) acompanha as empresas em seus desafios logísticos com expertise e inovação.",
+      stats: {
+        experience: "Anos de experiência",
+        countries: "Países atendidos",
+        clients: "Clientes satisfeitos"
+      },
+      missionTitle: "Nossa Missão",
+      missionDescription1: "Na XOTI, acreditamos que cada remessa é única e merece atenção especial. Nossa missão é simplificar a logística internacional oferecendo soluções personalizadas e inovadoras.",
+      missionDescription2: "Combinamos a expertise humana com as mais recentes tecnologias para garantir aos nossos clientes uma experiência de transporte excepcional, do primeiro contato até a entrega final.",
+      servicesButton: "Descobrir nossos serviços",
+      commitmentTitle: "Nosso Compromisso",
+      commitmentItems: [
+        "Transparência total em nossos serviços",
+        "Inovação constante de nossas soluções",
+        "Respeito ao meio ambiente",
+        "Formação contínua de nossas equipes"
+      ],
+      valuesTitle: "Nossos Valores",
+      valuesDescription: "Os princípios que guiam nossa ação diária",
+      values: {
+        excellence: {
+          title: "Excelência",
+          description: "Nos comprometemos a fornecer serviços de transporte da mais alta qualidade."
+        },
+        punctuality: {
+          title: "Pontualidade",
+          description: "Respeito aos prazos e entregas nos tempos acordados com nossos clientes."
+        },
+        international: {
+          title: "Internacional",
+          description: "Uma expertise reconhecida no transporte internacional há mais de 25 anos."
+        },
+        service: {
+          title: "Atendimento ao Cliente",
+          description: "Uma equipe dedicada disponível 24/7 para responder a todas as suas perguntas."
+        }
+      },
+      historyTitle: "Nossa História",
+      historyDescription: "Um quarto de século de inovação no transporte internacional",
+      timeline: [
+        { year: "1999", event: "Criação da XOTI com uma visão europeia do transporte" },
+        { year: "2005", event: "Expansão para o transporte aéreo e marítimo" },
+        { year: "2012", event: "Lançamento da plataforma de rastreamento em tempo real" },
+        { year: "2018", event: "Abertura de 5 novos hubs europeus" },
+        { year: "2024", event: "Mais de 15.000 remessas mensais" }
+      ],
+      ctaTitle: "Junte-se às 2000+ empresas que confiam em nós",
+      ctaDescription: "Descubra como a XOTI pode otimizar sua cadeia logística",
+      contactButton: "Entre em contato"
     }
   }
 };
