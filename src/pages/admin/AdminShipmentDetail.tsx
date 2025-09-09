@@ -10,6 +10,7 @@ import { toast } from "@/hooks/use-toast";
 import ShipmentMap from "@/components/ShipmentMap";
 import UpdateLocationForm from "@/components/UpdateLocationForm";
 import AutoTrackingControls from "@/components/AutoTrackingControls";
+import ManualLocationUpdate from "@/components/ManualLocationUpdate";
 
 interface ShipmentDetail {
   id: string;
@@ -328,6 +329,16 @@ export default function AdminShipmentDetail() {
               </CardContent>
             </Card>
           )}
+
+          {/* Manual Location Update */}
+          <ManualLocationUpdate
+            shipmentId={shipment.id}
+            trackingNumber={shipment.tracking_number}
+            currentLocation={shipment.current_location}
+            currentLatitude={shipment.current_latitude}
+            currentLongitude={shipment.current_longitude}
+            onLocationUpdated={fetchShipmentDetail}
+          />
 
           {/* Update Location Form */}
           <UpdateLocationForm
