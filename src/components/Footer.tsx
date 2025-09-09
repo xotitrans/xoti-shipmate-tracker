@@ -23,10 +23,10 @@ export const Footer = () => {
       { name: t.footer.links.support.contact, href: '/contact' },
     ],
     legal: [
-      { name: t.footer.links.legal.legal, href: '/legal' },
-      { name: t.footer.links.legal.terms, href: '/terms' },
-      { name: t.footer.links.legal.privacy, href: '/privacy' },
-      { name: t.footer.links.legal.cookies, href: '/cookies' },
+      { name: t.footer.links.legal.legal, href: '/contact' },
+      { name: t.footer.links.legal.terms, href: '/contact' },
+      { name: t.footer.links.legal.privacy, href: '/contact' },
+      { name: t.footer.links.legal.cookies, href: '/contact' },
     ],
   };
 
