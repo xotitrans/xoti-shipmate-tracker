@@ -183,11 +183,11 @@ const Express = () => {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-primary" />
-                    {t.express.services.international.features.network}
+                    {t.express.services.international.features.documentation}
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-primary" />
-                    {t.express.services.international.features.documentation}
+                    {t.express.services.international.features.network}
                   </li>
                 </ul>
               </CardContent>
