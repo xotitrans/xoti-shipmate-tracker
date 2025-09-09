@@ -160,7 +160,7 @@ export type Database = {
           sender_phone: string
           special_instructions?: string | null
           status?: Database["public"]["Enums"]["shipment_status"]
-          tracking_number: string
+          tracking_number?: string
           transport_cost?: number | null
           transport_type: Database["public"]["Enums"]["transport_type"]
           updated_at?: string
