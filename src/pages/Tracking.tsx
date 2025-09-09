@@ -316,6 +316,18 @@ const Tracking = () => {
                   </div>
                 )}
 
+                {trackingResult.transport_cost && (
+                  <div className="flex items-center gap-2">
+                    <Truck className="h-4 w-4 text-muted-foreground" />
+                    <div>
+                      <p className="text-sm font-medium">Frais de transport</p>
+                      <p className="text-sm text-muted-foreground">
+                        {trackingResult.transport_cost} {trackingResult.currency || 'EUR'}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
                 {trackingResult.priority_level && trackingResult.priority_level !== 'normal' && (
                   <div className="flex items-center gap-2">
                     <Zap className="h-4 w-4 text-muted-foreground" />
