@@ -23,39 +23,22 @@ export interface Translations {
   services: {
     title: string;
     subtitle: string;
-    mainTitle: string;
-    mainSubtitle: string;
-    specialTitle: string;
-    specialSubtitle: string;
-    processTitle: string;
-    processSubtitle: string;
-    ctaTitle: string;
-    ctaSubtitle: string;
-    quoteButton: string;
-    trackButton: string;
     learnMore: string;
-    discover: string;
-    destinations: {
-      europe: string;
-      worldwide: string;
-      international: string;
-    };
-    process: Array<{ step: string; title: string; description: string; }>;
     items: {
       road: {
         title: string;
         description: string;
-        features: [string, string, string, string];
+        features: [string, string, string];
       };
       air: {
         title: string;
         description: string;
-        features: [string, string, string, string];
+        features: [string, string, string];
       };
       sea: {
         title: string;
         description: string;
-        features: [string, string, string, string];
+        features: [string, string, string];
       };
       express: {
         title: string;
@@ -551,59 +534,37 @@ export const translations: Record<Language, Translations> = {
     },
     services: {
       title: 'Nos Services de Transport',
-      subtitle: 'Des solutions complètes et personnalisées pour tous vos besoins de transport international. Expertise, fiabilité et innovation.',
-      mainTitle: 'Services Principaux',
-      mainSubtitle: 'Trois modes de transport complémentaires pour répondre à tous vos besoins logistiques',
-      specialTitle: 'Services Spécialisés',
-      specialSubtitle: 'Solutions avancées pour des besoins spécifiques',
-      processTitle: 'Comment ça marche ?',
-      processSubtitle: 'Un processus simple et transparent en 4 étapes',
-      ctaTitle: 'Prêt à commencer ?',
-      ctaSubtitle: 'Obtenez un devis gratuit et personnalisé pour votre prochaine expédition',
-      quoteButton: 'Demander un Devis',
-      trackButton: 'Suivre un Colis',
+      subtitle: 'Des solutions complètes pour tous vos besoins de transport international, de l\'express au maritime, avec un suivi personnalisé.',
       learnMore: 'En savoir plus',
-      discover: 'Découvrir',
-      destinations: {
-        europe: 'Europe',
-        worldwide: 'Mondial',
-        international: 'International'
-      },
-      process: [
-        { step: '01', title: 'Devis', description: 'Recevez un devis personnalisé en moins de 2 heures' },
-        { step: '02', title: 'Enlèvement', description: 'Collecte à votre adresse aux horaires convenus' },
-        { step: '03', title: 'Transport', description: 'Suivi en temps réel de votre expédition' },
-        { step: '04', title: 'Livraison', description: 'Réception confirmée avec preuve de livraison' }
-      ],
       items: {
         road: {
           title: 'Transport Routier',
-          description: 'Solutions complètes de transport terrestre pour l\'Europe avec suivi GPS en temps réel.',
-          features: ['Livraison 24-48h', 'Suivi GPS temps réel', 'Assurance incluse', 'Véhicules adaptés']
+          description: 'Solutions de transport terrestre pour l\'Europe avec des délais optimisés et une traçabilité totale.',
+          features: ['Livraison 24-48h', 'Suivi GPS', 'Véhicules adaptés']
         },
         air: {
           title: 'Transport Aérien',
-          description: 'Fret aérien express pour vos expéditions urgentes vers toutes destinations mondiales.',
-          features: ['Express 6-24h', 'Mondial', 'Produits sensibles', 'Dédouanement']
+          description: 'Fret aérien rapide et sécurisé vers toutes les destinations mondiales.',
+          features: ['Express 24h', 'Mondial', 'Produits sensibles']
         },
         sea: {
           title: 'Transport Maritime',
-          description: 'Solutions économiques FCL et LCL pour vos expéditions en conteneurs.',
-          features: ['FCL & LCL', 'Économique', 'Écologique', 'Port à port']
+          description: 'Solutions économiques pour vos expéditions en conteneurs complets ou groupage.',
+          features: ['FCL & LCL', 'Économique', 'Écologique']
         },
         express: {
           title: 'Logistique Express',
-          description: 'Service premium avec engagement de délais pour vos expéditions critiques.',
+          description: 'Service premium pour vos expéditions urgentes avec engagement de délais.',
           features: ['Same day', 'Urgences', 'Premium']
         },
         custom: {
           title: 'Solutions Sur Mesure',
-          description: 'Solutions personnalisées pour les industries spécialisées.',
+          description: 'Solutions personnalisées adaptées à vos besoins spécifiques.',
           features: ['Personnalisé', 'Industries', 'Consulting']
         },
         support: {
-          title: 'Suivi Avancé',
-          description: 'Plateforme de tracking avec alertes et notifications personnalisées.',
+          title: 'Suivi & Support',
+          description: 'Plateforme de suivi avancée et support client disponible 24/7.',
           features: ['Temps réel', 'Support 24/7', 'Alertes']
         }
       }
@@ -1283,45 +1244,23 @@ export const translations: Record<Language, Translations> = {
     },
     services: {
       title: 'Nuestros Servicios de Transporte',
-      subtitle: 'Soluciones completas y personalizadas para todas tus necesidades de transporte internacional. Experiencia, confiabilidad e innovación.',
-      mainTitle: 'Servicios Principales',
-      mainSubtitle: 'Tres modos de transporte complementarios para responder a todas tus necesidades logísticas',
-      specialTitle: 'Servicios Especializados',
-      specialSubtitle: 'Soluciones avanzadas para necesidades específicas',
-      processTitle: '¿Cómo funciona?',
-      processSubtitle: 'Un proceso simple y transparente en 4 pasos',
-      ctaTitle: '¿Listo para empezar?',
-      ctaSubtitle: 'Obtén una cotización gratuita y personalizada para tu próximo envío',
-      quoteButton: 'Solicitar Cotización',
-      trackButton: 'Seguir Paquete',
+      subtitle: 'Soluciones completas para todas tus necesidades de transporte internacional, desde express hasta marítimo, con seguimiento personalizado.',
       learnMore: 'Saber más',
-      discover: 'Descubrir',
-      destinations: {
-        europe: 'Europa',
-        worldwide: 'Mundial',
-        international: 'Internacional'
-      },
-      process: [
-        { step: '01', title: 'Cotización', description: 'Recibe una cotización personalizada en menos de 2 horas' },
-        { step: '02', title: 'Recogida', description: 'Recogida en tu dirección a los horarios acordados' },
-        { step: '03', title: 'Transporte', description: 'Seguimiento en tiempo real de tu envío' },
-        { step: '04', title: 'Entrega', description: 'Recepción confirmada con prueba de entrega' }
-      ],
       items: {
         road: {
           title: 'Transporte Terrestre',
           description: 'Soluciones de transporte terrestre para Europa con tiempos optimizados y trazabilidad total.',
-          features: ['Entrega 24-48h', 'Seguimiento GPS tiempo real', 'Seguro incluido', 'Vehículos adaptados']
+          features: ['Entrega 24-48h', 'Seguimiento GPS', 'Vehículos adaptados']
         },
         air: {
           title: 'Transporte Aéreo',
           description: 'Flete aéreo rápido y seguro hacia todos los destinos mundiales.',
-          features: ['Express 6-24h', 'Mundial', 'Productos sensibles', 'Despacho aduanero']
+          features: ['Express 24h', 'Mundial', 'Productos sensibles']
         },
         sea: {
           title: 'Transporte Marítimo',
           description: 'Soluciones económicas para tus expediciones en contenedores completos o groupage.',
-          features: ['FCL y LCL', 'Económico', 'Ecológico', 'Puerto a Puerto']
+          features: ['FCL y LCL', 'Económico', 'Ecológico']
         },
         express: {
           title: 'Logística Express',
@@ -2015,45 +1954,23 @@ export const translations: Record<Language, Translations> = {
     },
     services: {
       title: 'Unsere Transport-Dienstleistungen',
-      subtitle: 'Komplette und personalisierte Lösungen für alle Ihre internationalen Transportbedürfnisse. Expertise, Zuverlässigkeit und Innovation.',
-      mainTitle: 'Hauptdienstleistungen',
-      mainSubtitle: 'Drei ergänzende Transportmodi für alle Ihre logistischen Bedürfnisse',
-      specialTitle: 'Spezialdienste',
-      specialSubtitle: 'Fortschrittliche Lösungen für spezifische Bedürfnisse',
-      processTitle: 'Wie funktioniert es?',
-      processSubtitle: 'Ein einfacher und transparenter Prozess in 4 Schritten',
-      ctaTitle: 'Bereit anzufangen?',
-      ctaSubtitle: 'Erhalten Sie ein kostenloses und personalisiertes Angebot für Ihre nächste Sendung',
-      quoteButton: 'Angebot Anfordern',
-      trackButton: 'Paket Verfolgen',
+      subtitle: 'Komplette Lösungen für alle Ihre internationalen Transportbedürfnisse, von Express bis Seefracht, mit personalisierter Verfolgung.',
       learnMore: 'Mehr erfahren',
-      discover: 'Entdecken',
-      destinations: {
-        europe: 'Europa',
-        worldwide: 'Weltweit',
-        international: 'International'
-      },
-      process: [
-        { step: '01', title: 'Angebot', description: 'Erhalten Sie ein personalisiertes Angebot in weniger als 2 Stunden' },
-        { step: '02', title: 'Abholung', description: 'Abholung an Ihrer Adresse zu vereinbarten Zeiten' },
-        { step: '03', title: 'Transport', description: 'Echtzeit-Verfolgung Ihrer Sendung' },
-        { step: '04', title: 'Lieferung', description: 'Bestätigte Zustellung mit Liefernachweis' }
-      ],
       items: {
         road: {
           title: 'Straßentransport',
           description: 'Straßentransportlösungen für Europa mit optimierten Zeiten und vollständiger Rückverfolgbarkeit.',
-          features: ['Lieferung 24-48h', 'GPS-Tracking Echtzeit', 'Versicherung inklusive', 'Angepasste Fahrzeuge']
+          features: ['Lieferung 24-48h', 'GPS-Tracking', 'Angepasste Fahrzeuge']
         },
         air: {
           title: 'Lufttransport',
           description: 'Schneller und sicherer Luftfracht zu allen weltweiten Destinationen.',
-          features: ['Express 24h', 'Weltweit', 'Empfindliche Produkte', 'Temperaturkontrolle']
+          features: ['Express 24h', 'Weltweit', 'Empfindliche Produkte']
         },
         sea: {
           title: 'Seetransport',
           description: 'Wirtschaftliche Lösungen für Ihre Sendungen in Vollcontainern oder Groupage.',
-          features: ['FCL & LCL', 'Wirtschaftlich', 'Ökologisch', 'Hafen zu Hafen']
+          features: ['FCL & LCL', 'Wirtschaftlich', 'Ökologisch']
         },
         express: {
           title: 'Express-Logistik',
@@ -2747,59 +2664,37 @@ export const translations: Record<Language, Translations> = {
     },
     services: {
       title: 'I Nostri Servizi di Trasporto',
-      subtitle: 'Soluzioni complete e personalizzate per tutte le vostre esigenze di trasporto internazionale. Competenza, affidabilità e innovazione.',
-      mainTitle: 'Servizi Principali',
-      mainSubtitle: 'Tre modalità di trasporto complementari per rispondere a tutte le vostre esigenze logistiche',
-      specialTitle: 'Servizi Specializzati',
-      specialSubtitle: 'Soluzioni avanzate per esigenze specifiche',
-      processTitle: 'Come funziona?',
-      processSubtitle: 'Un processo semplice e trasparente in 4 passaggi',
-      ctaTitle: 'Pronti per iniziare?',
-      ctaSubtitle: 'Ottenete un preventivo gratuito e personalizzato per la vostra prossima spedizione',
-      quoteButton: 'Richiedi Preventivo',
-      trackButton: 'Traccia Pacco',
+      subtitle: 'Soluzioni complete per tutte le tue esigenze di trasporto internazionale, dall\'express al marittimo, con tracciamento personalizzato.',
       learnMore: 'Scopri di più',
-      discover: 'Scopri',
-      destinations: {
-        europe: 'Europa',
-        worldwide: 'Mondiale',
-        international: 'Internazionale'
-      },
-      process: [
-        { step: '01', title: 'Preventivo', description: 'Ricevete un preventivo personalizzato in meno di 2 ore' },
-        { step: '02', title: 'Ritiro', description: 'Raccolta al vostro indirizzo negli orari concordati' },
-        { step: '03', title: 'Trasporto', description: 'Tracciamento in tempo reale della vostra spedizione' },
-        { step: '04', title: 'Consegna', description: 'Ricezione confermata con prova di consegna' }
-      ],
       items: {
         road: {
           title: 'Trasporto Stradale',
-          description: 'Soluzioni complete di trasporto terrestre per l\'Europa con tracciamento GPS in tempo reale.',
-          features: ['Consegna 24-48h', 'Tracciamento GPS tempo reale', 'Assicurazione inclusa', 'Veicoli adattati']
+          description: 'Soluzioni di trasporto terrestre per l\'Europa con tempi ottimizzati e tracciabilità totale.',
+          features: ['Consegna 24-48h', 'Tracciamento GPS', 'Veicoli adattati']
         },
         air: {
           title: 'Trasporto Aereo',
-          description: 'Trasporto aereo express per le vostre spedizioni urgenti verso tutte le destinazioni mondiali.',
-          features: ['Express 6-24h', 'Mondiale', 'Prodotti sensibili', 'Sdoganamento']
+          description: 'Trasporto aereo rapido e sicuro verso tutte le destinazioni mondiali.',
+          features: ['Express 24h', 'Mondiale', 'Prodotti sensibili']
         },
         sea: {
           title: 'Trasporto Marittimo',
-          description: 'Soluzioni economiche FCL e LCL per le vostre spedizioni in container.',
-          features: ['FCL & LCL', 'Economico', 'Ecologico', 'Porto a porto']
+          description: 'Soluzioni economiche per le tue spedizioni in container completi o groupage.',
+          features: ['FCL e LCL', 'Economico', 'Ecologico']
         },
         express: {
           title: 'Logistica Express',
-          description: 'Servizio premium con impegno sui tempi per le vostre spedizioni critiche.',
+          description: 'Servizio premium per le tue spedizioni urgenti con impegno sui tempi.',
           features: ['Same day', 'Urgenze', 'Premium']
         },
         custom: {
           title: 'Soluzioni Su Misura',
-          description: 'Soluzioni personalizzate per industrie specializzate.',
+          description: 'Soluzioni personalizzate adattate alle tue esigenze specifiche.',
           features: ['Personalizzato', 'Industrie', 'Consulenza']
         },
         support: {
-          title: 'Tracciamento Avanzato',
-          description: 'Piattaforma di tracking con avvisi e notifiche personalizzate.',
+          title: 'Tracciamento e Supporto',
+          description: 'Piattaforma di tracciamento avanzata e supporto clienti disponibile 24/7.',
           features: ['Tempo reale', 'Supporto 24/7', 'Avvisi']
         }
       }
@@ -3479,59 +3374,37 @@ export const translations: Record<Language, Translations> = {
     },
     services: {
       title: 'Nossos Serviços de Transporte',
-      subtitle: 'Soluções completas e personalizadas para todas as suas necessidades de transporte internacional. Expertise, confiabilidade e inovação.',
-      mainTitle: 'Serviços Principais',
-      mainSubtitle: 'Três modalidades de transporte complementares para atender todas as suas necessidades logísticas',
-      specialTitle: 'Serviços Especializados',
-      specialSubtitle: 'Soluções avançadas para necessidades específicas',
-      processTitle: 'Como funciona?',
-      processSubtitle: 'Um processo simples e transparente em 4 etapas',
-      ctaTitle: 'Pronto para começar?',
-      ctaSubtitle: 'Obtenha um orçamento gratuito e personalizado para seu próximo envio',
-      quoteButton: 'Solicitar Orçamento',
-      trackButton: 'Rastrear Encomenda',
+      subtitle: 'Soluções completas para todas as suas necessidades de transporte internacional, do express ao marítimo, com rastreamento personalizado.',
       learnMore: 'Saiba mais',
-      discover: 'Descobrir',
-      destinations: {
-        europe: 'Europa',
-        worldwide: 'Mundial',
-        international: 'Internacional'
-      },
-      process: [
-        { step: '01', title: 'Orçamento', description: 'Receba um orçamento personalizado em menos de 2 horas' },
-        { step: '02', title: 'Coleta', description: 'Coleta em seu endereço nos horários acordados' },
-        { step: '03', title: 'Transporte', description: 'Rastreamento em tempo real de seu envio' },
-        { step: '04', title: 'Entrega', description: 'Recebimento confirmado com comprovante de entrega' }
-      ],
       items: {
         road: {
           title: 'Transporte Rodoviário',
-          description: 'Soluções completas de transporte terrestre para a Europa com rastreamento GPS em tempo real.',
-          features: ['Entrega 24-48h', 'Rastreamento GPS tempo real', 'Seguro incluído', 'Veículos adaptados']
+          description: 'Soluções de transporte terrestre para a Europa com prazos otimizados e rastreabilidade total.',
+          features: ['Entrega 24-48h', 'Rastreamento GPS', 'Veículos adaptados']
         },
         air: {
           title: 'Transporte Aéreo',
-          description: 'Frete aéreo expresso para seus envios urgentes para todos os destinos mundiais.',
-          features: ['Express 6-24h', 'Mundial', 'Produtos sensíveis', 'Desembaraço aduaneiro']
+          description: 'Frete aéreo rápido e seguro para todos os destinos mundiais.',
+          features: ['Express 24h', 'Mundial', 'Produtos sensíveis']
         },
         sea: {
           title: 'Transporte Marítimo',
-          description: 'Soluções econômicas FCL e LCL para seus envios em contêineres.',
-          features: ['FCL & LCL', 'Econômico', 'Ecológico', 'Porto a porto']
+          description: 'Soluções econômicas para seus envios em contêineres completos ou groupage.',
+          features: ['FCL e LCL', 'Econômico', 'Ecológico']
         },
         express: {
           title: 'Logística Express',
-          description: 'Serviço premium com compromisso de prazos para seus envios críticos.',
+          description: 'Serviço premium para seus envios urgentes com compromisso de prazos.',
           features: ['Same day', 'Urgências', 'Premium']
         },
         custom: {
           title: 'Soluções Sob Medida',
-          description: 'Soluções personalizadas para indústrias especializadas.',
+          description: 'Soluções personalizadas adaptadas às suas necessidades específicas.',
           features: ['Personalizado', 'Indústrias', 'Consultoria']
         },
         support: {
-          title: 'Rastreamento Avançado',
-          description: 'Plataforma de rastreamento com alertas e notificações personalizadas.',
+          title: 'Rastreamento e Suporte',
+          description: 'Plataforma de rastreamento avançada e suporte ao cliente disponível 24/7.',
           features: ['Tempo real', 'Suporte 24/7', 'Alertas']
         }
       }
