@@ -9,8 +9,6 @@ export const HeroSection = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
 
-  console.log('HeroSection rendering with language:', currentLanguage);
-
   const features = [
     {
       icon: Truck,

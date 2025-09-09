@@ -32,10 +32,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, [currentLanguage]);
 
   const changeLanguage = (language: Language) => {
-    console.log('Context: Changing language to:', language);
     setCurrentLanguage(language);
     localStorage.setItem('xoti-language', language);
-    console.log('Context: Language changed to:', language);
   };
 
   return (

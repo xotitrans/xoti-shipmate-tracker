@@ -2,63 +2,67 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Truck, Plane, Ship, Zap, Settings, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const services = [
-  {
-    icon: Truck,
-    title: 'Transport Routier',
-    description: 'Solutions de transport terrestre pour l\'Europe avec des délais optimisés et une traçabilité totale.',
-    features: ['Livraison 24-48h', 'Suivi GPS', 'Véhicules adaptés'],
-    href: '/services/road-transport'
-  },
-  {
-    icon: Plane,
-    title: 'Transport Aérien',
-    description: 'Fret aérien rapide et sécurisé vers toutes les destinations mondiales.',
-    features: ['Express 24h', 'Mondial', 'Produits sensibles'],
-    href: '/services/air-transport'
-  },
-  {
-    icon: Ship,
-    title: 'Transport Maritime',
-    description: 'Solutions économiques pour vos expéditions en conteneurs complets ou groupage.',
-    features: ['FCL & LCL', 'Économique', 'Écologique'],
-    href: '/services/sea-transport'
-  },
-  {
-    icon: Zap,
-    title: 'Logistique Express',
-    description: 'Service premium pour vos expéditions urgentes avec engagement de délais.',
-    features: ['Same day', 'Urgences', 'Premium'],
-    href: '/services/express'
-  },
-  {
-    icon: Settings,
-    title: 'Solutions Sur Mesure',
-    description: 'Solutions personnalisées adaptées à vos besoins spécifiques.',
-    features: ['Personnalisé', 'Industries', 'Consulting'],
-    href: '/services/custom'
-  },
-  {
-    icon: Clock,
-    title: 'Suivi & Support',
-    description: 'Plateforme de suivi avancée et support client disponible 24/7.',
-    features: ['Temps réel', 'Support 24/7', 'Alertes'],
-    href: '/tracking'
-  }
-];
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/data/translations';
 
 export const ServicesOverview = () => {
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
+
+  const services = [
+    {
+      icon: Truck,
+      title: t.services.items.road.title,
+      description: t.services.items.road.description,
+      features: t.services.items.road.features,
+      href: '/services/road-transport'
+    },
+    {
+      icon: Plane,
+      title: t.services.items.air.title,
+      description: t.services.items.air.description,
+      features: t.services.items.air.features,
+      href: '/services/air-transport'
+    },
+    {
+      icon: Ship,
+      title: t.services.items.sea.title,
+      description: t.services.items.sea.description,
+      features: t.services.items.sea.features,
+      href: '/services/sea-transport'
+    },
+    {
+      icon: Zap,
+      title: t.services.items.express.title,
+      description: t.services.items.express.description,
+      features: t.services.items.express.features,
+      href: '/services/express'
+    },
+    {
+      icon: Settings,
+      title: t.services.items.custom.title,
+      description: t.services.items.custom.description,
+      features: t.services.items.custom.features,
+      href: '/services/custom'
+    },
+    {
+      icon: Clock,
+      title: t.services.items.support.title,
+      description: t.services.items.support.description,
+      features: t.services.items.support.features,
+      href: '/tracking'
+    }
+  ];
+
   return (
     <section className="py-20 bg-gradient-card">
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Nos Services de Transport
+            {t.services.title}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Des solutions complètes pour tous vos besoins de transport international, 
-            de l'express au maritime, avec un suivi personnalisé.
+            {t.services.subtitle}
           </p>
         </div>
         
@@ -88,7 +92,7 @@ export const ServicesOverview = () => {
                   
                   <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors" asChild>
                     <Link to={service.href}>
-                      En savoir plus
+                      {t.services.learnMore}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>

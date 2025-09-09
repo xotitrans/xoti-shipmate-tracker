@@ -12,8 +12,6 @@ export const Header = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
 
-  console.log('Header rendering with language:', currentLanguage);
-
   const navigation = [
     { name: t.navigation.home, href: '/', icon: Package },
     { name: t.navigation.about, href: '/about', icon: Users },
