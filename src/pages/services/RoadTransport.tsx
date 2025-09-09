@@ -13,12 +13,12 @@ const features = [
 ];
 
 const zones = [
-  { country: 'France', time: '6-12h', price: '150€' },
-  { country: 'Allemagne', time: '24-36h', price: '280€' },
-  { country: 'Italie', time: '24-48h', price: '320€' },
-  { country: 'Espagne', time: '36-48h', price: '350€' },
-  { country: 'Pays-Bas', time: '18-24h', price: '240€' },
-  { country: 'Belgique', time: '12-18h', price: '180€' }
+  { country: 'France', time: '6-12h' },
+  { country: 'Allemagne', time: '24-36h' },
+  { country: 'Italie', time: '24-48h' },
+  { country: 'Espagne', time: '36-48h' },
+  { country: 'Pays-Bas', time: '18-24h' },
+  { country: 'Belgique', time: '12-18h' }
 ];
 
 export default function RoadTransport() {
@@ -95,9 +95,9 @@ export default function RoadTransport() {
       <section className="py-20 bg-gradient-card">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Tarifs et Délais</h2>
+            <h2 className="text-3xl font-bold mb-4">Zones et Délais</h2>
             <p className="text-xl text-muted-foreground">
-              Prix indicatifs pour un colis standard (jusqu'à 30kg)
+              Délais garantis pour vos expéditions européennes
             </p>
           </div>
           
@@ -111,7 +111,6 @@ export default function RoadTransport() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-primary mb-4">À partir de {zone.price}</div>
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />

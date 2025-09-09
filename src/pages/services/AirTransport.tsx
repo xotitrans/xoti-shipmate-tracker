@@ -8,20 +8,17 @@ const services = [
   {
     title: 'Express 6h',
     description: 'Livraison ultra-rapide pour vos urgences',
-    price: 'À partir de 89€',
     features: ['6h chrono', 'Mondial', 'Priorité absolue', 'Suivi premium']
   },
   {
     title: 'Standard 24h',
     description: 'Solution équilibrée rapidité/prix',
-    price: 'À partir de 45€',
     features: ['24h garanti', 'International', 'Assurance incluse', 'Suivi temps réel']
   },
   {
     title: 'Économique 48h',
     description: 'Option économique pour délais flexibles',
-    price: 'À partir de 29€',
-    features: ['48-72h', 'Groupage', 'Prix avantageux', 'Suivi standard']
+    features: ['48-72h', 'Groupage', 'Solution optimisée', 'Suivi standard']
   }
 ];
 
@@ -100,7 +97,6 @@ export default function AirTransport() {
                 <CardHeader>
                   <CardTitle className="text-2xl">{service.title}</CardTitle>
                   <p className="text-muted-foreground">{service.description}</p>
-                  <div className="text-2xl font-bold text-primary">{service.price}</div>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
