@@ -34,9 +34,9 @@ export const HeroSection = () => {
         <img 
           src="/lovable-uploads/153d63ed-773a-44c8-b766-5a0becb516d2.png" 
           alt="Transport international - avion, navire et camion"
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover opacity-80"
         />
-        <div className="absolute inset-0 bg-gradient-hero/80" />
+        <div className="absolute inset-0 bg-gradient-hero/20" />
       </div>
       
       {/* Background Pattern */}
@@ -46,13 +46,13 @@ export const HeroSection = () => {
       
       <div className="container relative z-10">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-6xl animate-fade-in">
+          <h1 className="mb-6 text-6xl font-bold tracking-tight sm:text-8xl animate-fade-in">
             Transport International
             <br />
             <span className="text-secondary">de Confiance</span>
           </h1>
           
-          <p className="mb-8 text-xl text-white/90 animate-slide-up">
+          <p className="mb-8 text-2xl text-white/90 animate-slide-up">
             XOTI vous accompagne dans vos expéditions internationales avec des solutions 
             sur mesure, un suivi en temps réel et un service client d'exception.
           </p>
