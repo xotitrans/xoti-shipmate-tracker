@@ -20,14 +20,45 @@ import {
   AlertTriangle, 
   CreditCard,
   Camera,
-  Upload
+  Upload,
+  X,
+  Image
 } from "lucide-react";
 
 export default function AdminNewShipment() {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [uploadedPhotos, setUploadedPhotos] = useState<Array<{file: File, preview: string}>>([]);
   
+  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    if (uploadedPhotos.length + files.length > 10) {
+      toast({
+        title: "Limite dépassée",
+        description: "Vous ne pouvez pas ajouter plus de 10 photos.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    files.forEach(file => {
+      if (file.type.startsWith('image/')) {
+        const preview = URL.createObjectURL(file);
+        setUploadedPhotos(prev => [...prev, { file, preview }]);
+      }
+    });
+  };
+
+  const removePhoto = (index: number) => {
+    setUploadedPhotos(prev => {
+      const updated = [...prev];
+      URL.revokeObjectURL(updated[index].preview);
+      updated.splice(index, 1);
+      return updated;
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -98,11 +129,42 @@ export default function AdminNewShipment() {
         status: 'pending' as const,
       };
 
-      const { error } = await supabase
+      const { data: shipment, error } = await supabase
         .from('shipments')
-        .insert(shipmentData);
+        .insert(shipmentData)
+        .select()
+        .single();
 
       if (error) throw error;
+
+      // Upload photos if any
+      if (uploadedPhotos.length > 0) {
+        const photoUploadPromises = uploadedPhotos.map(async (photo, index) => {
+          const fileExt = photo.file.name.split('.').pop();
+          const fileName = `${shipment.id}/${Date.now()}-${index}.${fileExt}`;
+          
+          const { error: uploadError } = await supabase.storage
+            .from('shipment-photos')
+            .upload(fileName, photo.file);
+
+          if (uploadError) throw uploadError;
+
+          const { data: { publicUrl } } = supabase.storage
+            .from('shipment-photos')
+            .getPublicUrl(fileName);
+
+          return supabase
+            .from('shipment_photos')
+            .insert({
+              shipment_id: shipment.id,
+              photo_url: publicUrl,
+              uploaded_by: user?.id,
+              description: `Photo ${index + 1}`
+            });
+        });
+
+        await Promise.all(photoUploadPromises);
+      }
 
       toast({
         title: "Envoi créé avec succès",
@@ -559,21 +621,70 @@ export default function AdminNewShipment() {
             <CardTitle className="flex items-center gap-2">
               <Camera className="h-5 w-5 text-primary" />
               Photos de l'envoi
-              <span className="text-sm font-normal text-muted-foreground">0/10</span>
+              <span className="text-sm font-normal text-muted-foreground">
+                {uploadedPhotos.length}/10
+              </span>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center">
-              <Upload className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
-              <p className="text-muted-foreground mb-2">Aucune photo ajoutée</p>
-              <p className="text-sm text-muted-foreground mb-4">
-                Cliquez sur "Ajouter des photos" pour commencer
-              </p>
-              <Button type="button" variant="outline">
-                <Upload className="h-4 w-4 mr-2" />
-                Ajouter des photos
-              </Button>
-            </div>
+            {uploadedPhotos.length === 0 ? (
+              <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center">
+                <Upload className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
+                <p className="text-muted-foreground mb-2">Aucune photo ajoutée</p>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Cliquez sur "Ajouter des photos" pour commencer
+                </p>
+                <div className="relative">
+                  <input
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={handlePhotoUpload}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  />
+                  <Button type="button" variant="outline">
+                    <Upload className="h-4 w-4 mr-2" />
+                    Ajouter des photos
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {uploadedPhotos.map((photo, index) => (
+                    <div key={index} className="relative group">
+                      <img
+                        src={photo.preview}
+                        alt={`Photo ${index + 1}`}
+                        className="w-full h-24 object-cover rounded-lg border"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removePhoto(index)}
+                        className="absolute -top-2 -right-2 bg-destructive text-destructive-foreground rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        <X className="h-3 w-3" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                {uploadedPhotos.length < 10 && (
+                  <div className="relative">
+                    <input
+                      type="file"
+                      multiple
+                      accept="image/*"
+                      onChange={handlePhotoUpload}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                    />
+                    <Button type="button" variant="outline" className="w-full">
+                      <Upload className="h-4 w-4 mr-2" />
+                      Ajouter d'autres photos ({10 - uploadedPhotos.length} restantes)
+                    </Button>
+                  </div>
+                )}
+              </div>
+            )}
           </CardContent>
         </Card>
 
