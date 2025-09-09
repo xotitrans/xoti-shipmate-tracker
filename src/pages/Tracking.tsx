@@ -5,6 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Search, Package, Truck, MapPin, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/data/translations';
 
 const mockTrackingData = {
   'XTI-2024-001234': {
@@ -24,18 +26,20 @@ const mockTrackingData = {
   }
 };
 
-const statusConfig = {
-  collecte: { icon: Package, color: 'bg-blue-500', label: 'Collecté' },
-  en_transit: { icon: Truck, color: 'bg-yellow-500', label: 'En Transit' },
-  livre: { icon: CheckCircle, color: 'bg-green-500', label: 'Livré' },
-  probleme: { icon: AlertCircle, color: 'bg-red-500', label: 'Problème' }
-};
-
 export default function Tracking() {
   const [trackingNumber, setTrackingNumber] = useState('');
   const [trackingResult, setTrackingResult] = useState<any>(null);
   const [isSearching, setIsSearching] = useState(false);
   const { toast } = useToast();
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
+
+  const statusConfig = {
+    collecte: { icon: Package, color: 'bg-blue-500', label: t.tracking.statuses.collecte },
+    en_transit: { icon: Truck, color: 'bg-yellow-500', label: t.tracking.statuses.en_transit },
+    livre: { icon: CheckCircle, color: 'bg-green-500', label: t.tracking.statuses.livre },
+    probleme: { icon: AlertCircle, color: 'bg-red-500', label: t.tracking.statuses.probleme }
+  };
 
   const handleTrack = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,14 +54,14 @@ export default function Tracking() {
       if (result) {
         setTrackingResult(result);
         toast({
-          title: "Colis trouvé !",
-          description: `Statut : ${statusConfig[result.status as keyof typeof statusConfig].label}`,
+          title: t.tracking.packageFound,
+          description: `${t.tracking.currentStatus}: ${statusConfig[result.status as keyof typeof statusConfig].label}`,
         });
       } else {
         setTrackingResult(null);
         toast({
-          title: "Colis non trouvé",
-          description: "Vérifiez votre numéro de suivi et réessayez.",
+          title: t.tracking.packageNotFound,
+          description: t.tracking.packageNotFoundDesc,
           variant: "destructive"
         });
       }
@@ -72,11 +76,10 @@ export default function Tracking() {
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6">
-              Suivi de Colis
+              {t.tracking.title}
             </h1>
             <p className="text-xl text-white/90 mb-8">
-              Suivez vos expéditions en temps réel avec notre système de tracking avancé.
-              Entrez votre numéro de suivi pour obtenir des informations détaillées.
+              {t.tracking.subtitle}
             </p>
           </div>
         </div>
@@ -88,33 +91,33 @@ export default function Tracking() {
           <div className="max-w-2xl mx-auto">
             <Card className="animate-fade-in">
               <CardHeader>
-                <CardTitle className="text-center text-2xl">Rechercher votre colis</CardTitle>
+                <CardTitle className="text-center text-2xl">{t.tracking.searchTitle}</CardTitle>
                 <p className="text-center text-muted-foreground">
-                  Entrez votre numéro de suivi (ex: XTI-2024-001234)
+                  {t.tracking.searchSubtitle}
                 </p>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleTrack} className="space-y-4">
                   <div className="flex gap-4">
                     <Input
-                      placeholder="Numéro de suivi..."
+                      placeholder={t.tracking.placeholder}
                       value={trackingNumber}
                       onChange={(e) => setTrackingNumber(e.target.value)}
                       className="flex-1"
                     />
                     <Button type="submit" disabled={isSearching} className="px-8">
                       {isSearching ? (
-                        'Recherche...'
+                        t.tracking.searching
                       ) : (
                         <>
                           <Search className="mr-2 h-4 w-4" />
-                          Suivre
+                          {t.tracking.searchButton}
                         </>
                       )}
                     </Button>
                   </div>
                   <p className="text-sm text-muted-foreground text-center">
-                    Essayez le numéro d'exemple : <button type="button" className="text-primary hover:underline" onClick={() => setTrackingNumber('XTI-2024-001234')}>XTI-2024-001234</button>
+                    {t.tracking.tryExample} <button type="button" className="text-primary hover:underline" onClick={() => setTrackingNumber('XTI-2024-001234')}>XTI-2024-001234</button>
                   </p>
                 </form>
               </CardContent>
@@ -132,7 +135,7 @@ export default function Tracking() {
               <Card className="animate-slide-up">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-2xl">Colis {trackingResult.id}</CardTitle>
+                    <CardTitle className="text-2xl">{t.tracking.packageTitle} {trackingResult.id}</CardTitle>
                     <Badge variant="secondary" className="px-4 py-2">
                       {trackingResult.service}
                     </Badge>
@@ -145,7 +148,7 @@ export default function Tracking() {
                         <Truck className="h-6 w-6" />
                       </div>
                       <div className="font-semibold">{statusConfig[trackingResult.status as keyof typeof statusConfig].label}</div>
-                      <div className="text-sm text-muted-foreground">Statut actuel</div>
+                      <div className="text-sm text-muted-foreground">{t.tracking.currentStatus}</div>
                     </div>
                     
                     <div className="text-center">
@@ -153,7 +156,7 @@ export default function Tracking() {
                         <MapPin className="h-6 w-6" />
                       </div>
                       <div className="font-semibold">{trackingResult.origin}</div>
-                      <div className="text-sm text-muted-foreground">Origine</div>
+                      <div className="text-sm text-muted-foreground">{t.tracking.origin}</div>
                     </div>
                     
                     <div className="text-center">
@@ -161,7 +164,7 @@ export default function Tracking() {
                         <MapPin className="h-6 w-6" />
                       </div>
                       <div className="font-semibold">{trackingResult.destination}</div>
-                      <div className="text-sm text-muted-foreground">Destination</div>
+                      <div className="text-sm text-muted-foreground">{t.tracking.destination}</div>
                     </div>
                     
                     <div className="text-center">
@@ -169,7 +172,7 @@ export default function Tracking() {
                         <Clock className="h-6 w-6" />
                       </div>
                       <div className="font-semibold">{trackingResult.estimatedDelivery}</div>
-                      <div className="text-sm text-muted-foreground">Livraison prévue</div>
+                      <div className="text-sm text-muted-foreground">{t.tracking.estimatedDelivery}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -178,7 +181,7 @@ export default function Tracking() {
               {/* Tracking History */}
               <Card className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
                 <CardHeader>
-                  <CardTitle>Historique de suivi</CardTitle>
+                  <CardTitle>{t.tracking.trackingHistory}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="relative">
@@ -207,19 +210,19 @@ export default function Tracking() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <Card className="animate-slide-up" style={{ animationDelay: '0.3s' }}>
                   <CardHeader>
-                    <CardTitle>Détails du Colis</CardTitle>
+                    <CardTitle>{t.tracking.packageDetails}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Poids :</span>
+                      <span className="text-muted-foreground">{t.tracking.weight}</span>
                       <span className="font-medium">{trackingResult.weight}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Service :</span>
+                      <span className="text-muted-foreground">{t.tracking.service}</span>
                       <span className="font-medium">{trackingResult.service}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Références :</span>
+                      <span className="text-muted-foreground">{t.tracking.reference}</span>
                       <span className="font-medium">{trackingResult.id}</span>
                     </div>
                   </CardContent>
@@ -227,19 +230,19 @@ export default function Tracking() {
 
                 <Card className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
                   <CardHeader>
-                    <CardTitle>Besoin d'aide ?</CardTitle>
+                    <CardTitle>{t.tracking.needHelp}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-muted-foreground">
-                      Notre service client est à votre disposition pour toute question.
+                      {t.tracking.helpDesc}
                     </p>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-muted-foreground">Téléphone :</span>
+                        <span className="text-muted-foreground">{t.tracking.phone}</span>
                         <span className="font-medium">+33 1 23 45 67 89</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-muted-foreground">Email :</span>
+                        <span className="text-muted-foreground">{t.tracking.email}</span>
                         <span className="font-medium">support@xoti-transport.com</span>
                       </div>
                     </div>
@@ -255,30 +258,18 @@ export default function Tracking() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Questions fréquentes</h2>
+            <h2 className="text-3xl font-bold mb-4">{t.tracking.faqTitle}</h2>
             <p className="text-xl text-muted-foreground">
-              Tout ce que vous devez savoir sur le suivi de vos colis
+              {t.tracking.faqSubtitle}
             </p>
           </div>
           
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
-              {
-                question: "Comment fonctionne le suivi ?",
-                answer: "Votre numéro de suivi commence par 'XTI-' suivi de l'année et d'un numéro unique. Il vous est communiqué dès la prise en charge de votre colis."
-              },
-              {
-                question: "À quelle fréquence les informations sont-elles mises à jour ?",
-                answer: "Les informations de suivi sont actualisées en temps réel. Chaque étape importante est enregistrée automatiquement."
-              },
-              {
-                question: "Que faire si mon colis semble bloqué ?",
-                answer: "Contactez notre service client au +33 1 23 45 67 89. Nous résoudrons rapidement tout problème logistique."
-              },
-              {
-                question: "Puis-je modifier l'adresse de livraison ?",
-                answer: "Oui, tant que le colis n'est pas en cours de livraison finale. Contactez-nous pour effectuer la modification."
-              }
+              { question: t.tracking.faq.q1, answer: t.tracking.faq.a1 },
+              { question: t.tracking.faq.q2, answer: t.tracking.faq.a2 },
+              { question: t.tracking.faq.q3, answer: t.tracking.faq.a3 },
+              { question: t.tracking.faq.q4, answer: t.tracking.faq.a4 }
             ].map((faq, index) => (
               <Card key={index} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardContent className="p-6">

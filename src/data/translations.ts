@@ -57,6 +57,51 @@ export interface Translations {
       };
     };
   };
+  tracking: {
+    title: string;
+    subtitle: string;
+    searchTitle: string;
+    searchSubtitle: string;
+    placeholder: string;
+    searchButton: string;
+    searching: string;
+    tryExample: string;
+    packageFound: string;
+    packageNotFound: string;
+    packageNotFoundDesc: string;
+    packageTitle: string;
+    currentStatus: string;
+    origin: string;
+    destination: string;
+    estimatedDelivery: string;
+    trackingHistory: string;
+    packageDetails: string;
+    weight: string;
+    service: string;
+    reference: string;
+    needHelp: string;
+    helpDesc: string;
+    phone: string;
+    email: string;
+    faqTitle: string;
+    faqSubtitle: string;
+    statuses: {
+      collecte: string;
+      en_transit: string;
+      livre: string;
+      probleme: string;
+    };
+    faq: {
+      q1: string;
+      a1: string;
+      q2: string;
+      a2: string;
+      q3: string;
+      a3: string;
+      q4: string;
+      a4: string;
+    };
+  };
   footer: {
     description: string;
     address: string;
@@ -190,6 +235,51 @@ export const translations: Record<Language, Translations> = {
           description: 'Plateforme de suivi avancée et support client disponible 24/7.',
           features: ['Temps réel', 'Support 24/7', 'Alertes']
         }
+      }
+    },
+    tracking: {
+      title: 'Suivi de Colis',
+      subtitle: 'Suivez vos expéditions en temps réel avec notre système de tracking avancé. Entrez votre numéro de suivi pour obtenir des informations détaillées.',
+      searchTitle: 'Rechercher votre colis',
+      searchSubtitle: 'Entrez votre numéro de suivi (ex: XTI-2024-001234)',
+      placeholder: 'Numéro de suivi...',
+      searchButton: 'Suivre',
+      searching: 'Recherche...',
+      tryExample: 'Essayez le numéro d\'exemple :',
+      packageFound: 'Colis trouvé !',
+      packageNotFound: 'Colis non trouvé',
+      packageNotFoundDesc: 'Vérifiez votre numéro de suivi et réessayez.',
+      packageTitle: 'Colis',
+      currentStatus: 'Statut actuel',
+      origin: 'Origine',
+      destination: 'Destination',
+      estimatedDelivery: 'Livraison prévue',
+      trackingHistory: 'Historique de suivi',
+      packageDetails: 'Détails du Colis',
+      weight: 'Poids :',
+      service: 'Service :',
+      reference: 'Références :',
+      needHelp: 'Besoin d\'aide ?',
+      helpDesc: 'Notre service client est à votre disposition pour toute question.',
+      phone: 'Téléphone :',
+      email: 'Email :',
+      faqTitle: 'Questions fréquentes',
+      faqSubtitle: 'Tout ce que vous devez savoir sur le suivi de vos colis',
+      statuses: {
+        collecte: 'Collecté',
+        en_transit: 'En Transit',
+        livre: 'Livré',
+        probleme: 'Problème'
+      },
+      faq: {
+        q1: 'Comment fonctionne le suivi ?',
+        a1: 'Votre numéro de suivi commence par \'XTI-\' suivi de l\'année et d\'un numéro unique. Il vous est communiqué dès la prise en charge de votre colis.',
+        q2: 'À quelle fréquence les informations sont-elles mises à jour ?',
+        a2: 'Les informations de suivi sont actualisées en temps réel. Chaque étape importante est enregistrée automatiquement.',
+        q3: 'Que faire si mon colis semble bloqué ?',
+        a3: 'Contactez notre service client au +33 1 23 45 67 89. Nous résoudrons rapidement tout problème logistique.',
+        q4: 'Puis-je modifier l\'adresse de livraison ?',
+        a4: 'Oui, tant que le colis n\'est pas en cours de livraison finale. Contactez-nous pour effectuer la modification.'
       }
     },
     footer: {
@@ -341,6 +431,51 @@ export const translations: Record<Language, Translations> = {
         }
       }
     },
+    tracking: {
+      title: 'Seguimiento de Paquete',
+      subtitle: 'Rastrea tus envíos en tiempo real con nuestro sistema de seguimiento avanzado. Ingresa tu número de seguimiento para obtener información detallada.',
+      searchTitle: 'Buscar tu paquete',
+      searchSubtitle: 'Ingresa tu número de seguimiento (ej: XTI-2024-001234)',
+      placeholder: 'Número de seguimiento...',
+      searchButton: 'Rastrear',
+      searching: 'Buscando...',
+      tryExample: 'Prueba el número de ejemplo:',
+      packageFound: '¡Paquete encontrado!',
+      packageNotFound: 'Paquete no encontrado',
+      packageNotFoundDesc: 'Verifica tu número de seguimiento e inténtalo de nuevo.',
+      packageTitle: 'Paquete',
+      currentStatus: 'Estado actual',
+      origin: 'Origen',
+      destination: 'Destino',
+      estimatedDelivery: 'Entrega estimada',
+      trackingHistory: 'Historial de seguimiento',
+      packageDetails: 'Detalles del Paquete',
+      weight: 'Peso:',
+      service: 'Servicio:',
+      reference: 'Referencia:',
+      needHelp: '¿Necesitas ayuda?',
+      helpDesc: 'Nuestro servicio al cliente está disponible para cualquier pregunta.',
+      phone: 'Teléfono:',
+      email: 'Email:',
+      faqTitle: 'Preguntas frecuentes',
+      faqSubtitle: 'Todo lo que necesitas saber sobre el seguimiento de tus paquetes',
+      statuses: {
+        collecte: 'Recogido',
+        en_transit: 'En Tránsito',
+        livre: 'Entregado',
+        probleme: 'Problema'
+      },
+      faq: {
+        q1: '¿Cómo funciona el seguimiento?',
+        a1: 'Tu número de seguimiento comienza con \'XTI-\' seguido del año y un número único. Se comunica tan pronto como se toma el paquete.',
+        q2: '¿Con qué frecuencia se actualiza la información?',
+        a2: 'La información de seguimiento se actualiza en tiempo real. Cada etapa importante se registra automáticamente.',
+        q3: '¿Qué hacer si mi paquete parece bloqueado?',
+        a3: 'Contacta nuestro servicio al cliente al +33 1 23 45 67 89. Resolveremos rápidamente cualquier problema logístico.',
+        q4: '¿Puedo cambiar la dirección de entrega?',
+        a4: 'Sí, mientras el paquete no esté en proceso de entrega final. Contáctanos para hacer el cambio.'
+      }
+    },
     footer: {
       description: 'Líder europeo del transporte internacional, XOTI te acompaña en todos tus envíos con experiencia y confiabilidad.',
       address: '123 Avenida de Europa, 75001 París',
@@ -488,6 +623,51 @@ export const translations: Record<Language, Translations> = {
           description: 'Erweiterte Verfolgungsplattform und Kundenservice verfügbar 24/7.',
           features: ['Echtzeit', 'Support 24/7', 'Benachrichtigungen']
         }
+      }
+    },
+    tracking: {
+      title: 'Paketverfolgung',
+      subtitle: 'Verfolgen Sie Ihre Sendungen in Echtzeit mit unserem fortschrittlichen Tracking-System. Geben Sie Ihre Tracking-Nummer ein für detaillierte Informationen.',
+      searchTitle: 'Ihr Paket suchen',
+      searchSubtitle: 'Geben Sie Ihre Tracking-Nummer ein (z.B.: XTI-2024-001234)',
+      placeholder: 'Tracking-Nummer...',
+      searchButton: 'Verfolgen',
+      searching: 'Suche...',
+      tryExample: 'Probieren Sie die Beispiel-Nummer:',
+      packageFound: 'Paket gefunden!',
+      packageNotFound: 'Paket nicht gefunden',
+      packageNotFoundDesc: 'Überprüfen Sie Ihre Tracking-Nummer und versuchen Sie es erneut.',
+      packageTitle: 'Paket',
+      currentStatus: 'Aktueller Status',
+      origin: 'Herkunft',
+      destination: 'Ziel',
+      estimatedDelivery: 'Voraussichtliche Lieferung',
+      trackingHistory: 'Verfolgungshistorie',
+      packageDetails: 'Paket-Details',
+      weight: 'Gewicht:',
+      service: 'Service:',
+      reference: 'Referenz:',
+      needHelp: 'Brauchen Sie Hilfe?',
+      helpDesc: 'Unser Kundenservice steht Ihnen für alle Fragen zur Verfügung.',
+      phone: 'Telefon:',
+      email: 'E-Mail:',
+      faqTitle: 'Häufige Fragen',
+      faqSubtitle: 'Alles was Sie über die Verfolgung Ihrer Pakete wissen müssen',
+      statuses: {
+        collecte: 'Abgeholt',
+        en_transit: 'In Transit',
+        livre: 'Zugestellt',
+        probleme: 'Problem'
+      },
+      faq: {
+        q1: 'Wie funktioniert die Verfolgung?',
+        a1: 'Ihre Tracking-Nummer beginnt mit \'XTI-\' gefolgt vom Jahr und einer eindeutigen Nummer. Sie wird Ihnen mitgeteilt, sobald Ihr Paket übernommen wurde.',
+        q2: 'Wie oft werden die Informationen aktualisiert?',
+        a2: 'Die Tracking-Informationen werden in Echtzeit aktualisiert. Jeder wichtige Schritt wird automatisch erfasst.',
+        q3: 'Was tun, wenn mein Paket blockiert erscheint?',
+        a3: 'Kontaktieren Sie unseren Kundenservice unter +33 1 23 45 67 89. Wir lösen schnell jedes logistische Problem.',
+        q4: 'Kann ich die Lieferadresse ändern?',
+        a4: 'Ja, solange das Paket nicht in der finalen Zustellung ist. Kontaktieren Sie uns für die Änderung.'
       }
     },
     footer: {
@@ -639,6 +819,51 @@ export const translations: Record<Language, Translations> = {
         }
       }
     },
+    tracking: {
+      title: 'Tracciamento Pacco',
+      subtitle: 'Traccia le tue spedizioni in tempo reale con il nostro sistema di tracking avanzato. Inserisci il tuo numero di tracciamento per ottenere informazioni dettagliate.',
+      searchTitle: 'Cerca il tuo pacco',
+      searchSubtitle: 'Inserisci il tuo numero di tracciamento (es: XTI-2024-001234)',
+      placeholder: 'Numero di tracciamento...',
+      searchButton: 'Traccia',
+      searching: 'Ricerca...',
+      tryExample: 'Prova il numero di esempio:',
+      packageFound: 'Pacco trovato!',
+      packageNotFound: 'Pacco non trovato',
+      packageNotFoundDesc: 'Verifica il tuo numero di tracciamento e riprova.',
+      packageTitle: 'Pacco',
+      currentStatus: 'Stato attuale',
+      origin: 'Origine',
+      destination: 'Destinazione',
+      estimatedDelivery: 'Consegna prevista',
+      trackingHistory: 'Cronologia tracciamento',
+      packageDetails: 'Dettagli del Pacco',
+      weight: 'Peso:',
+      service: 'Servizio:',
+      reference: 'Riferimento:',
+      needHelp: 'Hai bisogno di aiuto?',
+      helpDesc: 'Il nostro servizio clienti è a tua disposizione per qualsiasi domanda.',
+      phone: 'Telefono:',
+      email: 'Email:',
+      faqTitle: 'Domande frequenti',
+      faqSubtitle: 'Tutto quello che devi sapere sul tracciamento dei tuoi pacchi',
+      statuses: {
+        collecte: 'Ritirato',
+        en_transit: 'In Transito',
+        livre: 'Consegnato',
+        probleme: 'Problema'
+      },
+      faq: {
+        q1: 'Come funziona il tracciamento?',
+        a1: 'Il tuo numero di tracciamento inizia con \'XTI-\' seguito dall\'anno e da un numero unico. Ti viene comunicato non appena il pacco viene preso in carico.',
+        q2: 'Con quale frequenza vengono aggiornate le informazioni?',
+        a2: 'Le informazioni di tracciamento sono aggiornate in tempo reale. Ogni fase importante viene registrata automaticamente.',
+        q3: 'Cosa fare se il mio pacco sembra bloccato?',
+        a3: 'Contatta il nostro servizio clienti al +33 1 23 45 67 89. Risolveremo rapidamente qualsiasi problema logistico.',
+        q4: 'Posso modificare l\'indirizzo di consegna?',
+        a4: 'Sì, finché il pacco non è in fase di consegna finale. Contattaci per effettuare la modifica.'
+      }
+    },
     footer: {
       description: 'Leader europeo del trasporto internazionale, XOTI ti accompagna in tutte le tue spedizioni con esperienza e affidabilità.',
       address: '123 Avenue de l\'Europe, 75001 Parigi',
@@ -786,6 +1011,51 @@ export const translations: Record<Language, Translations> = {
           description: 'Plataforma de rastreamento avançada e suporte ao cliente disponível 24/7.',
           features: ['Tempo real', 'Suporte 24/7', 'Alertas']
         }
+      }
+    },
+    tracking: {
+      title: 'Rastreamento de Encomenda',
+      subtitle: 'Rastreie seus envios em tempo real com nosso sistema de tracking avançado. Digite seu número de rastreamento para obter informações detalhadas.',
+      searchTitle: 'Busque sua encomenda',
+      searchSubtitle: 'Digite seu número de rastreamento (ex: XTI-2024-001234)',
+      placeholder: 'Número de rastreamento...',
+      searchButton: 'Rastrear',
+      searching: 'Buscando...',
+      tryExample: 'Experimente o número de exemplo:',
+      packageFound: 'Encomenda encontrada!',
+      packageNotFound: 'Encomenda não encontrada',
+      packageNotFoundDesc: 'Verifique seu número de rastreamento e tente novamente.',
+      packageTitle: 'Encomenda',
+      currentStatus: 'Status atual',
+      origin: 'Origem',
+      destination: 'Destino',
+      estimatedDelivery: 'Entrega prevista',
+      trackingHistory: 'Histórico de rastreamento',
+      packageDetails: 'Detalhes da Encomenda',
+      weight: 'Peso:',
+      service: 'Serviço:',
+      reference: 'Referência:',
+      needHelp: 'Precisa de ajuda?',
+      helpDesc: 'Nosso atendimento ao cliente está à sua disposição para qualquer dúvida.',
+      phone: 'Telefone:',
+      email: 'E-mail:',
+      faqTitle: 'Perguntas frequentes',
+      faqSubtitle: 'Tudo o que você precisa saber sobre o rastreamento de suas encomendas',
+      statuses: {
+        collecte: 'Coletado',
+        en_transit: 'Em Trânsito',
+        livre: 'Entregue',
+        probleme: 'Problema'
+      },
+      faq: {
+        q1: 'Como funciona o rastreamento?',
+        a1: 'Seu número de rastreamento começa com \'XTI-\' seguido do ano e um número único. É comunicado assim que a encomenda é coletada.',
+        q2: 'Com que frequência as informações são atualizadas?',
+        a2: 'As informações de rastreamento são atualizadas em tempo real. Cada etapa importante é registrada automaticamente.',
+        q3: 'O que fazer se minha encomenda parece travada?',
+        a3: 'Entre em contato com nosso atendimento no +33 1 23 45 67 89. Resolveremos rapidamente qualquer problema logístico.',
+        q4: 'Posso alterar o endereço de entrega?',
+        a4: 'Sim, desde que a encomenda não esteja em processo de entrega final. Entre em contato para fazer a alteração.'
       }
     },
     footer: {
