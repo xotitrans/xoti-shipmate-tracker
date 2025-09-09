@@ -236,6 +236,11 @@ const Tracking = () => {
                     <p className="text-sm text-muted-foreground">
                       {trackingResult.current_location || t.tracking.notDefined}
                     </p>
+                    {trackingResult.current_latitude && trackingResult.current_longitude && (
+                      <p className="text-xs text-muted-foreground mt-1">
+                        GPS: {trackingResult.current_latitude.toFixed(6)}, {trackingResult.current_longitude.toFixed(6)}
+                      </p>
+                    )}
                   </div>
                 </div>
                 
