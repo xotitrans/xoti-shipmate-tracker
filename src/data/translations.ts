@@ -564,6 +564,59 @@ export interface Translations {
       trackButton: string;
     };
   };
+  contactPage: {
+    hero: {
+      title: string;
+      subtitle: string;
+    };
+    contactInfo: {
+      address: { title: string; content: string; };
+      phone: { title: string; content: string; };
+      email: { title: string; content: string; };
+      hours: { title: string; content: string; };
+    };
+    form: {
+      title: string;
+      subtitle: string;
+      fields: {
+        name: string;
+        email: string;
+        company: string;
+        phone: string;
+        service: string;
+        message: string;
+        messagePlaceholder: string;
+      };
+      serviceOptions: {
+        placeholder: string;
+        road: string;
+        air: string;
+        sea: string;
+        express: string;
+        custom: string;
+      };
+      submitButton: string;
+      submitting: string;
+      successTitle: string;
+      successMessage: string;
+      errorTitle: string;
+      errorMessage: string;
+    };
+    location: {
+      title: string;
+      mapTitle: string;
+      mapSubtitle: string;
+      headquarters: string;
+      access: string;
+      accessDetails: string;
+    };
+    emergency: {
+      title: string;
+      subtitle: string;
+      phoneButton: string;
+      emailButton: string;
+    };
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -1342,6 +1395,59 @@ export const translations: Record<Language, Translations> = {
         quoteButton: "Demander un Devis",
         trackButton: "Suivre un Colis"
       }
+    },
+    contactPage: {
+      hero: {
+        title: "Contactez-nous",
+        subtitle: "Notre équipe d'experts est à votre disposition pour vous accompagner dans tous vos projets de transport international."
+      },
+      contactInfo: {
+        address: { title: "Adresse", content: "123 Avenue de l'Europe\n75001 Paris, France" },
+        phone: { title: "Téléphone", content: "+33 1 23 45 67 89\n+33 1 23 45 67 90" },
+        email: { title: "Email", content: "contact@xoti-transport.com\ndevis@xoti-transport.com" },
+        hours: { title: "Horaires", content: "Lun-Ven: 8h-18h\nSam: 9h-12h\nDim: Fermé" }
+      },
+      form: {
+        title: "Demande de devis",
+        subtitle: "Remplissez ce formulaire pour recevoir un devis personnalisé",
+        fields: {
+          name: "Nom complet *",
+          email: "Email *",
+          company: "Entreprise",
+          phone: "Téléphone",
+          service: "Service souhaité",
+          message: "Message *",
+          messagePlaceholder: "Décrivez votre besoin : origine, destination, type de marchandise, délais souhaités..."
+        },
+        serviceOptions: {
+          placeholder: "Sélectionnez un service",
+          road: "Transport Routier",
+          air: "Transport Aérien",
+          sea: "Transport Maritime",
+          express: "Logistique Express",
+          custom: "Solution Sur Mesure"
+        },
+        submitButton: "Envoyer la demande",
+        submitting: "Envoi en cours...",
+        successTitle: "Message envoyé !",
+        successMessage: "Nous vous répondrons dans les plus brefs délais.",
+        errorTitle: "Erreur",
+        errorMessage: "Une erreur est survenue. Veuillez réessayer."
+      },
+      location: {
+        title: "Nous trouver",
+        mapTitle: "Carte interactive",
+        mapSubtitle: "Disponible prochainement",
+        headquarters: "Siège social",
+        access: "Accès",
+        accessDetails: "• Métro : Ligne 1, Station Louvre-Rivoli\n• RER : RER A, Station Châtelet\n• Parking : Disponible sur site"
+      },
+      emergency: {
+        title: "Urgence ou support 24/7 ?",
+        subtitle: "Notre service client est disponible 24h/24 et 7j/7 pour toute urgence",
+        phoneButton: "Urgence : +33 6 12 34 56 78",
+        emailButton: "urgence@xoti-transport.com"
+      }
     }
   },
   es: {
@@ -2118,6 +2224,59 @@ export const translations: Record<Language, Translations> = {
         subtitle: "Obtenga una cotización gratuita y personalizada para su próximo envío",
         quoteButton: "Solicitar Cotización",
         trackButton: "Rastrear Paquete"
+      }
+    },
+    contactPage: {
+      hero: {
+        title: "Contáctenos",
+        subtitle: "Nuestro equipo de expertos está a su disposición para acompañarle en todos sus proyectos de transporte internacional."
+      },
+      contactInfo: {
+        address: { title: "Dirección", content: "123 Avenue de l'Europe\n75001 París, Francia" },
+        phone: { title: "Teléfono", content: "+33 1 23 45 67 89\n+33 1 23 45 67 90" },
+        email: { title: "Email", content: "contact@xoti-transport.com\ndevis@xoti-transport.com" },
+        hours: { title: "Horarios", content: "Lun-Vie: 8h-18h\nSáb: 9h-12h\nDom: Cerrado" }
+      },
+      form: {
+        title: "Solicitud de cotización",
+        subtitle: "Complete este formulario para recibir una cotización personalizada",
+        fields: {
+          name: "Nombre completo *",
+          email: "Email *",
+          company: "Empresa",
+          phone: "Teléfono",
+          service: "Servicio deseado",
+          message: "Mensaje *",
+          messagePlaceholder: "Describa su necesidad: origen, destino, tipo de mercancía, plazos deseados..."
+        },
+        serviceOptions: {
+          placeholder: "Seleccione un servicio",
+          road: "Transporte Terrestre",
+          air: "Transporte Aéreo",
+          sea: "Transporte Marítimo",
+          express: "Logística Express",
+          custom: "Solución a Medida"
+        },
+        submitButton: "Enviar solicitud",
+        submitting: "Enviando...",
+        successTitle: "¡Mensaje enviado!",
+        successMessage: "Le responderemos lo antes posible.",
+        errorTitle: "Error",
+        errorMessage: "Ha ocurrido un error. Por favor, inténtelo de nuevo."
+      },
+      location: {
+        title: "Encuéntranos",
+        mapTitle: "Mapa interactivo",
+        mapSubtitle: "Disponible próximamente",
+        headquarters: "Sede central",
+        access: "Acceso",
+        accessDetails: "• Metro: Línea 1, Estación Louvre-Rivoli\n• RER: RER A, Estación Châtelet\n• Parking: Disponible en el sitio"
+      },
+      emergency: {
+        title: "¿Urgencia o soporte 24/7?",
+        subtitle: "Nuestro servicio al cliente está disponible 24h/24 y 7d/7 para cualquier urgencia",
+        phoneButton: "Urgencia: +33 6 12 34 56 78",
+        emailButton: "urgence@xoti-transport.com"
       }
     }
   },
@@ -2896,6 +3055,59 @@ export const translations: Record<Language, Translations> = {
         quoteButton: "Angebot anfordern",
         trackButton: "Paket verfolgen"
       }
+    },
+    contactPage: {
+      hero: {
+        title: "Kontaktieren Sie uns",
+        subtitle: "Unser Expertenteam steht Ihnen für alle Ihre internationalen Transportprojekte zur Verfügung."
+      },
+      contactInfo: {
+        address: { title: "Adresse", content: "123 Avenue de l'Europe\n75001 Paris, Frankreich" },
+        phone: { title: "Telefon", content: "+33 1 23 45 67 89\n+33 1 23 45 67 90" },
+        email: { title: "E-Mail", content: "contact@xoti-transport.com\ndevis@xoti-transport.com" },
+        hours: { title: "Öffnungszeiten", content: "Mo-Fr: 8h-18h\nSa: 9h-12h\nSo: Geschlossen" }
+      },
+      form: {
+        title: "Angebotsanfrage",
+        subtitle: "Füllen Sie dieses Formular aus, um ein personalisiertes Angebot zu erhalten",
+        fields: {
+          name: "Vollständiger Name *",
+          email: "E-Mail *",
+          company: "Unternehmen",
+          phone: "Telefon",
+          service: "Gewünschter Service",
+          message: "Nachricht *",
+          messagePlaceholder: "Beschreiben Sie Ihren Bedarf: Herkunft, Ziel, Warenart, gewünschte Termine..."
+        },
+        serviceOptions: {
+          placeholder: "Service auswählen",
+          road: "Straßentransport",
+          air: "Lufttransport",
+          sea: "Seetransport",
+          express: "Express-Logistik",
+          custom: "Maßgeschneiderte Lösung"
+        },
+        submitButton: "Anfrage senden",
+        submitting: "Wird gesendet...",
+        successTitle: "Nachricht gesendet!",
+        successMessage: "Wir werden Ihnen so schnell wie möglich antworten.",
+        errorTitle: "Fehler",
+        errorMessage: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+      },
+      location: {
+        title: "Uns finden",
+        mapTitle: "Interaktive Karte",
+        mapSubtitle: "Demnächst verfügbar",
+        headquarters: "Hauptsitz",
+        access: "Zugang",
+        accessDetails: "• Metro: Linie 1, Station Louvre-Rivoli\n• RER: RER A, Station Châtelet\n• Parkplatz: Vor Ort verfügbar"
+      },
+      emergency: {
+        title: "Notfall oder 24/7 Support?",
+        subtitle: "Unser Kundendienst ist 24 Stunden am Tag und 7 Tage die Woche für Notfälle verfügbar",
+        phoneButton: "Notfall: +33 6 12 34 56 78",
+        emailButton: "urgence@xoti-transport.com"
+      }
     }
   },
   it: {
@@ -3673,6 +3885,59 @@ export const translations: Record<Language, Translations> = {
         quoteButton: "Richiedi Preventivo",
         trackButton: "Traccia Pacco"
       }
+    },
+    contactPage: {
+      hero: {
+        title: "Contattaci",
+        subtitle: "Il nostro team di esperti è a vostra disposizione per accompagnarvi in tutti i vostri progetti di trasporto internazionale."
+      },
+      contactInfo: {
+        address: { title: "Indirizzo", content: "123 Avenue de l'Europe\n75001 Parigi, Francia" },
+        phone: { title: "Telefono", content: "+33 1 23 45 67 89\n+33 1 23 45 67 90" },
+        email: { title: "Email", content: "contact@xoti-transport.com\ndevis@xoti-transport.com" },
+        hours: { title: "Orari", content: "Lun-Ven: 8h-18h\nSab: 9h-12h\nDom: Chiuso" }
+      },
+      form: {
+        title: "Richiesta di preventivo",
+        subtitle: "Compilate questo modulo per ricevere un preventivo personalizzato",
+        fields: {
+          name: "Nome completo *",
+          email: "Email *",
+          company: "Azienda",
+          phone: "Telefono",
+          service: "Servizio desiderato",
+          message: "Messaggio *",
+          messagePlaceholder: "Descrivete il vostro bisogno: origine, destinazione, tipo di merce, tempi desiderati..."
+        },
+        serviceOptions: {
+          placeholder: "Selezionate un servizio",
+          road: "Trasporto Stradale",
+          air: "Trasporto Aereo",
+          sea: "Trasporto Marittimo",
+          express: "Logistica Express",
+          custom: "Soluzione Su Misura"
+        },
+        submitButton: "Invia richiesta",
+        submitting: "Invio in corso...",
+        successTitle: "Messaggio inviato!",
+        successMessage: "Vi risponderemo nel più breve tempo possibile.",
+        errorTitle: "Errore",
+        errorMessage: "Si è verificato un errore. Si prega di riprovare."
+      },
+      location: {
+        title: "Trovarci",
+        mapTitle: "Mappa interattiva",
+        mapSubtitle: "Disponibile prossimamente",
+        headquarters: "Sede centrale",
+        access: "Accesso",
+        accessDetails: "• Metro: Linea 1, Stazione Louvre-Rivoli\n• RER: RER A, Stazione Châtelet\n• Parcheggio: Disponibile in loco"
+      },
+      emergency: {
+        title: "Urgenza o supporto 24/7?",
+        subtitle: "Il nostro servizio clienti è disponibile 24 ore su 24 e 7 giorni su 7 per qualsiasi urgenza",
+        phoneButton: "Urgenza: +33 6 12 34 56 78",
+        emailButton: "urgence@xoti-transport.com"
+      }
     }
   },
   pt: {
@@ -4449,6 +4714,59 @@ export const translations: Record<Language, Translations> = {
         subtitle: "Obtenha um orçamento gratuito e personalizado para sua próxima remessa",
         quoteButton: "Solicitar Orçamento",
         trackButton: "Rastrear Encomenda"
+      }
+    },
+    contactPage: {
+      hero: {
+        title: "Entre em contato",
+        subtitle: "Nossa equipe de especialistas está à sua disposição para acompanhá-lo em todos os seus projetos de transporte internacional."
+      },
+      contactInfo: {
+        address: { title: "Endereço", content: "123 Avenue de l'Europe\n75001 Paris, França" },
+        phone: { title: "Telefone", content: "+33 1 23 45 67 89\n+33 1 23 45 67 90" },
+        email: { title: "Email", content: "contact@xoti-transport.com\ndevis@xoti-transport.com" },
+        hours: { title: "Horários", content: "Seg-Sex: 8h-18h\nSáb: 9h-12h\nDom: Fechado" }
+      },
+      form: {
+        title: "Solicitação de orçamento",
+        subtitle: "Preencha este formulário para receber um orçamento personalizado",
+        fields: {
+          name: "Nome completo *",
+          email: "Email *",
+          company: "Empresa",
+          phone: "Telefone",
+          service: "Serviço desejado",
+          message: "Mensagem *",
+          messagePlaceholder: "Descreva sua necessidade: origem, destino, tipo de mercadoria, prazos desejados..."
+        },
+        serviceOptions: {
+          placeholder: "Selecione um serviço",
+          road: "Transporte Rodoviário",
+          air: "Transporte Aéreo",
+          sea: "Transporte Marítimo",
+          express: "Logística Express",
+          custom: "Solução Sob Medida"
+        },
+        submitButton: "Enviar solicitação",
+        submitting: "Enviando...",
+        successTitle: "Mensagem enviada!",
+        successMessage: "Responderemos o mais breve possível.",
+        errorTitle: "Erro",
+        errorMessage: "Ocorreu um erro. Por favor, tente novamente."
+      },
+      location: {
+        title: "Nos encontrar",
+        mapTitle: "Mapa interativo",
+        mapSubtitle: "Disponível em breve",
+        headquarters: "Sede central",
+        access: "Acesso",
+        accessDetails: "• Metro: Linha 1, Estação Louvre-Rivoli\n• RER: RER A, Estação Châtelet\n• Estacionamento: Disponível no local"
+      },
+      emergency: {
+        title: "Urgência ou suporte 24/7?",
+        subtitle: "Nosso atendimento ao cliente está disponível 24 horas por dia, 7 dias por semana para qualquer urgência",
+        phoneButton: "Urgência: +33 6 12 34 56 78",
+        emailButton: "urgence@xoti-transport.com"
       }
     }
   }
