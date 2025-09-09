@@ -43,26 +43,128 @@ const App = () => (
               <Route path="/admin/new-shipment" element={<AdminLayout><AdminNewShipment /></AdminLayout>} />
               
               {/* Public Routes with Header/Footer */}
-              <Route path="/*" element={
+              <Route path="/" element={
                 <div className="min-h-screen flex flex-col">
                   <Header />
                   <main className="flex-1">
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/about" element={<About />} />
-                      <Route path="/services" element={<Services />} />
-                      <Route path="/services/road-transport" element={<RoadTransport />} />
-                      <Route path="/services/air-transport" element={<AirTransport />} />
-                      <Route path="/services/sea-transport" element={<SeaTransport />} />
-                      <Route path="/services/express" element={<Express />} />
-                      <Route path="/services/custom" element={<Custom />} />
-                      <Route path="/contact" element={<Contact />} />
-                      <Route path="/tracking" element={<Tracking />} />
-                      <Route path="/auth" element={<Auth />} />
-                      <Route path="/dashboard" element={<Dashboard />} />
-                      <Route path="/new-shipment" element={<NewShipment />} />
-                      <Route path="*" element={<NotFound />} />
-                    </Routes>
+                    <Home />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/about" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <About />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/services" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <Services />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/services/road-transport" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <RoadTransport />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/services/air-transport" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <AirTransport />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/services/sea-transport" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <SeaTransport />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/services/express" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <Express />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/services/custom" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <Custom />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/contact" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <Contact />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/tracking" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <Tracking />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/auth" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <Auth />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/dashboard" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <Dashboard />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="/new-shipment" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <NewShipment />
+                  </main>
+                  <Footer />
+                </div>
+              } />
+              <Route path="*" element={
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <NotFound />
                   </main>
                   <Footer />
                 </div>
