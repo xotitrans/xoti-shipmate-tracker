@@ -14,16 +14,205 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          company: string | null
+          created_at: string
+          first_name: string | null
+          id: string
+          last_name: string | null
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      shipment_photos: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          photo_url: string
+          shipment_id: string
+          uploaded_by: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          photo_url: string
+          shipment_id: string
+          uploaded_by: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          photo_url?: string
+          shipment_id?: string
+          uploaded_by?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "shipment_photos_shipment_id_fkey"
+            columns: ["shipment_id"]
+            isOneToOne: false
+            referencedRelation: "shipments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      shipments: {
+        Row: {
+          actual_delivery: string | null
+          created_at: string
+          current_location: string | null
+          dimensions: string | null
+          estimated_delivery: string | null
+          id: string
+          notes: string | null
+          recipient_address: string
+          recipient_name: string
+          recipient_phone: string
+          sender_address: string
+          sender_name: string
+          sender_phone: string
+          status: Database["public"]["Enums"]["shipment_status"]
+          tracking_number: string
+          transport_type: Database["public"]["Enums"]["transport_type"]
+          updated_at: string
+          user_id: string
+          weight: number | null
+        }
+        Insert: {
+          actual_delivery?: string | null
+          created_at?: string
+          current_location?: string | null
+          dimensions?: string | null
+          estimated_delivery?: string | null
+          id?: string
+          notes?: string | null
+          recipient_address: string
+          recipient_name: string
+          recipient_phone: string
+          sender_address: string
+          sender_name: string
+          sender_phone: string
+          status?: Database["public"]["Enums"]["shipment_status"]
+          tracking_number: string
+          transport_type: Database["public"]["Enums"]["transport_type"]
+          updated_at?: string
+          user_id: string
+          weight?: number | null
+        }
+        Update: {
+          actual_delivery?: string | null
+          created_at?: string
+          current_location?: string | null
+          dimensions?: string | null
+          estimated_delivery?: string | null
+          id?: string
+          notes?: string | null
+          recipient_address?: string
+          recipient_name?: string
+          recipient_phone?: string
+          sender_address?: string
+          sender_name?: string
+          sender_phone?: string
+          status?: Database["public"]["Enums"]["shipment_status"]
+          tracking_number?: string
+          transport_type?: Database["public"]["Enums"]["transport_type"]
+          updated_at?: string
+          user_id?: string
+          weight?: number | null
+        }
+        Relationships: []
+      }
+      tracking_history: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          location: string
+          shipment_id: string
+          status: Database["public"]["Enums"]["shipment_status"]
+          timestamp: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          location: string
+          shipment_id: string
+          status: Database["public"]["Enums"]["shipment_status"]
+          timestamp?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          location?: string
+          shipment_id?: string
+          status?: Database["public"]["Enums"]["shipment_status"]
+          timestamp?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tracking_history_shipment_id_fkey"
+            columns: ["shipment_id"]
+            isOneToOne: false
+            referencedRelation: "shipments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_tracking_number: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
+      update_shipment_location: {
+        Args: {
+          description_param?: string
+          new_location: string
+          new_status?: Database["public"]["Enums"]["shipment_status"]
+          shipment_id_param: string
+        }
+        Returns: undefined
+      }
     }
     Enums: {
-      [_ in never]: never
+      shipment_status:
+        | "pending"
+        | "in_transit"
+        | "delivered"
+        | "cancelled"
+        | "delayed"
+      transport_type: "road" | "air" | "sea" | "express"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +339,15 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      shipment_status: [
+        "pending",
+        "in_transit",
+        "delivered",
+        "cancelled",
+        "delayed",
+      ],
+      transport_type: ["road", "air", "sea", "express"],
+    },
   },
 } as const
