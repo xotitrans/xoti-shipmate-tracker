@@ -119,18 +119,13 @@ export interface Translations {
         express: string;
         custom: string;
       };
-      company: {
-        about: string;
-        team: string;
-        careers: string;
-        news: string;
-      };
-      support: {
-        tracking: string;
-        contact: string;
-        faq: string;
-        customerSupport: string;
-      };
+        company: {
+          about: string;
+        };
+        support: {
+          tracking: string;
+          contact: string;
+        };
       legal: {
         legal: string;
         terms: string;
@@ -753,15 +748,10 @@ export const translations: Record<Language, Translations> = {
         },
         company: {
           about: 'À propos',
-          team: 'Nos équipes',
-          careers: 'Carrières',
-          news: 'Actualités'
         },
         support: {
           tracking: 'Suivi de Colis',
           contact: 'Contact',
-          faq: 'FAQ',
-          customerSupport: 'Support Client'
         },
         legal: {
           legal: 'Mentions Légales',
@@ -1583,15 +1573,10 @@ export const translations: Record<Language, Translations> = {
         },
         company: {
           about: 'Acerca de',
-          team: 'Nuestros equipos',
-          careers: 'Carreras',
-          news: 'Noticias'
         },
         support: {
           tracking: 'Seguimiento de Paquete',
           contact: 'Contacto',
-          faq: 'FAQ',
-          customerSupport: 'Soporte al Cliente'
         },
         legal: {
           legal: 'Avisos Legales',
@@ -2413,15 +2398,10 @@ export const translations: Record<Language, Translations> = {
         },
         company: {
           about: 'Über uns',
-          team: 'Unsere Teams',
-          careers: 'Karrieren',
-          news: 'Nachrichten'
         },
         support: {
           tracking: 'Paketverfolgung',
           contact: 'Kontakt',
-          faq: 'FAQ',
-          customerSupport: 'Kundenservice'
         },
         legal: {
           legal: 'Impressum',
@@ -3243,15 +3223,10 @@ export const translations: Record<Language, Translations> = {
         },
         company: {
           about: 'Chi siamo',
-          team: 'I nostri team',
-          careers: 'Carriere',
-          news: 'Notizie'
         },
         support: {
           tracking: 'Tracciamento Pacco',
           contact: 'Contatto',
-          faq: 'FAQ',
-          customerSupport: 'Supporto Cliente'
         },
         legal: {
           legal: 'Note Legali',
@@ -4073,15 +4048,10 @@ export const translations: Record<Language, Translations> = {
         },
         company: {
           about: 'Sobre nós',
-          team: 'Nossas equipes',
-          careers: 'Carreiras',
-          news: 'Notícias'
         },
         support: {
           tracking: 'Rastreamento de Encomenda',
           contact: 'Contato',
-          faq: 'FAQ',
-          customerSupport: 'Suporte ao Cliente'
         },
         legal: {
           legal: 'Avisos Legais',

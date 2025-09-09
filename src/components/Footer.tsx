@@ -17,15 +17,10 @@ export const Footer = () => {
     ],
     company: [
       { name: t.footer.links.company.about, href: '/about' },
-      { name: t.footer.links.company.team, href: '/team' },
-      { name: t.footer.links.company.careers, href: '/careers' },
-      { name: t.footer.links.company.news, href: '/news' },
     ],
     support: [
       { name: t.footer.links.support.tracking, href: '/tracking' },
       { name: t.footer.links.support.contact, href: '/contact' },
-      { name: t.footer.links.support.faq, href: '/faq' },
-      { name: t.footer.links.support.customerSupport, href: '/support' },
     ],
     legal: [
       { name: t.footer.links.legal.legal, href: '/legal' },
