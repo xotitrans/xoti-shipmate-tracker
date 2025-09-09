@@ -8,7 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
 import { supabase } from '@/integrations/supabase/client';
-import { Search, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckCircle, AlertCircle, Camera } from 'lucide-react';
+import { Search, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckCircle, AlertCircle, Camera, Weight, Shield, AlertTriangle, FileSignature, Euro, Zap } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ShipmentMap from '@/components/ShipmentMap';
 
@@ -30,6 +30,20 @@ interface TrackingData {
   transport_type: string;
   weight: number | null;
   dimensions: string | null;
+  declared_value: number | null;
+  insured_value: number | null;
+  priority_level: string | null;
+  is_fragile: boolean | null;
+  is_dangerous: boolean | null;
+  requires_signature: boolean | null;
+  transport_cost: number | null;
+  payment_status: string | null;
+  currency: string | null;
+  emergency_contact_name: string | null;
+  emergency_contact_phone: string | null;
+  special_instructions: string | null;
+  delivery_instructions: string | null;
+  preferred_delivery_time: string | null;
   created_at: string;
   notes: string | null;
 }
@@ -228,7 +242,7 @@ const Tracking = () => {
               
               <Separator className="my-4" />
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-muted-foreground" />
                   <div>
@@ -267,6 +281,128 @@ const Tracking = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Package Details */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                {trackingResult.weight && (
+                  <div className="flex items-center gap-2">
+                    <Weight className="h-4 w-4 text-muted-foreground" />
+                    <div>
+                      <p className="text-sm font-medium">Poids</p>
+                      <p className="text-sm text-muted-foreground">{trackingResult.weight} kg</p>
+                    </div>
+                  </div>
+                )}
+                
+                {trackingResult.dimensions && (
+                  <div className="flex items-center gap-2">
+                    <Package className="h-4 w-4 text-muted-foreground" />
+                    <div>
+                      <p className="text-sm font-medium">Dimensions</p>
+                      <p className="text-sm text-muted-foreground">{trackingResult.dimensions}</p>
+                    </div>
+                  </div>
+                )}
+
+                {trackingResult.declared_value && (
+                  <div className="flex items-center gap-2">
+                    <Euro className="h-4 w-4 text-muted-foreground" />
+                    <div>
+                      <p className="text-sm font-medium">Valeur déclarée</p>
+                      <p className="text-sm text-muted-foreground">
+                        {trackingResult.declared_value} {trackingResult.currency || 'EUR'}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {trackingResult.priority_level && trackingResult.priority_level !== 'normal' && (
+                  <div className="flex items-center gap-2">
+                    <Zap className="h-4 w-4 text-muted-foreground" />
+                    <div>
+                      <p className="text-sm font-medium">Priorité</p>
+                      <p className="text-sm text-muted-foreground">
+                        {trackingResult.priority_level === 'urgent' ? 'Urgent' : 
+                         trackingResult.priority_level === 'express' ? 'Express' : 
+                         trackingResult.priority_level}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Special Indicators */}
+              {(trackingResult.is_fragile || trackingResult.is_dangerous || trackingResult.requires_signature) && (
+                <div className="mb-6">
+                  <h4 className="text-sm font-medium mb-3">Indications spéciales</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {trackingResult.is_fragile && (
+                      <Badge variant="outline" className="text-orange-600 border-orange-600">
+                        <Package className="h-3 w-3 mr-1" />
+                        Fragile
+                      </Badge>
+                    )}
+                    {trackingResult.is_dangerous && (
+                      <Badge variant="outline" className="text-red-600 border-red-600">
+                        <AlertTriangle className="h-3 w-3 mr-1" />
+                        Dangereux
+                      </Badge>
+                    )}
+                    {trackingResult.requires_signature && (
+                      <Badge variant="outline" className="text-blue-600 border-blue-600">
+                        <FileSignature className="h-3 w-3 mr-1" />
+                        Signature requise
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Instructions and Notes */}
+              {(trackingResult.special_instructions || trackingResult.delivery_instructions || trackingResult.preferred_delivery_time || trackingResult.notes) && (
+                <div className="space-y-3">
+                  {trackingResult.special_instructions && (
+                    <div>
+                      <p className="text-sm font-medium">Instructions spéciales</p>
+                      <p className="text-sm text-muted-foreground">{trackingResult.special_instructions}</p>
+                    </div>
+                  )}
+                  {trackingResult.delivery_instructions && (
+                    <div>
+                      <p className="text-sm font-medium">Instructions de livraison</p>
+                      <p className="text-sm text-muted-foreground">{trackingResult.delivery_instructions}</p>
+                    </div>
+                  )}
+                  {trackingResult.preferred_delivery_time && (
+                    <div>
+                      <p className="text-sm font-medium">Heure de livraison préférée</p>
+                      <p className="text-sm text-muted-foreground">{trackingResult.preferred_delivery_time}</p>
+                    </div>
+                  )}
+                  {trackingResult.notes && (
+                    <div>
+                      <p className="text-sm font-medium">Notes</p>
+                      <p className="text-sm text-muted-foreground">{trackingResult.notes}</p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Emergency Contact */}
+              {trackingResult.emergency_contact_name && (
+                <div className="mt-6 pt-4 border-t">
+                  <h4 className="text-sm font-medium mb-3 flex items-center gap-2">
+                    <Phone className="h-4 w-4" />
+                    Contact d'urgence
+                  </h4>
+                  <div className="text-sm space-y-1">
+                    <p><strong>Nom:</strong> {trackingResult.emergency_contact_name}</p>
+                    {trackingResult.emergency_contact_phone && (
+                      <p><strong>Téléphone:</strong> {trackingResult.emergency_contact_phone}</p>
+                    )}
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
 
