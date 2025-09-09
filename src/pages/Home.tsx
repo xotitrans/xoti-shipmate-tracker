@@ -4,39 +4,20 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Star, Quote, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const testimonials = [
-  {
-    name: 'Marie Dubois',
-    company: 'TechCorp Solutions',
-    content: 'XOTI nous accompagne depuis 3 ans pour nos expéditions européennes. Service impeccable et suivi en temps réel.',
-    rating: 5,
-    avatar: '👩‍💼'
-  },
-  {
-    name: 'Carlos Rodriguez',
-    company: 'Import Export SA',
-    content: 'Solutions personnalisées et équipe très professionnelle. Nos marchandises arrivent toujours en parfait état.',
-    rating: 5,
-    avatar: '👨‍💼'
-  },
-  {
-    name: 'Hans Mueller',
-    company: 'European Logistics',
-    content: 'Délais respectés, prix compétitifs et excellent support client. Je recommande vivement XOTI.',
-    rating: 5,
-    avatar: '👨‍🦲'
-  }
-];
-
-const stats = [
-  { label: 'Expéditions par mois', value: '15,000+' },
-  { label: 'Pays desservis', value: '50+' },
-  { label: 'Satisfaction client', value: '99.5%' },
-  { label: 'Années d\'expérience', value: '25+' }
-];
+import { useLanguage } from '@/hooks/useLanguage';
+import { translations } from '@/data/translations';
 
 export default function Home() {
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
+
+  const stats = [
+    { label: t.home.stats.expeditions, value: '15,000+' },
+    { label: t.home.stats.countries, value: '50+' },
+    { label: t.home.stats.satisfaction, value: '99.5%' },
+    { label: t.home.stats.experience, value: '25+' }
+  ];
+
   return (
     <div className="flex flex-col">
       <HeroSection />
@@ -65,15 +46,15 @@ export default function Home() {
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              Ce que disent nos clients
+              {t.home.testimonials.title}
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Plus de 2000 entreprises nous font confiance pour leurs expéditions internationales.
+              {t.home.testimonials.subtitle}
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {t.home.testimonials.reviews.map((testimonial, index) => (
               <Card key={testimonial.name} className="animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
                 <CardContent className="p-6">
                   <div className="flex items-center gap-1 mb-4">
@@ -103,21 +84,21 @@ export default function Home() {
       <section className="py-20 bg-gradient-hero text-white">
         <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Prêt à expédier avec XOTI ?
+            {t.home.cta.title}
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Obtenez un devis personnalisé en quelques minutes ou suivez vos expéditions en temps réel.
+            {t.home.cta.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" asChild>
               <Link to="/contact">
-                Demander un Devis
+                {t.home.cta.quoteButton}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
               <Link to="/tracking">
-                Suivre un Colis
+                {t.home.cta.trackButton}
               </Link>
             </Button>
           </div>

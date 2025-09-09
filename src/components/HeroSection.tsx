@@ -2,31 +2,36 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Truck, Plane, Ship, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const features = [
-  {
-    icon: Truck,
-    title: 'Transport Routier',
-    description: 'Livraisons européennes rapides et sécurisées'
-  },
-  {
-    icon: Plane,
-    title: 'Transport Aérien',
-    description: 'Solutions express pour le monde entier'
-  },
-  {
-    icon: Ship,
-    title: 'Transport Maritime',
-    description: 'Fret maritime économique et écologique'
-  },
-  {
-    icon: Clock,
-    title: 'Suivi 24/7',
-    description: 'Tracking en temps réel de vos expéditions'
-  }
-];
+import { useLanguage } from '@/hooks/useLanguage';
+import { translations } from '@/data/translations';
 
 export const HeroSection = () => {
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
+
+  const features = [
+    {
+      icon: Truck,
+      title: t.hero.features.road.title,
+      description: t.hero.features.road.description
+    },
+    {
+      icon: Plane,
+      title: t.hero.features.air.title,
+      description: t.hero.features.air.description
+    },
+    {
+      icon: Ship,
+      title: t.hero.features.sea.title,
+      description: t.hero.features.sea.description
+    },
+    {
+      icon: Clock,
+      title: t.hero.features.tracking.title,
+      description: t.hero.features.tracking.description
+    }
+  ];
+
   return (
     <section className="relative overflow-hidden bg-gradient-hero py-20 text-white">
       {/* Background Image */}
@@ -47,20 +52,19 @@ export const HeroSection = () => {
       <div className="container relative z-10">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mb-6 text-6xl font-bold tracking-tight sm:text-8xl animate-fade-in">
-            Transport International
+            {t.hero.title1}
             <br />
-            <span className="text-secondary">de Confiance</span>
+            <span className="text-secondary">{t.hero.title2}</span>
           </h1>
           
           <p className="mb-8 text-2xl text-white/90 animate-slide-up">
-            XOTI vous accompagne dans vos expéditions internationales avec des solutions 
-            sur mesure, un suivi en temps réel et un service client d'exception.
+            {t.hero.subtitle}
           </p>
           
           <div className="flex justify-center mb-16 animate-scale-in">
             <Button size="lg" variant="secondary" asChild className="shadow-navy text-xl px-12 py-6 text-lg font-bold">
               <Link to="/tracking">
-                Suivre un Colis/Véhicule
+                {t.hero.trackButton}
                 <ArrowRight className="ml-3 h-6 w-6" />
               </Link>
             </Button>
