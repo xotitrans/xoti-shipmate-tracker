@@ -54,8 +54,8 @@ export const Header = () => {
         <div className="ml-auto flex items-center gap-4">
           <LanguageSelector />
           
-          {/* Auth buttons */}
-          {user ? (
+          {/* Auth buttons - Only show for authenticated users */}
+          {user && (
             <div className="hidden md:flex items-center gap-2">
               <Link to="/dashboard">
                 <Button variant="ghost" size="sm">
@@ -74,13 +74,6 @@ export const Header = () => {
                 Déconnexion
               </Button>
             </div>
-          ) : (
-            <Link to="/auth" className="hidden md:block">
-              <Button size="sm">
-                <LogIn className="h-4 w-4 mr-2" />
-                Connexion
-              </Button>
-            </Link>
           )}
           
           {/* Mobile menu */}
@@ -108,48 +101,37 @@ export const Header = () => {
                   );
                 })}
                 
-                {/* Mobile auth buttons */}
-                <div className="border-t pt-4 mt-4">
-                  {user ? (
-                    <>
-                      <Link
-                        to="/dashboard"
-                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <LayoutDashboard className="h-4 w-4" />
-                        Dashboard
-                      </Link>
-                      <Link
-                        to="/admin"
-                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <Users className="h-4 w-4" />
-                        Administration
-                      </Link>
-                      <button
-                        onClick={() => {
-                          signOut();
-                          setIsOpen(false);
-                        }}
-                        className="w-full flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
-                      >
-                        <LogOut className="h-4 w-4" />
-                        Déconnexion
-                      </button>
-                    </>
-                  ) : (
+                {/* Mobile auth buttons - Only show for authenticated users */}
+                {user && (
+                  <div className="border-t pt-4 mt-4">
                     <Link
-                      to="/auth"
+                      to="/dashboard"
                       className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
                       onClick={() => setIsOpen(false)}
                     >
-                      <LogIn className="h-4 w-4" />
-                      Connexion
+                      <LayoutDashboard className="h-4 w-4" />
+                      Dashboard
                     </Link>
-                  )}
-                </div>
+                    <Link
+                      to="/admin"
+                      className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Users className="h-4 w-4" />
+                      Administration
+                    </Link>
+                    <button
+                      onClick={() => {
+                        signOut();
+                        setIsOpen(false);
+                      }}
+                      className="w-full flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      Déconnexion
+                    </button>
+                  </div>
+                )}
               </nav>
             </SheetContent>
           </Sheet>

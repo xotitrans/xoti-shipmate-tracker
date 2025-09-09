@@ -52,16 +52,10 @@ const Index = () => {
             Votre partenaire de confiance pour le transport international et le suivi de colis
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {user ? (
+            {user && (
               <Link to="/dashboard">
                 <Button size="lg" className="w-full sm:w-auto">
                   Accéder au Dashboard
-                </Button>
-              </Link>
-            ) : (
-              <Link to="/auth">
-                <Button size="lg" className="w-full sm:w-auto">
-                  Commencer maintenant
                 </Button>
               </Link>
             )}
@@ -110,9 +104,9 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20 bg-primary/5">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Prêt à expédier ?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Besoin de suivre un envoi ?</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Créez votre compte et commencez à gérer vos expéditions dès aujourd'hui
+            Utilisez notre système de suivi pour localiser vos colis en temps réel
           </p>
           {user ? (
             <Link to="/new-shipment">
@@ -121,9 +115,9 @@ const Index = () => {
               </Button>
             </Link>
           ) : (
-            <Link to="/auth">
+            <Link to="/tracking">
               <Button size="lg">
-                S'inscrire gratuitement
+                Suivre un colis
               </Button>
             </Link>
           )}
