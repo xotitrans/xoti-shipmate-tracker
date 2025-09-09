@@ -47,16 +47,11 @@ export const HeroSection = () => {
             sur mesure, un suivi en temps réel et un service client d'exception.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-scale-in">
+          <div className="flex justify-center mb-16 animate-scale-in">
             <Button size="lg" variant="secondary" asChild className="shadow-navy">
-              <Link to="/services">
-                Nos Services
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
               <Link to="/tracking">
-                Suivre un Colis
+                Suivre un Colis/Véhicule
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
