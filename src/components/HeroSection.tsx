@@ -29,8 +29,18 @@ const features = [
 export const HeroSection = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-hero py-20 text-white">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src="/lovable-uploads/153d63ed-773a-44c8-b766-5a0becb516d2.png" 
+          alt="Transport international - avion, navire et camion"
+          className="w-full h-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-hero/80" />
+      </div>
+      
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-white/5 bg-[radial-gradient(circle_at_1px_1px,_rgba(255,255,255,0.3)_1px,_transparent_0)] bg-[length:20px_20px]" />
       </div>
       
