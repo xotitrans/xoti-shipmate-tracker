@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import Tracking from "./pages/Tracking";
 import RoadTransport from "./pages/services/RoadTransport";
 import AirTransport from "./pages/services/AirTransport";
+import SeaTransport from "./pages/services/SeaTransport";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ const App = () => (
                 <Route path="/services" element={<Services />} />
                 <Route path="/services/road-transport" element={<RoadTransport />} />
                 <Route path="/services/air-transport" element={<AirTransport />} />
+                <Route path="/services/sea-transport" element={<SeaTransport />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/tracking" element={<Tracking />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

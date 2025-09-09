@@ -292,6 +292,74 @@ export interface Translations {
       };
     };
   };
+  seaTransport: {
+    hero: {
+      backButton: string;
+      badge: string;
+      title: string;
+      subtitle: string;
+      quoteButton: string;
+      trackButton: string;
+    };
+    services: {
+      title: string;
+      subtitle: string;
+      fcl: {
+        title: string;
+        description: string;
+        features: [string, string, string, string];
+        button: string;
+      };
+      lcl: {
+        title: string;
+        description: string;
+        features: [string, string, string, string];
+        button: string;
+      };
+      special: {
+        title: string;
+        description: string;
+        features: [string, string, string, string];
+        button: string;
+      };
+    };
+    routes: {
+      title: string;
+      subtitle: string;
+      regions: {
+        europe: { name: string; time: string; description: string; };
+        asia: { name: string; time: string; description: string; };
+        america: { name: string; time: string; description: string; };
+        africa: { name: string; time: string; description: string; };
+        oceania: { name: string; time: string; description: string; };
+        middleEast: { name: string; time: string; description: string; };
+      };
+      ports: string;
+    };
+    advantages: {
+      title: string;
+      items: {
+        economy: { title: string; description: string; };
+        capacity: { title: string; description: string; };
+        ecology: { title: string; description: string; };
+        security: { title: string; description: string; };
+      };
+      sustainable: {
+        title: string;
+        features: [string, string, string, string, string, string];
+      };
+    };
+    cta: {
+      title: string;
+      subtitle: string;
+      button: string;
+      stats: {
+        containers: { value: string; label: string; };
+        routes: { value: string; label: string; };
+        co2: { value: string; label: string; };
+      };
+    };
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -486,6 +554,119 @@ export const translations: Record<Language, Translations> = {
         subtitle: 'Obtenez un devis personnalisé en quelques minutes ou suivez vos expéditions en temps réel.',
         quoteButton: 'Demander un Devis',
         trackButton: 'Suivre un Colis'
+      }
+    },
+    seaTransport: {
+      hero: {
+        backButton: '← Services',
+        badge: 'Transport Maritime',
+        title: 'Fret Maritime International',
+        subtitle: 'Solutions économiques et écologiques pour vos expeditions conteneurisées vers tous les continents. Transport FCL et LCL avec suivi complet.',
+        quoteButton: 'Devis Maritime',
+        trackButton: 'Suivre un Conteneur'
+      },
+      services: {
+        title: 'Nos Solutions Maritimes',
+        subtitle: 'Du conteneur complet au groupage, nous nous adaptons à vos volumes',
+        fcl: {
+          title: 'FCL - Conteneur Complet',
+          description: 'Container exclusif pour vos gros volumes',
+          features: ['20\' et 40\'', 'Exclusivité', 'Direct', 'Économique'],
+          button: 'Choisir FCL'
+        },
+        lcl: {
+          title: 'LCL - Groupage Maritime',
+          description: 'Partagez un conteneur, payez votre volume',
+          features: ['Petits volumes', 'Groupage', 'Flexible', 'Accessible'],
+          button: 'Choisir LCL'
+        },
+        special: {
+          title: 'Cargaisons Spéciales',
+          description: 'Transport de marchandises hors-normes',
+          features: ['Hors-gabarit', 'Dangereux', 'Frigorifique', 'Sur-mesure'],
+          button: 'Solutions spéciales'
+        }
+      },
+      routes: {
+        title: 'Routes Mondiales',
+        subtitle: 'Connecté aux principaux ports du monde entier',
+        regions: {
+          europe: {
+            name: 'Europe',
+            time: '5-15 jours',
+            description: 'Hambourg, Rotterdam, Anvers'
+          },
+          asia: {
+            name: 'Asie',
+            time: '20-35 jours',
+            description: 'Shanghai, Singapour, Hong Kong'
+          },
+          america: {
+            name: 'Amériques',
+            time: '10-25 jours',
+            description: 'New York, Los Angeles, Santos'
+          },
+          africa: {
+            name: 'Afrique',
+            time: '8-20 jours',
+            description: 'Casablanca, Durban, Lagos'
+          },
+          oceania: {
+            name: 'Océanie',
+            time: '25-40 jours',
+            description: 'Sydney, Melbourne, Auckland'
+          },
+          middleEast: {
+            name: 'Moyen-Orient',
+            time: '12-25 jours',
+            description: 'Dubaï, Jeddah, Doha'
+          }
+        },
+        ports: 'Ports partenaires'
+      },
+      advantages: {
+        title: 'Pourquoi choisir le transport maritime ?',
+        items: {
+          economy: {
+            title: 'Économie maximale',
+            description: 'Le mode de transport le plus économique pour gros volumes'
+          },
+          capacity: {
+            title: 'Grande capacité',
+            description: 'Transport de volumes importants en une seule fois'
+          },
+          ecology: {
+            title: 'Transport écologique',
+            description: '80% moins de CO2 que le transport routier'
+          },
+          security: {
+            title: 'Sécurité optimale',
+            description: 'Conteneurs scellés et contrôlés tout au long du transport'
+          }
+        },
+        sustainable: {
+          title: 'Transport Durable',
+          features: ['Empreinte carbone réduite', 'Optimisation des routes', 'Conteneurs réutilisables', 'Normes environnementales', 'Efficacité énergétique', 'Transport de masse']
+        }
+      },
+      cta: {
+        title: 'Prêt pour le transport maritime ?',
+        subtitle: 'Plus de 2 000 conteneurs expédiés chaque mois vers le monde entier. La solution économique et écologique.',
+        button: 'Demander un devis',
+        stats: {
+          containers: {
+            value: '2000+',
+            label: 'Conteneurs/mois'
+          },
+          routes: {
+            value: '150+',
+            label: 'Ports desservis'
+          },
+          co2: {
+            value: '-80%',
+            label: 'Émissions CO2'
+          }
+        }
       }
     },
     roadTransport: {
@@ -694,7 +875,7 @@ export const translations: Record<Language, Translations> = {
           }
         }
       }
-    }
+    },
   },
   es: {
     navigation: {
@@ -1092,6 +1273,119 @@ export const translations: Record<Language, Translations> = {
           },
           satisfaction: {
             label: 'Satisfacción'
+          }
+        }
+      }
+    },
+    seaTransport: {
+      hero: {
+        backButton: '← Servicios',
+        badge: 'Transporte Marítimo',
+        title: 'Flete Marítimo Internacional',
+        subtitle: 'Soluciones económicas y ecológicas para sus expediciones en contenedores hacia todos los continentes. Transporte FCL y LCL con seguimiento completo.',
+        quoteButton: 'Cotización Marítima',
+        trackButton: 'Rastrear Contenedor'
+      },
+      services: {
+        title: 'Nuestras Soluciones Marítimas',
+        subtitle: 'Del contenedor completo al groupage, nos adaptamos a sus volúmenes',
+        fcl: {
+          title: 'FCL - Contenedor Completo',
+          description: 'Container exclusivo para sus grandes volúmenes',
+          features: ['20\' y 40\'', 'Exclusividad', 'Directo', 'Económico'],
+          button: 'Elegir FCL'
+        },
+        lcl: {
+          title: 'LCL - Groupage Marítimo',
+          description: 'Comparta un contenedor, pague su volumen',
+          features: ['Pequeños volúmenes', 'Groupage', 'Flexible', 'Accesible'],
+          button: 'Elegir LCL'
+        },
+        special: {
+          title: 'Cargas Especiales',
+          description: 'Transporte de mercancías fuera de norma',
+          features: ['Fuera de medida', 'Peligroso', 'Frigorífico', 'A medida'],
+          button: 'Soluciones especiales'
+        }
+      },
+      routes: {
+        title: 'Rutas Mundiales',
+        subtitle: 'Conectado a los principales puertos del mundo',
+        regions: {
+          europe: {
+            name: 'Europa',
+            time: '5-15 días',
+            description: 'Hamburgo, Rotterdam, Amberes'
+          },
+          asia: {
+            name: 'Asia',
+            time: '20-35 días',
+            description: 'Shanghai, Singapur, Hong Kong'
+          },
+          america: {
+            name: 'Américas',
+            time: '10-25 días',
+            description: 'Nueva York, Los Ángeles, Santos'
+          },
+          africa: {
+            name: 'África',
+            time: '8-20 días',
+            description: 'Casablanca, Durban, Lagos'
+          },
+          oceania: {
+            name: 'Oceanía',
+            time: '25-40 días',
+            description: 'Sídney, Melbourne, Auckland'
+          },
+          middleEast: {
+            name: 'Medio Oriente',
+            time: '12-25 días',
+            description: 'Dubái, Jeddah, Doha'
+          }
+        },
+        ports: 'Puertos socios'
+      },
+      advantages: {
+        title: '¿Por qué elegir el transporte marítimo?',
+        items: {
+          economy: {
+            title: 'Economía máxima',
+            description: 'El modo de transporte más económico para grandes volúmenes'
+          },
+          capacity: {
+            title: 'Gran capacidad',
+            description: 'Transporte de volúmenes importantes de una sola vez'
+          },
+          ecology: {
+            title: 'Transporte ecológico',
+            description: '80% menos CO2 que el transporte por carretera'
+          },
+          security: {
+            title: 'Seguridad óptima',
+            description: 'Contenedores sellados y controlados durante todo el transporte'
+          }
+        },
+        sustainable: {
+          title: 'Transporte Sostenible',
+          features: ['Huella de carbono reducida', 'Optimización de rutas', 'Contenedores reutilizables', 'Normas ambientales', 'Eficiencia energética', 'Transporte masivo']
+        }
+      },
+      cta: {
+        title: '¿Listo para el transporte marítimo?',
+        subtitle: 'Más de 2,000 contenedores enviados cada mes al mundo entero. La solución económica y ecológica.',
+        button: 'Solicitar cotización',
+        stats: {
+          containers: {
+            value: '2000+',
+            label: 'Contenedores/mes'
+          },
+          routes: {
+            value: '150+',
+            label: 'Puertos servidos'
+          },
+          co2: {
+            value: '-80%',
+            label: 'Emisiones CO2'
           }
         }
       }
@@ -1496,6 +1790,119 @@ export const translations: Record<Language, Translations> = {
           }
         }
       }
+    },
+    seaTransport: {
+      hero: {
+        backButton: '← Dienstleistungen',
+        badge: 'Seetransport',
+        title: 'Internationale Seefracht',
+        subtitle: 'Wirtschaftliche und ökologische Lösungen für Ihre Containersendungen zu allen Kontinenten. FCL- und LCL-Transport mit vollständiger Verfolgung.',
+        quoteButton: 'Seefracht-Angebot',
+        trackButton: 'Container verfolgen'
+      },
+      services: {
+        title: 'Unsere Seefracht-Lösungen',
+        subtitle: 'Vom Vollcontainer bis zur Sammelladung, wir passen uns Ihren Volumina an',
+        fcl: {
+          title: 'FCL - Vollcontainer',
+          description: 'Exklusiver Container für Ihre großen Volumina',
+          features: ['20\' und 40\'', 'Exklusivität', 'Direkt', 'Wirtschaftlich'],
+          button: 'FCL wählen'
+        },
+        lcl: {
+          title: 'LCL - Sammelladung',
+          description: 'Container teilen, nur Ihr Volumen bezahlen',
+          features: ['Kleine Volumina', 'Sammelladung', 'Flexibel', 'Zugänglich'],
+          button: 'LCL wählen'
+        },
+        special: {
+          title: 'Spezialladungen',
+          description: 'Transport von Waren außerhalb der Norm',
+          features: ['Übermaß', 'Gefahrgut', 'Kühl', 'Maßgeschneidert'],
+          button: 'Spezielle Lösungen'
+        }
+      },
+      routes: {
+        title: 'Weltweite Routen',
+        subtitle: 'Verbunden mit den wichtigsten Häfen der Welt',
+        regions: {
+          europe: {
+            name: 'Europa',
+            time: '5-15 Tage',
+            description: 'Hamburg, Rotterdam, Antwerpen'
+          },
+          asia: {
+            name: 'Asien',
+            time: '20-35 Tage',
+            description: 'Shanghai, Singapur, Hongkong'
+          },
+          america: {
+            name: 'Amerika',
+            time: '10-25 Tage',
+            description: 'New York, Los Angeles, Santos'
+          },
+          africa: {
+            name: 'Afrika',
+            time: '8-20 Tage',
+            description: 'Casablanca, Durban, Lagos'
+          },
+          oceania: {
+            name: 'Ozeanien',
+            time: '25-40 Tage',
+            description: 'Sydney, Melbourne, Auckland'
+          },
+          middleEast: {
+            name: 'Naher Osten',
+            time: '12-25 Tage',
+            description: 'Dubai, Jeddah, Doha'
+          }
+        },
+        ports: 'Partner-Häfen'
+      },
+      advantages: {
+        title: 'Warum Seetransport wählen?',
+        items: {
+          economy: {
+            title: 'Maximale Wirtschaftlichkeit',
+            description: 'Der wirtschaftlichste Transportmodus für große Volumina'
+          },
+          capacity: {
+            title: 'Große Kapazität',
+            description: 'Transport großer Volumina in einem Mal'
+          },
+          ecology: {
+            title: 'Ökologischer Transport',
+            description: '80% weniger CO2 als Straßentransport'
+          },
+          security: {
+            title: 'Optimale Sicherheit',
+            description: 'Versiegelte und kontrollierte Container während des gesamten Transports'
+          }
+        },
+        sustainable: {
+          title: 'Nachhaltiger Transport',
+          features: ['Reduzierter CO2-Fußabdruck', 'Routenoptimierung', 'Wiederverwendbare Container', 'Umweltstandards', 'Energieeffizienz', 'Massentransport']
+        }
+      },
+      cta: {
+        title: 'Bereit für Seetransport?',
+        subtitle: 'Über 2.000 Container monatlich weltweit versandt. Die wirtschaftliche und ökologische Lösung.',
+        button: 'Angebot anfordern',
+        stats: {
+          containers: {
+            value: '2000+',
+            label: 'Container/Monat'
+          },
+          routes: {
+            value: '150+',
+            label: 'Belieferte Häfen'
+          },
+          co2: {
+            value: '-80%',
+            label: 'CO2-Emissionen'
+          }
+        }
+      }
     }
   },
   it: {
@@ -1897,6 +2304,119 @@ export const translations: Record<Language, Translations> = {
           }
         }
       }
+    },
+    seaTransport: {
+      hero: {
+        backButton: '← Servizi',
+        badge: 'Trasporto Marittimo',
+        title: 'Trasporto Marittimo Internazionale',
+        subtitle: 'Soluzioni economiche ed ecologiche per le tue spedizioni containerizzate verso tutti i continenti. Trasporto FCL e LCL con tracciamento completo.',
+        quoteButton: 'Preventivo Marittimo',
+        trackButton: 'Traccia Container'
+      },
+      services: {
+        title: 'Le Nostre Soluzioni Marittime',
+        subtitle: 'Dal container completo al groupage, ci adattiamo ai tuoi volumi',
+        fcl: {
+          title: 'FCL - Container Completo',
+          description: 'Container esclusivo per i tuoi grandi volumi',
+          features: ['20\' e 40\'', 'Esclusività', 'Diretto', 'Economico'],
+          button: 'Scegli FCL'
+        },
+        lcl: {
+          title: 'LCL - Groupage Marittimo',
+          description: 'Condividi un container, paga il tuo volume',
+          features: ['Piccoli volumi', 'Groupage', 'Flessibile', 'Accessibile'],
+          button: 'Scegli LCL'
+        },
+        special: {
+          title: 'Carichi Speciali',
+          description: 'Trasporto di merci fuori norma',
+          features: ['Fuori misura', 'Pericoloso', 'Frigorifero', 'Su misura'],
+          button: 'Soluzioni speciali'
+        }
+      },
+      routes: {
+        title: 'Rotte Mondiali',
+        subtitle: 'Collegato ai principali porti del mondo',
+        regions: {
+          europe: {
+            name: 'Europa',
+            time: '5-15 giorni',
+            description: 'Amburgo, Rotterdam, Anversa'
+          },
+          asia: {
+            name: 'Asia',
+            time: '20-35 giorni',
+            description: 'Shanghai, Singapore, Hong Kong'
+          },
+          america: {
+            name: 'Americhe',
+            time: '10-25 giorni',
+            description: 'New York, Los Angeles, Santos'
+          },
+          africa: {
+            name: 'Africa',
+            time: '8-20 giorni',
+            description: 'Casablanca, Durban, Lagos'
+          },
+          oceania: {
+            name: 'Oceania',
+            time: '25-40 giorni',
+            description: 'Sydney, Melbourne, Auckland'
+          },
+          middleEast: {
+            name: 'Medio Oriente',
+            time: '12-25 giorni',
+            description: 'Dubai, Jeddah, Doha'
+          }
+        },
+        ports: 'Porti partner'
+      },
+      advantages: {
+        title: 'Perché scegliere il trasporto marittimo?',
+        items: {
+          economy: {
+            title: 'Economia massima',
+            description: 'Il modo di trasporto più economico per grandi volumi'
+          },
+          capacity: {
+            title: 'Grande capacità',
+            description: 'Trasporto di volumi importanti in una sola volta'
+          },
+          ecology: {
+            title: 'Trasporto ecologico',
+            description: '80% meno CO2 del trasporto stradale'
+          },
+          security: {
+            title: 'Sicurezza ottimale',
+            description: 'Container sigillati e controllati durante tutto il trasporto'
+          }
+        },
+        sustainable: {
+          title: 'Trasporto Sostenibile',
+          features: ['Impronta carbonica ridotta', 'Ottimizzazione delle rotte', 'Container riutilizzabili', 'Norme ambientali', 'Efficienza energetica', 'Trasporto di massa']
+        }
+      },
+      cta: {
+        title: 'Pronto per il trasporto marittimo?',
+        subtitle: 'Oltre 2.000 container spediti ogni mese verso il mondo intero. La soluzione economica ed ecologica.',
+        button: 'Richiedere preventivo',
+        stats: {
+          containers: {
+            value: '2000+',
+            label: 'Container/mese'
+          },
+          routes: {
+            value: '150+',
+            label: 'Porti serviti'
+          },
+          co2: {
+            value: '-80%',
+            label: 'Emissioni CO2'
+          }
+        }
+      }
     }
   },
   pt: {
@@ -2295,6 +2815,119 @@ export const translations: Record<Language, Translations> = {
           },
           satisfaction: {
             label: 'Satisfação'
+          }
+        }
+      }
+    },
+    seaTransport: {
+      hero: {
+        backButton: '← Serviços',
+        badge: 'Transporte Marítimo',
+        title: 'Transporte Marítimo Internacional',
+        subtitle: 'Soluções econômicas e ecológicas para seus envios containerizados para todos os continentes. Transporte FCL e LCL com rastreamento completo.',
+        quoteButton: 'Orçamento Marítimo',
+        trackButton: 'Rastrear Container'
+      },
+      services: {
+        title: 'Nossas Soluções Marítimas',
+        subtitle: 'Do container completo ao groupage, nos adaptamos aos seus volumes',
+        fcl: {
+          title: 'FCL - Container Completo',
+          description: 'Container exclusivo para seus grandes volumes',
+          features: ['20\' e 40\'', 'Exclusividade', 'Direto', 'Econômico'],
+          button: 'Escolher FCL'
+        },
+        lcl: {
+          title: 'LCL - Groupage Marítimo',
+          description: 'Compartilhe um container, pague seu volume',
+          features: ['Pequenos volumes', 'Groupage', 'Flexível', 'Acessível'],
+          button: 'Escolher LCL'
+        },
+        special: {
+          title: 'Cargas Especiais',
+          description: 'Transporte de mercadorias fora do padrão',
+          features: ['Fora de medida', 'Perigoso', 'Frigorífico', 'Sob medida'],
+          button: 'Soluções especiais'
+        }
+      },
+      routes: {
+        title: 'Rotas Mundiais',
+        subtitle: 'Conectado aos principais portos do mundo',
+        regions: {
+          europe: {
+            name: 'Europa',
+            time: '5-15 dias',
+            description: 'Hamburgo, Rotterdam, Antuérpia'
+          },
+          asia: {
+            name: 'Ásia',
+            time: '20-35 dias',
+            description: 'Shangai, Singapura, Hong Kong'
+          },
+          america: {
+            name: 'Américas',
+            time: '10-25 dias',
+            description: 'Nova York, Los Angeles, Santos'
+          },
+          africa: {
+            name: 'África',
+            time: '8-20 dias',
+            description: 'Casablanca, Durban, Lagos'
+          },
+          oceania: {
+            name: 'Oceania',
+            time: '25-40 dias',
+            description: 'Sydney, Melbourne, Auckland'
+          },
+          middleEast: {
+            name: 'Oriente Médio',
+            time: '12-25 dias',
+            description: 'Dubai, Jeddah, Doha'
+          }
+        },
+        ports: 'Portos parceiros'
+      },
+      advantages: {
+        title: 'Por que escolher o transporte marítimo?',
+        items: {
+          economy: {
+            title: 'Economia máxima',
+            description: 'O modo de transporte mais econômico para grandes volumes'
+          },
+          capacity: {
+            title: 'Grande capacidade',
+            description: 'Transporte de volumes importantes de uma só vez'
+          },
+          ecology: {
+            title: 'Transporte ecológico',
+            description: '80% menos CO2 que o transporte rodoviário'
+          },
+          security: {
+            title: 'Segurança ótima',
+            description: 'Containers selados e controlados durante todo o transporte'
+          }
+        },
+        sustainable: {
+          title: 'Transporte Sustentável',
+          features: ['Pegada de carbono reduzida', 'Otimização de rotas', 'Containers reutilizáveis', 'Normas ambientais', 'Eficiência energética', 'Transporte de massa']
+        }
+      },
+      cta: {
+        title: 'Pronto para o transporte marítimo?',
+        subtitle: 'Mais de 2.000 containers enviados a cada mês para o mundo inteiro. A solução econômica e ecológica.',
+        button: 'Solicitar orçamento',
+        stats: {
+          containers: {
+            value: '2000+',
+            label: 'Containers/mês'
+          },
+          routes: {
+            value: '150+',
+            label: 'Portos atendidos'
+          },
+          co2: {
+            value: '-80%',
+            label: 'Emissões CO2'
           }
         }
       }
