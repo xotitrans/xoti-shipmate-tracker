@@ -4,25 +4,27 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Truck, MapPin, Clock, Shield, CheckCircle, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-
-const features = [
-  { icon: Clock, title: 'Livraison 24-48h', description: 'Délais garantis pour l\'Europe' },
-  { icon: MapPin, title: 'Suivi GPS', description: 'Localisation en temps réel' },
-  { icon: Shield, title: 'Assurance incluse', description: 'Couverture complète des marchandises' },
-  { icon: Truck, title: 'Véhicules adaptés', description: 'Flotte moderne et spécialisée' }
-];
-
-const zones = [
-  { country: 'France', time: '6-12h' },
-  { country: 'Allemagne', time: '24-36h' },
-  { country: 'Italie', time: '24-48h' },
-  { country: 'Espagne', time: '36-48h' },
-  { country: 'Pays-Bas', time: '18-24h' },
-  { country: 'Belgique', time: '12-18h' }
-];
+import { translations } from '@/data/translations';
 
 export default function RoadTransport() {
   const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
+
+  const features = [
+    { icon: Clock, title: t.roadTransport.features.items.delivery.title, description: t.roadTransport.features.items.delivery.description },
+    { icon: MapPin, title: t.roadTransport.features.items.tracking.title, description: t.roadTransport.features.items.tracking.description },
+    { icon: Shield, title: t.roadTransport.features.items.insurance.title, description: t.roadTransport.features.items.insurance.description },
+    { icon: Truck, title: t.roadTransport.features.items.vehicles.title, description: t.roadTransport.features.items.vehicles.description }
+  ];
+
+  const zones = [
+    { country: t.roadTransport.zones.countries.france, time: '6-12h' },
+    { country: t.roadTransport.zones.countries.germany, time: '24-36h' },
+    { country: t.roadTransport.zones.countries.italy, time: '24-48h' },
+    { country: t.roadTransport.zones.countries.spain, time: '36-48h' },
+    { country: t.roadTransport.zones.countries.netherlands, time: '18-24h' },
+    { country: t.roadTransport.zones.countries.belgium, time: '12-18h' }
+  ];
 
   return (
     <div className="flex flex-col">
@@ -33,28 +35,27 @@ export default function RoadTransport() {
             <div className="flex items-center gap-4 mb-6">
               <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-primary" asChild>
                 <Link to="/services">
-                  ← Services
+                  {t.roadTransport.hero.backButton}
                 </Link>
               </Button>
-              <Badge variant="secondary">Transport Terrestre</Badge>
+              <Badge variant="secondary">{t.roadTransport.hero.badge}</Badge>
             </div>
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6">
-              Transport Routier Européen
+              {t.roadTransport.hero.title}
             </h1>
             <p className="text-xl text-white/90 mb-8">
-              Solutions complètes de transport terrestre pour l'Europe avec suivi GPS en temps réel 
-              et livraison garantie sous 24-48h.
+              {t.roadTransport.hero.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" variant="secondary" asChild>
                 <Link to="/contact">
-                  Demander un Devis
+                  {t.roadTransport.hero.quoteButton}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
                 <Link to="/tracking">
-                  Suivre un Transport
+                  {t.roadTransport.hero.trackButton}
                 </Link>
               </Button>
             </div>
@@ -66,9 +67,9 @@ export default function RoadTransport() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Pourquoi choisir notre transport routier ?</h2>
+            <h2 className="text-3xl font-bold mb-4">{t.roadTransport.features.title}</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Une solution fiable et économique pour vos expéditions européennes
+              {t.roadTransport.features.subtitle}
             </p>
           </div>
           
@@ -95,9 +96,9 @@ export default function RoadTransport() {
       <section className="py-20 bg-gradient-card">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Zones et Délais</h2>
+            <h2 className="text-3xl font-bold mb-4">{t.roadTransport.zones.title}</h2>
             <p className="text-xl text-muted-foreground">
-              Délais garantis pour vos expéditions européennes
+              {t.roadTransport.zones.subtitle}
             </p>
           </div>
           
@@ -114,15 +115,15 @@ export default function RoadTransport() {
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Assurance incluse</span>
+                      <span>{t.roadTransport.zones.included.insurance}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Suivi GPS temps réel</span>
+                      <span>{t.roadTransport.zones.included.tracking}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Livraison avec accusé</span>
+                      <span>{t.roadTransport.zones.included.delivery}</span>
                     </div>
                   </div>
                 </CardContent>
@@ -133,7 +134,7 @@ export default function RoadTransport() {
           <div className="text-center mt-12">
             <Button size="lg" asChild>
               <Link to="/contact">
-                Obtenir un Devis Personnalisé
+                {t.roadTransport.zones.quoteButton}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -145,9 +146,9 @@ export default function RoadTransport() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Notre Processus</h2>
+            <h2 className="text-3xl font-bold mb-4">{t.roadTransport.process.title}</h2>
             <p className="text-xl text-muted-foreground">
-              Simple, rapide et transparent
+              {t.roadTransport.process.subtitle}
             </p>
           </div>
           
@@ -156,10 +157,10 @@ export default function RoadTransport() {
               <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block"></div>
               
               {[
-                { step: '1', title: 'Demande de devis', description: 'Renseignez vos besoins via notre formulaire ou par téléphone', time: '2h' },
-                { step: '2', title: 'Collecte programmée', description: 'Enlèvement à votre adresse aux créneaux convenus', time: '24h' },
-                { step: '3', title: 'Transport sécurisé', description: 'Acheminement avec suivi GPS et notifications automatiques', time: '24-48h' },
-                { step: '4', title: 'Livraison confirmée', description: 'Réception avec signature et preuve de livraison digitale', time: 'Immédiat' }
+                { step: '1', title: t.roadTransport.process.steps.quote.title, description: t.roadTransport.process.steps.quote.description, time: t.roadTransport.process.steps.quote.time },
+                { step: '2', title: t.roadTransport.process.steps.pickup.title, description: t.roadTransport.process.steps.pickup.description, time: t.roadTransport.process.steps.pickup.time },
+                { step: '3', title: t.roadTransport.process.steps.transport.title, description: t.roadTransport.process.steps.transport.description, time: t.roadTransport.process.steps.transport.time },
+                { step: '4', title: t.roadTransport.process.steps.delivery.title, description: t.roadTransport.process.steps.delivery.description, time: t.roadTransport.process.steps.delivery.time }
               ].map((item, index) => (
                 <div key={item.step} className="relative flex items-start gap-6 pb-12 last:pb-0 animate-fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold text-xl z-10 shrink-0">
@@ -183,32 +184,31 @@ export default function RoadTransport() {
       <section className="py-20 bg-brand-navy text-white">
         <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Prêt à expédier par la route ?
+            {t.roadTransport.cta.title}
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Plus de 10 000 expéditions routières réussies chaque mois. 
-            Rejoignez nos clients satisfaits.
+            {t.roadTransport.cta.subtitle}
           </p>
           <div className="flex items-center justify-center gap-8 mb-8">
             <div className="text-center">
-              <div className="text-2xl font-bold">99.2%</div>
-              <div className="text-white/70 text-sm">Livraisons à temps</div>
+              <div className="text-2xl font-bold">{t.roadTransport.cta.stats.delivery.value}</div>
+              <div className="text-white/70 text-sm">{t.roadTransport.cta.stats.delivery.label}</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold">24h</div>
-              <div className="text-white/70 text-sm">Délai moyen</div>
+              <div className="text-2xl font-bold">{t.roadTransport.cta.stats.time.value}</div>
+              <div className="text-white/70 text-sm">{t.roadTransport.cta.stats.time.label}</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold">4.9/5</div>
               <div className="text-white/70 text-sm flex items-center justify-center gap-1">
                 <Star className="h-4 w-4 fill-current" />
-                Note client
+                {t.roadTransport.cta.stats.rating.label}
               </div>
             </div>
           </div>
           <Button size="lg" variant="secondary" asChild>
             <Link to="/contact">
-              Commencer maintenant
+              {t.roadTransport.cta.button}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

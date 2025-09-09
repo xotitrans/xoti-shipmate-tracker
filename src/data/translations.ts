@@ -165,6 +165,64 @@ export interface Translations {
       trackButton: string;
     };
   };
+  roadTransport: {
+    hero: {
+      backButton: string;
+      badge: string;
+      title: string;
+      subtitle: string;
+      quoteButton: string;
+      trackButton: string;
+    };
+    features: {
+      title: string;
+      subtitle: string;
+      items: {
+        delivery: { title: string; description: string; };
+        tracking: { title: string; description: string; };
+        insurance: { title: string; description: string; };
+        vehicles: { title: string; description: string; };
+      };
+    };
+    zones: {
+      title: string;
+      subtitle: string;
+      included: {
+        insurance: string;
+        tracking: string;
+        delivery: string;
+      };
+      quoteButton: string;
+      countries: {
+        france: string;
+        germany: string;
+        italy: string;
+        spain: string;
+        netherlands: string;
+        belgium: string;
+      };
+    };
+    process: {
+      title: string;
+      subtitle: string;
+      steps: {
+        quote: { title: string; description: string; time: string; };
+        pickup: { title: string; description: string; time: string; };
+        transport: { title: string; description: string; time: string; };
+        delivery: { title: string; description: string; time: string; };
+      };
+    };
+    cta: {
+      title: string;
+      subtitle: string;
+      button: string;
+      stats: {
+        delivery: { value: string; label: string; };
+        time: { value: string; label: string; };
+        rating: { label: string; };
+      };
+    };
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -360,6 +418,100 @@ export const translations: Record<Language, Translations> = {
         quoteButton: 'Demander un Devis',
         trackButton: 'Suivre un Colis'
       }
+    },
+    roadTransport: {
+      hero: {
+        backButton: '← Services',
+        badge: 'Transport Terrestre',
+        title: 'Transport Routier Européen',
+        subtitle: 'Solutions complètes de transport terrestre pour l\'Europe avec suivi GPS en temps réel et livraison garantie sous 24-48h.',
+        quoteButton: 'Demander un Devis',
+        trackButton: 'Suivre un Transport'
+      },
+      features: {
+        title: 'Pourquoi choisir notre transport routier ?',
+        subtitle: 'Une solution fiable et économique pour vos expéditions européennes',
+        items: {
+          delivery: {
+            title: 'Livraison 24-48h',
+            description: 'Délais garantis pour l\'Europe'
+          },
+          tracking: {
+            title: 'Suivi GPS',
+            description: 'Localisation en temps réel'
+          },
+          insurance: {
+            title: 'Assurance incluse',
+            description: 'Couverture complète des marchandises'
+          },
+          vehicles: {
+            title: 'Véhicules adaptés',
+            description: 'Flotte moderne et spécialisée'
+          }
+        }
+      },
+      zones: {
+        title: 'Zones et Délais',
+        subtitle: 'Délais garantis pour vos expéditions européennes',
+        included: {
+          insurance: 'Assurance incluse',
+          tracking: 'Suivi GPS temps réel',
+          delivery: 'Livraison avec accusé'
+        },
+        quoteButton: 'Obtenir un Devis Personnalisé',
+        countries: {
+          france: 'France',
+          germany: 'Allemagne',
+          italy: 'Italie',
+          spain: 'Espagne',
+          netherlands: 'Pays-Bas',
+          belgium: 'Belgique'
+        }
+      },
+      process: {
+        title: 'Notre Processus',
+        subtitle: 'Simple, rapide et transparent',
+        steps: {
+          quote: {
+            title: 'Demande de devis',
+            description: 'Renseignez vos besoins via notre formulaire ou par téléphone',
+            time: '2h'
+          },
+          pickup: {
+            title: 'Collecte programmée',
+            description: 'Enlèvement à votre adresse aux créneaux convenus',
+            time: '24h'
+          },
+          transport: {
+            title: 'Transport sécurisé',
+            description: 'Acheminement avec suivi GPS et notifications automatiques',
+            time: '24-48h'
+          },
+          delivery: {
+            title: 'Livraison confirmée',
+            description: 'Réception avec signature et preuve de livraison digitale',
+            time: 'Immédiat'
+          }
+        }
+      },
+      cta: {
+        title: 'Prêt à expédier par la route ?',
+        subtitle: 'Plus de 10 000 expéditions routières réussies chaque mois. Rejoignez nos clients satisfaits.',
+        button: 'Commencer maintenant',
+        stats: {
+          delivery: {
+            value: '99.2%',
+            label: 'Livraisons à temps'
+          },
+          time: {
+            value: '24h',
+            label: 'Délai moyen'
+          },
+          rating: {
+            label: 'Note client'
+          }
+        }
+      }
     }
   },
   es: {
@@ -553,6 +705,100 @@ export const translations: Record<Language, Translations> = {
         subtitle: 'Obtén una cotización personalizada en pocos minutos o rastrea tus envíos en tiempo real.',
         quoteButton: 'Solicitar Cotización',
         trackButton: 'Rastrear Paquete'
+      }
+    },
+    roadTransport: {
+      hero: {
+        backButton: '← Servicios',
+        badge: 'Transporte Terrestre',
+        title: 'Transporte por Carretera Europeo',
+        subtitle: 'Soluciones completas de transporte terrestre para Europa con seguimiento GPS en tiempo real y entrega garantizada en 24-48h.',
+        quoteButton: 'Solicitar Cotización',
+        trackButton: 'Rastrear Transporte'
+      },
+      features: {
+        title: '¿Por qué elegir nuestro transporte por carretera?',
+        subtitle: 'Una solución confiable y económica para tus envíos europeos',
+        items: {
+          delivery: {
+            title: 'Entrega 24-48h',
+            description: 'Plazos garantizados para Europa'
+          },
+          tracking: {
+            title: 'Seguimiento GPS',
+            description: 'Localización en tiempo real'
+          },
+          insurance: {
+            title: 'Seguro incluido',
+            description: 'Cobertura completa de mercancías'
+          },
+          vehicles: {
+            title: 'Vehículos adaptados',
+            description: 'Flota moderna y especializada'
+          }
+        }
+      },
+      zones: {
+        title: 'Zonas y Plazos',
+        subtitle: 'Plazos garantizados para tus envíos europeos',
+        included: {
+          insurance: 'Seguro incluido',
+          tracking: 'Seguimiento GPS tiempo real',
+          delivery: 'Entrega con acuse de recibo'
+        },
+        quoteButton: 'Obtener Cotización Personalizada',
+        countries: {
+          france: 'Francia',
+          germany: 'Alemania',
+          italy: 'Italia',
+          spain: 'España',
+          netherlands: 'Países Bajos',
+          belgium: 'Bélgica'
+        }
+      },
+      process: {
+        title: 'Nuestro Proceso',
+        subtitle: 'Simple, rápido y transparente',
+        steps: {
+          quote: {
+            title: 'Solicitud de cotización',
+            description: 'Ingrese sus necesidades a través de nuestro formulario o por teléfono',
+            time: '2h'
+          },
+          pickup: {
+            title: 'Recogida programada',
+            description: 'Recolección en su dirección en horarios acordados',
+            time: '24h'
+          },
+          transport: {
+            title: 'Transporte seguro',
+            description: 'Envío con seguimiento GPS y notificaciones automáticas',
+            time: '24-48h'
+          },
+          delivery: {
+            title: 'Entrega confirmada',
+            description: 'Recepción con firma y prueba de entrega digital',
+            time: 'Inmediato'
+          }
+        }
+      },
+      cta: {
+        title: '¿Listo para enviar por carretera?',
+        subtitle: 'Más de 10,000 envíos por carretera exitosos cada mes. Únete a nuestros clientes satisfechos.',
+        button: 'Comenzar ahora',
+        stats: {
+          delivery: {
+            value: '99.2%',
+            label: 'Entregas puntuales'
+          },
+          time: {
+            value: '24h',
+            label: 'Tiempo promedio'
+          },
+          rating: {
+            label: 'Calificación cliente'
+          }
+        }
       }
     }
   },
@@ -748,6 +994,100 @@ export const translations: Record<Language, Translations> = {
         quoteButton: 'Angebot anfordern',
         trackButton: 'Paket verfolgen'
       }
+    },
+    roadTransport: {
+      hero: {
+        backButton: '← Dienstleistungen',
+        badge: 'Straßentransport',
+        title: 'Europäischer Straßentransport',
+        subtitle: 'Komplette Straßentransportlösungen für Europa mit GPS-Tracking in Echtzeit und garantierter Lieferung in 24-48h.',
+        quoteButton: 'Angebot anfordern',
+        trackButton: 'Transport verfolgen'
+      },
+      features: {
+        title: 'Warum unseren Straßentransport wählen?',
+        subtitle: 'Eine zuverlässige und wirtschaftliche Lösung für Ihre europäischen Sendungen',
+        items: {
+          delivery: {
+            title: 'Lieferung 24-48h',
+            description: 'Garantierte Zeiten für Europa'
+          },
+          tracking: {
+            title: 'GPS-Tracking',
+            description: 'Lokalisierung in Echtzeit'
+          },
+          insurance: {
+            title: 'Versicherung inklusive',
+            description: 'Vollständige Warenabdeckung'
+          },
+          vehicles: {
+            title: 'Angepasste Fahrzeuge',
+            description: 'Moderne und spezialisierte Flotte'
+          }
+        }
+      },
+      zones: {
+        title: 'Zonen und Lieferzeiten',
+        subtitle: 'Garantierte Lieferzeiten für Ihre europäischen Sendungen',
+        included: {
+          insurance: 'Versicherung inklusive',
+          tracking: 'GPS-Tracking Echtzeit',
+          delivery: 'Lieferung mit Empfangsbestätigung'
+        },
+        quoteButton: 'Personalisiertes Angebot erhalten',
+        countries: {
+          france: 'Frankreich',
+          germany: 'Deutschland',
+          italy: 'Italien',
+          spain: 'Spanien',
+          netherlands: 'Niederlande',
+          belgium: 'Belgien'
+        }
+      },
+      process: {
+        title: 'Unser Prozess',
+        subtitle: 'Einfach, schnell und transparent',
+        steps: {
+          quote: {
+            title: 'Angebotsanfrage',
+            description: 'Teilen Sie uns Ihre Bedürfnisse über unser Formular oder telefonisch mit',
+            time: '2h'
+          },
+          pickup: {
+            title: 'Geplante Abholung',
+            description: 'Abholung an Ihrer Adresse zu vereinbarten Zeiten',
+            time: '24h'
+          },
+          transport: {
+            title: 'Sicherer Transport',
+            description: 'Versand mit GPS-Tracking und automatischen Benachrichtigungen',
+            time: '24-48h'
+          },
+          delivery: {
+            title: 'Bestätigte Lieferung',
+            description: 'Empfang mit Unterschrift und digitalem Liefernachweis',
+            time: 'Sofort'
+          }
+        }
+      },
+      cta: {
+        title: 'Bereit für den Straßentransport?',
+        subtitle: 'Über 10.000 erfolgreiche Straßentransporte jeden Monat. Schließen Sie sich unseren zufriedenen Kunden an.',
+        button: 'Jetzt beginnen',
+        stats: {
+          delivery: {
+            value: '99.2%',
+            label: 'Pünktliche Lieferungen'
+          },
+          time: {
+            value: '24h',
+            label: 'Durchschnittliche Zeit'
+          },
+          rating: {
+            label: 'Kundenbewertung'
+          }
+        }
+      }
     }
   },
   it: {
@@ -942,6 +1282,100 @@ export const translations: Record<Language, Translations> = {
         quoteButton: 'Richiedi Preventivo',
         trackButton: 'Traccia Pacco'
       }
+    },
+    roadTransport: {
+      hero: {
+        backButton: '← Servizi',
+        badge: 'Trasporto Stradale',
+        title: 'Trasporto Stradale Europeo',
+        subtitle: 'Soluzioni complete di trasporto terrestre per l\'Europa con tracciamento GPS in tempo reale e consegna garantita in 24-48h.',
+        quoteButton: 'Richiedi Preventivo',
+        trackButton: 'Traccia Trasporto'
+      },
+      features: {
+        title: 'Perché scegliere il nostro trasporto stradale?',
+        subtitle: 'Una soluzione affidabile ed economica per le tue spedizioni europee',
+        items: {
+          delivery: {
+            title: 'Consegna 24-48h',
+            description: 'Tempi garantiti per l\'Europa'
+          },
+          tracking: {
+            title: 'Tracciamento GPS',
+            description: 'Localizzazione in tempo reale'
+          },
+          insurance: {
+            title: 'Assicurazione inclusa',
+            description: 'Copertura completa delle merci'
+          },
+          vehicles: {
+            title: 'Veicoli adattati',
+            description: 'Flotta moderna e specializzata'
+          }
+        }
+      },
+      zones: {
+        title: 'Zone e Tempi',
+        subtitle: 'Tempi garantiti per le tue spedizioni europee',
+        included: {
+          insurance: 'Assicurazione inclusa',
+          tracking: 'Tracciamento GPS tempo reale',
+          delivery: 'Consegna con ricevuta'
+        },
+        quoteButton: 'Ottieni Preventivo Personalizzato',
+        countries: {
+          france: 'Francia',
+          germany: 'Germania',
+          italy: 'Italia',
+          spain: 'Spagna',
+          netherlands: 'Paesi Bassi',
+          belgium: 'Belgio'
+        }
+      },
+      process: {
+        title: 'Il Nostro Processo',
+        subtitle: 'Semplice, veloce e trasparente',
+        steps: {
+          quote: {
+            title: 'Richiesta preventivo',
+            description: 'Comunica le tue esigenze tramite il nostro modulo o per telefono',
+            time: '2h'
+          },
+          pickup: {
+            title: 'Ritiro programmato',
+            description: 'Ritiro al tuo indirizzo negli orari concordati',
+            time: '24h'
+          },
+          transport: {
+            title: 'Trasporto sicuro',
+            description: 'Spedizione con tracciamento GPS e notifiche automatiche',
+            time: '24-48h'
+          },
+          delivery: {
+            title: 'Consegna confermata',
+            description: 'Ricezione con firma e prova di consegna digitale',
+            time: 'Immediato'
+          }
+        }
+      },
+      cta: {
+        title: 'Pronto a spedire su strada?',
+        subtitle: 'Oltre 10.000 spedizioni stradali riuscite ogni mese. Unisciti ai nostri clienti soddisfatti.',
+        button: 'Inizia ora',
+        stats: {
+          delivery: {
+            value: '99.2%',
+            label: 'Consegne puntuali'
+          },
+          time: {
+            value: '24h',
+            label: 'Tempo medio'
+          },
+          rating: {
+            label: 'Valutazione cliente'
+          }
+        }
+      }
     }
   },
   pt: {
@@ -1135,6 +1569,100 @@ export const translations: Record<Language, Translations> = {
         subtitle: 'Obtenha uma cotação personalizada em poucos minutos ou rastreie seus envios em tempo real.',
         quoteButton: 'Solicitar Orçamento',
         trackButton: 'Rastrear Encomenda'
+      }
+    },
+    roadTransport: {
+      hero: {
+        backButton: '← Serviços',
+        badge: 'Transporte Rodoviário',
+        title: 'Transporte Rodoviário Europeu',
+        subtitle: 'Soluções completas de transporte terrestre para a Europa com rastreamento GPS em tempo real e entrega garantida em 24-48h.',
+        quoteButton: 'Solicitar Orçamento',
+        trackButton: 'Rastrear Transporte'
+      },
+      features: {
+        title: 'Por que escolher nosso transporte rodoviário?',
+        subtitle: 'Uma solução confiável e econômica para seus envios europeus',
+        items: {
+          delivery: {
+            title: 'Entrega 24-48h',
+            description: 'Prazos garantidos para a Europa'
+          },
+          tracking: {
+            title: 'Rastreamento GPS',
+            description: 'Localização em tempo real'
+          },
+          insurance: {
+            title: 'Seguro incluído',
+            description: 'Cobertura completa das mercadorias'
+          },
+          vehicles: {
+            title: 'Veículos adaptados',
+            description: 'Frota moderna e especializada'
+          }
+        }
+      },
+      zones: {
+        title: 'Zonas e Prazos',
+        subtitle: 'Prazos garantidos para seus envios europeus',
+        included: {
+          insurance: 'Seguro incluído',
+          tracking: 'Rastreamento GPS tempo real',
+          delivery: 'Entrega com comprovante'
+        },
+        quoteButton: 'Obter Orçamento Personalizado',
+        countries: {
+          france: 'França',
+          germany: 'Alemanha',
+          italy: 'Itália',
+          spain: 'Espanha',
+          netherlands: 'Países Baixos',
+          belgium: 'Bélgica'
+        }
+      },
+      process: {
+        title: 'Nosso Processo',
+        subtitle: 'Simples, rápido e transparente',
+        steps: {
+          quote: {
+            title: 'Solicitação de orçamento',
+            description: 'Informe suas necessidades através do nosso formulário ou por telefone',
+            time: '2h'
+          },
+          pickup: {
+            title: 'Coleta programada',
+            description: 'Retirada no seu endereço nos horários acordados',
+            time: '24h'
+          },
+          transport: {
+            title: 'Transporte seguro',
+            description: 'Envio com rastreamento GPS e notificações automáticas',
+            time: '24-48h'
+          },
+          delivery: {
+            title: 'Entrega confirmada',
+            description: 'Recebimento com assinatura e comprovante de entrega digital',
+            time: 'Imediato'
+          }
+        }
+      },
+      cta: {
+        title: 'Pronto para enviar por estrada?',
+        subtitle: 'Mais de 10.000 envios rodoviários bem-sucedidos a cada mês. Junte-se aos nossos clientes satisfeitos.',
+        button: 'Começar agora',
+        stats: {
+          delivery: {
+            value: '99.2%',
+            label: 'Entregas pontuais'
+          },
+          time: {
+            value: '24h',
+            label: 'Tempo médio'
+          },
+          rating: {
+            label: 'Avaliação do cliente'
+          }
+        }
       }
     }
   }
