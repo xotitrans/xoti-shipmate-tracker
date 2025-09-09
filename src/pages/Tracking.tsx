@@ -62,8 +62,8 @@ const Tracking = () => {
     
     if (!searchNumber.trim()) {
       toast({
-        title: "Erreur",
-        description: "Veuillez saisir un numéro de suivi",
+        title: t.tracking.error,
+        description: t.tracking.enterTrackingNumber,
         variant: "destructive",
       });
       return;
@@ -82,8 +82,8 @@ const Tracking = () => {
         setTrackingResult(null);
         setTrackingHistory([]);
         toast({
-          title: "Colis non trouvé",
-          description: "Aucun colis ne correspond à ce numéro de suivi",
+          title: t.tracking.notFoundTitle,
+          description: t.tracking.notFoundDesc,
           variant: "destructive",
         });
         return;
@@ -103,15 +103,15 @@ const Tracking = () => {
       }
       
       toast({
-        title: "Colis trouvé",
-        description: `Statut: ${getStatusText(shipment.status)}`,
+        title: t.tracking.packageFoundToast,
+        description: `${t.tracking.currentStatus}: ${getStatusText(shipment.status)}`,
       });
       
     } catch (error) {
       console.error('Error tracking shipment:', error);
       toast({
-        title: "Erreur",
-        description: "Une erreur est survenue lors de la recherche",
+        title: t.tracking.searchError,
+        description: t.tracking.searchErrorDesc,
         variant: "destructive",
       });
     } finally {
@@ -140,42 +140,30 @@ const Tracking = () => {
   };
 
   const getStatusText = (status: string) => {
-    switch (status) {
-      case 'pending': return 'En attente';
-      case 'in_transit': return 'En transit';
-      case 'delivered': return 'Livré';
-      case 'failed': return 'Échec';
-      default: return status;
-    }
+    return t.tracking.statuses[status as keyof typeof t.tracking.statuses] || status;
   };
 
   const getTransportText = (type: string) => {
-    switch (type) {
-      case 'road': return 'Route';
-      case 'air': return 'Aérien';
-      case 'sea': return 'Maritime';
-      case 'express': return 'Express';
-      default: return type;
-    }
+    return t.tracking.transportTypes[type as keyof typeof t.tracking.transportTypes] || type;
   };
 
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold mb-4">Suivi de colis</h1>
-        <p className="text-muted-foreground">Suivez l'état de votre expédition en temps réel</p>
+        <h1 className="text-3xl font-bold mb-4">{t.tracking.title}</h1>
+        <p className="text-muted-foreground">{t.tracking.subtitle}</p>
       </div>
 
       <div className="max-w-2xl mx-auto mb-8">
         <Card>
           <CardHeader>
-            <CardTitle>Rechercher un colis</CardTitle>
-            <CardDescription>Saisissez votre numéro de suivi pour voir l'état de votre colis</CardDescription>
+            <CardTitle>{t.tracking.searchTitle}</CardTitle>
+            <CardDescription>{t.tracking.searchSubtitle}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex gap-4">
               <Input
-                placeholder="XTR1234567890"
+                placeholder={t.tracking.placeholder}
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 className="flex-1"
@@ -186,7 +174,7 @@ const Tracking = () => {
                 ) : (
                   <Search className="h-4 w-4 mr-2" />
                 )}
-                {isSearching ? 'Recherche...' : 'Rechercher'}
+                {isSearching ? t.tracking.searching : t.tracking.searchButton}
               </Button>
             </div>
           </CardContent>
@@ -200,7 +188,7 @@ const Tracking = () => {
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
                   <Package className="h-5 w-5" />
-                  Colis {trackingResult.tracking_number}
+                  {t.tracking.packageTitle} {trackingResult.tracking_number}
                 </CardTitle>
                 <Badge variant={getStatusColor(trackingResult.status) as any}>
                   {getStatusIcon(trackingResult.status)}
@@ -213,24 +201,24 @@ const Tracking = () => {
                 <div>
                   <h3 className="font-semibold mb-3 flex items-center gap-2">
                     <Mail className="h-4 w-4" />
-                    Expéditeur
+                    {t.tracking.sender}
                   </h3>
                   <div className="space-y-2 text-sm">
-                    <p><strong>Nom:</strong> {trackingResult.sender_name}</p>
-                    <p><strong>Adresse:</strong> {trackingResult.sender_address}</p>
-                    <p><strong>Téléphone:</strong> {trackingResult.sender_phone}</p>
+                    <p><strong>{t.tracking.name}:</strong> {trackingResult.sender_name}</p>
+                    <p><strong>{t.tracking.address}:</strong> {trackingResult.sender_address}</p>
+                    <p><strong>{t.tracking.phoneNumber}:</strong> {trackingResult.sender_phone}</p>
                   </div>
                 </div>
                 
                 <div>
                   <h3 className="font-semibold mb-3 flex items-center gap-2">
                     <Package className="h-4 w-4" />
-                    Destinataire
+                    {t.tracking.recipient}
                   </h3>
                   <div className="space-y-2 text-sm">
-                    <p><strong>Nom:</strong> {trackingResult.recipient_name}</p>
-                    <p><strong>Adresse:</strong> {trackingResult.recipient_address}</p>
-                    <p><strong>Téléphone:</strong> {trackingResult.recipient_phone}</p>
+                    <p><strong>{t.tracking.name}:</strong> {trackingResult.recipient_name}</p>
+                    <p><strong>{t.tracking.address}:</strong> {trackingResult.recipient_address}</p>
+                    <p><strong>{t.tracking.phoneNumber}:</strong> {trackingResult.recipient_phone}</p>
                   </div>
                 </div>
               </div>
@@ -241,9 +229,9 @@ const Tracking = () => {
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-muted-foreground" />
                   <div>
-                    <p className="text-sm font-medium">Position actuelle</p>
+                    <p className="text-sm font-medium">{t.tracking.currentPosition}</p>
                     <p className="text-sm text-muted-foreground">
-                      {trackingResult.current_location || 'Non définie'}
+                      {trackingResult.current_location || t.tracking.notDefined}
                     </p>
                   </div>
                 </div>
@@ -251,7 +239,7 @@ const Tracking = () => {
                 <div className="flex items-center gap-2">
                   <Truck className="h-4 w-4 text-muted-foreground" />
                   <div>
-                    <p className="text-sm font-medium">Type de transport</p>
+                    <p className="text-sm font-medium">{t.tracking.transportType}</p>
                     <p className="text-sm text-muted-foreground">
                       {getTransportText(trackingResult.transport_type)}
                     </p>
@@ -261,11 +249,11 @@ const Tracking = () => {
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4 text-muted-foreground" />
                   <div>
-                    <p className="text-sm font-medium">Livraison prévue</p>
+                    <p className="text-sm font-medium">{t.tracking.estimatedDeliveryDate}</p>
                     <p className="text-sm text-muted-foreground">
                       {trackingResult.estimated_delivery ? 
-                        new Date(trackingResult.estimated_delivery).toLocaleDateString('fr-FR') : 
-                        'Non définie'
+                        new Date(trackingResult.estimated_delivery).toLocaleDateString(currentLanguage === 'fr' ? 'fr-FR' : currentLanguage === 'de' ? 'de-DE' : currentLanguage === 'it' ? 'it-IT' : currentLanguage === 'es' ? 'es-ES' : 'pt-PT') : 
+                        t.tracking.notDefined
                       }
                     </p>
                   </div>

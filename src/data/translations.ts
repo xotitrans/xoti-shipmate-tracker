@@ -85,11 +85,34 @@ export interface Translations {
     email: string;
     faqTitle: string;
     faqSubtitle: string;
+    // Nouveaux champs pour la page de suivi
+    error: string;
+    enterTrackingNumber: string;
+    packageFoundToast: string;
+    notFoundTitle: string;
+    notFoundDesc: string;
+    searchError: string;
+    searchErrorDesc: string;
+    sender: string;
+    recipient: string;
+    name: string;
+    address: string;
+    phoneNumber: string;
+    currentPosition: string;
+    notDefined: string;
+    transportType: string;
+    estimatedDeliveryDate: string;
     statuses: {
-      collecte: string;
-      en_transit: string;
-      livre: string;
-      probleme: string;
+      pending: string;
+      in_transit: string;
+      delivered: string;
+      failed: string;
+    };
+    transportTypes: {
+      road: string;
+      air: string;
+      sea: string;
+      express: string;
     };
     faq: {
       q1: string;
@@ -712,11 +735,33 @@ export const translations: Record<Language, Translations> = {
       email: 'Email :',
       faqTitle: 'Questions fréquentes',
       faqSubtitle: 'Tout ce que vous devez savoir sur le suivi de vos colis',
+      error: 'Erreur',
+      enterTrackingNumber: 'Veuillez saisir un numéro de suivi',
+      packageFoundToast: 'Colis trouvé',
+      notFoundTitle: 'Colis non trouvé',
+      notFoundDesc: 'Aucun colis ne correspond à ce numéro de suivi',
+      searchError: 'Erreur',
+      searchErrorDesc: 'Une erreur est survenue lors de la recherche',
+      sender: 'Expéditeur',
+      recipient: 'Destinataire',
+      name: 'Nom',
+      address: 'Adresse',
+      phoneNumber: 'Téléphone',
+      currentPosition: 'Position actuelle',
+      notDefined: 'Non définie',
+      transportType: 'Type de transport',
+      estimatedDeliveryDate: 'Livraison prévue',
       statuses: {
-        collecte: 'Collecté',
-        en_transit: 'En Transit',
-        livre: 'Livré',
-        probleme: 'Problème'
+        pending: 'En attente',
+        in_transit: 'En transit',
+        delivered: 'Livré',
+        failed: 'Échec'
+      },
+      transportTypes: {
+        road: 'Route',
+        air: 'Aérien',
+        sea: 'Maritime',
+        express: 'Express'
       },
       faq: {
         q1: 'Comment fonctionne le suivi ?',
@@ -1537,11 +1582,33 @@ export const translations: Record<Language, Translations> = {
       email: 'Email:',
       faqTitle: 'Preguntas frecuentes',
       faqSubtitle: 'Todo lo que necesitas saber sobre el seguimiento de tus paquetes',
+      error: 'Error',
+      enterTrackingNumber: 'Por favor ingrese un número de seguimiento',
+      packageFoundToast: 'Paquete encontrado',
+      notFoundTitle: 'Paquete no encontrado',
+      notFoundDesc: 'Ningún paquete corresponde a este número de seguimiento',
+      searchError: 'Error',
+      searchErrorDesc: 'Se produjo un error durante la búsqueda',
+      sender: 'Remitente',
+      recipient: 'Destinatario',
+      name: 'Nombre',
+      address: 'Dirección',
+      phoneNumber: 'Teléfono',
+      currentPosition: 'Posición actual',
+      notDefined: 'No definida',
+      transportType: 'Tipo de transporte',
+      estimatedDeliveryDate: 'Entrega prevista',
       statuses: {
-        collecte: 'Recogido',
-        en_transit: 'En Tránsito',
-        livre: 'Entregado',
-        probleme: 'Problema'
+        pending: 'Pendiente',
+        in_transit: 'En tránsito',
+        delivered: 'Entregado',
+        failed: 'Fallo'
+      },
+      transportTypes: {
+        road: 'Carretera',
+        air: 'Aéreo',
+        sea: 'Marítimo',
+        express: 'Express'
       },
       faq: {
         q1: '¿Cómo funciona el seguimiento?',
@@ -2362,11 +2429,33 @@ export const translations: Record<Language, Translations> = {
       email: 'E-Mail:',
       faqTitle: 'Häufige Fragen',
       faqSubtitle: 'Alles was Sie über die Verfolgung Ihrer Pakete wissen müssen',
+      error: 'Fehler',
+      enterTrackingNumber: 'Bitte geben Sie eine Sendungsnummer ein',
+      packageFoundToast: 'Paket gefunden',
+      notFoundTitle: 'Paket nicht gefunden',
+      notFoundDesc: 'Kein Paket entspricht dieser Sendungsnummer',
+      searchError: 'Fehler',
+      searchErrorDesc: 'Bei der Suche ist ein Fehler aufgetreten',
+      sender: 'Absender',
+      recipient: 'Empfänger',
+      name: 'Name',
+      address: 'Adresse',
+      phoneNumber: 'Telefon',
+      currentPosition: 'Aktuelle Position',
+      notDefined: 'Nicht definiert',
+      transportType: 'Transportart',
+      estimatedDeliveryDate: 'Voraussichtliche Lieferung',
       statuses: {
-        collecte: 'Abgeholt',
-        en_transit: 'In Transit',
-        livre: 'Zugestellt',
-        probleme: 'Problem'
+        pending: 'Ausstehend',
+        in_transit: 'Unterwegs',
+        delivered: 'Zugestellt',
+        failed: 'Fehler'
+      },
+      transportTypes: {
+        road: 'Straße',
+        air: 'Luftfracht',
+        sea: 'Seefracht',
+        express: 'Express'
       },
       faq: {
         q1: 'Wie funktioniert die Verfolgung?',
@@ -3187,11 +3276,33 @@ export const translations: Record<Language, Translations> = {
       email: 'Email:',
       faqTitle: 'Domande frequenti',
       faqSubtitle: 'Tutto quello che devi sapere sul tracciamento dei tuoi pacchi',
+      error: 'Errore',
+      enterTrackingNumber: 'Si prega di inserire un numero di tracciamento',
+      packageFoundToast: 'Pacco trovato',
+      notFoundTitle: 'Pacco non trovato',
+      notFoundDesc: 'Nessun pacco corrisponde a questo numero di tracciamento',
+      searchError: 'Errore',
+      searchErrorDesc: 'Si è verificato un errore durante la ricerca',
+      sender: 'Mittente',
+      recipient: 'Destinatario',
+      name: 'Nome',
+      address: 'Indirizzo',
+      phoneNumber: 'Telefono',
+      currentPosition: 'Posizione attuale',
+      notDefined: 'Non definita',
+      transportType: 'Tipo di trasporto',
+      estimatedDeliveryDate: 'Consegna prevista',
       statuses: {
-        collecte: 'Ritirato',
-        en_transit: 'In Transito',
-        livre: 'Consegnato',
-        probleme: 'Problema'
+        pending: 'In attesa',
+        in_transit: 'In transito',
+        delivered: 'Consegnato',
+        failed: 'Fallito'
+      },
+      transportTypes: {
+        road: 'Strada',
+        air: 'Aereo',
+        sea: 'Marittimo',
+        express: 'Express'
       },
       faq: {
         q1: 'Come funziona il tracciamento?',
@@ -4012,11 +4123,33 @@ export const translations: Record<Language, Translations> = {
       email: 'E-mail:',
       faqTitle: 'Perguntas frequentes',
       faqSubtitle: 'Tudo o que você precisa saber sobre o rastreamento de suas encomendas',
+      error: 'Erro',
+      enterTrackingNumber: 'Por favor, insira um número de rastreamento',
+      packageFoundToast: 'Encomenda encontrada',
+      notFoundTitle: 'Encomenda não encontrada',
+      notFoundDesc: 'Nenhuma encomenda corresponde a este número de rastreamento',
+      searchError: 'Erro',
+      searchErrorDesc: 'Ocorreu um erro durante a pesquisa',
+      sender: 'Remetente',
+      recipient: 'Destinatário',
+      name: 'Nome',
+      address: 'Endereço',
+      phoneNumber: 'Telefone',
+      currentPosition: 'Posição atual',
+      notDefined: 'Não definida',
+      transportType: 'Tipo de transporte',
+      estimatedDeliveryDate: 'Entrega prevista',
       statuses: {
-        collecte: 'Coletado',
-        en_transit: 'Em Trânsito',
-        livre: 'Entregue',
-        probleme: 'Problema'
+        pending: 'Pendente',
+        in_transit: 'Em trânsito',
+        delivered: 'Entregue',
+        failed: 'Falhou'
+      },
+      transportTypes: {
+        road: 'Estrada',
+        air: 'Aéreo',
+        sea: 'Marítimo',
+        express: 'Express'
       },
       faq: {
         q1: 'Como funciona o rastreamento?',
