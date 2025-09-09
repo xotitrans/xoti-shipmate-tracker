@@ -360,6 +360,56 @@ export interface Translations {
       };
     };
   };
+  express: {
+    badge: string;
+    title: string;
+    description: string;
+    getQuote: string;
+    trackShipment: string;
+    featuresTitle: string;
+    featuresDescription: string;
+    features: {
+      speed: { title: string; description: string; };
+      security: { title: string; description: string; };
+      tracking: { title: string; description: string; };
+      reliability: { title: string; description: string; };
+    };
+    servicesTitle: string;
+    servicesDescription: string;
+    services: {
+      sameDay: {
+        title: string;
+        description: string;
+        features: {
+          pickup: string;
+          delivery: string;
+          tracking: string;
+        };
+      };
+      nextDay: {
+        title: string;
+        description: string;
+        features: {
+          guarantee: string;
+          coverage: string;
+          insurance: string;
+        };
+      };
+      international: {
+        title: string;
+        description: string;
+        features: {
+          customs: string;
+          network: string;
+          documentation: string;
+        };
+      };
+    };
+    ctaTitle: string;
+    ctaDescription: string;
+    contactUs: string;
+    learnMore: string;
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -876,6 +926,68 @@ export const translations: Record<Language, Translations> = {
         }
       }
     },
+    express: {
+      badge: "Service Express",
+      title: "Livraison Express",
+      description: "Solutions de transport rapides et fiables pour vos envois urgents avec suivi en temps réel et garantie de livraison.",
+      getQuote: "Obtenir un devis",
+      trackShipment: "Suivre mon colis",
+      featuresTitle: "Pourquoi choisir notre service express ?",
+      featuresDescription: "Des solutions de livraison ultra-rapides adaptées à tous vos besoins urgents",
+      features: {
+        speed: {
+          title: "Livraison rapide",
+          description: "Livraison en quelques heures selon la destination"
+        },
+        security: {
+          title: "Sécurité maximale",
+          description: "Protection complète de vos colis durant le transport"
+        },
+        tracking: {
+          title: "Suivi en temps réel",
+          description: "Suivez votre colis à chaque étape de la livraison"
+        },
+        reliability: {
+          title: "Fiabilité garantie",
+          description: "99.9% de taux de livraison dans les délais"
+        }
+      },
+      servicesTitle: "Nos services express",
+      servicesDescription: "Choisissez le service qui correspond le mieux à vos besoins de livraison",
+      services: {
+        sameDay: {
+          title: "Livraison le jour même",
+          description: "Pour vos envois les plus urgents, livraison garantie le jour même.",
+          features: {
+            pickup: "Enlèvement dans l'heure",
+            delivery: "Livraison en 2-6 heures",
+            tracking: "Suivi GPS en temps réel"
+          }
+        },
+        nextDay: {
+          title: "Livraison le lendemain",
+          description: "Service fiable pour une livraison garantie le jour ouvrable suivant.",
+          features: {
+            guarantee: "Garantie avant 12h",
+            coverage: "Couverture nationale",
+            insurance: "Assurance incluse"
+          }
+        },
+        international: {
+          title: "Express international",
+          description: "Livraison express vers l'international avec dédouanement inclus.",
+          features: {
+            customs: "Gestion douanière",
+            network: "Réseau mondial",
+            documentation: "Documents inclus"
+          }
+        }
+      },
+      ctaTitle: "Prêt à expédier ?",
+      ctaDescription: "Contactez-nous dès maintenant pour vos besoins de livraison express et obtenez un devis personnalisé.",
+      contactUs: "Nous contacter",
+      learnMore: "En savoir plus"
+    },
   },
   es: {
     navigation: {
@@ -1389,6 +1501,68 @@ export const translations: Record<Language, Translations> = {
           }
         }
       }
+    },
+    express: {
+      badge: "Servicio Exprés",
+      title: "Entrega Exprés",
+      description: "Soluciones de transporte rápidas y confiables para sus envíos urgentes con seguimiento en tiempo real y garantía de entrega.",
+      getQuote: "Obtener cotización",
+      trackShipment: "Rastrear mi paquete",
+      featuresTitle: "¿Por qué elegir nuestro servicio exprés?",
+      featuresDescription: "Soluciones de entrega ultra-rápidas adaptadas a todas sus necesidades urgentes",
+      features: {
+        speed: {
+          title: "Entrega rápida",
+          description: "Entrega en pocas horas según el destino"
+        },
+        security: {
+          title: "Seguridad máxima",
+          description: "Protección completa de sus paquetes durante el transporte"
+        },
+        tracking: {
+          title: "Seguimiento en tiempo real",
+          description: "Rastree su paquete en cada etapa de la entrega"
+        },
+        reliability: {
+          title: "Confiabilidad garantizada",
+          description: "99.9% de tasa de entrega a tiempo"
+        }
+      },
+      servicesTitle: "Nuestros servicios exprés",
+      servicesDescription: "Elija el servicio que mejor se adapte a sus necesidades de entrega",
+      services: {
+        sameDay: {
+          title: "Entrega el mismo día",
+          description: "Para sus envíos más urgentes, entrega garantizada el mismo día.",
+          features: {
+            pickup: "Recogida en una hora",
+            delivery: "Entrega en 2-6 horas",
+            tracking: "Seguimiento GPS en tiempo real"
+          }
+        },
+        nextDay: {
+          title: "Entrega al día siguiente",
+          description: "Servicio confiable para entrega garantizada el siguiente día hábil.",
+          features: {
+            guarantee: "Garantía antes de las 12h",
+            coverage: "Cobertura nacional",
+            insurance: "Seguro incluido"
+          }
+        },
+        international: {
+          title: "Exprés internacional",
+          description: "Entrega exprés internacional con despacho de aduanas incluido.",
+          features: {
+            customs: "Gestión aduanera",
+            network: "Red mundial",
+            documentation: "Documentos incluidos"
+          }
+        }
+      },
+      ctaTitle: "¿Listo para enviar?",
+      ctaDescription: "Contáctenos ahora para sus necesidades de entrega exprés y obtenga una cotización personalizada.",
+      contactUs: "Contáctanos",
+      learnMore: "Saber más"
     }
   },
   de: {
@@ -1903,6 +2077,68 @@ export const translations: Record<Language, Translations> = {
           }
         }
       }
+    },
+    express: {
+      badge: "Express Service",
+      title: "Express Lieferung",
+      description: "Schnelle und zuverlässige Transportlösungen für Ihre dringenden Sendungen mit Echtzeit-Verfolgung und Liefergarantie.",
+      getQuote: "Angebot erhalten",
+      trackShipment: "Paket verfolgen",
+      featuresTitle: "Warum unseren Express-Service wählen?",
+      featuresDescription: "Ultra-schnelle Lieferlösungen für alle Ihre dringenden Bedürfnisse",
+      features: {
+        speed: {
+          title: "Schnelle Lieferung",
+          description: "Lieferung in wenigen Stunden je nach Zielort"
+        },
+        security: {
+          title: "Maximale Sicherheit",
+          description: "Vollständiger Schutz Ihrer Pakete während des Transports"
+        },
+        tracking: {
+          title: "Echtzeit-Verfolgung",
+          description: "Verfolgen Sie Ihr Paket bei jedem Schritt der Lieferung"
+        },
+        reliability: {
+          title: "Garantierte Zuverlässigkeit",
+          description: "99.9% pünktliche Lieferrate"
+        }
+      },
+      servicesTitle: "Unsere Express-Services",
+      servicesDescription: "Wählen Sie den Service, der am besten zu Ihren Lieferanforderungen passt",
+      services: {
+        sameDay: {
+          title: "Lieferung am selben Tag",
+          description: "Für Ihre dringendsten Sendungen, garantierte Lieferung am selben Tag.",
+          features: {
+            pickup: "Abholung innerhalb einer Stunde",
+            delivery: "Lieferung in 2-6 Stunden",
+            tracking: "GPS-Verfolgung in Echtzeit"
+          }
+        },
+        nextDay: {
+          title: "Lieferung am nächsten Tag",
+          description: "Zuverlässiger Service für garantierte Lieferung am nächsten Werktag.",
+          features: {
+            guarantee: "Garantie vor 12 Uhr",
+            coverage: "Nationale Abdeckung",
+            insurance: "Versicherung inbegriffen"
+          }
+        },
+        international: {
+          title: "International Express",
+          description: "Express-Lieferung ins Ausland mit inkludierter Zollabfertigung.",
+          features: {
+            customs: "Zollabwicklung",
+            network: "Weltweites Netzwerk",
+            documentation: "Dokumente inbegriffen"
+          }
+        }
+      },
+      ctaTitle: "Bereit zum Versenden?",
+      ctaDescription: "Kontaktieren Sie uns jetzt für Ihre Express-Lieferanforderungen und erhalten Sie ein personalisiertes Angebot.",
+      contactUs: "Kontaktieren Sie uns",
+      learnMore: "Mehr erfahren"
     }
   },
   it: {
@@ -2417,6 +2653,68 @@ export const translations: Record<Language, Translations> = {
           }
         }
       }
+    },
+    express: {
+      badge: "Servizio Express",
+      title: "Consegna Express",
+      description: "Soluzioni di trasporto veloci e affidabili per le tue spedizioni urgenti con tracciamento in tempo reale e garanzia di consegna.",
+      getQuote: "Ottieni preventivo",
+      trackShipment: "Traccia il mio pacco",
+      featuresTitle: "Perché scegliere il nostro servizio express?",
+      featuresDescription: "Soluzioni di consegna ultra-rapide adatte a tutte le tue esigenze urgenti",
+      features: {
+        speed: {
+          title: "Consegna veloce",
+          description: "Consegna in poche ore a seconda della destinazione"
+        },
+        security: {
+          title: "Sicurezza massima",
+          description: "Protezione completa dei tuoi pacchi durante il trasporto"
+        },
+        tracking: {
+          title: "Tracciamento in tempo reale",
+          description: "Traccia il tuo pacco ad ogni fase della consegna"
+        },
+        reliability: {
+          title: "Affidabilità garantita",
+          description: "99.9% di tasso di consegna puntuale"
+        }
+      },
+      servicesTitle: "I nostri servizi express",
+      servicesDescription: "Scegli il servizio che meglio si adatta alle tue esigenze di consegna",
+      services: {
+        sameDay: {
+          title: "Consegna in giornata",
+          description: "Per le tue spedizioni più urgenti, consegna garantita in giornata.",
+          features: {
+            pickup: "Ritiro entro un'ora",
+            delivery: "Consegna in 2-6 ore",
+            tracking: "Tracciamento GPS in tempo reale"
+          }
+        },
+        nextDay: {
+          title: "Consegna il giorno successivo",
+          description: "Servizio affidabile per consegna garantita il giorno lavorativo successivo.",
+          features: {
+            guarantee: "Garanzia entro le 12",
+            coverage: "Copertura nazionale",
+            insurance: "Assicurazione inclusa"
+          }
+        },
+        international: {
+          title: "Express internazionale",
+          description: "Consegna express internazionale con sdoganamento incluso.",
+          features: {
+            customs: "Gestione doganale",
+            network: "Rete mondiale",
+            documentation: "Documenti inclusi"
+          }
+        }
+      },
+      ctaTitle: "Pronto per spedire?",
+      ctaDescription: "Contattaci ora per le tue esigenze di consegna express e ottieni un preventivo personalizzato.",
+      contactUs: "Contattaci",
+      learnMore: "Scopri di più"
     }
   },
   pt: {
@@ -2931,6 +3229,68 @@ export const translations: Record<Language, Translations> = {
           }
         }
       }
+    },
+    express: {
+      badge: "Serviço Expresso",
+      title: "Entrega Expressa",
+      description: "Soluções de transporte rápidas e confiáveis para suas remessas urgentes com rastreamento em tempo real e garantia de entrega.",
+      getQuote: "Obter orçamento",
+      trackShipment: "Rastrear minha encomenda",
+      featuresTitle: "Por que escolher nosso serviço expresso?",
+      featuresDescription: "Soluções de entrega ultra-rápidas adaptadas a todas as suas necessidades urgentes",
+      features: {
+        speed: {
+          title: "Entrega rápida",
+          description: "Entrega em poucas horas dependendo do destino"
+        },
+        security: {
+          title: "Segurança máxima",
+          description: "Proteção completa de suas encomendas durante o transporte"
+        },
+        tracking: {
+          title: "Rastreamento em tempo real",
+          description: "Rastreie sua encomenda a cada etapa da entrega"
+        },
+        reliability: {
+          title: "Confiabilidade garantida",
+          description: "99.9% de taxa de entrega no prazo"
+        }
+      },
+      servicesTitle: "Nossos serviços expressos",
+      servicesDescription: "Escolha o serviço que melhor se adapta às suas necessidades de entrega",
+      services: {
+        sameDay: {
+          title: "Entrega no mesmo dia",
+          description: "Para suas remessas mais urgentes, entrega garantida no mesmo dia.",
+          features: {
+            pickup: "Coleta em uma hora",
+            delivery: "Entrega em 2-6 horas",
+            tracking: "Rastreamento GPS em tempo real"
+          }
+        },
+        nextDay: {
+          title: "Entrega no dia seguinte",
+          description: "Serviço confiável para entrega garantida no próximo dia útil.",
+          features: {
+            guarantee: "Garantia antes das 12h",
+            coverage: "Cobertura nacional",
+            insurance: "Seguro incluído"
+          }
+        },
+        international: {
+          title: "Expresso internacional",
+          description: "Entrega expressa internacional com desembaraço aduaneiro incluído.",
+          features: {
+            customs: "Gestão aduaneira",
+            network: "Rede mundial",
+            documentation: "Documentos incluídos"
+          }
+        }
+      },
+      ctaTitle: "Pronto para enviar?",
+      ctaDescription: "Entre em contato conosco agora para suas necessidades de entrega expressa e obtenha um orçamento personalizado.",
+      contactUs: "Entre em contato",
+      learnMore: "Saiba mais"
     }
   }
 };
