@@ -9,7 +9,6 @@ const mainServices = [
     icon: Truck,
     title: 'Transport Routier',
     description: 'Solutions complètes de transport terrestre pour l\'Europe avec suivi GPS en temps réel.',
-    price: 'À partir de 150€',
     features: ['Livraison 24-48h', 'Suivi GPS temps réel', 'Assurance incluse', 'Véhicules adaptés'],
     destinations: 'Europe',
     href: '/services/road-transport'
@@ -18,7 +17,6 @@ const mainServices = [
     icon: Plane,
     title: 'Transport Aérien',
     description: 'Fret aérien express pour vos expéditions urgentes vers toutes destinations mondiales.',
-    price: 'À partir de 89€',
     features: ['Express 6-24h', 'Mondial', 'Produits sensibles', 'Dédouanement'],
     destinations: 'Mondial',
     href: '/services/air-transport'
@@ -27,7 +25,6 @@ const mainServices = [
     icon: Ship,
     title: 'Transport Maritime',
     description: 'Solutions économiques FCL et LCL pour vos expéditions en conteneurs.',
-    price: 'À partir de 890€',
     features: ['FCL & LCL', 'Économique', 'Écologique', 'Port à port'],
     destinations: 'International',
     href: '/services/sea-transport'
@@ -102,7 +99,6 @@ export default function Services() {
                       <Badge variant="outline">{service.destinations}</Badge>
                     </div>
                     <CardTitle className="text-2xl">{service.title}</CardTitle>
-                    <div className="text-2xl font-bold text-primary">{service.price}</div>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground mb-6">{service.description}</p>
