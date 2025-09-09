@@ -85,20 +85,41 @@ export type Database = {
       shipments: {
         Row: {
           actual_delivery: string | null
+          client_reference: string | null
           created_at: string
+          currency: string | null
+          current_latitude: number | null
           current_location: string | null
+          current_longitude: number | null
+          declared_value: number | null
+          delivery_instructions: string | null
           dimensions: string | null
+          emergency_contact_name: string | null
+          emergency_contact_phone: string | null
           estimated_delivery: string | null
+          google_maps_link: string | null
           id: string
+          insured_value: number | null
+          internal_notes: string | null
+          is_dangerous: boolean | null
+          is_fragile: boolean | null
           notes: string | null
+          order_number: string | null
+          payment_method: string | null
+          payment_status: Database["public"]["Enums"]["payment_status"] | null
+          preferred_delivery_time: string | null
+          priority_level: Database["public"]["Enums"]["priority_level"] | null
           recipient_address: string
           recipient_name: string
           recipient_phone: string
+          requires_signature: boolean | null
           sender_address: string
           sender_name: string
           sender_phone: string
+          special_instructions: string | null
           status: Database["public"]["Enums"]["shipment_status"]
           tracking_number: string
+          transport_cost: number | null
           transport_type: Database["public"]["Enums"]["transport_type"]
           updated_at: string
           user_id: string
@@ -106,20 +127,41 @@ export type Database = {
         }
         Insert: {
           actual_delivery?: string | null
+          client_reference?: string | null
           created_at?: string
+          currency?: string | null
+          current_latitude?: number | null
           current_location?: string | null
+          current_longitude?: number | null
+          declared_value?: number | null
+          delivery_instructions?: string | null
           dimensions?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
           estimated_delivery?: string | null
+          google_maps_link?: string | null
           id?: string
+          insured_value?: number | null
+          internal_notes?: string | null
+          is_dangerous?: boolean | null
+          is_fragile?: boolean | null
           notes?: string | null
+          order_number?: string | null
+          payment_method?: string | null
+          payment_status?: Database["public"]["Enums"]["payment_status"] | null
+          preferred_delivery_time?: string | null
+          priority_level?: Database["public"]["Enums"]["priority_level"] | null
           recipient_address: string
           recipient_name: string
           recipient_phone: string
+          requires_signature?: boolean | null
           sender_address: string
           sender_name: string
           sender_phone: string
+          special_instructions?: string | null
           status?: Database["public"]["Enums"]["shipment_status"]
           tracking_number: string
+          transport_cost?: number | null
           transport_type: Database["public"]["Enums"]["transport_type"]
           updated_at?: string
           user_id: string
@@ -127,20 +169,41 @@ export type Database = {
         }
         Update: {
           actual_delivery?: string | null
+          client_reference?: string | null
           created_at?: string
+          currency?: string | null
+          current_latitude?: number | null
           current_location?: string | null
+          current_longitude?: number | null
+          declared_value?: number | null
+          delivery_instructions?: string | null
           dimensions?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
           estimated_delivery?: string | null
+          google_maps_link?: string | null
           id?: string
+          insured_value?: number | null
+          internal_notes?: string | null
+          is_dangerous?: boolean | null
+          is_fragile?: boolean | null
           notes?: string | null
+          order_number?: string | null
+          payment_method?: string | null
+          payment_status?: Database["public"]["Enums"]["payment_status"] | null
+          preferred_delivery_time?: string | null
+          priority_level?: Database["public"]["Enums"]["priority_level"] | null
           recipient_address?: string
           recipient_name?: string
           recipient_phone?: string
+          requires_signature?: boolean | null
           sender_address?: string
           sender_name?: string
           sender_phone?: string
+          special_instructions?: string | null
           status?: Database["public"]["Enums"]["shipment_status"]
           tracking_number?: string
+          transport_cost?: number | null
           transport_type?: Database["public"]["Enums"]["transport_type"]
           updated_at?: string
           user_id?: string
@@ -206,6 +269,8 @@ export type Database = {
       }
     }
     Enums: {
+      payment_status: "pending" | "paid" | "cancelled" | "refunded"
+      priority_level: "low" | "normal" | "high" | "urgent"
       shipment_status:
         | "pending"
         | "in_transit"
@@ -340,6 +405,8 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      payment_status: ["pending", "paid", "cancelled", "refunded"],
+      priority_level: ["low", "normal", "high", "urgent"],
       shipment_status: [
         "pending",
         "in_transit",
