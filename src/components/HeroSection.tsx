@@ -58,10 +58,10 @@ export const HeroSection = () => {
           </p>
           
           <div className="flex justify-center mb-16 animate-scale-in">
-            <Button size="lg" variant="secondary" asChild className="shadow-navy">
+            <Button size="lg" variant="secondary" asChild className="shadow-navy text-xl px-12 py-6 text-lg font-bold">
               <Link to="/tracking">
                 Suivre un Colis/Véhicule
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-3 h-6 w-6" />
               </Link>
             </Button>
           </div>
