@@ -24,7 +24,7 @@ export const Header = () => {
           <img 
             src="/lovable-uploads/cfc1e6df-6d75-45ac-b706-bf4f21f6a4b2.png" 
             alt="XOTI - eXport Overseas Transport International" 
-            className="h-14 w-auto"
+            className="h-16 w-auto"
           />
         </Link>
 
