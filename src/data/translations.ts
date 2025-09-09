@@ -497,6 +497,73 @@ export interface Translations {
     ctaDescription: string;
     contactButton: string;
   };
+  servicesPage: {
+    hero: {
+      title: string;
+      subtitle: string;
+      badges: [string, string, string, string];
+    };
+    mainServices: {
+      title: string;
+      subtitle: string; 
+      services: {
+        road: {
+          title: string;
+          description: string;
+          features: [string, string, string, string];
+          destinations: string;
+        };
+        air: {
+          title: string;
+          description: string;
+          features: [string, string, string, string];
+          destinations: string;
+        };
+        sea: {
+          title: string;
+          description: string;
+          features: [string, string, string, string];
+          destinations: string;
+        };
+      };
+      learnMore: string;
+    };
+    specialServices: {
+      title: string;
+      subtitle: string;
+      services: {
+        express: {
+          title: string;
+          description: string;
+        };
+        custom: {
+          title: string;
+          description: string;
+        };
+        tracking: {
+          title: string;
+          description: string;
+        };
+      };
+      discover: string;
+    };
+    process: {
+      title: string;
+      subtitle: string;
+      steps: {
+        quote: { title: string; description: string; };
+        pickup: { title: string; description: string; };
+        transport: { title: string; description: string; };
+        delivery: { title: string; description: string; };
+      };
+    };
+    cta: {
+      title: string;
+      subtitle: string;
+      quoteButton: string;
+      trackButton: string;
+    };
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -1208,6 +1275,73 @@ export const translations: Record<Language, Translations> = {
       ctaTitle: "Rejoignez les 2000+ entreprises qui nous font confiance",
       ctaDescription: "Découvrez comment XOTI peut optimiser votre chaîne logistique",
       contactButton: "Contactez-nous"
+    },
+    servicesPage: {
+      hero: {
+        title: "Nos Services de Transport",
+        subtitle: "Des solutions complètes et personnalisées pour tous vos besoins de transport international. Expertise, fiabilité et innovation.",
+        badges: ["Transport Routier", "Transport Aérien", "Transport Maritime", "Solutions Express"]
+      },
+      mainServices: {
+        title: "Services Principaux",
+        subtitle: "Trois modes de transport complémentaires pour répondre à tous vos besoins logistiques",
+        services: {
+          road: {
+            title: "Transport Routier",
+            description: "Solutions complètes de transport terrestre pour l'Europe avec suivi GPS en temps réel.",
+            features: ["Livraison 24-48h", "Suivi GPS temps réel", "Assurance incluse", "Véhicules adaptés"],
+            destinations: "Europe"
+          },
+          air: {
+            title: "Transport Aérien", 
+            description: "Fret aérien express pour vos expéditions urgentes vers toutes destinations mondiales.",
+            features: ["Express 6-24h", "Mondial", "Produits sensibles", "Dédouanement"],
+            destinations: "Mondial"
+          },
+          sea: {
+            title: "Transport Maritime",
+            description: "Solutions économiques FCL et LCL pour vos expéditions en conteneurs.",
+            features: ["FCL & LCL", "Économique", "Écologique", "Port à port"],
+            destinations: "International"
+          }
+        },
+        learnMore: "En savoir plus"
+      },
+      specialServices: {
+        title: "Services Spécialisés",
+        subtitle: "Solutions avancées pour des besoins spécifiques",
+        services: {
+          express: {
+            title: "Logistique Express",
+            description: "Service premium avec engagement de délais pour vos expéditions critiques."
+          },
+          custom: {
+            title: "Solutions Sur Mesure", 
+            description: "Solutions personnalisées pour les industries spécialisées."
+          },
+          tracking: {
+            title: "Suivi Avancé",
+            description: "Plateforme de tracking avec alertes et notifications personnalisées."
+          }
+        },
+        discover: "Découvrir"
+      },
+      process: {
+        title: "Comment ça marche ?",
+        subtitle: "Un processus simple et transparent en 4 étapes",
+        steps: {
+          quote: { title: "Devis", description: "Recevez un devis personnalisé en moins de 2 heures" },
+          pickup: { title: "Enlèvement", description: "Collecte à votre adresse aux horaires convenus" },
+          transport: { title: "Transport", description: "Suivi en temps réel de votre expédition" },
+          delivery: { title: "Livraison", description: "Réception confirmée avec preuve de livraison" }
+        }
+      },
+      cta: {
+        title: "Prêt à commencer ?",
+        subtitle: "Obtenez un devis gratuit et personnalisé pour votre prochaine expédition",
+        quoteButton: "Demander un Devis",
+        trackButton: "Suivre un Colis"
+      }
     }
   },
   es: {
@@ -1918,6 +2052,73 @@ export const translations: Record<Language, Translations> = {
       ctaTitle: "Únase a las 2000+ empresas que confían en nosotros",
       ctaDescription: "Descubra cómo XOTI puede optimizar su cadena logística",
       contactButton: "Contáctenos"
+    },
+    servicesPage: {
+      hero: {
+        title: "Nuestros Servicios de Transporte",
+        subtitle: "Soluciones completas y personalizadas para todas sus necesidades de transporte internacional. Experiencia, confiabilidad e innovación.",
+        badges: ["Transporte Terrestre", "Transporte Aéreo", "Transporte Marítimo", "Soluciones Express"]
+      },
+      mainServices: {
+        title: "Servicios Principales",
+        subtitle: "Tres modos de transporte complementarios para responder a todas sus necesidades logísticas",
+        services: {
+          road: {
+            title: "Transporte Terrestre",
+            description: "Soluciones completas de transporte terrestre para Europa con seguimiento GPS en tiempo real.",
+            features: ["Entrega 24-48h", "Seguimiento GPS en tiempo real", "Seguro incluido", "Vehículos adaptados"],
+            destinations: "Europa"
+          },
+          air: {
+            title: "Transporte Aéreo",
+            description: "Carga aérea express para sus envíos urgentes a todos los destinos mundiales.",
+            features: ["Express 6-24h", "Mundial", "Productos sensibles", "Despacho aduanero"],
+            destinations: "Mundial"
+          },
+          sea: {
+            title: "Transporte Marítimo",
+            description: "Soluciones económicas FCL y LCL para sus envíos en contenedores.",
+            features: ["FCL y LCL", "Económico", "Ecológico", "Puerto a puerto"],
+            destinations: "Internacional"
+          }
+        },
+        learnMore: "Saber más"
+      },
+      specialServices: {
+        title: "Servicios Especializados",
+        subtitle: "Soluciones avanzadas para necesidades específicas",
+        services: {
+          express: {
+            title: "Logística Express",
+            description: "Servicio premium con compromiso de plazos para sus envíos críticos."
+          },
+          custom: {
+            title: "Soluciones a Medida",
+            description: "Soluciones personalizadas para industrias especializadas."
+          },
+          tracking: {
+            title: "Seguimiento Avanzado",
+            description: "Plataforma de seguimiento con alertas y notificaciones personalizadas."
+          }
+        },
+        discover: "Descubrir"
+      },
+      process: {
+        title: "¿Cómo funciona?",
+        subtitle: "Un proceso simple y transparente en 4 pasos",
+        steps: {
+          quote: { title: "Cotización", description: "Reciba una cotización personalizada en menos de 2 horas" },
+          pickup: { title: "Recogida", description: "Recolección en su dirección en los horarios acordados" },
+          transport: { title: "Transporte", description: "Seguimiento en tiempo real de su envío" },
+          delivery: { title: "Entrega", description: "Recepción confirmada con prueba de entrega" }
+        }
+      },
+      cta: {
+        title: "¿Listo para comenzar?",
+        subtitle: "Obtenga una cotización gratuita y personalizada para su próximo envío",
+        quoteButton: "Solicitar Cotización",
+        trackButton: "Rastrear Paquete"
+      }
     }
   },
   de: {
@@ -2628,6 +2829,73 @@ export const translations: Record<Language, Translations> = {
       ctaTitle: "Schließen Sie sich den 2000+ Unternehmen an, die uns vertrauen",
       ctaDescription: "Entdecken Sie, wie XOTI Ihre Lieferkette optimieren kann",
       contactButton: "Kontaktieren Sie uns"
+    },
+    servicesPage: {
+      hero: {
+        title: "Unsere Transportdienstleistungen",
+        subtitle: "Komplette und maßgeschneiderte Lösungen für alle Ihre internationalen Transportbedürfnisse. Expertise, Zuverlässigkeit und Innovation.",
+        badges: ["Straßentransport", "Lufttransport", "Seetransport", "Express-Lösungen"]
+      },
+      mainServices: {
+        title: "Hauptdienstleistungen",
+        subtitle: "Drei komplementäre Transportmodi für alle Ihre logistischen Bedürfnisse",
+        services: {
+          road: {
+            title: "Straßentransport",
+            description: "Komplette Landtransportlösungen für Europa mit GPS-Echtzeit-Verfolgung.",
+            features: ["Lieferung 24-48h", "GPS-Echtzeit-Verfolgung", "Versicherung inbegriffen", "Angepasste Fahrzeuge"],
+            destinations: "Europa"
+          },
+          air: {
+            title: "Lufttransport",
+            description: "Express-Luftfracht für Ihre dringenden Sendungen zu allen weltweiten Zielen.",
+            features: ["Express 6-24h", "Weltweit", "Empfindliche Produkte", "Zollabfertigung"],
+            destinations: "Weltweit"
+          },
+          sea: {
+            title: "Seetransport",
+            description: "Wirtschaftliche FCL- und LCL-Lösungen für Ihre Containersendungen.",
+            features: ["FCL & LCL", "Wirtschaftlich", "Umweltfreundlich", "Hafen zu Hafen"],
+            destinations: "International"
+          }
+        },
+        learnMore: "Mehr erfahren"
+      },
+      specialServices: {
+        title: "Spezialdienstleistungen",
+        subtitle: "Erweiterte Lösungen für spezifische Bedürfnisse",
+        services: {
+          express: {
+            title: "Express-Logistik",
+            description: "Premium-Service mit Termingarantie für Ihre kritischen Sendungen."
+          },
+          custom: {
+            title: "Maßgeschneiderte Lösungen",
+            description: "Personalisierte Lösungen für spezialisierte Branchen."
+          },
+          tracking: {
+            title: "Erweiterte Verfolgung",
+            description: "Tracking-Plattform mit personalisierten Alarmen und Benachrichtigungen."
+          }
+        },
+        discover: "Entdecken"
+      },
+      process: {
+        title: "Wie funktioniert es?",
+        subtitle: "Ein einfacher und transparenter Prozess in 4 Schritten",
+        steps: {
+          quote: { title: "Angebot", description: "Erhalten Sie ein personalisiertes Angebot in weniger als 2 Stunden" },
+          pickup: { title: "Abholung", description: "Abholung an Ihrer Adresse zu vereinbarten Zeiten" },
+          transport: { title: "Transport", description: "Echtzeit-Verfolgung Ihrer Sendung" },
+          delivery: { title: "Lieferung", description: "Bestätigte Annahme mit Liefernachweis" }
+        }
+      },
+      cta: {
+        title: "Bereit anzufangen?",
+        subtitle: "Erhalten Sie ein kostenloses und personalisiertes Angebot für Ihre nächste Sendung",
+        quoteButton: "Angebot anfordern",
+        trackButton: "Paket verfolgen"
+      }
     }
   },
   it: {
@@ -3338,6 +3606,73 @@ export const translations: Record<Language, Translations> = {
       ctaTitle: "Unisciti alle 2000+ aziende che si fidano di noi",
       ctaDescription: "Scopri come XOTI può ottimizzare la tua catena logistica",
       contactButton: "Contattaci"
+    },
+    servicesPage: {
+      hero: {
+        title: "I Nostri Servizi di Trasporto",
+        subtitle: "Soluzioni complete e personalizzate per tutte le vostre esigenze di trasporto internazionale. Competenza, affidabilità e innovazione.",
+        badges: ["Trasporto Stradale", "Trasporto Aereo", "Trasporto Marittimo", "Soluzioni Express"]
+      },
+      mainServices: {
+        title: "Servizi Principali",
+        subtitle: "Tre modalità di trasporto complementari per rispondere a tutte le vostre esigenze logistiche",
+        services: {
+          road: {
+            title: "Trasporto Stradale",
+            description: "Soluzioni complete di trasporto terrestre per l'Europa con tracciamento GPS in tempo reale.",
+            features: ["Consegna 24-48h", "Tracciamento GPS in tempo reale", "Assicurazione inclusa", "Veicoli adattati"],
+            destinations: "Europa"
+          },
+          air: {
+            title: "Trasporto Aereo",
+            description: "Trasporto aereo express per le vostre spedizioni urgenti verso tutte le destinazioni mondiali.",
+            features: ["Express 6-24h", "Mondiale", "Prodotti sensibili", "Sdoganamento"],
+            destinations: "Mondiale"
+          },
+          sea: {
+            title: "Trasporto Marittimo",
+            description: "Soluzioni economiche FCL e LCL per le vostre spedizioni in container.",
+            features: ["FCL e LCL", "Economico", "Ecologico", "Porto a porto"],
+            destinations: "Internazionale"
+          }
+        },
+        learnMore: "Scopri di più"
+      },
+      specialServices: {
+        title: "Servizi Specializzati",
+        subtitle: "Soluzioni avanzate per esigenze specifiche",
+        services: {
+          express: {
+            title: "Logistica Express",
+            description: "Servizio premium con impegno sui tempi per le vostre spedizioni critiche."
+          },
+          custom: {
+            title: "Soluzioni Su Misura",
+            description: "Soluzioni personalizzate per industrie specializzate."
+          },
+          tracking: {
+            title: "Tracciamento Avanzato",
+            description: "Piattaforma di tracking con avvisi e notifiche personalizzate."
+          }
+        },
+        discover: "Scopri"
+      },
+      process: {
+        title: "Come funziona?",
+        subtitle: "Un processo semplice e trasparente in 4 passaggi",
+        steps: {
+          quote: { title: "Preventivo", description: "Ricevete un preventivo personalizzato in meno di 2 ore" },
+          pickup: { title: "Ritiro", description: "Raccolta al vostro indirizzo negli orari concordati" },
+          transport: { title: "Trasporto", description: "Tracciamento in tempo reale della vostra spedizione" },
+          delivery: { title: "Consegna", description: "Ricezione confermata con prova di consegna" }
+        }
+      },
+      cta: {
+        title: "Pronti per iniziare?",
+        subtitle: "Ottenete un preventivo gratuito e personalizzato per la vostra prossima spedizione",
+        quoteButton: "Richiedi Preventivo",
+        trackButton: "Traccia Pacco"
+      }
     }
   },
   pt: {
@@ -4048,6 +4383,73 @@ export const translations: Record<Language, Translations> = {
       ctaTitle: "Junte-se às 2000+ empresas que confiam em nós",
       ctaDescription: "Descubra como a XOTI pode otimizar sua cadeia logística",
       contactButton: "Entre em contato"
+    },
+    servicesPage: {
+      hero: {
+        title: "Nossos Serviços de Transporte",
+        subtitle: "Soluções completas e personalizadas para todas as suas necessidades de transporte internacional. Expertise, confiabilidade e inovação.",
+        badges: ["Transporte Rodoviário", "Transporte Aéreo", "Transporte Marítimo", "Soluções Express"]
+      },
+      mainServices: {
+        title: "Serviços Principais",
+        subtitle: "Três modos de transporte complementares para atender todas as suas necessidades logísticas",
+        services: {
+          road: {
+            title: "Transporte Rodoviário",
+            description: "Soluções completas de transporte terrestre para a Europa com rastreamento GPS em tempo real.",
+            features: ["Entrega 24-48h", "Rastreamento GPS em tempo real", "Seguro incluído", "Veículos adaptados"],
+            destinations: "Europa"
+          },
+          air: {
+            title: "Transporte Aéreo",
+            description: "Frete aéreo express para suas remessas urgentes para todos os destinos mundiais.",
+            features: ["Express 6-24h", "Mundial", "Produtos sensíveis", "Desembaraço aduaneiro"],
+            destinations: "Mundial"
+          },
+          sea: {
+            title: "Transporte Marítimo",
+            description: "Soluções econômicas FCL e LCL para suas remessas em contêineres.",
+            features: ["FCL e LCL", "Econômico", "Ecológico", "Porto a porto"],
+            destinations: "Internacional"
+          }
+        },
+        learnMore: "Saiba mais"
+      },
+      specialServices: {
+        title: "Serviços Especializados",
+        subtitle: "Soluções avançadas para necessidades específicas",
+        services: {
+          express: {
+            title: "Logística Express",
+            description: "Serviço premium com compromisso de prazos para suas remessas críticas."
+          },
+          custom: {
+            title: "Soluções Sob Medida",
+            description: "Soluções personalizadas para indústrias especializadas."
+          },
+          tracking: {
+            title: "Rastreamento Avançado",
+            description: "Plataforma de rastreamento com alertas e notificações personalizadas."
+          }
+        },
+        discover: "Descobrir"
+      },
+      process: {
+        title: "Como funciona?",
+        subtitle: "Um processo simples e transparente em 4 etapas",
+        steps: {
+          quote: { title: "Orçamento", description: "Receba um orçamento personalizado em menos de 2 horas" },
+          pickup: { title: "Coleta", description: "Retirada em seu endereço nos horários combinados" },
+          transport: { title: "Transporte", description: "Rastreamento em tempo real de sua remessa" },
+          delivery: { title: "Entrega", description: "Recebimento confirmado com comprovante de entrega" }
+        }
+      },
+      cta: {
+        title: "Pronto para começar?",
+        subtitle: "Obtenha um orçamento gratuito e personalizado para sua próxima remessa",
+        quoteButton: "Solicitar Orçamento",
+        trackButton: "Rastrear Encomenda"
+      }
     }
   }
 };
