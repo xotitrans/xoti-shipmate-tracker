@@ -168,9 +168,11 @@ export default function AdminShipments() {
                       </p>
                     </div>
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm">
-                        Voir
-                      </Button>
+                      <Link to={`/admin/shipments/${shipment.id}`}>
+                        <Button variant="outline" size="sm">
+                          Voir
+                        </Button>
+                      </Link>
                       <Button variant="outline" size="sm">
                         Modifier
                       </Button>

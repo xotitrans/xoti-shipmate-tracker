@@ -24,6 +24,7 @@ import Custom from "./pages/services/Custom";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminShipments from "./pages/admin/AdminShipments";
 import AdminNewShipment from "./pages/admin/AdminNewShipment";
+import AdminShipmentDetail from "./pages/admin/AdminShipmentDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
               {/* Admin Routes with AdminLayout */}
               <Route path="/admin" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
               <Route path="/admin/shipments" element={<AdminLayout><AdminShipments /></AdminLayout>} />
+              <Route path="/admin/shipments/:id" element={<AdminLayout><AdminShipmentDetail /></AdminLayout>} />
               <Route path="/admin/new-shipment" element={<AdminLayout><AdminNewShipment /></AdminLayout>} />
               
               {/* Public Routes with Header/Footer */}

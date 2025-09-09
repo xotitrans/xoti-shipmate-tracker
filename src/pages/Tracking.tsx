@@ -10,6 +10,7 @@ import { translations } from '@/data/translations';
 import { supabase } from '@/integrations/supabase/client';
 import { Search, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckCircle, AlertCircle, Camera } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import ShipmentMap from '@/components/ShipmentMap';
 
 interface TrackingData {
   id: string;
@@ -22,6 +23,8 @@ interface TrackingData {
   recipient_address: string;
   recipient_phone: string;
   current_location: string | null;
+  current_latitude: number | null;
+  current_longitude: number | null;
   estimated_delivery: string | null;
   actual_delivery: string | null;
   transport_type: string;
@@ -261,6 +264,73 @@ const Tracking = () => {
               </div>
             </CardContent>
           </Card>
+
+          {/* GPS Map */}
+          <ShipmentMap
+            shipmentId={trackingResult.id}
+            latitude={trackingResult.current_latitude}
+            longitude={trackingResult.current_longitude}
+            currentLocation={trackingResult.current_location}
+            senderAddress={trackingResult.sender_address}
+            recipientAddress={trackingResult.recipient_address}
+          />
+
+          {/* Tracking History */}
+          {trackingHistory.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Clock className="h-5 w-5" />
+                  Historique de suivi
+                </CardTitle>
+                <CardDescription>
+                  Suivi détaillé des étapes de livraison
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {trackingHistory.map((item, index) => (
+                    <div key={item.id} className="flex items-start gap-4">
+                      <div className="flex flex-col items-center">
+                        <div className={`
+                          w-3 h-3 rounded-full border-2 
+                          ${index === 0 ? 'bg-primary border-primary' : 'bg-background border-muted-foreground'}
+                        `} />
+                        {index < trackingHistory.length - 1 && (
+                          <div className="w-0.5 h-8 bg-muted-foreground/30 mt-2" />
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          {getStatusIcon(item.status)}
+                          <span className="font-medium text-sm">
+                            {getStatusText(item.status)}
+                          </span>
+                          <span className="text-xs text-muted-foreground">
+                            {new Date(item.timestamp).toLocaleString(
+                              currentLanguage === 'fr' ? 'fr-FR' : 
+                              currentLanguage === 'de' ? 'de-DE' : 
+                              currentLanguage === 'it' ? 'it-IT' : 
+                              currentLanguage === 'es' ? 'es-ES' : 'pt-PT'
+                            )}
+                          </span>
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          <div className="flex items-center gap-1 mb-1">
+                            <MapPin className="h-3 w-3" />
+                            {item.location}
+                          </div>
+                          {item.description && (
+                            <p className="text-xs">{item.description}</p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </div>
       )}
     </div>
