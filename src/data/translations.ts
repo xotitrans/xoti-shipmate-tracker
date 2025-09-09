@@ -410,6 +410,64 @@ export interface Translations {
     contactUs: string;
     learnMore: string;
   };
+  custom: {
+    badge: string;
+    title: string;
+    description: string;
+    getQuote: string;
+    consultation: string;
+    approachTitle: string;
+    approachDescription: string;
+    approach: {
+      analysis: { title: string; description: string; };
+      design: { title: string; description: string; };
+      implementation: { title: string; description: string; };
+      optimization: { title: string; description: string; };
+    };
+    industriesTitle: string;
+    industriesDescription: string;
+    industries: {
+      automotive: {
+        title: string;
+        description: string;
+        features: {
+          parts: string;
+          jit: string;
+          quality: string;
+        };
+      };
+      pharmaceutical: {
+        title: string;
+        description: string;
+        features: {
+          temperature: string;
+          compliance: string;
+          security: string;
+        };
+      };
+      technology: {
+        title: string;
+        description: string;
+        features: {
+          fragile: string;
+          speed: string;
+          global: string;
+        };
+      };
+    };
+    processTitle: string;
+    processDescription: string;
+    process: {
+      consultation: { title: string; description: string; };
+      proposal: { title: string; description: string; };
+      execution: { title: string; description: string; };
+      optimization: { title: string; description: string; };
+    };
+    ctaTitle: string;
+    ctaDescription: string;
+    contactExpert: string;
+    downloadBrochure: string;
+  };
 }
 
 export const translations: Record<Language, Translations> = {
@@ -988,6 +1046,88 @@ export const translations: Record<Language, Translations> = {
       contactUs: "Nous contacter",
       learnMore: "En savoir plus"
     },
+    custom: {
+      badge: "Solutions Sur Mesure",
+      title: "Services Personnalisés",
+      description: "Solutions de transport adaptées à vos besoins spécifiques avec une approche consultative et des services sur mesure pour votre industrie.",
+      getQuote: "Demander un devis",
+      consultation: "Consultation gratuite",
+      approachTitle: "Notre approche personnalisée",
+      approachDescription: "Une méthodologie éprouvée pour concevoir des solutions de transport adaptées à vos contraintes",
+      approach: {
+        analysis: {
+          title: "Analyse des besoins",
+          description: "Étude approfondie de vos processus et contraintes"
+        },
+        design: {
+          title: "Conception sur mesure",
+          description: "Élaboration d'une solution adaptée à votre secteur"
+        },
+        implementation: {
+          title: "Mise en œuvre",
+          description: "Déploiement progressif avec accompagnement dédié"
+        },
+        optimization: {
+          title: "Optimisation continue",
+          description: "Amélioration et ajustement de la solution"
+        }
+      },
+      industriesTitle: "Secteurs d'expertise",
+      industriesDescription: "Des solutions spécialisées pour chaque industrie avec ses exigences particulières",
+      industries: {
+        automotive: {
+          title: "Automobile",
+          description: "Transport de pièces détachées et véhicules avec respect des délais de production.",
+          features: {
+            parts: "Pièces détachées",
+            jit: "Juste-à-temps",
+            quality: "Qualité garantie"
+          }
+        },
+        pharmaceutical: {
+          title: "Pharmaceutique",
+          description: "Transport de produits sensibles avec chaîne du froid et traçabilité complète.",
+          features: {
+            temperature: "Chaîne du froid",
+            compliance: "Conformité réglementaire",
+            security: "Sécurité maximale"
+          }
+        },
+        technology: {
+          title: "Technologie",
+          description: "Transport sécurisé d'équipements électroniques et composants sensibles.",
+          features: {
+            fragile: "Produits fragiles",
+            speed: "Livraison rapide",
+            global: "Couverture mondiale"
+          }
+        }
+      },
+      processTitle: "Notre processus",
+      processDescription: "Une approche structurée pour développer la solution logistique idéale",
+      process: {
+        consultation: {
+          title: "Consultation",
+          description: "Analyse de vos besoins et contraintes spécifiques"
+        },
+        proposal: {
+          title: "Proposition",
+          description: "Conception d'une solution personnalisée adaptée"
+        },
+        execution: {
+          title: "Exécution",
+          description: "Mise en place et déploiement de la solution"
+        },
+        optimization: {
+          title: "Optimisation",
+          description: "Suivi et amélioration continue des performances"
+        }
+      },
+      ctaTitle: "Discutons de votre projet",
+      ctaDescription: "Nos experts analysent gratuitement vos besoins et vous proposent une solution sur mesure.",
+      contactExpert: "Contacter un expert",
+      downloadBrochure: "Télécharger la brochure"
+    }
   },
   es: {
     navigation: {
@@ -1563,6 +1703,88 @@ export const translations: Record<Language, Translations> = {
       ctaDescription: "Contáctenos ahora para sus necesidades de entrega exprés y obtenga una cotización personalizada.",
       contactUs: "Contáctanos",
       learnMore: "Saber más"
+    },
+    custom: {
+      badge: "Soluciones Personalizadas",
+      title: "Servicios Personalizados",
+      description: "Soluciones de transporte adaptadas a sus necesidades específicas con un enfoque consultivo y servicios a medida para su industria.",
+      getQuote: "Solicitar cotización",
+      consultation: "Consulta gratuita",
+      approachTitle: "Nuestro enfoque personalizado",
+      approachDescription: "Una metodología probada para diseñar soluciones de transporte adaptadas a sus restricciones",
+      approach: {
+        analysis: {
+          title: "Análisis de necesidades",
+          description: "Estudio profundo de sus procesos y restricciones"
+        },
+        design: {
+          title: "Diseño a medida",
+          description: "Desarrollo de una solución adaptada a su sector"
+        },
+        implementation: {
+          title: "Implementación",
+          description: "Despliegue progresivo con acompañamiento dedicado"
+        },
+        optimization: {
+          title: "Optimización continua",
+          description: "Mejora y ajuste de la solución"
+        }
+      },
+      industriesTitle: "Sectores de especialización",
+      industriesDescription: "Soluciones especializadas para cada industria con sus exigencias particulares",
+      industries: {
+        automotive: {
+          title: "Automotriz",
+          description: "Transporte de repuestos y vehículos respetando los plazos de producción.",
+          features: {
+            parts: "Repuestos",
+            jit: "Justo a tiempo",
+            quality: "Calidad garantizada"
+          }
+        },
+        pharmaceutical: {
+          title: "Farmacéutico",
+          description: "Transporte de productos sensibles con cadena de frío y trazabilidad completa.",
+          features: {
+            temperature: "Cadena de frío",
+            compliance: "Cumplimiento normativo",
+            security: "Seguridad máxima"
+          }
+        },
+        technology: {
+          title: "Tecnología",
+          description: "Transporte seguro de equipos electrónicos y componentes sensibles.",
+          features: {
+            fragile: "Productos frágiles",
+            speed: "Entrega rápida",
+            global: "Cobertura mundial"
+          }
+        }
+      },
+      processTitle: "Nuestro proceso",
+      processDescription: "Un enfoque estructurado para desarrollar la solución logística ideal",
+      process: {
+        consultation: {
+          title: "Consulta",
+          description: "Análisis de sus necesidades y restricciones específicas"
+        },
+        proposal: {
+          title: "Propuesta",
+          description: "Diseño de una solución personalizada adaptada"
+        },
+        execution: {
+          title: "Ejecución",
+          description: "Implementación y despliegue de la solución"
+        },
+        optimization: {
+          title: "Optimización",
+          description: "Seguimiento y mejora continua del rendimiento"
+        }
+      },
+      ctaTitle: "Hablemos de su proyecto",
+      ctaDescription: "Nuestros expertos analizan gratuitamente sus necesidades y le proponen una solución a medida.",
+      contactExpert: "Contactar un experto",
+      downloadBrochure: "Descargar el folleto"
     }
   },
   de: {
@@ -2139,6 +2361,88 @@ export const translations: Record<Language, Translations> = {
       ctaDescription: "Kontaktieren Sie uns jetzt für Ihre Express-Lieferanforderungen und erhalten Sie ein personalisiertes Angebot.",
       contactUs: "Kontaktieren Sie uns",
       learnMore: "Mehr erfahren"
+    },
+    custom: {
+      badge: "Maßgeschneiderte Lösungen",
+      title: "Individuelle Services",
+      description: "Auf Ihre spezifischen Bedürfnisse zugeschnittene Transportlösungen mit beratungsorientierten Ansatz und branchenspezifischen Services.",
+      getQuote: "Angebot anfordern",
+      consultation: "Kostenlose Beratung",
+      approachTitle: "Unser individueller Ansatz",
+      approachDescription: "Eine bewährte Methodik zur Entwicklung von Transportlösungen, die auf Ihre Anforderungen zugeschnitten sind",
+      approach: {
+        analysis: {
+          title: "Bedarfsanalyse",
+          description: "Tiefgreifende Untersuchung Ihrer Prozesse und Anforderungen"
+        },
+        design: {
+          title: "Maßgeschneidertes Design",
+          description: "Entwicklung einer branchenspezifischen Lösung"
+        },
+        implementation: {
+          title: "Umsetzung",
+          description: "Schrittweise Implementierung mit dedizierter Betreuung"
+        },
+        optimization: {
+          title: "Kontinuierliche Optimierung",
+          description: "Verbesserung und Anpassung der Lösung"
+        }
+      },
+      industriesTitle: "Fachbereiche",
+      industriesDescription: "Spezialisierte Lösungen für jede Branche mit ihren besonderen Anforderungen",
+      industries: {
+        automotive: {
+          title: "Automobil",
+          description: "Transport von Ersatzteilen und Fahrzeugen unter Einhaltung der Produktionszeiten.",
+          features: {
+            parts: "Ersatzteile",
+            jit: "Just-in-Time",
+            quality: "Garantierte Qualität"
+          }
+        },
+        pharmaceutical: {
+          title: "Pharmazie",
+          description: "Transport empfindlicher Produkte mit Kühlkette und vollständiger Rückverfolgbarkeit.",
+          features: {
+            temperature: "Kühlkette",
+            compliance: "Regulatorische Compliance",
+            security: "Maximale Sicherheit"
+          }
+        },
+        technology: {
+          title: "Technologie",
+          description: "Sicherer Transport von elektronischen Geräten und empfindlichen Komponenten.",
+          features: {
+            fragile: "Zerbrechliche Produkte",
+            speed: "Schnelle Lieferung",
+            global: "Weltweite Abdeckung"
+          }
+        }
+      },
+      processTitle: "Unser Prozess",
+      processDescription: "Ein strukturierter Ansatz zur Entwicklung der idealen Logistiklösung",
+      process: {
+        consultation: {
+          title: "Beratung",
+          description: "Analyse Ihrer spezifischen Bedürfnisse und Anforderungen"
+        },
+        proposal: {
+          title: "Vorschlag",
+          description: "Entwicklung einer angepassten personalisierten Lösung"
+        },
+        execution: {
+          title: "Ausführung",
+          description: "Einrichtung und Implementierung der Lösung"
+        },
+        optimization: {
+          title: "Optimierung",
+          description: "Überwachung und kontinuierliche Leistungsverbesserung"
+        }
+      },
+      ctaTitle: "Lassen Sie uns über Ihr Projekt sprechen",
+      ctaDescription: "Unsere Experten analysieren kostenlos Ihre Bedürfnisse und schlagen Ihnen eine maßgeschneiderte Lösung vor.",
+      contactExpert: "Experten kontaktieren",
+      downloadBrochure: "Broschüre herunterladen"
     }
   },
   it: {
@@ -2715,6 +3019,88 @@ export const translations: Record<Language, Translations> = {
       ctaDescription: "Contattaci ora per le tue esigenze di consegna express e ottieni un preventivo personalizzato.",
       contactUs: "Contattaci",
       learnMore: "Scopri di più"
+    },
+    custom: {
+      badge: "Soluzioni Su Misura",
+      title: "Servizi Personalizzati",
+      description: "Soluzioni di trasporto adattate alle tue esigenze specifiche con un approccio consultivo e servizi su misura per il tuo settore.",
+      getQuote: "Richiedi preventivo",
+      consultation: "Consulenza gratuita",
+      approachTitle: "Il nostro approccio personalizzato",
+      approachDescription: "Una metodologia collaudata per progettare soluzioni di trasporto adattate ai tuoi vincoli",
+      approach: {
+        analysis: {
+          title: "Analisi dei bisogni",
+          description: "Studio approfondito dei tuoi processi e vincoli"
+        },
+        design: {
+          title: "Progettazione su misura",
+          description: "Sviluppo di una soluzione adattata al tuo settore"
+        },
+        implementation: {
+          title: "Implementazione",
+          description: "Distribuzione progressiva con accompagnamento dedicato"
+        },
+        optimization: {
+          title: "Ottimizzazione continua",
+          description: "Miglioramento e aggiustamento della soluzione"
+        }
+      },
+      industriesTitle: "Settori di competenza",
+      industriesDescription: "Soluzioni specializzate per ogni industria con le sue esigenze particolari",
+      industries: {
+        automotive: {
+          title: "Automotive",
+          description: "Trasporto di ricambi e veicoli rispettando i tempi di produzione.",
+          features: {
+            parts: "Ricambi",
+            jit: "Just-in-time",
+            quality: "Qualità garantita"
+          }
+        },
+        pharmaceutical: {
+          title: "Farmaceutico",
+          description: "Trasporto di prodotti sensibili con catena del freddo e tracciabilità completa.",
+          features: {
+            temperature: "Catena del freddo",
+            compliance: "Conformità normativa",
+            security: "Sicurezza massima"
+          }
+        },
+        technology: {
+          title: "Tecnologia",
+          description: "Trasporto sicuro di attrezzature elettroniche e componenti sensibili.",
+          features: {
+            fragile: "Prodotti fragili",
+            speed: "Consegna rapida",
+            global: "Copertura mondiale"
+          }
+        }
+      },
+      processTitle: "Il nostro processo",
+      processDescription: "Un approccio strutturato per sviluppare la soluzione logistica ideale",
+      process: {
+        consultation: {
+          title: "Consulenza",
+          description: "Analisi delle tue esigenze e vincoli specifici"
+        },
+        proposal: {
+          title: "Proposta",
+          description: "Progettazione di una soluzione personalizzata adattata"
+        },
+        execution: {
+          title: "Esecuzione",
+          description: "Implementazione e distribuzione della soluzione"
+        },
+        optimization: {
+          title: "Ottimizzazione",
+          description: "Monitoraggio e miglioramento continuo delle prestazioni"
+        }
+      },
+      ctaTitle: "Parliamo del tuo progetto",
+      ctaDescription: "I nostri esperti analizzano gratuitamente le tue esigenze e ti propongono una soluzione su misura.",
+      contactExpert: "Contatta un esperto",
+      downloadBrochure: "Scarica la brochure"
     }
   },
   pt: {
@@ -3291,6 +3677,88 @@ export const translations: Record<Language, Translations> = {
       ctaDescription: "Entre em contato conosco agora para suas necessidades de entrega expressa e obtenha um orçamento personalizado.",
       contactUs: "Entre em contato",
       learnMore: "Saiba mais"
+    },
+    custom: {
+      badge: "Soluções Personalizadas",
+      title: "Serviços Personalizados",
+      description: "Soluções de transporte adaptadas às suas necessidades específicas com uma abordagem consultiva e serviços sob medida para sua indústria.",
+      getQuote: "Solicitar orçamento",
+      consultation: "Consulta gratuita",
+      approachTitle: "Nossa abordagem personalizada",
+      approachDescription: "Uma metodologia comprovada para projetar soluções de transporte adaptadas às suas restrições",
+      approach: {
+        analysis: {
+          title: "Análise das necessidades",
+          description: "Estudo aprofundado de seus processos e restrições"
+        },
+        design: {
+          title: "Design sob medida",
+          description: "Desenvolvimento de uma solução adaptada ao seu setor"
+        },
+        implementation: {
+          title: "Implementação",
+          description: "Implantação progressiva com acompanhamento dedicado"
+        },
+        optimization: {
+          title: "Otimização contínua",
+          description: "Melhoria e ajuste da solução"
+        }
+      },
+      industriesTitle: "Setores de especialização",
+      industriesDescription: "Soluções especializadas para cada indústria com suas exigências particulares",
+      industries: {
+        automotive: {
+          title: "Automotivo",
+          description: "Transporte de peças e veículos respeitando os prazos de produção.",
+          features: {
+            parts: "Peças de reposição",
+            jit: "Just-in-time",
+            quality: "Qualidade garantida"
+          }
+        },
+        pharmaceutical: {
+          title: "Farmacêutico",
+          description: "Transporte de produtos sensíveis com cadeia de frio e rastreabilidade completa.",
+          features: {
+            temperature: "Cadeia de frio",
+            compliance: "Conformidade regulatória",
+            security: "Segurança máxima"
+          }
+        },
+        technology: {
+          title: "Tecnologia",
+          description: "Transporte seguro de equipamentos eletrônicos e componentes sensíveis.",
+          features: {
+            fragile: "Produtos frágeis",
+            speed: "Entrega rápida",
+            global: "Cobertura mundial"
+          }
+        }
+      },
+      processTitle: "Nosso processo",
+      processDescription: "Uma abordagem estruturada para desenvolver a solução logística ideal",
+      process: {
+        consultation: {
+          title: "Consulta",
+          description: "Análise de suas necessidades e restrições específicas"
+        },
+        proposal: {
+          title: "Proposta",
+          description: "Projeto de uma solução personalizada adaptada"
+        },
+        execution: {
+          title: "Execução",
+          description: "Implementação e implantação da solução"
+        },
+        optimization: {
+          title: "Otimização",
+          description: "Monitoramento e melhoria contínua do desempenho"
+        }
+      },
+      ctaTitle: "Vamos conversar sobre seu projeto",
+      ctaDescription: "Nossos especialistas analisam gratuitamente suas necessidades e propõem uma solução sob medida.",
+      contactExpert: "Contatar um especialista",
+      downloadBrochure: "Baixar o folheto"
     }
   }
 };
