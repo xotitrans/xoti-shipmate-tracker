@@ -4,17 +4,21 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Package, Truck, Globe, Users, Search } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
-
-const navigation = [
-  { name: 'Accueil', href: '/', icon: Package },
-  { name: 'À propos', href: '/about', icon: Users },
-  { name: 'Services', href: '/services', icon: Truck },
-  { name: 'Suivi', href: '/tracking', icon: Search },
-  { name: 'Contact', href: '/contact', icon: Globe },
-];
+import { useLanguage } from '@/hooks/useLanguage';
+import { translations } from '@/data/translations';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
+
+  const navigation = [
+    { name: t.navigation.home, href: '/', icon: Package },
+    { name: t.navigation.about, href: '/about', icon: Users },
+    { name: t.navigation.services, href: '/services', icon: Truck },
+    { name: t.navigation.tracking, href: '/tracking', icon: Search },
+    { name: t.navigation.contact, href: '/contact', icon: Globe },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

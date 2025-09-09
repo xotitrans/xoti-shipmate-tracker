@@ -1,6 +1,13 @@
 import { Language } from '@/types/language';
 
 export interface Translations {
+  navigation: {
+    home: string;
+    about: string;
+    services: string;
+    tracking: string;
+    contact: string;
+  };
   hero: {
     title1: string;
     title2: string;
@@ -42,6 +49,13 @@ export interface Translations {
 
 export const translations: Record<Language, Translations> = {
   fr: {
+    navigation: {
+      home: 'Accueil',
+      about: 'À propos', 
+      services: 'Services',
+      tracking: 'Suivi',
+      contact: 'Contact'
+    },
     hero: {
       title1: 'Transport International',
       title2: 'de Confiance',
@@ -109,6 +123,13 @@ export const translations: Record<Language, Translations> = {
     }
   },
   es: {
+    navigation: {
+      home: 'Inicio',
+      about: 'Acerca de',
+      services: 'Servicios', 
+      tracking: 'Seguimiento',
+      contact: 'Contacto'
+    },
     hero: {
       title1: 'Transporte Internacional',
       title2: 'de Confianza',
@@ -176,6 +197,13 @@ export const translations: Record<Language, Translations> = {
     }
   },
   de: {
+    navigation: {
+      home: 'Startseite',
+      about: 'Über uns',
+      services: 'Dienstleistungen',
+      tracking: 'Verfolgung', 
+      contact: 'Kontakt'
+    },
     hero: {
       title1: 'Internationaler Transport',
       title2: 'zum Vertrauen',
@@ -243,6 +271,13 @@ export const translations: Record<Language, Translations> = {
     }
   },
   it: {
+    navigation: {
+      home: 'Home',
+      about: 'Chi siamo',
+      services: 'Servizi',
+      tracking: 'Tracciamento',
+      contact: 'Contatto'
+    },
     hero: {
       title1: 'Trasporto Internazionale',
       title2: 'di Fiducia',
@@ -310,6 +345,13 @@ export const translations: Record<Language, Translations> = {
     }
   },
   pt: {
+    navigation: {
+      home: 'Início',
+      about: 'Sobre nós',
+      services: 'Serviços',
+      tracking: 'Rastreamento',
+      contact: 'Contato'
+    },
     hero: {
       title1: 'Transporte Internacional',
       title2: 'de Confiança',
