@@ -20,16 +20,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return DEFAULT_LANGUAGE;
   });
 
-  useEffect(() => {
-    // Sync with localStorage if not already set
-    const savedLanguage = localStorage.getItem('xoti-language') as Language;
-    
-    if (savedLanguage && ['fr', 'es', 'de', 'it', 'pt'].includes(savedLanguage)) {
-      if (currentLanguage !== savedLanguage) {
-        setCurrentLanguage(savedLanguage);
-      }
-    }
-  }, [currentLanguage]);
+  // No need for additional useEffect - initialization handles it
 
   const changeLanguage = (language: Language) => {
     setCurrentLanguage(language);
