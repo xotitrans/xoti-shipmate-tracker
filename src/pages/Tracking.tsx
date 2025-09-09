@@ -8,7 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
 import { supabase } from '@/integrations/supabase/client';
-import { Search, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckCircle, AlertCircle, Camera, Weight, Shield, AlertTriangle, FileSignature, Euro, Zap } from 'lucide-react';
+import { Search, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckCircle, AlertCircle, Weight, Shield, AlertTriangle, FileSignature, Euro, Zap, CreditCard, Hash } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ShipmentMap from '@/components/ShipmentMap';
 
@@ -41,6 +41,9 @@ interface TrackingData {
   currency: string | null;
   emergency_contact_name: string | null;
   emergency_contact_phone: string | null;
+  payment_method: string | null;
+  client_reference: string | null;
+  order_number: string | null;
   special_instructions: string | null;
   delivery_instructions: string | null;
   preferred_delivery_time: string | null;
@@ -343,6 +346,77 @@ const Tracking = () => {
                 )}
               </div>
 
+              {/* Financial and Reference Information */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                {(trackingResult.client_reference || trackingResult.order_number) && (
+                  <div className="space-y-3">
+                    {trackingResult.client_reference && (
+                      <div className="flex items-center gap-2">
+                        <Hash className="h-4 w-4 text-muted-foreground" />
+                        <div>
+                          <p className="text-sm font-medium">Référence client</p>
+                          <p className="text-sm text-muted-foreground">{trackingResult.client_reference}</p>
+                        </div>
+                      </div>
+                    )}
+                    {trackingResult.order_number && (
+                      <div className="flex items-center gap-2">
+                        <Package className="h-4 w-4 text-muted-foreground" />
+                        <div>
+                          <p className="text-sm font-medium">Numéro de commande</p>
+                          <p className="text-sm text-muted-foreground">{trackingResult.order_number}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {(trackingResult.payment_status || trackingResult.payment_method) && (
+                  <div className="space-y-3">
+                    {trackingResult.payment_status && (
+                      <div className="flex items-center gap-2">
+                        <CreditCard className="h-4 w-4 text-muted-foreground" />
+                        <div>
+                          <p className="text-sm font-medium">Statut de paiement</p>
+                          <Badge variant={trackingResult.payment_status === 'paid' ? 'default' : 'secondary'} className="text-xs">
+                            {trackingResult.payment_status === 'paid' ? 'Payé' : 
+                             trackingResult.payment_status === 'pending' ? 'En attente' : 
+                             trackingResult.payment_status === 'failed' ? 'Échec' : trackingResult.payment_status}
+                          </Badge>
+                        </div>
+                      </div>
+                    )}
+                    {trackingResult.payment_method && (
+                      <div className="flex items-center gap-2">
+                        <CreditCard className="h-4 w-4 text-muted-foreground" />
+                        <div>
+                          <p className="text-sm font-medium">Méthode de paiement</p>
+                          <p className="text-sm text-muted-foreground">
+                            {trackingResult.payment_method === 'credit_card' ? 'Carte de crédit' :
+                             trackingResult.payment_method === 'bank_transfer' ? 'Virement bancaire' :
+                             trackingResult.payment_method === 'cash' ? 'Espèces' :
+                             trackingResult.payment_method === 'paypal' ? 'PayPal' :
+                             trackingResult.payment_method}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {trackingResult.insured_value && (
+                  <div className="flex items-center gap-2">
+                    <Shield className="h-4 w-4 text-muted-foreground" />
+                    <div>
+                      <p className="text-sm font-medium">Valeur assurée</p>
+                      <p className="text-sm text-muted-foreground">
+                        {trackingResult.insured_value} {trackingResult.currency || 'EUR'}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
               {/* Special Indicators */}
               {(trackingResult.is_fragile || trackingResult.is_dangerous || trackingResult.requires_signature) && (
                 <div className="mb-6">
@@ -372,7 +446,7 @@ const Tracking = () => {
 
               {/* Instructions and Notes */}
               {(trackingResult.special_instructions || trackingResult.delivery_instructions || trackingResult.preferred_delivery_time || trackingResult.notes) && (
-                <div className="space-y-3">
+                <div className="space-y-3 mb-6">
                   {trackingResult.special_instructions && (
                     <div>
                       <p className="text-sm font-medium">Instructions spéciales</p>
@@ -402,7 +476,7 @@ const Tracking = () => {
 
               {/* Emergency Contact */}
               {trackingResult.emergency_contact_name && (
-                <div className="mt-6 pt-4 border-t">
+                <div className="pt-4 border-t">
                   <h4 className="text-sm font-medium mb-3 flex items-center gap-2">
                     <Phone className="h-4 w-4" />
                     Contact d'urgence
