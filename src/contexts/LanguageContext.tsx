@@ -1,7 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Language, DEFAULT_LANGUAGE } from '@/types/language';
 
-export const useLanguage = () => {
+interface LanguageContextType {
+  currentLanguage: Language;
+  changeLanguage: (language: Language) => void;
+}
+
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Initialize with saved language or default
   const [currentLanguage, setCurrentLanguage] = useState<Language>(() => {
     if (typeof window !== 'undefined') {
@@ -25,11 +32,23 @@ export const useLanguage = () => {
   }, [currentLanguage]);
 
   const changeLanguage = (language: Language) => {
-    console.log('Changing language to:', language);
+    console.log('Context: Changing language to:', language);
     setCurrentLanguage(language);
     localStorage.setItem('xoti-language', language);
-    console.log('Language changed to:', language);
+    console.log('Context: Language changed to:', language);
   };
 
-  return { currentLanguage, changeLanguage };
+  return (
+    <LanguageContext.Provider value={{ currentLanguage, changeLanguage }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};
+
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  if (context === undefined) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
 };

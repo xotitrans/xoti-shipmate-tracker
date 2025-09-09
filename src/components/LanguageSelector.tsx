@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { ChevronDown, Globe } from 'lucide-react';
 import { LANGUAGES } from '@/types/language';
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const LanguageSelector = () => {
   const { currentLanguage, changeLanguage } = useLanguage();

@@ -4,13 +4,15 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Package, Truck, Globe, Users, Search } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
+
+  console.log('Header rendering with language:', currentLanguage);
 
   const navigation = [
     { name: t.navigation.home, href: '/', icon: Package },

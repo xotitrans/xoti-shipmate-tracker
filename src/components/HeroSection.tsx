@@ -2,12 +2,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Truck, Plane, Ship, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
 
 export const HeroSection = () => {
   const { currentLanguage } = useLanguage();
   const t = translations[currentLanguage];
+
+  console.log('HeroSection rendering with language:', currentLanguage);
 
   const features = [
     {
