@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -7,6 +7,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Plus, Package, Clock, Truck, CheckCircle, AlertCircle } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 interface Shipment {
   id: string;
@@ -21,6 +22,7 @@ interface Shipment {
 
 const Dashboard = () => {
   const { user, loading } = useAuth();
+  const { navigateWithLanguage, getLinkWithLanguage } = useLanguageNavigation();
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [isLoadingShipments, setIsLoadingShipments] = useState(true);
 
@@ -123,12 +125,10 @@ const Dashboard = () => {
           <h1 className="text-3xl font-bold">Tableau de bord</h1>
           <p className="text-muted-foreground">Gérez vos expéditions et suivez vos colis</p>
         </div>
-        <Link to="/new-shipment">
-          <Button>
-            <Plus className="h-4 w-4 mr-2" />
-            Nouvelle expédition
-          </Button>
-        </Link>
+        <Button onClick={() => navigateWithLanguage('new-shipment')}>
+          <Plus className="h-4 w-4 mr-2" />
+          Nouvelle expédition
+        </Button>
       </div>
 
       {/* Statistics */}
@@ -187,12 +187,10 @@ const Dashboard = () => {
               <p className="text-muted-foreground mb-4">
                 Vous n'avez pas encore créé d'expédition.
               </p>
-              <Link to="/new-shipment">
-                <Button>
-                  <Plus className="h-4 w-4 mr-2" />
-                  Créer votre première expédition
-                </Button>
-              </Link>
+              <Button onClick={() => navigateWithLanguage('new-shipment')}>
+                <Plus className="h-4 w-4 mr-2" />
+                Créer votre première expédition
+              </Button>
             </div>
           ) : (
             <div className="space-y-4">
@@ -218,11 +216,13 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <div className="text-right">
-                    <Link to={`/tracking?number=${shipment.tracking_number}`}>
-                      <Button variant="outline" size="sm">
-                        Suivre
-                      </Button>
-                    </Link>
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => navigateWithLanguage(`tracking?number=${shipment.tracking_number}`)}
+                    >
+                      Suivre
+                    </Button>
                     {shipment.estimated_delivery && (
                       <p className="text-sm text-muted-foreground mt-1">
                         Livraison prévue: {new Date(shipment.estimated_delivery).toLocaleDateString('fr-FR')}
