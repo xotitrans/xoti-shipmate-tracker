@@ -99,9 +99,20 @@ export interface Translations {
     address: string;
     phoneNumber: string;
     currentPosition: string;
-    notDefined: string;
     transportType: string;
     estimatedDeliveryDate: string;
+    notDefined: string;
+    dimensions: string;
+    declaredValue: string;
+    transportCost: string;
+    priority: string;
+    status: string;
+    method: string;
+    insuredValue: string;
+    specialInstructions: string;
+    deliveryInstructions: string;
+    emergencyContact: string;
+    notes: string;
     statuses: {
       pending: string;
       in_transit: string;
@@ -113,6 +124,22 @@ export interface Translations {
       air: string;
       sea: string;
       express: string;
+    };
+    priorities: {
+      normal: string;
+      urgent: string;
+      express: string;
+    };
+    paymentStatuses: {
+      paid: string;
+      pending: string;
+      failed: string;
+    };
+    paymentMethods: {
+      credit_card: string;
+      bank_transfer: string;
+      cash: string;
+      paypal: string;
     };
     faq: {
       q1: string;
@@ -762,6 +789,33 @@ export const translations: Record<Language, Translations> = {
         air: 'Aérien',
         sea: 'Maritime',
         express: 'Express'
+      },
+      dimensions: 'Dimensions',
+      declaredValue: 'Valeur déclarée',
+      transportCost: 'Frais de transport',
+      priority: 'Priorité',
+      status: 'Statut',
+      method: 'Méthode',
+      insuredValue: 'Valeur assurée',
+      specialInstructions: 'Instructions spéciales',
+      deliveryInstructions: 'Instructions de livraison',
+      emergencyContact: 'Contact d\'urgence',
+      notes: 'Notes',
+      priorities: {
+        normal: 'Normal',
+        urgent: 'Urgent',
+        express: 'Express'
+      },
+      paymentStatuses: {
+        paid: 'Payé',
+        pending: 'En attente',
+        failed: 'Échec'
+      },
+      paymentMethods: {
+        credit_card: 'Carte de crédit',
+        bank_transfer: 'Virement bancaire',
+        cash: 'Espèces',
+        paypal: 'PayPal'
       },
       faq: {
         q1: 'Comment fonctionne le suivi ?',
@@ -1610,6 +1664,33 @@ export const translations: Record<Language, Translations> = {
         sea: 'Marítimo',
         express: 'Express'
       },
+      dimensions: 'Dimensiones',
+      declaredValue: 'Valor declarado',
+      transportCost: 'Costo de transporte',
+      priority: 'Prioridad',
+      status: 'Estado',
+      method: 'Método',
+      insuredValue: 'Valor asegurado',
+      specialInstructions: 'Instrucciones especiales',
+      deliveryInstructions: 'Instrucciones de entrega',
+      emergencyContact: 'Contacto de emergencia',
+      notes: 'Notas',
+      priorities: {
+        normal: 'Normal',
+        urgent: 'Urgente',
+        express: 'Express'
+      },
+      paymentStatuses: {
+        paid: 'Pagado',
+        pending: 'Pendiente',
+        failed: 'Fallo'
+      },
+      paymentMethods: {
+        credit_card: 'Tarjeta de crédito',
+        bank_transfer: 'Transferencia bancaria',
+        cash: 'Efectivo',
+        paypal: 'PayPal'
+      },
       faq: {
         q1: '¿Cómo funciona el seguimiento?',
         a1: 'Tu número de seguimiento comienza con \'XTI-\' seguido del año y un número único. Se comunica tan pronto como se toma el paquete.',
@@ -2456,6 +2537,33 @@ export const translations: Record<Language, Translations> = {
         air: 'Luftfracht',
         sea: 'Seefracht',
         express: 'Express'
+      },
+      dimensions: 'Abmessungen',
+      declaredValue: 'Angegebener Wert',
+      transportCost: 'Transportkosten',
+      priority: 'Priorität',
+      status: 'Status',
+      method: 'Methode',
+      insuredValue: 'Versicherungswert',
+      specialInstructions: 'Besondere Anweisungen',
+      deliveryInstructions: 'Lieferanweisungen',
+      emergencyContact: 'Notfallkontakt',
+      notes: 'Notizen',
+      priorities: {
+        normal: 'Normal',
+        urgent: 'Dringend',
+        express: 'Express'
+      },
+      paymentStatuses: {
+        paid: 'Bezahlt',
+        pending: 'Ausstehend',
+        failed: 'Fehlgeschlagen'
+      },
+      paymentMethods: {
+        credit_card: 'Kreditkarte',
+        bank_transfer: 'Banküberweisung',
+        cash: 'Bargeld',
+        paypal: 'PayPal'
       },
       faq: {
         q1: 'Wie funktioniert die Verfolgung?',
@@ -3304,6 +3412,33 @@ export const translations: Record<Language, Translations> = {
         sea: 'Marittimo',
         express: 'Express'
       },
+      dimensions: 'Dimensioni',
+      declaredValue: 'Valore dichiarato',
+      transportCost: 'Costo di trasporto',
+      priority: 'Priorità',
+      status: 'Stato',
+      method: 'Metodo',
+      insuredValue: 'Valore assicurato',
+      specialInstructions: 'Istruzioni speciali',
+      deliveryInstructions: 'Istruzioni di consegna',
+      emergencyContact: 'Contatto di emergenza',
+      notes: 'Note',
+      priorities: {
+        normal: 'Normale',
+        urgent: 'Urgente',
+        express: 'Express'
+      },
+      paymentStatuses: {
+        paid: 'Pagato',
+        pending: 'In sospeso',
+        failed: 'Fallito'
+      },
+      paymentMethods: {
+        credit_card: 'Carta di credito',
+        bank_transfer: 'Bonifico bancario',
+        cash: 'Contanti',
+        paypal: 'PayPal'
+      },
       faq: {
         q1: 'Come funziona il tracciamento?',
         a1: 'Il tuo numero di tracciamento inizia con \'XTI-\' seguito dall\'anno e da un numero unico. Ti viene comunicato non appena il pacco viene preso in carico.',
@@ -4150,6 +4285,33 @@ export const translations: Record<Language, Translations> = {
         air: 'Aéreo',
         sea: 'Marítimo',
         express: 'Express'
+      },
+      dimensions: 'Dimensões',
+      declaredValue: 'Valor declarado',
+      transportCost: 'Custo de transporte',
+      priority: 'Prioridade',
+      status: 'Status',
+      method: 'Método',
+      insuredValue: 'Valor segurado',
+      specialInstructions: 'Instruções especiais',
+      deliveryInstructions: 'Instruções de entrega',
+      emergencyContact: 'Contato de emergência',
+      notes: 'Notas',
+      priorities: {
+        normal: 'Normal',
+        urgent: 'Urgente',
+        express: 'Express'
+      },
+      paymentStatuses: {
+        paid: 'Pago',
+        pending: 'Pendente',
+        failed: 'Falhou'
+      },
+      paymentMethods: {
+        credit_card: 'Cartão de crédito',
+        bank_transfer: 'Transferência bancária',
+        cash: 'Dinheiro',
+        paypal: 'PayPal'
       },
       faq: {
         q1: 'Como funciona o rastreamento?',

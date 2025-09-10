@@ -299,53 +299,51 @@ const Tracking = () => {
                   </div>
                 )}
                 
-                {trackingResult.dimensions && (
-                  <div className="flex items-center gap-2">
-                    <Package className="h-4 w-4 text-muted-foreground" />
-                    <div>
-                      <p className="text-sm font-medium">Dimensions</p>
-                      <p className="text-sm text-muted-foreground">{trackingResult.dimensions}</p>
-                    </div>
-                  </div>
-                )}
+                 {trackingResult.dimensions && (
+                   <div className="flex items-center gap-2">
+                     <Package className="h-4 w-4 text-muted-foreground" />
+                     <div>
+                       <p className="text-sm font-medium">{t.tracking.dimensions}</p>
+                       <p className="text-sm text-muted-foreground">{trackingResult.dimensions}</p>
+                     </div>
+                   </div>
+                 )}
 
-                {trackingResult.declared_value && (
-                  <div className="flex items-center gap-2">
-                    <Euro className="h-4 w-4 text-muted-foreground" />
-                    <div>
-                      <p className="text-sm font-medium">Valeur déclarée</p>
-                      <p className="text-sm text-muted-foreground">
-                        {trackingResult.declared_value} {trackingResult.currency || 'EUR'}
-                      </p>
-                    </div>
-                  </div>
-                )}
+                 {trackingResult.declared_value && (
+                   <div className="flex items-center gap-2">
+                     <Euro className="h-4 w-4 text-muted-foreground" />
+                     <div>
+                       <p className="text-sm font-medium">{t.tracking.declaredValue}</p>
+                       <p className="text-sm text-muted-foreground">
+                         {trackingResult.declared_value} {trackingResult.currency || 'EUR'}
+                       </p>
+                     </div>
+                   </div>
+                 )}
 
-                {trackingResult.transport_cost && (
-                  <div className="flex items-center gap-2">
-                    <Truck className="h-4 w-4 text-muted-foreground" />
-                    <div>
-                      <p className="text-sm font-medium">Frais de transport</p>
-                      <p className="text-sm text-muted-foreground">
-                        {trackingResult.transport_cost} {trackingResult.currency || 'EUR'}
-                      </p>
-                    </div>
-                  </div>
-                )}
+                 {trackingResult.transport_cost && (
+                   <div className="flex items-center gap-2">
+                     <Truck className="h-4 w-4 text-muted-foreground" />
+                     <div>
+                       <p className="text-sm font-medium">{t.tracking.transportCost}</p>
+                       <p className="text-sm text-muted-foreground">
+                         {trackingResult.transport_cost} {trackingResult.currency || 'EUR'}
+                       </p>
+                     </div>
+                   </div>
+                 )}
 
-                {trackingResult.priority_level && trackingResult.priority_level !== 'normal' && (
-                  <div className="flex items-center gap-2">
-                    <Zap className="h-4 w-4 text-muted-foreground" />
-                    <div>
-                      <p className="text-sm font-medium">Priorité</p>
-                      <p className="text-sm text-muted-foreground">
-                        {trackingResult.priority_level === 'urgent' ? 'Urgent' : 
-                         trackingResult.priority_level === 'express' ? 'Express' : 
-                         trackingResult.priority_level}
-                      </p>
-                    </div>
-                  </div>
-                )}
+                 {trackingResult.priority_level && trackingResult.priority_level !== 'normal' && (
+                   <div className="flex items-center gap-2">
+                     <Zap className="h-4 w-4 text-muted-foreground" />
+                     <div>
+                       <p className="text-sm font-medium">{t.tracking.priority}</p>
+                       <p className="text-sm text-muted-foreground">
+                         {t.tracking.priorities[trackingResult.priority_level as keyof typeof t.tracking.priorities] || trackingResult.priority_level}
+                       </p>
+                     </div>
+                   </div>
+                 )}
               </div>
 
               {/* Financial and Reference Information */}
@@ -375,48 +373,42 @@ const Tracking = () => {
 
                 {(trackingResult.payment_status || trackingResult.payment_method) && (
                   <div className="space-y-3">
-                    {trackingResult.payment_status && (
-                      <div className="flex items-center gap-2">
-                        <CreditCard className="h-4 w-4 text-muted-foreground" />
-                        <div>
-                          <p className="text-sm font-medium">Statut</p>
-                          <Badge variant={trackingResult.payment_status === 'paid' ? 'default' : 'secondary'} className="text-xs">
-                            {trackingResult.payment_status === 'paid' ? 'Payé' : 
-                             trackingResult.payment_status === 'pending' ? 'En attente' : 
-                             trackingResult.payment_status === 'failed' ? 'Échec' : trackingResult.payment_status}
-                          </Badge>
-                        </div>
-                      </div>
-                    )}
-                    {trackingResult.payment_method && (
-                      <div className="flex items-center gap-2">
-                        <CreditCard className="h-4 w-4 text-muted-foreground" />
-                        <div>
-                          <p className="text-sm font-medium">Méthode</p>
-                          <p className="text-sm text-muted-foreground">
-                            {trackingResult.payment_method === 'credit_card' ? 'Carte de crédit' :
-                             trackingResult.payment_method === 'bank_transfer' ? 'Virement bancaire' :
-                             trackingResult.payment_method === 'cash' ? 'Espèces' :
-                             trackingResult.payment_method === 'paypal' ? 'PayPal' :
-                             trackingResult.payment_method}
-                          </p>
-                        </div>
-                      </div>
-                    )}
+                     {trackingResult.payment_status && (
+                       <div className="flex items-center gap-2">
+                         <CreditCard className="h-4 w-4 text-muted-foreground" />
+                         <div>
+                           <p className="text-sm font-medium">{t.tracking.status}</p>
+                           <Badge variant={trackingResult.payment_status === 'paid' ? 'default' : 'secondary'} className="text-xs">
+                             {t.tracking.paymentStatuses[trackingResult.payment_status as keyof typeof t.tracking.paymentStatuses] || trackingResult.payment_status}
+                           </Badge>
+                         </div>
+                       </div>
+                     )}
+                     {trackingResult.payment_method && (
+                       <div className="flex items-center gap-2">
+                         <CreditCard className="h-4 w-4 text-muted-foreground" />
+                         <div>
+                           <p className="text-sm font-medium">{t.tracking.method}</p>
+                           <p className="text-sm text-muted-foreground">
+                             {t.tracking.paymentMethods[trackingResult.payment_method as keyof typeof t.tracking.paymentMethods] || trackingResult.payment_method}
+                           </p>
+                         </div>
+                       </div>
+                     )}
                   </div>
                 )}
 
-                {trackingResult.insured_value && (
-                  <div className="flex items-center gap-2">
-                    <Shield className="h-4 w-4 text-muted-foreground" />
-                    <div>
-                      <p className="text-sm font-medium">Valeur assurée</p>
-                      <p className="text-sm text-muted-foreground">
-                        {trackingResult.insured_value} {trackingResult.currency || 'EUR'}
-                      </p>
-                    </div>
-                  </div>
-                )}
+                 {trackingResult.insured_value && (
+                   <div className="flex items-center gap-2">
+                     <Shield className="h-4 w-4 text-muted-foreground" />
+                     <div>
+                       <p className="text-sm font-medium">{t.tracking.insuredValue}</p>
+                       <p className="text-sm text-muted-foreground">
+                         {trackingResult.insured_value} {trackingResult.currency || 'EUR'}
+                       </p>
+                     </div>
+                   </div>
+                 )}
               </div>
 
               {/* Special Indicators */}
