@@ -10,9 +10,19 @@ import { LANGUAGES } from '@/types/language';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export const LanguageSelector = () => {
-  const { currentLanguage, changeLanguage } = useLanguage();
+  const { currentLanguage } = useLanguage();
   
   const currentLangConfig = LANGUAGES.find(lang => lang.code === currentLanguage);
+
+  const handleLanguageChange = (langCode: string) => {
+    // Get current path without language prefix
+    const currentPath = window.location.pathname;
+    const pathWithoutLang = currentPath.replace(/^\/[a-z]{2}/, '') || '';
+    
+    // Navigate to new language by reloading the page
+    const newPath = `/${langCode}${pathWithoutLang}`;
+    window.location.href = newPath;
+  };
 
   return (
     <DropdownMenu>
@@ -30,7 +40,7 @@ export const LanguageSelector = () => {
         {LANGUAGES.map((language) => (
           <DropdownMenuItem
             key={language.code}
-            onClick={() => changeLanguage(language.code)}
+            onClick={() => handleLanguageChange(language.code)}
             className={language.code === currentLanguage ? 'bg-secondary' : ''}
           >
             <span className="mr-2">{language.flag}</span>
