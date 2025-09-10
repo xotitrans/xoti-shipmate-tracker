@@ -13,6 +13,8 @@ import { useToast } from '@/hooks/use-toast';
 import ShipmentMap from '@/components/ShipmentMap';
 import ManualLocationUpdate from '@/components/ManualLocationUpdate';
 import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
+import { useAuth } from '@/contexts/AuthContext';
+import { useLocation } from 'react-router-dom';
 
 interface TrackingData {
   id: string;
@@ -82,7 +84,12 @@ const Tracking = () => {
   const { toast } = useToast();
   const { currentLanguage } = useLanguage();
   const { currentLanguage: routeLanguage } = useLanguageNavigation();
+  const { user } = useAuth();
+  const location = useLocation();
   const t = translations[currentLanguage];
+
+  // Check if we're in admin context
+  const isAdminContext = location.pathname.startsWith('/admin');
 
   useEffect(() => {
     const numberFromUrl = searchParams.get('number');
@@ -237,15 +244,17 @@ const Tracking = () => {
                     <Package className="h-5 w-5" />
                     {t.tracking.packageTitle} {trackingResult.tracking_number}
                   </div>
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    onClick={() => setShowLocationUpdate(!showLocationUpdate)}
-                    className="ml-4"
-                  >
-                    <Edit className="h-4 w-4 mr-2" />
-                    {t.tracking.updateLocation}
-                  </Button>
+                  {isAdminContext && user && (
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => setShowLocationUpdate(!showLocationUpdate)}
+                      className="ml-4"
+                    >
+                      <Edit className="h-4 w-4 mr-2" />
+                      {t.tracking.updateLocation}
+                    </Button>
+                  )}
                 </CardTitle>
                 <Badge variant={getStatusColor(trackingResult.status) as any}>
                   {getStatusIcon(trackingResult.status)}
@@ -521,8 +530,8 @@ const Tracking = () => {
             </CardContent>
           </Card>
 
-          {/* Manual Location Update */}
-          {showLocationUpdate && trackingResult && !hasError && (
+          {/* Manual Location Update - Only shown in admin context */}
+          {showLocationUpdate && trackingResult && !hasError && isAdminContext && user && (
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
