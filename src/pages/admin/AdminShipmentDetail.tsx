@@ -212,10 +212,32 @@ export default function AdminShipmentDetail() {
               </h1>
               <p className="text-muted-foreground">Détails de l'envoi</p>
             </div>
-            <Badge variant={getStatusColor(shipment.status) as any} className="text-lg px-4 py-2">
-              {getStatusIcon(shipment.status)}
-              <span className="ml-2">{getStatusText(shipment.status)}</span>
-            </Badge>
+            <div className="flex items-center gap-4">
+              <Badge variant={getStatusColor(shipment.status) as any} className="text-lg px-4 py-2">
+                {getStatusIcon(shipment.status)}
+                <span className="ml-2">{getStatusText(shipment.status)}</span>
+              </Badge>
+              <div className="flex gap-2">
+                <Button 
+                  variant="outline" 
+                  onClick={() => navigate(`/admin/shipments/${shipment.id}/edit`)}
+                >
+                  Modifier
+                </Button>
+                <Button 
+                  variant="default"
+                  onClick={() => {
+                    // Simulate sending notification
+                    toast({
+                      title: "Notification envoyée",
+                      description: "Le client a été notifié du statut de son envoi",
+                    });
+                  }}
+                >
+                  Envoyer notification
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
