@@ -414,26 +414,26 @@ const Tracking = () => {
               {/* Special Indicators */}
               {(trackingResult.is_fragile || trackingResult.is_dangerous || trackingResult.requires_signature) && (
                 <div className="mb-6">
-                  <h4 className="text-sm font-medium mb-3">Indications spéciales</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {trackingResult.is_fragile && (
-                      <Badge variant="outline" className="text-orange-600 border-orange-600">
-                        <Package className="h-3 w-3 mr-1" />
-                        Fragile
-                      </Badge>
-                    )}
-                    {trackingResult.is_dangerous && (
-                      <Badge variant="outline" className="text-red-600 border-red-600">
-                        <AlertTriangle className="h-3 w-3 mr-1" />
-                        Dangereux
-                      </Badge>
-                    )}
-                    {trackingResult.requires_signature && (
-                      <Badge variant="outline" className="text-blue-600 border-blue-600">
-                        <FileSignature className="h-3 w-3 mr-1" />
-                        Signature requise
-                      </Badge>
-                    )}
+                   <h4 className="text-sm font-medium mb-3">{t.tracking.specialIndicators}</h4>
+                   <div className="flex flex-wrap gap-2">
+                     {trackingResult.is_fragile && (
+                       <Badge variant="outline" className="text-orange-600 border-orange-600">
+                         <Package className="h-3 w-3 mr-1" />
+                         {t.tracking.fragile}
+                       </Badge>
+                     )}
+                     {trackingResult.is_dangerous && (
+                       <Badge variant="outline" className="text-red-600 border-red-600">
+                         <AlertTriangle className="h-3 w-3 mr-1" />
+                         {t.tracking.dangerous}
+                       </Badge>
+                     )}
+                     {trackingResult.requires_signature && (
+                       <Badge variant="outline" className="text-blue-600 border-blue-600">
+                         <FileSignature className="h-3 w-3 mr-1" />
+                         {t.tracking.requiresSignature}
+                       </Badge>
+                     )}
                   </div>
                 </div>
               )}
@@ -441,40 +441,40 @@ const Tracking = () => {
               {/* Instructions and Notes */}
               {(trackingResult.special_instructions || trackingResult.delivery_instructions || trackingResult.preferred_delivery_time || trackingResult.notes) && (
                 <div className="space-y-3 mb-6">
-                  {trackingResult.special_instructions && (
-                    <div>
-                      <p className="text-sm font-medium">Instructions spéciales</p>
-                      <p className="text-sm text-muted-foreground">{trackingResult.special_instructions}</p>
-                    </div>
-                  )}
-                  {trackingResult.delivery_instructions && (
-                    <div>
-                      <p className="text-sm font-medium">Instructions de livraison</p>
-                      <p className="text-sm text-muted-foreground">{trackingResult.delivery_instructions}</p>
-                    </div>
-                  )}
-                  {trackingResult.preferred_delivery_time && (
-                    <div>
-                      <p className="text-sm font-medium">Heure préférée</p>
-                      <p className="text-sm text-muted-foreground">{trackingResult.preferred_delivery_time}</p>
-                    </div>
-                  )}
-                  {trackingResult.notes && (
-                    <div>
-                      <p className="text-sm font-medium">{t.tracking.packageDetails}</p>
-                      <p className="text-sm text-muted-foreground">{trackingResult.notes}</p>
-                    </div>
-                  )}
+                   {trackingResult.special_instructions && (
+                     <div>
+                       <p className="text-sm font-medium">{t.tracking.specialInstructions}</p>
+                       <p className="text-sm text-muted-foreground">{trackingResult.special_instructions}</p>
+                     </div>
+                   )}
+                   {trackingResult.delivery_instructions && (
+                     <div>
+                       <p className="text-sm font-medium">{t.tracking.deliveryInstructions}</p>
+                       <p className="text-sm text-muted-foreground">{trackingResult.delivery_instructions}</p>
+                     </div>
+                   )}
+                   {trackingResult.preferred_delivery_time && (
+                     <div>
+                       <p className="text-sm font-medium">{t.tracking.preferredDeliveryTime}</p>
+                       <p className="text-sm text-muted-foreground">{trackingResult.preferred_delivery_time}</p>
+                     </div>
+                   )}
+                   {trackingResult.notes && (
+                     <div>
+                       <p className="text-sm font-medium">{t.tracking.notes}</p>
+                       <p className="text-sm text-muted-foreground">{trackingResult.notes}</p>
+                     </div>
+                   )}
                 </div>
               )}
 
               {/* Emergency Contact */}
               {trackingResult.emergency_contact_name && (
                 <div className="pt-4 border-t">
-                  <h4 className="text-sm font-medium mb-3 flex items-center gap-2">
-                    <Phone className="h-4 w-4" />
-                    Contact d'urgence
-                  </h4>
+                   <h4 className="text-sm font-medium mb-3 flex items-center gap-2">
+                     <Phone className="h-4 w-4" />
+                     {t.tracking.emergencyContact}
+                   </h4>
                   <div className="text-sm space-y-1">
                     <p><strong>{t.tracking.name}:</strong> {trackingResult.emergency_contact_name}</p>
                     {trackingResult.emergency_contact_phone && (

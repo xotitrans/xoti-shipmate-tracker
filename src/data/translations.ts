@@ -141,6 +141,11 @@ export interface Translations {
       cash: string;
       paypal: string;
     };
+    requiresSignature: string;
+    preferredDeliveryTime: string;
+    specialIndicators: string;
+    fragile: string;
+    dangerous: string;
     faq: {
       q1: string;
       a1: string;
@@ -817,6 +822,11 @@ export const translations: Record<Language, Translations> = {
         cash: 'Espèces',
         paypal: 'PayPal'
       },
+      requiresSignature: 'Signature requise',
+      preferredDeliveryTime: 'Heure préférée',
+      specialIndicators: 'Indications spéciales',
+      fragile: 'Fragile',
+      dangerous: 'Dangereux',
       faq: {
         q1: 'Comment fonctionne le suivi ?',
         a1: 'Votre numéro de suivi commence par \'XTI-\' suivi de l\'année et d\'un numéro unique. Il vous est communiqué dès la prise en charge de votre colis.',
@@ -1691,6 +1701,11 @@ export const translations: Record<Language, Translations> = {
         cash: 'Efectivo',
         paypal: 'PayPal'
       },
+      requiresSignature: 'Firma requerida',
+      preferredDeliveryTime: 'Hora preferida',
+      specialIndicators: 'Indicaciones especiales',
+      fragile: 'Frágil',
+      dangerous: 'Peligroso',
       faq: {
         q1: '¿Cómo funciona el seguimiento?',
         a1: 'Tu número de seguimiento comienza con \'XTI-\' seguido del año y un número único. Se comunica tan pronto como se toma el paquete.',
@@ -2565,6 +2580,11 @@ export const translations: Record<Language, Translations> = {
         cash: 'Bargeld',
         paypal: 'PayPal'
       },
+      requiresSignature: 'Unterschrift erforderlich',
+      preferredDeliveryTime: 'Bevorzugte Zeit',
+      specialIndicators: 'Besondere Angaben',
+      fragile: 'Zerbrechlich',
+      dangerous: 'Gefährlich',
       faq: {
         q1: 'Wie funktioniert die Verfolgung?',
         a1: 'Ihre Tracking-Nummer beginnt mit \'XTI-\' gefolgt vom Jahr und einer eindeutigen Nummer. Sie wird Ihnen mitgeteilt, sobald Ihr Paket übernommen wurde.',
@@ -3439,6 +3459,11 @@ export const translations: Record<Language, Translations> = {
         cash: 'Contanti',
         paypal: 'PayPal'
       },
+      requiresSignature: 'Firma richiesta',
+      preferredDeliveryTime: 'Orario preferito',
+      specialIndicators: 'Indicazioni speciali',
+      fragile: 'Fragile',
+      dangerous: 'Pericoloso',
       faq: {
         q1: 'Come funziona il tracciamento?',
         a1: 'Il tuo numero di tracciamento inizia con \'XTI-\' seguito dall\'anno e da un numero unico. Ti viene comunicato non appena il pacco viene preso in carico.',
@@ -4313,6 +4338,11 @@ export const translations: Record<Language, Translations> = {
         cash: 'Dinheiro',
         paypal: 'PayPal'
       },
+      requiresSignature: 'Assinatura necessária',
+      preferredDeliveryTime: 'Hora preferida',
+      specialIndicators: 'Indicações especiais',
+      fragile: 'Frágil',
+      dangerous: 'Perigoso',
       faq: {
         q1: 'Como funciona o rastreamento?',
         a1: 'Seu número de rastreamento começa com \'XTI-\' seguido do ano e um número único. É comunicado assim que a encomenda é coletada.',
