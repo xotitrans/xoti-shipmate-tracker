@@ -11,6 +11,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Search, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckCircle, AlertCircle, Weight, Shield, AlertTriangle, FileSignature, Euro, Zap, CreditCard, Hash } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ShipmentMap from '@/components/ShipmentMap';
+import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 interface TrackingData {
   id: string;
@@ -67,6 +68,7 @@ const Tracking = () => {
   const [isSearching, setIsSearching] = useState(false);
   const { toast } = useToast();
   const { currentLanguage } = useLanguage();
+  const { currentLanguage: routeLanguage } = useLanguageNavigation();
   const t = translations[currentLanguage];
 
   useEffect(() => {
@@ -287,11 +289,11 @@ const Tracking = () => {
 
               {/* Package Details */}
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                {trackingResult.weight && (
+                 {trackingResult.weight && (
                   <div className="flex items-center gap-2">
                     <Weight className="h-4 w-4 text-muted-foreground" />
                     <div>
-                      <p className="text-sm font-medium">Poids</p>
+                      <p className="text-sm font-medium">{t.tracking.weight}</p>
                       <p className="text-sm text-muted-foreground">{trackingResult.weight} kg</p>
                     </div>
                   </div>
@@ -350,24 +352,24 @@ const Tracking = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 {(trackingResult.client_reference || trackingResult.order_number) && (
                   <div className="space-y-3">
-                    {trackingResult.client_reference && (
-                      <div className="flex items-center gap-2">
-                        <Hash className="h-4 w-4 text-muted-foreground" />
-                        <div>
-                          <p className="text-sm font-medium">Référence client</p>
-                          <p className="text-sm text-muted-foreground">{trackingResult.client_reference}</p>
-                        </div>
+                  {trackingResult.client_reference && (
+                    <div className="flex items-center gap-2">
+                      <Hash className="h-4 w-4 text-muted-foreground" />
+                      <div>
+                        <p className="text-sm font-medium">{t.tracking.reference}</p>
+                        <p className="text-sm text-muted-foreground">{trackingResult.client_reference}</p>
                       </div>
-                    )}
-                    {trackingResult.order_number && (
-                      <div className="flex items-center gap-2">
-                        <Package className="h-4 w-4 text-muted-foreground" />
-                        <div>
-                          <p className="text-sm font-medium">Numéro de commande</p>
-                          <p className="text-sm text-muted-foreground">{trackingResult.order_number}</p>
-                        </div>
+                    </div>
+                  )}
+                  {trackingResult.order_number && (
+                    <div className="flex items-center gap-2">
+                      <Package className="h-4 w-4 text-muted-foreground" />
+                      <div>
+                        <p className="text-sm font-medium">{t.tracking.reference}</p>
+                        <p className="text-sm text-muted-foreground">{trackingResult.order_number}</p>
                       </div>
-                    )}
+                    </div>
+                  )}
                   </div>
                 )}
 
@@ -377,7 +379,7 @@ const Tracking = () => {
                       <div className="flex items-center gap-2">
                         <CreditCard className="h-4 w-4 text-muted-foreground" />
                         <div>
-                          <p className="text-sm font-medium">Statut de paiement</p>
+                          <p className="text-sm font-medium">Statut</p>
                           <Badge variant={trackingResult.payment_status === 'paid' ? 'default' : 'secondary'} className="text-xs">
                             {trackingResult.payment_status === 'paid' ? 'Payé' : 
                              trackingResult.payment_status === 'pending' ? 'En attente' : 
@@ -390,7 +392,7 @@ const Tracking = () => {
                       <div className="flex items-center gap-2">
                         <CreditCard className="h-4 w-4 text-muted-foreground" />
                         <div>
-                          <p className="text-sm font-medium">Méthode de paiement</p>
+                          <p className="text-sm font-medium">Méthode</p>
                           <p className="text-sm text-muted-foreground">
                             {trackingResult.payment_method === 'credit_card' ? 'Carte de crédit' :
                              trackingResult.payment_method === 'bank_transfer' ? 'Virement bancaire' :
@@ -461,13 +463,13 @@ const Tracking = () => {
                   )}
                   {trackingResult.preferred_delivery_time && (
                     <div>
-                      <p className="text-sm font-medium">Heure de livraison préférée</p>
+                      <p className="text-sm font-medium">Heure préférée</p>
                       <p className="text-sm text-muted-foreground">{trackingResult.preferred_delivery_time}</p>
                     </div>
                   )}
                   {trackingResult.notes && (
                     <div>
-                      <p className="text-sm font-medium">Notes</p>
+                      <p className="text-sm font-medium">{t.tracking.packageDetails}</p>
                       <p className="text-sm text-muted-foreground">{trackingResult.notes}</p>
                     </div>
                   )}
@@ -482,9 +484,9 @@ const Tracking = () => {
                     Contact d'urgence
                   </h4>
                   <div className="text-sm space-y-1">
-                    <p><strong>Nom:</strong> {trackingResult.emergency_contact_name}</p>
+                    <p><strong>{t.tracking.name}:</strong> {trackingResult.emergency_contact_name}</p>
                     {trackingResult.emergency_contact_phone && (
-                      <p><strong>Téléphone:</strong> {trackingResult.emergency_contact_phone}</p>
+                      <p><strong>{t.tracking.phoneNumber}:</strong> {trackingResult.emergency_contact_phone}</p>
                     )}
                   </div>
                 </div>
@@ -508,7 +510,7 @@ const Tracking = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Clock className="h-5 w-5" />
-                  Historique de suivi
+                  {t.tracking.trackingHistory}
                 </CardTitle>
                 <CardDescription>
                   Suivi détaillé des étapes de livraison
