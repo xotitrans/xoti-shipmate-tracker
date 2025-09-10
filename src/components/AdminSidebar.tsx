@@ -41,12 +41,6 @@ const adminMenuItems = [
     icon: Plus,
     translationKey: "newShipment"
   },
-  { 
-    title: "Clients", 
-    url: "/admin/clients", 
-    icon: Users,
-    translationKey: "clients"
-  },
 ];
 
 const systemMenuItems = [
