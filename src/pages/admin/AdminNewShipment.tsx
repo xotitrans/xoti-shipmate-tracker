@@ -67,7 +67,7 @@ export default function AdminNewShipment() {
       const formData = new FormData(e.currentTarget);
       
       // Generate tracking number
-      const trackingNumber = `LOGICY-${Date.now()}`;
+      const trackingNumber = `XTR${Date.now()}`;
       
       const shipmentData = {
         // Basic info
@@ -341,7 +341,7 @@ export default function AdminNewShipment() {
               <Input 
                 id="currentAddress" 
                 name="currentAddress" 
-                placeholder="Ex: Entrepôt LOGICY Paris, 123 Rue de la Logistique"
+                placeholder="Ex: Entrepôt XOTI Paris, 123 Rue de la Logistique"
               />
             </div>
             <div className="md:col-span-2">
@@ -511,7 +511,7 @@ export default function AdminNewShipment() {
               <Textarea 
                 id="internalNotes" 
                 name="internalNotes" 
-                placeholder="Notes pour l'équipe LOGICY (non visibles par le client)"
+                placeholder="Notes pour l'équipe XOTI (non visibles par le client)"
               />
             </div>
           </CardContent>
