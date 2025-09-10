@@ -5,6 +5,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { MapPin, Navigation } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/data/translations';
 
 interface ShipmentMapProps {
   shipmentId?: string;
@@ -28,6 +30,8 @@ const ShipmentMap: React.FC<ShipmentMapProps> = ({
   const [mapboxToken, setMapboxToken] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string>('');
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
 
   // Get Mapbox token from Supabase secrets
   useEffect(() => {
@@ -35,14 +39,14 @@ const ShipmentMap: React.FC<ShipmentMapProps> = ({
       try {
         const { data, error } = await supabase.functions.invoke('get-mapbox-token');
         if (error) {
-          setError('Impossible de charger la carte. Veuillez configurer le token Mapbox.');
+          setError(t.tracking.map.loadError);
           setIsLoading(false);
           return;
         }
         setMapboxToken(data.token);
       } catch (err) {
         console.error('Error getting Mapbox token:', err);
-        setError('Erreur lors du chargement de la carte.');
+        setError(t.tracking.map.mapError);
         setIsLoading(false);
       }
     };
@@ -88,7 +92,7 @@ const ShipmentMap: React.FC<ShipmentMapProps> = ({
             new mapboxgl.Popup({ offset: 25 })
               .setHTML(`
                 <div class="p-2">
-                  <h3 class="font-semibold text-sm mb-1">Position actuelle</h3>
+                  <h3 class="font-semibold text-sm mb-1">${t.tracking.map.currentPosition}</h3>
                   <p class="text-xs text-gray-600">${currentLocation || 'Position GPS'}</p>
                   <p class="text-xs text-gray-500 mt-1">
                     Lat: ${latitude.toFixed(6)}<br>
@@ -132,7 +136,7 @@ const ShipmentMap: React.FC<ShipmentMapProps> = ({
         const [lng, lat] = data.features[0].center;
         
         const color = type === 'sender' ? '#22c55e' : '#3b82f6';
-        const label = type === 'sender' ? 'Expéditeur' : 'Destinataire';
+        const label = type === 'sender' ? t.tracking.map.sender : t.tracking.map.recipient;
         
         new mapboxgl.Marker({
           color: color,
@@ -171,9 +175,9 @@ const ShipmentMap: React.FC<ShipmentMapProps> = ({
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <MapPin className="h-5 w-5" />
-            Localisation GPS
+            {t.tracking.map.title}
           </CardTitle>
-          <CardDescription>Position actuelle du colis</CardDescription>
+          <CardDescription>{t.tracking.map.subtitle}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex items-center justify-center h-64 bg-muted rounded-lg">
@@ -194,12 +198,12 @@ const ShipmentMap: React.FC<ShipmentMapProps> = ({
           <div>
             <CardTitle className="flex items-center gap-2">
               <MapPin className="h-5 w-5" />
-              Localisation GPS
+              {t.tracking.map.title}
             </CardTitle>
             <CardDescription>
               {latitude && longitude 
-                ? `Position actuelle: ${currentLocation || 'Position GPS'}` 
-                : 'Aucune position GPS disponible'
+                ? `${t.tracking.map.currentPosition}: ${currentLocation || 'Position GPS'}` 
+                : t.tracking.map.noGpsAvailable
               }
             </CardDescription>
           </div>
@@ -211,7 +215,7 @@ const ShipmentMap: React.FC<ShipmentMapProps> = ({
               className="flex items-center gap-2"
             >
               <Navigation className="h-4 w-4" />
-              Centrer
+              {t.tracking.map.center}
             </Button>
           )}
         </div>
@@ -228,7 +232,7 @@ const ShipmentMap: React.FC<ShipmentMapProps> = ({
             <div className="absolute inset-0 flex items-center justify-center bg-background/80 rounded-lg">
               <div className="text-center">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
-                <p className="text-sm text-muted-foreground">Chargement de la carte...</p>
+                <p className="text-sm text-muted-foreground">{t.tracking.map.loading}</p>
               </div>
             </div>
           )}
@@ -237,9 +241,9 @@ const ShipmentMap: React.FC<ShipmentMapProps> = ({
             <div className="absolute inset-0 flex items-center justify-center bg-muted/80 rounded-lg">
               <div className="text-center">
                 <MapPin className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                <p className="text-sm text-muted-foreground">Position GPS non disponible</p>
+                <p className="text-sm text-muted-foreground">{t.tracking.map.noGpsPosition}</p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  Le colis n'a pas encore de coordonnées GPS
+                  {t.tracking.map.noGpsCoordinates}
                 </p>
               </div>
             </div>
@@ -250,17 +254,17 @@ const ShipmentMap: React.FC<ShipmentMapProps> = ({
           <div className="mt-4 p-3 bg-muted rounded-lg">
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-muted-foreground">Latitude:</span>
+                <span className="text-muted-foreground">{t.tracking.map.latitude}</span>
                 <span className="ml-2 font-mono">{latitude.toFixed(6)}</span>
               </div>
               <div>
-                <span className="text-muted-foreground">Longitude:</span>
+                <span className="text-muted-foreground">{t.tracking.map.longitude}</span>
                 <span className="ml-2 font-mono">{longitude.toFixed(6)}</span>
               </div>
             </div>
             {currentLocation && (
               <div className="mt-2 text-sm">
-                <span className="text-muted-foreground">Lieu:</span>
+                <span className="text-muted-foreground">{t.tracking.map.location}</span>
                 <span className="ml-2">{currentLocation}</span>
               </div>
             )}

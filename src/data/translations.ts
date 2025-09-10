@@ -146,6 +146,23 @@ export interface Translations {
     specialIndicators: string;
     fragile: string;
     dangerous: string;
+    map: {
+      title: string;
+      subtitle: string;
+      currentPosition: string;
+      noGpsAvailable: string;
+      sender: string;
+      recipient: string;
+      center: string;
+      loading: string;
+      noGpsPosition: string;
+      noGpsCoordinates: string;
+      latitude: string;
+      longitude: string;
+      location: string;
+      loadError: string;
+      mapError: string;
+    };
     faq: {
       q1: string;
       a1: string;
@@ -827,6 +844,23 @@ export const translations: Record<Language, Translations> = {
       specialIndicators: 'Indications spéciales',
       fragile: 'Fragile',
       dangerous: 'Dangereux',
+      map: {
+        title: 'Localisation GPS',
+        subtitle: 'Position actuelle du colis',
+        currentPosition: 'Position actuelle',
+        noGpsAvailable: 'Aucune position GPS disponible',
+        sender: 'Expéditeur',
+        recipient: 'Destinataire',
+        center: 'Centrer',
+        loading: 'Chargement de la carte...',
+        noGpsPosition: 'Position GPS non disponible',
+        noGpsCoordinates: "Le colis n'a pas encore de coordonnées GPS",
+        latitude: 'Latitude:',
+        longitude: 'Longitude:',
+        location: 'Lieu:',
+        loadError: 'Impossible de charger la carte. Veuillez configurer le token Mapbox.',
+        mapError: 'Erreur lors du chargement de la carte.'
+      },
       faq: {
         q1: 'Comment fonctionne le suivi ?',
         a1: 'Votre numéro de suivi commence par \'XTI-\' suivi de l\'année et d\'un numéro unique. Il vous est communiqué dès la prise en charge de votre colis.',
@@ -1706,6 +1740,23 @@ export const translations: Record<Language, Translations> = {
       specialIndicators: 'Indicaciones especiales',
       fragile: 'Frágil',
       dangerous: 'Peligroso',
+      map: {
+        title: 'Localización GPS',
+        subtitle: 'Posición actual del paquete',
+        currentPosition: 'Posición actual',
+        noGpsAvailable: 'Ninguna posición GPS disponible',
+        sender: 'Remitente',
+        recipient: 'Destinatario',
+        center: 'Centrar',
+        loading: 'Cargando el mapa...',
+        noGpsPosition: 'Posición GPS no disponible',
+        noGpsCoordinates: 'El paquete aún no tiene coordenadas GPS',
+        latitude: 'Latitud:',
+        longitude: 'Longitud:',
+        location: 'Lugar:',
+        loadError: 'No se puede cargar el mapa. Configure el token de Mapbox.',
+        mapError: 'Error al cargar el mapa.'
+      },
       faq: {
         q1: '¿Cómo funciona el seguimiento?',
         a1: 'Tu número de seguimiento comienza con \'XTI-\' seguido del año y un número único. Se comunica tan pronto como se toma el paquete.',
@@ -2585,6 +2636,23 @@ export const translations: Record<Language, Translations> = {
       specialIndicators: 'Besondere Angaben',
       fragile: 'Zerbrechlich',
       dangerous: 'Gefährlich',
+      map: {
+        title: 'GPS-Lokalisierung',
+        subtitle: 'Aktuelle Position des Pakets',
+        currentPosition: 'Aktuelle Position',
+        noGpsAvailable: 'Keine GPS-Position verfügbar',
+        sender: 'Absender',
+        recipient: 'Empfänger',
+        center: 'Zentrieren',
+        loading: 'Karte wird geladen...',
+        noGpsPosition: 'GPS-Position nicht verfügbar',
+        noGpsCoordinates: 'Das Paket hat noch keine GPS-Koordinaten',
+        latitude: 'Breitengrad:',
+        longitude: 'Längengrad:',
+        location: 'Ort:',
+        loadError: 'Karte kann nicht geladen werden. Konfigurieren Sie das Mapbox-Token.',
+        mapError: 'Fehler beim Laden der Karte.'
+      },
       faq: {
         q1: 'Wie funktioniert die Verfolgung?',
         a1: 'Ihre Tracking-Nummer beginnt mit \'XTI-\' gefolgt vom Jahr und einer eindeutigen Nummer. Sie wird Ihnen mitgeteilt, sobald Ihr Paket übernommen wurde.',
@@ -3464,6 +3532,23 @@ export const translations: Record<Language, Translations> = {
       specialIndicators: 'Indicazioni speciali',
       fragile: 'Fragile',
       dangerous: 'Pericoloso',
+      map: {
+        title: 'Localizzazione GPS',
+        subtitle: 'Posizione attuale del pacco',
+        currentPosition: 'Posizione attuale',
+        noGpsAvailable: 'Nessuna posizione GPS disponibile',
+        sender: 'Mittente',
+        recipient: 'Destinatario',
+        center: 'Centrare',
+        loading: 'Caricamento della mappa...',
+        noGpsPosition: 'Posizione GPS non disponibile',
+        noGpsCoordinates: 'Il pacco non ha ancora coordinate GPS',
+        latitude: 'Latitudine:',
+        longitude: 'Longitudine:',
+        location: 'Luogo:',
+        loadError: 'Impossibile caricare la mappa. Configurare il token Mapbox.',
+        mapError: 'Errore durante il caricamento della mappa.'
+      },
       faq: {
         q1: 'Come funziona il tracciamento?',
         a1: 'Il tuo numero di tracciamento inizia con \'XTI-\' seguito dall\'anno e da un numero unico. Ti viene comunicato non appena il pacco viene preso in carico.',
@@ -4343,6 +4428,23 @@ export const translations: Record<Language, Translations> = {
       specialIndicators: 'Indicações especiais',
       fragile: 'Frágil',
       dangerous: 'Perigoso',
+      map: {
+        title: 'Localização GPS',
+        subtitle: 'Posição atual da encomenda',
+        currentPosition: 'Posição atual',
+        noGpsAvailable: 'Nenhuma posição GPS disponível',
+        sender: 'Remetente',
+        recipient: 'Destinatário',
+        center: 'Centralizar',
+        loading: 'Carregando o mapa...',
+        noGpsPosition: 'Posição GPS não disponível',
+        noGpsCoordinates: 'A encomenda ainda não tem coordenadas GPS',
+        latitude: 'Latitude:',
+        longitude: 'Longitude:',
+        location: 'Local:',
+        loadError: 'Não é possível carregar o mapa. Configure o token Mapbox.',
+        mapError: 'Erro ao carregar o mapa.'
+      },
       faq: {
         q1: 'Como funciona o rastreamento?',
         a1: 'Seu número de rastreamento começa com \'XTI-\' seguido do ano e um número único. É comunicado assim que a encomenda é coletada.',
