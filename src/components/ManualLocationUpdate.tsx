@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Navigation, Save, RotateCcw } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
-import { toast } from '@/hooks/use-toast';
+import { useToast } from '@/hooks/use-toast';
 
 interface ManualLocationUpdateProps {
   shipmentId: string;
@@ -24,6 +24,7 @@ const ManualLocationUpdate: React.FC<ManualLocationUpdateProps> = ({
   currentLongitude,
   onLocationUpdated
 }) => {
+  const { toast } = useToast();
   const [isUpdating, setIsUpdating] = useState(false);
   const [formData, setFormData] = useState({
     latitude: currentLatitude?.toString() || '',
