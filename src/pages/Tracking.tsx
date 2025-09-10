@@ -8,7 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
 import { supabase } from '@/integrations/supabase/client';
-import { Search, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckCircle, AlertCircle, Weight, Shield, AlertTriangle, FileSignature, Euro, Zap, CreditCard, Hash } from 'lucide-react';
+import { Search, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckCircle, AlertCircle, Weight, Shield, AlertTriangle, FileSignature, Euro, Zap, CreditCard, Hash, ImageIcon, User } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ShipmentMap from '@/components/ShipmentMap';
 import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
@@ -60,11 +60,21 @@ interface TrackingHistoryItem {
   timestamp: string;
 }
 
+interface ShipmentPhoto {
+  id: string;
+  shipment_id: string;
+  photo_url: string;
+  description: string | null;
+  uploaded_by: string;
+  created_at: string;
+}
+
 const Tracking = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [trackingNumber, setTrackingNumber] = useState(searchParams.get('number') || '');
   const [trackingResult, setTrackingResult] = useState<TrackingData | null>(null);
   const [trackingHistory, setTrackingHistory] = useState<TrackingHistoryItem[]>([]);
+  const [shipmentPhotos, setShipmentPhotos] = useState<ShipmentPhoto[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const { toast } = useToast();
   const { currentLanguage } = useLanguage();
@@ -117,8 +127,16 @@ const Tracking = () => {
         .eq('shipment_id', shipment.id)
         .order('timestamp', { ascending: false });
 
+      // Fetch shipment photos
+      const { data: photos, error: photosError } = await supabase
+        .from('shipment_photos')
+        .select('*')
+        .eq('shipment_id', shipment.id)
+        .order('created_at', { ascending: false });
+
       setTrackingResult(shipment);
       setTrackingHistory(history || []);
+      setShipmentPhotos(photos || []);
       
       if (!numberToSearch) {
         setSearchParams({ number: searchNumber });
@@ -495,6 +513,62 @@ const Tracking = () => {
             senderAddress={trackingResult.sender_address}
             recipientAddress={trackingResult.recipient_address}
           />
+
+          {/* Shipment Photos */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <ImageIcon className="h-5 w-5" />
+                {t.tracking.photos.title}
+              </CardTitle>
+              <CardDescription>{t.tracking.photos.subtitle}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              {shipmentPhotos.length === 0 ? (
+                <div className="flex items-center justify-center h-32 bg-muted rounded-lg">
+                  <div className="text-center">
+                    <ImageIcon className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+                    <p className="text-sm text-muted-foreground">{t.tracking.photos.noPhotos}</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {t.tracking.photos.noPhotosDesc}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {shipmentPhotos.map((photo) => (
+                    <div key={photo.id} className="group relative">
+                      <div className="aspect-square relative overflow-hidden rounded-lg border bg-muted">
+                        <img
+                          src={photo.photo_url}
+                          alt={photo.description || t.tracking.photos.viewPhoto}
+                          className="object-cover w-full h-full transition-transform group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      </div>
+                      {photo.description && (
+                        <p className="text-xs text-muted-foreground mt-2 line-clamp-2">
+                          {photo.description}
+                        </p>
+                      )}
+                      <div className="flex items-center gap-1 mt-1 text-xs text-muted-foreground">
+                        <User className="h-3 w-3" />
+                        <span>{t.tracking.photos.uploadedBy}</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        {new Date(photo.created_at).toLocaleDateString(
+                          currentLanguage === 'fr' ? 'fr-FR' : 
+                          currentLanguage === 'de' ? 'de-DE' : 
+                          currentLanguage === 'it' ? 'it-IT' : 
+                          currentLanguage === 'es' ? 'es-ES' : 'pt-PT'
+                        )}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </CardContent>
+          </Card>
 
           {/* Tracking History */}
           {trackingHistory.length > 0 && (

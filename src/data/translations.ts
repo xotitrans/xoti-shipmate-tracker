@@ -163,6 +163,14 @@ export interface Translations {
       loadError: string;
       mapError: string;
     };
+    photos: {
+      title: string;
+      subtitle: string;
+      noPhotos: string;
+      noPhotosDesc: string;
+      uploadedBy: string;
+      viewPhoto: string;
+    };
     faq: {
       q1: string;
       a1: string;
@@ -859,8 +867,16 @@ export const translations: Record<Language, Translations> = {
         longitude: 'Longitude:',
         location: 'Lieu:',
         loadError: 'Impossible de charger la carte. Veuillez configurer le token Mapbox.',
-        mapError: 'Erreur lors du chargement de la carte.'
-      },
+      mapError: 'Erreur lors du chargement de la carte.'
+    },
+    photos: {
+      title: 'Photos du colis',
+      subtitle: 'Images associées à cette expédition',
+      noPhotos: 'Aucune photo disponible',
+      noPhotosDesc: 'Aucune photo n\'a été ajoutée pour ce colis.',
+      uploadedBy: 'Ajoutée par',
+      viewPhoto: 'Voir la photo'
+    },
       faq: {
         q1: 'Comment fonctionne le suivi ?',
         a1: 'Votre numéro de suivi commence par \'XTI-\' suivi de l\'année et d\'un numéro unique. Il vous est communiqué dès la prise en charge de votre colis.',
@@ -1755,8 +1771,16 @@ export const translations: Record<Language, Translations> = {
         longitude: 'Longitud:',
         location: 'Lugar:',
         loadError: 'No se puede cargar el mapa. Configure el token de Mapbox.',
-        mapError: 'Error al cargar el mapa.'
-      },
+      mapError: 'Error al cargar el mapa.'
+    },
+    photos: {
+      title: 'Fotos del paquete',
+      subtitle: 'Imágenes asociadas a este envío',
+      noPhotos: 'No hay fotos disponibles',
+      noPhotosDesc: 'No se han agregado fotos para este paquete.',
+      uploadedBy: 'Subida por',
+      viewPhoto: 'Ver foto'
+    },
       faq: {
         q1: '¿Cómo funciona el seguimiento?',
         a1: 'Tu número de seguimiento comienza con \'XTI-\' seguido del año y un número único. Se comunica tan pronto como se toma el paquete.',
@@ -2651,8 +2675,16 @@ export const translations: Record<Language, Translations> = {
         longitude: 'Längengrad:',
         location: 'Ort:',
         loadError: 'Karte kann nicht geladen werden. Konfigurieren Sie das Mapbox-Token.',
-        mapError: 'Fehler beim Laden der Karte.'
-      },
+      mapError: 'Fehler beim Laden der Karte.'
+    },
+    photos: {
+      title: 'Paket-Fotos',
+      subtitle: 'Mit dieser Sendung verbundene Bilder',
+      noPhotos: 'Keine Fotos verfügbar',
+      noPhotosDesc: 'Für dieses Paket wurden keine Fotos hinzugefügt.',
+      uploadedBy: 'Hochgeladen von',
+      viewPhoto: 'Foto ansehen'
+    },
       faq: {
         q1: 'Wie funktioniert die Verfolgung?',
         a1: 'Ihre Tracking-Nummer beginnt mit \'XTI-\' gefolgt vom Jahr und einer eindeutigen Nummer. Sie wird Ihnen mitgeteilt, sobald Ihr Paket übernommen wurde.',
@@ -3547,8 +3579,16 @@ export const translations: Record<Language, Translations> = {
         longitude: 'Longitudine:',
         location: 'Luogo:',
         loadError: 'Impossibile caricare la mappa. Configurare il token Mapbox.',
-        mapError: 'Errore durante il caricamento della mappa.'
-      },
+      mapError: 'Errore durante il caricamento della mappa.'
+    },
+    photos: {
+      title: 'Foto del pacco',
+      subtitle: 'Immagini associate a questa spedizione',
+      noPhotos: 'Nessuna foto disponibile',
+      noPhotosDesc: 'Nessuna foto è stata aggiunta per questo pacco.',
+      uploadedBy: 'Caricata da',
+      viewPhoto: 'Visualizza foto'
+    },
       faq: {
         q1: 'Come funziona il tracciamento?',
         a1: 'Il tuo numero di tracciamento inizia con \'XTI-\' seguito dall\'anno e da un numero unico. Ti viene comunicato non appena il pacco viene preso in carico.',
@@ -4443,8 +4483,16 @@ export const translations: Record<Language, Translations> = {
         longitude: 'Longitude:',
         location: 'Local:',
         loadError: 'Não é possível carregar o mapa. Configure o token Mapbox.',
-        mapError: 'Erro ao carregar o mapa.'
-      },
+      mapError: 'Erro ao carregar o mapa.'
+    },
+    photos: {
+      title: 'Fotos da encomenda',
+      subtitle: 'Imagens associadas a esta remessa',
+      noPhotos: 'Nenhuma foto disponível',
+      noPhotosDesc: 'Nenhuma foto foi adicionada para esta encomenda.',
+      uploadedBy: 'Carregada por',
+      viewPhoto: 'Ver foto'
+    },
       faq: {
         q1: 'Como funciona o rastreamento?',
         a1: 'Seu número de rastreamento começa com \'XTI-\' seguido do ano e um número único. É comunicado assim que a encomenda é coletada.',
