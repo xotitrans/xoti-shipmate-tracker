@@ -26,6 +26,7 @@ import AdminShipments from "./pages/admin/AdminShipments";
 import AdminNewShipment from "./pages/admin/AdminNewShipment";
 import AdminShipmentDetail from "./pages/admin/AdminShipmentDetail";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               {/* Admin Routes with AdminLayout */}
               <Route path="/admin" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
