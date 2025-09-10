@@ -15,7 +15,7 @@ interface Client {
   shipments_count?: number;
 }
 
-const AdminClients = () => {
+export default function AdminClients() {
   const [clients, setClients] = useState<Client[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -155,6 +155,4 @@ const AdminClients = () => {
       </div>
     </div>
   );
-};
-
-export default AdminClients;
+}
