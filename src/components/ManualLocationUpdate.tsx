@@ -65,52 +65,61 @@ const ManualLocationUpdate: React.FC<ManualLocationUpdateProps> = ({
   useEffect(() => {
     if (!mapContainer.current || !mapboxToken) return;
 
-    mapboxgl.accessToken = mapboxToken;
-    
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v12',
-      zoom: 10,
-      center: currentLatitude && currentLongitude 
-        ? [currentLongitude, currentLatitude] 
-        : [2.3522, 48.8566] // Default to Paris
-    });
-
-    // Add click handler to update position
-    map.current.on('click', (e) => {
-      const { lng, lat } = e.lngLat;
+    try {
+      mapboxgl.accessToken = mapboxToken;
       
-      // Update form data
-      setFormData(prev => ({
-        ...prev,
-        latitude: lat.toFixed(6),
-        longitude: lng.toFixed(6)
-      }));
+      map.current = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: 'mapbox://styles/mapbox/streets-v12',
+        zoom: 10,
+        center: currentLatitude && currentLongitude 
+          ? [currentLongitude, currentLatitude] 
+          : [2.3522, 48.8566] // Default to Paris
+      });
 
-      // Update marker position
-      if (marker.current) {
-        marker.current.setLngLat([lng, lat]);
-      } else {
+      // Add click handler to update position
+      map.current.on('click', (e) => {
+        const { lng, lat } = e.lngLat;
+        
+        // Update form data
+        setFormData(prev => ({
+          ...prev,
+          latitude: lat.toFixed(6),
+          longitude: lng.toFixed(6)
+        }));
+
+        // Update marker position
+        if (marker.current) {
+          marker.current.setLngLat([lng, lat]);
+        } else {
+          marker.current = new mapboxgl.Marker({ color: '#ef4444' })
+            .setLngLat([lng, lat])
+            .addTo(map.current!);
+        }
+
+        // Try to reverse geocode
+        reverseGeocode(lat, lng);
+      });
+
+      // Add existing marker if coordinates exist
+      if (currentLatitude && currentLongitude) {
         marker.current = new mapboxgl.Marker({ color: '#ef4444' })
-          .setLngLat([lng, lat])
-          .addTo(map.current!);
+          .setLngLat([currentLongitude, currentLatitude])
+          .addTo(map.current);
       }
 
-      // Try to reverse geocode
-      reverseGeocode(lat, lng);
-    });
-
-    // Add existing marker if coordinates exist
-    if (currentLatitude && currentLongitude) {
-      marker.current = new mapboxgl.Marker({ color: '#ef4444' })
-        .setLngLat([currentLongitude, currentLatitude])
-        .addTo(map.current);
+      return () => {
+        map.current?.remove();
+      };
+    } catch (error) {
+      console.error('Error initializing map:', error);
+      toast({
+        title: "Erreur de carte",
+        description: "Impossible d'initialiser la carte interactive.",
+        variant: "destructive",
+      });
     }
-
-    return () => {
-      map.current?.remove();
-    };
-  }, [mapboxToken]);
+  }, [mapboxToken, currentLatitude, currentLongitude]);
 
   const reverseGeocode = async (lat: number, lng: number) => {
     try {
@@ -216,19 +225,35 @@ const ManualLocationUpdate: React.FC<ManualLocationUpdateProps> = ({
     setIsUpdating(true);
 
     try {
+      // Try to use the edge function first (admin context)
       const { data, error } = await supabase.functions.invoke('auto-track-gps', {
         body: {
           trackingNumber,
           latitude: parseFloat(formData.latitude),
           longitude: parseFloat(formData.longitude),
           location: formData.location || null,
-          deviceId: 'admin-manual-update',
+          deviceId: 'manual-update',
           timestamp: new Date().toISOString()
         }
       });
 
       if (error) {
-        throw new Error(error.message);
+        console.warn('Edge function failed, trying direct update:', error);
+        
+        // Fallback to direct database update
+        const { error: updateError } = await supabase
+          .from('shipments')
+          .update({
+            current_latitude: parseFloat(formData.latitude),
+            current_longitude: parseFloat(formData.longitude),
+            current_location: formData.location || null,
+            updated_at: new Date().toISOString()
+          })
+          .eq('id', shipmentId);
+
+        if (updateError) {
+          throw new Error(updateError.message);
+        }
       }
 
       // Add tracking history if description provided
@@ -237,7 +262,7 @@ const ManualLocationUpdate: React.FC<ManualLocationUpdateProps> = ({
           .from('tracking_history')
           .insert({
             shipment_id: shipmentId,
-            status: 'in_transit', // You might want to make this configurable
+            status: 'in_transit',
             location: formData.location || `GPS: ${formData.latitude}, ${formData.longitude}`,
             description: formData.description,
             timestamp: new Date().toISOString()

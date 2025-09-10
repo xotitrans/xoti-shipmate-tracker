@@ -78,6 +78,7 @@ const Tracking = () => {
   const [shipmentPhotos, setShipmentPhotos] = useState<ShipmentPhoto[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [showLocationUpdate, setShowLocationUpdate] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const { toast } = useToast();
   const { currentLanguage } = useLanguage();
   const { currentLanguage: routeLanguage } = useLanguageNavigation();
@@ -104,6 +105,7 @@ const Tracking = () => {
     }
 
     setIsSearching(true);
+    setHasError(false);
     
     try {
       const { data: shipment, error: shipmentError } = await supabase
@@ -115,6 +117,7 @@ const Tracking = () => {
       if (shipmentError || !shipment) {
         setTrackingResult(null);
         setTrackingHistory([]);
+        setShipmentPhotos([]);
         toast({
           title: t.tracking.notFoundTitle,
           description: t.tracking.notFoundDesc,
@@ -151,6 +154,7 @@ const Tracking = () => {
       
     } catch (error) {
       console.error('Error tracking shipment:', error);
+      setHasError(true);
       toast({
         title: t.tracking.searchError,
         description: t.tracking.searchErrorDesc,
@@ -518,7 +522,7 @@ const Tracking = () => {
           </Card>
 
           {/* Manual Location Update */}
-          {showLocationUpdate && (
+          {showLocationUpdate && trackingResult && !hasError && (
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
