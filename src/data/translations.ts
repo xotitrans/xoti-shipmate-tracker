@@ -75,6 +75,8 @@ export interface Translations {
     destination: string;
     estimatedDelivery: string;
     trackingHistory: string;
+    updateLocation: string;
+    updateLocationDesc: string;
     packageDetails: string;
     weight: string;
     service: string;
@@ -782,6 +784,8 @@ export const translations: Record<Language, Translations> = {
       destination: 'Destination',
       estimatedDelivery: 'Livraison prévue',
       trackingHistory: 'Historique de suivi',
+      updateLocation: 'Modifier localisation',
+      updateLocationDesc: 'Mettre à jour manuellement la position du colis',
       packageDetails: 'Détails du Colis',
       weight: 'Poids :',
       service: 'Service :',
@@ -1686,6 +1690,8 @@ export const translations: Record<Language, Translations> = {
       destination: 'Destino',
       estimatedDelivery: 'Entrega estimada',
       trackingHistory: 'Historial de seguimiento',
+      updateLocation: 'Modificar ubicación',
+      updateLocationDesc: 'Actualizar manualmente la posición del paquete',
       packageDetails: 'Detalles del Paquete',
       weight: 'Peso:',
       service: 'Servicio:',
@@ -2590,6 +2596,8 @@ export const translations: Record<Language, Translations> = {
       destination: 'Ziel',
       estimatedDelivery: 'Voraussichtliche Lieferung',
       trackingHistory: 'Verfolgungshistorie',
+      updateLocation: 'Standort ändern',
+      updateLocationDesc: 'Position des Pakets manuell aktualisieren',
       packageDetails: 'Paket-Details',
       weight: 'Gewicht:',
       service: 'Service:',
@@ -3494,6 +3502,8 @@ export const translations: Record<Language, Translations> = {
       destination: 'Destinazione',
       estimatedDelivery: 'Consegna prevista',
       trackingHistory: 'Cronologia tracciamento',
+      updateLocation: 'Modifica posizione',
+      updateLocationDesc: 'Aggiorna manualmente la posizione del pacco',
       packageDetails: 'Dettagli del Pacco',
       weight: 'Peso:',
       service: 'Servizio:',
@@ -4398,6 +4408,8 @@ export const translations: Record<Language, Translations> = {
       destination: 'Destino',
       estimatedDelivery: 'Entrega prevista',
       trackingHistory: 'Histórico de rastreamento',
+      updateLocation: 'Modificar localização',
+      updateLocationDesc: 'Atualizar manualmente a posição da encomenda',
       packageDetails: 'Detalhes da Encomenda',
       weight: 'Peso:',
       service: 'Serviço:',

@@ -8,9 +8,10 @@ import { Separator } from '@/components/ui/separator';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
 import { supabase } from '@/integrations/supabase/client';
-import { Search, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckCircle, AlertCircle, Weight, Shield, AlertTriangle, FileSignature, Euro, Zap, CreditCard, Hash, ImageIcon, User } from 'lucide-react';
+import { Search, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckCircle, AlertCircle, Weight, Shield, AlertTriangle, FileSignature, Euro, Zap, CreditCard, Hash, ImageIcon, User, Edit } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ShipmentMap from '@/components/ShipmentMap';
+import ManualLocationUpdate from '@/components/ManualLocationUpdate';
 import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 interface TrackingData {
@@ -76,6 +77,7 @@ const Tracking = () => {
   const [trackingHistory, setTrackingHistory] = useState<TrackingHistoryItem[]>([]);
   const [shipmentPhotos, setShipmentPhotos] = useState<ShipmentPhoto[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [showLocationUpdate, setShowLocationUpdate] = useState(false);
   const { toast } = useToast();
   const { currentLanguage } = useLanguage();
   const { currentLanguage: routeLanguage } = useLanguageNavigation();
@@ -226,9 +228,20 @@ const Tracking = () => {
           <Card>
             <CardHeader>
               <div className="flex items-center justify-between">
-                <CardTitle className="flex items-center gap-2">
-                  <Package className="h-5 w-5" />
-                  {t.tracking.packageTitle} {trackingResult.tracking_number}
+                <CardTitle className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Package className="h-5 w-5" />
+                    {t.tracking.packageTitle} {trackingResult.tracking_number}
+                  </div>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => setShowLocationUpdate(!showLocationUpdate)}
+                    className="ml-4"
+                  >
+                    <Edit className="h-4 w-4 mr-2" />
+                    {t.tracking.updateLocation}
+                  </Button>
                 </CardTitle>
                 <Badge variant={getStatusColor(trackingResult.status) as any}>
                   {getStatusIcon(trackingResult.status)}
@@ -504,6 +517,33 @@ const Tracking = () => {
             </CardContent>
           </Card>
 
+          {/* Manual Location Update */}
+          {showLocationUpdate && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Edit className="h-5 w-5" />
+                  {t.tracking.updateLocation}
+                </CardTitle>
+                <CardDescription>{t.tracking.updateLocationDesc}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ManualLocationUpdate 
+                  shipmentId={trackingResult.id}
+                  trackingNumber={trackingResult.tracking_number}
+                  currentLocation={trackingResult.current_location}
+                  currentLatitude={trackingResult.current_latitude}
+                  currentLongitude={trackingResult.current_longitude}
+                  onLocationUpdated={() => {
+                    // Refresh tracking data
+                    handleTrack(trackingResult.tracking_number);
+                    setShowLocationUpdate(false);
+                  }}
+                />
+              </CardContent>
+            </Card>
+          )}
+
           {/* GPS Map */}
           <ShipmentMap
             shipmentId={trackingResult.id}
@@ -579,7 +619,7 @@ const Tracking = () => {
                   {t.tracking.trackingHistory}
                 </CardTitle>
                 <CardDescription>
-                  Suivi détaillé des étapes de livraison
+                  {t.tracking.faqSubtitle}
                 </CardDescription>
               </CardHeader>
               <CardContent>
