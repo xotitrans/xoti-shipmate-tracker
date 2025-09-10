@@ -16,15 +16,18 @@ interface Client {
 }
 
 export default function AdminClients() {
+  console.log('AdminClients component loaded');
   const [clients, setClients] = useState<Client[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
+    console.log('AdminClients useEffect triggered');
     fetchClients();
   }, []);
 
   const fetchClients = async () => {
+    console.log('Fetching clients...');
     try {
       const { data, error } = await supabase
         .from('profiles')

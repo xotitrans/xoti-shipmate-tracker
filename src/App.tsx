@@ -105,7 +105,9 @@ const App = () => (
           <Route path="/admin/clients" element={
             <LanguageProvider>
               <AuthProvider>
-                <AdminLayout><AdminClients /></AdminLayout>
+                <AdminLayout>
+                  <AdminClients />
+                </AdminLayout>
               </AuthProvider>
             </LanguageProvider>
           } />
