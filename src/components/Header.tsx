@@ -12,6 +12,7 @@ import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { currentLanguage } = useLanguage();
+  const { user, signOut } = useAuth();
   const { getLinkWithLanguage } = useLanguageNavigation();
   const t = translations[currentLanguage];
 
@@ -55,6 +56,28 @@ export const Header = () => {
         <div className="ml-auto flex items-center gap-4">
           <LanguageSelector />
           
+          {/* User Authentication Buttons */}
+          {user ? (
+            <div className="hidden md:flex items-center gap-2">
+              <Button variant="outline" size="sm" asChild>
+                <Link to={getLinkWithLanguage('dashboard')}>
+                  Dashboard
+                </Link>
+              </Button>
+              <Button variant="ghost" size="sm" onClick={signOut}>
+                Déconnexion
+              </Button>
+            </div>
+          ) : (
+            <div className="hidden md:flex items-center gap-2">
+              <Button variant="ghost" size="sm" asChild>
+                <Link to={getLinkWithLanguage('auth')}>
+                  Connexion
+                </Link>
+              </Button>
+            </div>
+          )}
+          
           {/* Mobile menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -79,6 +102,41 @@ export const Header = () => {
                     </Link>
                   );
                 })}
+                
+                {/* Mobile User Authentication */}
+                <div className="border-t pt-4 mt-4">
+                  {user ? (
+                    <>
+                      <Link
+                        to={getLinkWithLanguage('dashboard')}
+                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <Package className="h-4 w-4" />
+                        Dashboard
+                      </Link>
+                      <Button 
+                        variant="ghost" 
+                        className="w-full justify-start gap-3 px-3"
+                        onClick={() => {
+                          signOut();
+                          setIsOpen(false);
+                        }}
+                      >
+                        Déconnexion
+                      </Button>
+                    </>
+                  ) : (
+                    <Link
+                      to={getLinkWithLanguage('auth')}
+                      className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Users className="h-4 w-4" />
+                      Connexion
+                    </Link>
+                  )}
+                </div>
               </nav>
             </SheetContent>
           </Sheet>
