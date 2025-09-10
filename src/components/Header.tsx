@@ -25,9 +25,15 @@ export const Header = () => {
     { name: t.navigation.contact, href: 'contact', icon: Globe },
   ];
 
-  const handleAdminAccess = () => {
+  const handleAdminAccess = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Double-clic détecté, utilisateur connecté:', !!user);
     if (user) {
+      console.log('Navigation vers /admin');
       navigate('/admin');
+    } else {
+      console.log('Utilisateur non connecté, accès refusé');
     }
   };
 
@@ -35,21 +41,33 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         {/* Logo */}
-        <Link 
-          to={getLinkWithLanguage('')} 
-          className="flex items-center space-x-2"
-          onDoubleClick={(e) => {
-            e.preventDefault();
-            handleAdminAccess();
-          }}
-          title={user ? "Double-cliquer pour accéder à l'administration" : ""}
-        >
-          <img 
-            src="/lovable-uploads/cfc1e6df-6d75-45ac-b706-bf4f21f6a4b2.png" 
-            alt="XOTI - eXport Overseas Transport International" 
-            className="h-16 w-auto"
-          />
-        </Link>
+        <div className="flex items-center space-x-2">
+          <Link 
+            to={getLinkWithLanguage('')} 
+            className="flex items-center space-x-2"
+            onDoubleClick={handleAdminAccess}
+            title={user ? "Double-cliquer pour accéder à l'administration" : ""}
+          >
+            <img 
+              src="/lovable-uploads/cfc1e6df-6d75-45ac-b706-bf4f21f6a4b2.png" 
+              alt="XOTI - eXport Overseas Transport International" 
+              className="h-16 w-auto"
+            />
+          </Link>
+          
+          {/* Alternative secrète : Ctrl + Alt + A */}
+          {user && (
+            <div 
+              className="hidden"
+              onKeyDown={(e) => {
+                if (e.ctrlKey && e.altKey && e.key === 'a') {
+                  console.log('Raccourci clavier Ctrl+Alt+A détecté');
+                  navigate('/admin');
+                }
+              }}
+            />
+          )}
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex md:items-center md:gap-6 md:text-sm md:font-medium ml-8">
