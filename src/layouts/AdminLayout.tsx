@@ -20,7 +20,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
   }
 
   if (!user) {
-    return <Navigate to="/fr/auth" />;
+    return <Navigate to="/fr/auth?redirect=admin" />;
   }
 
   return (
