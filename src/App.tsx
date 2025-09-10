@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Header } from "@/components/Header";
@@ -27,156 +27,176 @@ import AdminNewShipment from "./pages/admin/AdminNewShipment";
 import AdminShipmentDetail from "./pages/admin/AdminShipmentDetail";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import { Language } from "@/types/language";
 
 const queryClient = new QueryClient();
+
+const LanguageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { lang } = useParams<{ lang: string }>();
+  
+  return (
+    <LanguageProvider initialLanguage={lang as Language}>
+      <AuthProvider>
+        <Toaster />
+        <Sonner />
+        {children}
+      </AuthProvider>
+    </LanguageProvider>
+  );
+};
+
+const PageLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="min-h-screen flex flex-col">
+    <Header />
+    <main className="flex-1">
+      {children}
+    </main>
+    <Footer />
+  </div>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <LanguageProvider>
-        <AuthProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-              {/* Admin Routes with AdminLayout */}
-              <Route path="/admin" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
-              <Route path="/admin/shipments" element={<AdminLayout><AdminShipments /></AdminLayout>} />
-              <Route path="/admin/shipments/:id" element={<AdminLayout><AdminShipmentDetail /></AdminLayout>} />
-              <Route path="/admin/new-shipment" element={<AdminLayout><AdminNewShipment /></AdminLayout>} />
-              
-              {/* Public Routes with Header/Footer */}
-              <Route path="/" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <Home />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="/about" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <About />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="/services" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <Services />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="/services/road-transport" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <RoadTransport />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="/services/air-transport" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <AirTransport />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="/services/sea-transport" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <SeaTransport />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="/services/express" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <Express />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="/services/custom" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <Custom />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="/contact" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <Contact />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="/tracking" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <Tracking />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="/auth" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <Auth />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="/dashboard" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <Dashboard />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="/new-shipment" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <NewShipment />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-              <Route path="*" element={
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <NotFound />
-                  </main>
-                  <Footer />
-                </div>
-              } />
-            </Routes>
-          </BrowserRouter>
-        </AuthProvider>
-      </LanguageProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          {/* Redirect root to default language */}
+          <Route path="/" element={<Navigate to="/fr" replace />} />
+          
+          {/* Admin Routes - no language prefix needed */}
+          <Route path="/admin" element={
+            <LanguageProvider>
+              <AuthProvider>
+                <AdminLayout><AdminDashboard /></AdminLayout>
+              </AuthProvider>
+            </LanguageProvider>
+          } />
+          <Route path="/admin/shipments" element={
+            <LanguageProvider>
+              <AuthProvider>
+                <AdminLayout><AdminShipments /></AdminLayout>
+              </AuthProvider>
+            </LanguageProvider>
+          } />
+          <Route path="/admin/shipments/:id" element={
+            <LanguageProvider>
+              <AuthProvider>
+                <AdminLayout><AdminShipmentDetail /></AdminLayout>
+              </AuthProvider>
+            </LanguageProvider>
+          } />
+          <Route path="/admin/new-shipment" element={
+            <LanguageProvider>
+              <AuthProvider>
+                <AdminLayout><AdminNewShipment /></AdminLayout>
+              </AuthProvider>
+            </LanguageProvider>
+          } />
+          
+          {/* Language-specific routes */}
+          <Route path="/:lang" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <Home />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="/:lang/about" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <About />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="/:lang/services" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <Services />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="/:lang/services/road-transport" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <RoadTransport />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="/:lang/services/air-transport" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <AirTransport />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="/:lang/services/sea-transport" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <SeaTransport />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="/:lang/services/express" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <Express />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="/:lang/services/custom" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <Custom />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="/:lang/contact" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <Contact />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="/:lang/tracking" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <Tracking />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="/:lang/auth" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <Auth />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="/:lang/dashboard" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <Dashboard />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="/:lang/new-shipment" element={
+            <LanguageWrapper>
+              <PageLayout>
+                <NewShipment />
+              </PageLayout>
+            </LanguageWrapper>
+          } />
+          <Route path="*" element={
+            <LanguageProvider>
+              <AuthProvider>
+                <PageLayout>
+                  <NotFound />
+                </PageLayout>
+              </AuthProvider>
+            </LanguageProvider>
+          } />
+        </Routes>
+      </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );

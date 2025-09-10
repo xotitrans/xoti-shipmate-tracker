@@ -8,11 +8,22 @@ import {
 import { ChevronDown, Globe } from 'lucide-react';
 import { LANGUAGES } from '@/types/language';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 export const LanguageSelector = () => {
-  const { currentLanguage, changeLanguage } = useLanguage();
+  const { currentLanguage } = useLanguage();
+  const { navigateWithLanguage } = useLanguageNavigation();
   
   const currentLangConfig = LANGUAGES.find(lang => lang.code === currentLanguage);
+
+  const handleLanguageChange = (langCode: string) => {
+    // Get current path without language prefix
+    const currentPath = window.location.pathname;
+    const pathWithoutLang = currentPath.replace(/^\/[a-z]{2}/, '') || '';
+    
+    // Navigate to new language
+    window.location.href = `/${langCode}${pathWithoutLang}`;
+  };
 
   return (
     <DropdownMenu>
@@ -30,7 +41,7 @@ export const LanguageSelector = () => {
         {LANGUAGES.map((language) => (
           <DropdownMenuItem
             key={language.code}
-            onClick={() => changeLanguage(language.code)}
+            onClick={() => handleLanguageChange(language.code)}
             className={language.code === currentLanguage ? 'bg-secondary' : ''}
           >
             <span className="mr-2">{language.flag}</span>

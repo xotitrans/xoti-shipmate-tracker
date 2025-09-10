@@ -8,9 +8,21 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Initialize with saved language or default
+interface LanguageProviderProps {
+  children: React.ReactNode;
+  initialLanguage?: Language;
+}
+
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({ 
+  children, 
+  initialLanguage 
+}) => {
+  // Initialize with URL language, saved language, or default
   const [currentLanguage, setCurrentLanguage] = useState<Language>(() => {
+    if (initialLanguage && ['fr', 'es', 'de', 'it', 'pt'].includes(initialLanguage)) {
+      return initialLanguage;
+    }
+    
     if (typeof window !== 'undefined') {
       const savedLanguage = localStorage.getItem('xoti-language') as Language;
       if (savedLanguage && ['fr', 'es', 'de', 'it', 'pt'].includes(savedLanguage)) {
@@ -20,11 +32,23 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return DEFAULT_LANGUAGE;
   });
 
-  // No need for additional useEffect - initialization handles it
+  // Update language when initialLanguage changes (from URL)
+  useEffect(() => {
+    if (initialLanguage && ['fr', 'es', 'de', 'it', 'pt'].includes(initialLanguage)) {
+      setCurrentLanguage(initialLanguage);
+      localStorage.setItem('xoti-language', initialLanguage);
+    }
+  }, [initialLanguage]);
 
   const changeLanguage = (language: Language) => {
     setCurrentLanguage(language);
     localStorage.setItem('xoti-language', language);
+    
+    // Navigate to the new language URL
+    const currentPath = window.location.pathname;
+    const pathWithoutLang = currentPath.replace(/^\/[a-z]{2}/, '');
+    const newPath = `/${language}${pathWithoutLang || ''}`;
+    window.history.pushState({}, '', newPath);
   };
 
   return (
