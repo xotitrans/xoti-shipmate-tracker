@@ -29,11 +29,6 @@ export function AdminLayout({ children }: AdminLayoutProps) {
         {/* Header with Sidebar Trigger */}
         <header className="fixed top-0 left-0 right-0 z-50 h-14 flex items-center border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <SidebarTrigger className="ml-4" />
-          <div className="flex items-center gap-2 ml-4">
-            <span className="font-semibold text-sm text-muted-foreground">
-              Administration XOTI TRANSPORT
-            </span>
-          </div>
         </header>
 
         {/* Sidebar */}

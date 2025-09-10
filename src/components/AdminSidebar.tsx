@@ -96,9 +96,6 @@ export function AdminSidebar() {
         <div className="p-6 border-b">
           <div className="flex items-center gap-2">
             <Package className="h-6 w-6 text-primary" />
-            {open && (
-              <span className="font-bold text-lg text-primary">XOTI</span>
-            )}
           </div>
         </div>
 
