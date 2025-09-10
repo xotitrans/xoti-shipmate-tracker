@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Package, Truck, Globe, Users, Search, Settings } from 'lucide-react';
@@ -14,6 +14,7 @@ export const Header = () => {
   const { currentLanguage } = useLanguage();
   const { getLinkWithLanguage } = useLanguageNavigation();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const t = translations[currentLanguage];
 
   const navigation = [
@@ -24,6 +25,12 @@ export const Header = () => {
     { name: t.navigation.contact, href: 'contact', icon: Globe },
   ];
 
+  const handleAdminAccess = () => {
+    if (user) {
+      navigate('/admin');
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
@@ -31,10 +38,9 @@ export const Header = () => {
         <Link 
           to={getLinkWithLanguage('')} 
           className="flex items-center space-x-2"
-          onDoubleClick={() => {
-            if (user) {
-              window.location.href = '/admin';
-            }
+          onDoubleClick={(e) => {
+            e.preventDefault();
+            handleAdminAccess();
           }}
           title={user ? "Double-cliquer pour accéder à l'administration" : ""}
         >
