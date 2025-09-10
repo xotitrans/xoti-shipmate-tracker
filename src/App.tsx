@@ -194,6 +194,13 @@ const App = () => (
               </PageLayout>
             </LanguageWrapper>
           } />
+          <Route path="/:lang/admin-secret" element={
+            <LanguageProvider>
+              <AuthProvider>
+                <AdminLayout><AdminDashboard /></AdminLayout>
+              </AuthProvider>
+            </LanguageProvider>
+          } />
           <Route path="*" element={
             <LanguageProvider>
               <AuthProvider>
