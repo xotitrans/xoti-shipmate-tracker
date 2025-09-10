@@ -173,7 +173,7 @@ export default function AdminShipments() {
                           Voir
                         </Button>
                       </Link>
-                      <Link to={`/admin/shipments/${shipment.id}`}>
+                      <Link to={`/admin/shipments/${shipment.id}/edit`}>
                         <Button variant="outline" size="sm">
                           Modifier
                         </Button>

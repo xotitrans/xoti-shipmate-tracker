@@ -25,6 +25,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminShipments from "./pages/admin/AdminShipments";
 import AdminNewShipment from "./pages/admin/AdminNewShipment";
 import AdminShipmentDetail from "./pages/admin/AdminShipmentDetail";
+import AdminEditShipment from "./pages/admin/AdminEditShipment";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import { Language } from "@/types/language";
@@ -90,6 +91,13 @@ const App = () => (
             <LanguageProvider>
               <AuthProvider>
                 <AdminLayout><AdminNewShipment /></AdminLayout>
+              </AuthProvider>
+            </LanguageProvider>
+          } />
+          <Route path="/admin/shipments/:id/edit" element={
+            <LanguageProvider>
+              <AuthProvider>
+                <AdminLayout><AdminEditShipment /></AdminLayout>
               </AuthProvider>
             </LanguageProvider>
           } />
