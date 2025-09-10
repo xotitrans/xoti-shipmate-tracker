@@ -173,9 +173,11 @@ export default function AdminShipments() {
                           Voir
                         </Button>
                       </Link>
-                      <Button variant="outline" size="sm">
-                        Modifier
-                      </Button>
+                      <Link to={`/admin/shipments/${shipment.id}`}>
+                        <Button variant="outline" size="sm">
+                          Modifier
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
