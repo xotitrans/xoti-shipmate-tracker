@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { MapPin, Navigation, Save, RotateCcw, AlertCircle } from 'lucide-react';
+import { Navigation, Save, RotateCcw } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 
@@ -16,38 +16,7 @@ interface ManualLocationUpdateProps {
   onLocationUpdated?: () => void;
 }
 
-interface ErrorBoundaryState {
-  hasError: boolean;
-  error?: Error;
-}
-
-class ErrorBoundary extends React.Component<
-  { children: React.ReactNode; fallback: React.ReactNode },
-  ErrorBoundaryState
-> {
-  constructor(props: { children: React.ReactNode; fallback: React.ReactNode }) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-    return { hasError: true, error };
-  }
-
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error('ManualLocationUpdate Error:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return this.props.fallback;
-    }
-
-    return this.props.children;
-  }
-}
-
-const ManualLocationUpdateCore: React.FC<ManualLocationUpdateProps> = ({
+const ManualLocationUpdate: React.FC<ManualLocationUpdateProps> = ({
   shipmentId,
   trackingNumber,
   currentLocation,
@@ -272,34 +241,6 @@ const ManualLocationUpdateCore: React.FC<ManualLocationUpdateProps> = ({
         </div>
       )}
     </div>
-  );
-};
-
-const ManualLocationUpdate: React.FC<ManualLocationUpdateProps> = (props) => {
-  return (
-    <ErrorBoundary
-      fallback={
-        <div className="p-4 border border-destructive/20 rounded-lg bg-destructive/5">
-          <div className="flex items-center gap-2 text-destructive mb-2">
-            <AlertCircle className="h-4 w-4" />
-            <h4 className="font-medium">Erreur de chargement</h4>
-          </div>
-          <p className="text-sm text-muted-foreground mb-3">
-            Le composant de modification GPS ne peut pas se charger. 
-            Vous pouvez toujours modifier la position depuis l'interface d'administration.
-          </p>
-          <Button 
-            variant="outline" 
-            size="sm"
-            onClick={() => window.location.reload()}
-          >
-            Recharger la page
-          </Button>
-        </div>
-      }
-    >
-      <ManualLocationUpdateCore {...props} />
-    </ErrorBoundary>
   );
 };
 
