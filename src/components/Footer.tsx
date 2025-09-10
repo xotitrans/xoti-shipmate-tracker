@@ -2,33 +2,31 @@ import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
-import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 export const Footer = () => {
   const { currentLanguage } = useLanguage();
-  const { getLinkWithLanguage } = useLanguageNavigation();
   const t = translations[currentLanguage];
 
   const footerLinks = {
     services: [
-      { name: t.footer.links.services.road, href: 'services/road-transport' },
-      { name: t.footer.links.services.air, href: 'services/air-transport' },
-      { name: t.footer.links.services.sea, href: 'services/sea-transport' },
-      { name: t.footer.links.services.express, href: 'services/express' },
-      { name: t.footer.links.services.custom, href: 'services/custom' },
+      { name: t.footer.links.services.road, href: '/services/road-transport' },
+      { name: t.footer.links.services.air, href: '/services/air-transport' },
+      { name: t.footer.links.services.sea, href: '/services/sea-transport' },
+      { name: t.footer.links.services.express, href: '/services/express' },
+      { name: t.footer.links.services.custom, href: '/services/custom' },
     ],
     company: [
-      { name: t.footer.links.company.about, href: 'about' },
+      { name: t.footer.links.company.about, href: '/about' },
     ],
     support: [
-      { name: t.footer.links.support.tracking, href: 'tracking' },
-      { name: t.footer.links.support.contact, href: 'contact' },
+      { name: t.footer.links.support.tracking, href: '/tracking' },
+      { name: t.footer.links.support.contact, href: '/contact' },
     ],
     legal: [
-      { name: t.footer.links.legal.legal, href: 'contact' },
-      { name: t.footer.links.legal.terms, href: 'contact' },
-      { name: t.footer.links.legal.privacy, href: 'contact' },
-      { name: t.footer.links.legal.cookies, href: 'contact' },
+      { name: t.footer.links.legal.legal, href: '/contact' },
+      { name: t.footer.links.legal.terms, href: '/contact' },
+      { name: t.footer.links.legal.privacy, href: '/contact' },
+      { name: t.footer.links.legal.cookies, href: '/contact' },
     ],
   };
 
@@ -74,7 +72,7 @@ export const Footer = () => {
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
                   <Link 
-                    to={getLinkWithLanguage(link.href)} 
+                    to={link.href} 
                     className="text-white/70 hover:text-brand-teal transition-colors text-sm"
                   >
                     {link.name}
@@ -91,7 +89,7 @@ export const Footer = () => {
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link 
-                    to={getLinkWithLanguage(link.href)} 
+                    to={link.href} 
                     className="text-white/70 hover:text-brand-teal transition-colors text-sm"
                   >
                     {link.name}
@@ -108,7 +106,7 @@ export const Footer = () => {
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
                   <Link 
-                    to={getLinkWithLanguage(link.href)} 
+                    to={link.href} 
                     className="text-white/70 hover:text-brand-teal transition-colors text-sm"
                   >
                     {link.name}
@@ -129,7 +127,7 @@ export const Footer = () => {
               {footerLinks.legal.map((link) => (
                 <Link 
                   key={link.name}
-                  to={getLinkWithLanguage(link.href)} 
+                  to={link.href} 
                   className="text-white/60 hover:text-brand-teal transition-colors text-sm"
                 >
                   {link.name}
