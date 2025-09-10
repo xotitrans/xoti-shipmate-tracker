@@ -879,7 +879,7 @@ export const translations: Record<Language, Translations> = {
       noPhotos: 'Aucune photo disponible',
       noPhotosDesc: 'Aucune photo n\'a été ajoutée pour ce colis.',
       uploadedBy: 'Ajoutée par',
-      viewPhoto: 'Voir la photo'
+      viewPhoto: 'Voir',
     },
       faq: {
         q1: 'Comment fonctionne le suivi ?',
@@ -1785,7 +1785,7 @@ export const translations: Record<Language, Translations> = {
       noPhotos: 'No hay fotos disponibles',
       noPhotosDesc: 'No se han agregado fotos para este paquete.',
       uploadedBy: 'Subida por',
-      viewPhoto: 'Ver foto'
+      viewPhoto: 'Ver',
     },
       faq: {
         q1: '¿Cómo funciona el seguimiento?',
@@ -2691,7 +2691,7 @@ export const translations: Record<Language, Translations> = {
       noPhotos: 'Keine Fotos verfügbar',
       noPhotosDesc: 'Für dieses Paket wurden keine Fotos hinzugefügt.',
       uploadedBy: 'Hochgeladen von',
-      viewPhoto: 'Foto ansehen'
+      viewPhoto: 'Ansehen',
     },
       faq: {
         q1: 'Wie funktioniert die Verfolgung?',
@@ -3597,7 +3597,7 @@ export const translations: Record<Language, Translations> = {
       noPhotos: 'Nessuna foto disponibile',
       noPhotosDesc: 'Nessuna foto è stata aggiunta per questo pacco.',
       uploadedBy: 'Caricata da',
-      viewPhoto: 'Visualizza foto'
+      viewPhoto: 'Vedi',
     },
       faq: {
         q1: 'Come funziona il tracciamento?',
@@ -4503,7 +4503,7 @@ export const translations: Record<Language, Translations> = {
       noPhotos: 'Nenhuma foto disponível',
       noPhotosDesc: 'Nenhuma foto foi adicionada para esta encomenda.',
       uploadedBy: 'Carregada por',
-      viewPhoto: 'Ver foto'
+      viewPhoto: 'Ver',
     },
       faq: {
         q1: 'Como funciona o rastreamento?',

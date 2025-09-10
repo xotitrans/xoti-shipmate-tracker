@@ -45,9 +45,17 @@ const ManualLocationUpdate: React.FC<ManualLocationUpdateProps> = ({
         const { data, error } = await supabase.functions.invoke('get-mapbox-token');
         if (!error && data?.token) {
           setMapboxToken(data.token);
+        } else {
+          console.warn('No Mapbox token available from Edge Function');
+          // Use a fallback or show a message to the user
         }
       } catch (err) {
         console.error('Error getting Mapbox token:', err);
+        toast({
+          title: "Erreur de configuration",
+          description: "Token Mapbox non disponible. La carte ne s'affichera pas.",
+          variant: "destructive",
+        });
       }
     };
     getMapboxToken();
@@ -275,15 +283,27 @@ const ManualLocationUpdate: React.FC<ManualLocationUpdateProps> = ({
         {/* Interactive Map */}
         <div className="space-y-2">
           <Label>Cliquez sur la carte pour choisir la position</Label>
-          <div 
-            ref={mapContainer} 
-            className="w-full h-64 rounded-lg border cursor-crosshair"
-            style={{ minHeight: '256px' }}
-          />
-          <p className="text-xs text-muted-foreground flex items-center gap-1">
-            <Mouse className="h-3 w-3" />
-            Cliquez n'importe où sur la carte pour définir la nouvelle position
-          </p>
+          {mapboxToken ? (
+            <>
+              <div 
+                ref={mapContainer} 
+                className="w-full h-64 rounded-lg border cursor-crosshair"
+                style={{ minHeight: '256px' }}
+              />
+              <p className="text-xs text-muted-foreground flex items-center gap-1">
+                <Mouse className="h-3 w-3" />
+                Cliquez n'importe où sur la carte pour définir la nouvelle position
+              </p>
+            </>
+          ) : (
+            <div className="w-full h-64 rounded-lg border bg-muted flex items-center justify-center">
+              <div className="text-center">
+                <MapPin className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground">Carte non disponible</p>
+                <p className="text-xs text-muted-foreground">Token Mapbox requis</p>
+              </div>
+            </div>
+          )}
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">

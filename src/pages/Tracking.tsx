@@ -582,9 +582,20 @@ const Tracking = () => {
                         <img
                           src={photo.photo_url}
                           alt={photo.description || t.tracking.photos.viewPhoto}
-                          className="object-cover w-full h-full transition-transform group-hover:scale-105"
+                          className="object-cover w-full h-full transition-transform group-hover:scale-105 cursor-pointer"
                           loading="lazy"
+                          onClick={() => window.open(photo.photo_url, '_blank')}
                         />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors cursor-pointer flex items-center justify-center"
+                             onClick={() => window.open(photo.photo_url, '_blank')}>
+                          <Button
+                            variant="secondary" 
+                            size="sm"
+                            className="opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            {t.tracking.photos.viewPhoto}
+                          </Button>
+                        </div>
                       </div>
                       {photo.description && (
                         <p className="text-xs text-muted-foreground mt-2 line-clamp-2">
