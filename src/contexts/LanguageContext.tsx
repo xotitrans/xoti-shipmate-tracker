@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import { Language, DEFAULT_LANGUAGE } from '@/types/language';
 
 interface LanguageContextType {
@@ -9,47 +8,47 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const location = useLocation();
-  
-  // Initialize language from URL params, localStorage, or default
+interface LanguageProviderProps {
+  children: React.ReactNode;
+  initialLanguage?: Language;
+}
+
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({ 
+  children, 
+  initialLanguage 
+}) => {
+  // Initialize with URL language, saved language, or default
   const [currentLanguage, setCurrentLanguage] = useState<Language>(() => {
-    // Check URL parameters first
-    const params = new URLSearchParams(location.search);
-    const urlLang = params.get('lang') as Language;
-    if (urlLang && ['fr', 'es', 'de', 'it', 'pt'].includes(urlLang)) {
-      return urlLang;
+    if (initialLanguage && ['fr', 'es', 'de', 'it', 'pt'].includes(initialLanguage)) {
+      return initialLanguage;
     }
     
-    // Then check localStorage
     if (typeof window !== 'undefined') {
       const savedLanguage = localStorage.getItem('xoti-language') as Language;
       if (savedLanguage && ['fr', 'es', 'de', 'it', 'pt'].includes(savedLanguage)) {
         return savedLanguage;
       }
     }
-    
     return DEFAULT_LANGUAGE;
   });
 
-  // Update language when URL changes
+  // Update language when initialLanguage changes (from URL)
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const urlLang = params.get('lang') as Language;
-    if (urlLang && ['fr', 'es', 'de', 'it', 'pt'].includes(urlLang)) {
-      setCurrentLanguage(urlLang);
-      localStorage.setItem('xoti-language', urlLang);
+    if (initialLanguage && ['fr', 'es', 'de', 'it', 'pt'].includes(initialLanguage)) {
+      setCurrentLanguage(initialLanguage);
+      localStorage.setItem('xoti-language', initialLanguage);
     }
-  }, [location.search]);
+  }, [initialLanguage]);
 
   const changeLanguage = (language: Language) => {
     setCurrentLanguage(language);
     localStorage.setItem('xoti-language', language);
     
-    // Update URL with new language parameter
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', language);
-    window.history.pushState({}, '', url.toString());
+    // Navigate to the new language URL
+    const currentPath = window.location.pathname;
+    const pathWithoutLang = currentPath.replace(/^\/[a-z]{2}/, '');
+    const newPath = `/${language}${pathWithoutLang || ''}`;
+    window.history.pushState({}, '', newPath);
   };
 
   return (

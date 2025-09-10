@@ -5,9 +5,11 @@ import { ArrowRight, Truck, MapPin, Clock, Shield, CheckCircle, Star } from 'luc
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
+import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 export default function RoadTransport() {
   const { currentLanguage } = useLanguage();
+  const { getLinkWithLanguage } = useLanguageNavigation();
   const t = translations[currentLanguage];
 
   const features = [
@@ -34,7 +36,7 @@ export default function RoadTransport() {
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-4 mb-6">
               <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-primary" asChild>
-                <Link to="/services">
+                <Link to={getLinkWithLanguage('services')}>
                   {t.roadTransport.hero.backButton}
                 </Link>
               </Button>
@@ -48,13 +50,13 @@ export default function RoadTransport() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" variant="secondary" asChild>
-                <Link to="/contact">
+                <Link to={getLinkWithLanguage('contact')}>
                   {t.roadTransport.hero.quoteButton}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
-                <Link to="/tracking">
+                <Link to={getLinkWithLanguage('tracking')}>
                   {t.roadTransport.hero.trackButton}
                 </Link>
               </Button>
@@ -133,7 +135,7 @@ export default function RoadTransport() {
           
           <div className="text-center mt-12">
             <Button size="lg" asChild>
-              <Link to="/contact">
+              <Link to={getLinkWithLanguage('contact')}>
                 {t.roadTransport.zones.quoteButton}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -207,7 +209,7 @@ export default function RoadTransport() {
             </div>
           </div>
           <Button size="lg" variant="secondary" asChild>
-            <Link to="/contact">
+            <Link to={getLinkWithLanguage('contact')}>
               {t.roadTransport.cta.button}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

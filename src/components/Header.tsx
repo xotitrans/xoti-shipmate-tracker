@@ -7,25 +7,27 @@ import { LanguageSelector } from './LanguageSelector';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { translations } from '@/data/translations';
+import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { currentLanguage } = useLanguage();
+  const { getLinkWithLanguage } = useLanguageNavigation();
   const t = translations[currentLanguage];
 
   const navigation = [
-    { name: t.navigation.home, href: '/', icon: Package },
-    { name: t.navigation.about, href: '/about', icon: Users },
-    { name: t.navigation.services, href: '/services', icon: Truck },
-    { name: t.navigation.tracking, href: '/tracking', icon: Search },
-    { name: t.navigation.contact, href: '/contact', icon: Globe },
+    { name: t.navigation.home, href: '', icon: Package },
+    { name: t.navigation.about, href: 'about', icon: Users },
+    { name: t.navigation.services, href: 'services', icon: Truck },
+    { name: t.navigation.tracking, href: 'tracking', icon: Search },
+    { name: t.navigation.contact, href: 'contact', icon: Globe },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
+        <Link to={getLinkWithLanguage('')} className="flex items-center space-x-2">
           <img 
             src="/lovable-uploads/cfc1e6df-6d75-45ac-b706-bf4f21f6a4b2.png" 
             alt="XOTI - eXport Overseas Transport International" 
@@ -40,7 +42,7 @@ export const Header = () => {
             return (
               <Link
                 key={item.name}
-                to={item.href}
+                to={getLinkWithLanguage(item.href)}
                 className="flex items-center gap-2 transition-colors hover:text-primary"
               >
                 <Icon className="h-4 w-4" />
@@ -68,7 +70,7 @@ export const Header = () => {
                   return (
                     <Link
                       key={item.name}
-                      to={item.href}
+                      to={getLinkWithLanguage(item.href)}
                       className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
                       onClick={() => setIsOpen(false)}
                     >

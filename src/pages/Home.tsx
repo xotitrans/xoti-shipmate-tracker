@@ -6,9 +6,11 @@ import { Star, Quote, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
+import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 export default function Home() {
   const { currentLanguage } = useLanguage();
+  const { getLinkWithLanguage } = useLanguageNavigation();
   const t = translations[currentLanguage];
 
   const stats = [
@@ -91,13 +93,13 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" asChild>
-              <Link to="/contact">
+              <Link to={getLinkWithLanguage('contact')}>
                 {t.home.cta.quoteButton}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
-              <Link to="/tracking">
+              <Link to={getLinkWithLanguage('tracking')}>
                 {t.home.cta.trackButton}
               </Link>
             </Button>

@@ -5,9 +5,11 @@ import { ArrowRight, Truck, Plane, Ship, Zap, Settings, Clock, CheckCircle } fro
 import { Link } from 'react-router-dom';
 import { translations } from '@/data/translations';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 export default function Services() {
   const { currentLanguage } = useLanguage();
+  const { getLinkWithLanguage } = useLanguageNavigation();
   const t = translations[currentLanguage];
 
   const mainServices = [
@@ -17,7 +19,7 @@ export default function Services() {
       description: t.servicesPage.mainServices.services.road.description,
       features: t.servicesPage.mainServices.services.road.features,
       destinations: t.servicesPage.mainServices.services.road.destinations,
-      href: '/services/road-transport'
+      href: 'services/road-transport'
     },
     {
       icon: Plane,
@@ -25,7 +27,7 @@ export default function Services() {
       description: t.servicesPage.mainServices.services.air.description,
       features: t.servicesPage.mainServices.services.air.features,
       destinations: t.servicesPage.mainServices.services.air.destinations,
-      href: '/services/air-transport'
+      href: 'services/air-transport'
     },
     {
       icon: Ship,
@@ -33,7 +35,7 @@ export default function Services() {
       description: t.servicesPage.mainServices.services.sea.description,
       features: t.servicesPage.mainServices.services.sea.features,
       destinations: t.servicesPage.mainServices.services.sea.destinations,
-      href: '/services/sea-transport'
+      href: 'services/sea-transport'
     }
   ];
 
@@ -42,19 +44,19 @@ export default function Services() {
       icon: Zap,
       title: t.servicesPage.specialServices.services.express.title,
       description: t.servicesPage.specialServices.services.express.description,
-      href: '/services/express'
+      href: 'services/express'
     },
     {
       icon: Settings,
       title: t.servicesPage.specialServices.services.custom.title,
       description: t.servicesPage.specialServices.services.custom.description,
-      href: '/services/custom'
+      href: 'services/custom'
     },
     {
       icon: Clock,
       title: t.servicesPage.specialServices.services.tracking.title,
       description: t.servicesPage.specialServices.services.tracking.description,
-      href: '/tracking'
+      href: 'tracking'
     }
   ];
   return (
@@ -115,7 +117,7 @@ export default function Services() {
                     </div>
                     
                     <Button className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors" asChild>
-                      <Link to={service.href}>
+                      <Link to={getLinkWithLanguage(service.href)}>
                         {t.servicesPage.mainServices.learnMore}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
@@ -150,7 +152,7 @@ export default function Services() {
                     <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
                     <p className="text-muted-foreground mb-6">{service.description}</p>
                     <Button variant="outline" className="group-hover:bg-accent group-hover:text-accent-foreground transition-colors" asChild>
-                      <Link to={service.href}>
+                      <Link to={getLinkWithLanguage(service.href)}>
                         {t.servicesPage.specialServices.discover}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
@@ -203,13 +205,13 @@ export default function Services() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" asChild>
-              <Link to="/contact">
+              <Link to={getLinkWithLanguage('contact')}>
                 {t.servicesPage.cta.quoteButton}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
-              <Link to="/tracking">
+              <Link to={getLinkWithLanguage('tracking')}>
                 {t.servicesPage.cta.trackButton}
               </Link>
             </Button>

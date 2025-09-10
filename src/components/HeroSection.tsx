@@ -4,9 +4,11 @@ import { ArrowRight, Truck, Plane, Ship, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
+import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 export const HeroSection = () => {
   const { currentLanguage } = useLanguage();
+  const { getLinkWithLanguage } = useLanguageNavigation();
   const t = translations[currentLanguage];
 
   const features = [
@@ -66,7 +68,7 @@ export const HeroSection = () => {
           
           <div className="flex justify-center mb-16 animate-scale-in">
             <Button size="lg" variant="secondary" asChild className="shadow-navy text-xl px-12 py-6 text-lg font-bold">
-              <Link to="/tracking">
+              <Link to={getLinkWithLanguage('tracking')}>
                 {t.hero.trackButton}
                 <ArrowRight className="ml-3 h-6 w-6" />
               </Link>

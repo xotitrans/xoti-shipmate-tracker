@@ -5,9 +5,11 @@ import { ArrowRight, Plane, Globe, Clock, Shield, CheckCircle, Star, Zap } from 
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
+import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 export default function AirTransport() {
   const { currentLanguage } = useLanguage();
+  const { getLinkWithLanguage } = useLanguageNavigation();
   const t = translations[currentLanguage];
 
   const services = [
@@ -44,7 +46,7 @@ export default function AirTransport() {
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-4 mb-6">
               <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-primary" asChild>
-                <Link to="/services">
+                <Link to={getLinkWithLanguage('services')}>
                   {t.airTransport.hero.backButton}
                 </Link>
               </Button>
@@ -61,13 +63,13 @@ export default function AirTransport() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" variant="secondary" asChild>
-                <Link to="/contact">
+                <Link to={getLinkWithLanguage('contact')}>
                   {t.airTransport.hero.quoteButton}
                   <Zap className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
-                <Link to="/tracking">
+                <Link to={getLinkWithLanguage('tracking')}>
                   {t.airTransport.hero.trackButton}
                 </Link>
               </Button>
@@ -111,7 +113,7 @@ export default function AirTransport() {
                     ))}
                   </div>
                   <Button className="w-full mt-6" variant={index === 0 ? "default" : "outline"} asChild>
-                    <Link to="/contact">
+                    <Link to={getLinkWithLanguage('contact')}>
                       {index === 0 ? t.airTransport.services.express.button : 
                        index === 1 ? t.airTransport.services.standard.button : 
                        t.airTransport.services.economy.button}
@@ -243,7 +245,7 @@ export default function AirTransport() {
             </div>
           </div>
           <Button size="lg" variant="secondary" asChild>
-            <Link to="/contact">
+            <Link to={getLinkWithLanguage('contact')}>
               {t.airTransport.cta.button}
               <Plane className="ml-2 h-4 w-4" />
             </Link>

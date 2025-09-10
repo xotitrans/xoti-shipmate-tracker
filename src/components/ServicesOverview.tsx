@@ -4,9 +4,11 @@ import { ArrowRight, Truck, Plane, Ship, Zap, Settings, Clock } from 'lucide-rea
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
+import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 export const ServicesOverview = () => {
   const { currentLanguage } = useLanguage();
+  const { getLinkWithLanguage } = useLanguageNavigation();
   const t = translations[currentLanguage];
 
   const services = [
@@ -15,42 +17,42 @@ export const ServicesOverview = () => {
       title: t.services.items.road.title,
       description: t.services.items.road.description,
       features: t.services.items.road.features,
-      href: '/services/road-transport'
+      href: 'services/road-transport'
     },
     {
       icon: Plane,
       title: t.services.items.air.title,
       description: t.services.items.air.description,
       features: t.services.items.air.features,
-      href: '/services/air-transport'
+      href: 'services/air-transport'
     },
     {
       icon: Ship,
       title: t.services.items.sea.title,
       description: t.services.items.sea.description,
       features: t.services.items.sea.features,
-      href: '/services/sea-transport'
+      href: 'services/sea-transport'
     },
     {
       icon: Zap,
       title: t.services.items.express.title,
       description: t.services.items.express.description,
       features: t.services.items.express.features,
-      href: '/services/express'
+      href: 'services/express'
     },
     {
       icon: Settings,
       title: t.services.items.custom.title,
       description: t.services.items.custom.description,
       features: t.services.items.custom.features,
-      href: '/services/custom'
+      href: 'services/custom'
     },
     {
       icon: Clock,
       title: t.services.items.support.title,
       description: t.services.items.support.description,
       features: t.services.items.support.features,
-      href: '/tracking'
+      href: 'tracking'
     }
   ];
 
@@ -91,7 +93,7 @@ export const ServicesOverview = () => {
                   </div>
                   
                   <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors" asChild>
-                    <Link to={service.href}>
+                    <Link to={getLinkWithLanguage(service.href)}>
                       {t.services.learnMore}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>

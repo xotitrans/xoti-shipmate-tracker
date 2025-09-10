@@ -4,9 +4,11 @@ import { Users, Award, Globe, Clock, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
+import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 export default function About() {
   const { currentLanguage } = useLanguage();
+  const { getLinkWithLanguage } = useLanguageNavigation();
   const t = translations[currentLanguage];
 
   return (
@@ -52,7 +54,7 @@ export default function About() {
                 {t.about.missionDescription2}
               </p>
               <Button asChild>
-                <Link to="/services">
+                <Link to={getLinkWithLanguage('services')}>
                   {t.about.servicesButton}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -151,7 +153,7 @@ export default function About() {
             {t.about.ctaDescription}
           </p>
           <Button size="lg" variant="secondary" asChild>
-            <Link to="/contact">
+            <Link to={getLinkWithLanguage('contact')}>
               {t.about.contactButton}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

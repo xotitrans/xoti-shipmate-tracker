@@ -11,16 +11,17 @@ import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Package, ArrowLeft, Upload, X } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
 
 const NewShipment = () => {
   const { user, loading } = useAuth();
-  const navigate = useNavigate();
+  const { navigateWithLanguage, getLinkWithLanguage } = useLanguageNavigation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [photos, setPhotos] = useState<File[]>([]);
 
   // Redirect if not authenticated
   if (!loading && !user) {
-    return <Navigate to="/auth" replace />;
+    return <Navigate to={getLinkWithLanguage('auth')} replace />;
   }
 
   const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -128,7 +129,7 @@ const NewShipment = () => {
         title: "Expédition créée",
         description: `Numéro de suivi: ${data.tracking_number}`,
       });
-      navigate('/dashboard');
+      navigateWithLanguage('dashboard');
     } catch (error) {
       console.error('Error creating shipment:', error);
       toast({
@@ -157,7 +158,7 @@ const NewShipment = () => {
       <div className="mb-8">
         <Button 
           variant="ghost" 
-          onClick={() => navigate('/dashboard')}
+          onClick={() => navigateWithLanguage('dashboard')}
           className="mb-4"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
