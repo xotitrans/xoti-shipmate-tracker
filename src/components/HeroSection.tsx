@@ -40,6 +40,9 @@ export const HeroSection = () => {
           src="/lovable-uploads/dcf3fff5-8b38-4b74-bb10-ad9faab69d5c.png" 
           alt="Transport logistique - conteneurs, camions, navire et localisation"
           className="w-full h-full object-cover opacity-80"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-hero/20" />
       </div>
