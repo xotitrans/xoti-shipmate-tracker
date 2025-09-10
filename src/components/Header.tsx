@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Package, Truck, Globe, Users, Search } from 'lucide-react';
+import { Menu, Package, Truck, Globe, Users, Search, Settings } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
@@ -13,6 +13,7 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { currentLanguage } = useLanguage();
   const { getLinkWithLanguage } = useLanguageNavigation();
+  const { user } = useAuth();
   const t = translations[currentLanguage];
 
   const navigation = [
@@ -55,6 +56,16 @@ export const Header = () => {
         <div className="ml-auto flex items-center gap-4">
           <LanguageSelector />
           
+          {/* Admin Link for authenticated users */}
+          {user && (
+            <Link to="/admin">
+              <Button variant="outline" size="sm" className="hidden md:flex">
+                <Settings className="h-4 w-4 mr-2" />
+                Administration
+              </Button>
+            </Link>
+          )}
+          
           {/* Mobile menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -79,6 +90,18 @@ export const Header = () => {
                     </Link>
                   );
                 })}
+                
+                {/* Admin link in mobile menu */}
+                {user && (
+                  <Link
+                    to="/admin"
+                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-secondary"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Settings className="h-4 w-4" />
+                    Administration
+                  </Link>
+                )}
               </nav>
             </SheetContent>
           </Sheet>
