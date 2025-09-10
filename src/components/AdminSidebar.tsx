@@ -97,7 +97,7 @@ export function AdminSidebar() {
           <div className="flex items-center gap-2">
             <Package className="h-6 w-6 text-primary" />
             {open && (
-              <span className="font-bold text-lg text-primary">LOGICY</span>
+              <span className="font-bold text-lg text-primary">XOTI</span>
             )}
           </div>
         </div>

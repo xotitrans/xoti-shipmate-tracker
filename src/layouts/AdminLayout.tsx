@@ -31,7 +31,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
           <SidebarTrigger className="ml-4" />
           <div className="flex items-center gap-2 ml-4">
             <span className="font-semibold text-sm text-muted-foreground">
-              Administration LOGICY TRANSPORT
+              Administration XOTI TRANSPORT
             </span>
           </div>
         </header>
