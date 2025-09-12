@@ -54,11 +54,7 @@ export const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-brand-teal" />
-                <span className="text-sm">+33 1 23 45 67 89</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-brand-teal" />
-                <span className="text-sm">contact@xoti-transport.com</span>
+                <span className="text-sm">+49 176 93722675</span>
               </div>
               <div className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-brand-teal" />

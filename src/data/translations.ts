@@ -649,7 +649,6 @@ export interface Translations {
     contactInfo: {
       address: { title: string; content: string; };
       phone: { title: string; content: string; };
-      email: { title: string; content: string; };
       hours: { title: string; content: string; };
     };
     form: {
@@ -691,7 +690,6 @@ export interface Translations {
       title: string;
       subtitle: string;
       phoneButton: string;
-      emailButton: string;
     };
   };
 }
@@ -887,7 +885,7 @@ export const translations: Record<Language, Translations> = {
         q2: 'À quelle fréquence les informations sont-elles mises à jour ?',
         a2: 'Les informations de suivi sont actualisées en temps réel. Chaque étape importante est enregistrée automatiquement.',
         q3: 'Que faire si mon colis semble bloqué ?',
-        a3: 'Contactez notre service client au +33 1 23 45 67 89. Nous résoudrons rapidement tout problème logistique.',
+        a3: 'Contactez notre service client au +49 176 93722675. Nous résoudrons rapidement tout problème logistique.',
         q4: 'Puis-je modifier l\'adresse de livraison ?',
         a4: 'Oui, tant que le colis n\'est pas en cours de livraison finale. Contactez-nous pour effectuer la modification.'
       }
@@ -1556,8 +1554,7 @@ export const translations: Record<Language, Translations> = {
       },
       contactInfo: {
         address: { title: "Adresse", content: "123 Avenue de l'Europe\n75001 Paris, France" },
-        phone: { title: "Téléphone", content: "+33 1 23 45 67 89\n+33 1 23 45 67 90" },
-        email: { title: "Email", content: "contact@xoti-transport.com\ndevis@xoti-transport.com" },
+        phone: { title: "Téléphone", content: "+49 176 93722675" },
         hours: { title: "Horaires", content: "Lun-Ven: 8h-18h\nSam: 9h-12h\nDim: Fermé" }
       },
       form: {
@@ -1598,8 +1595,7 @@ export const translations: Record<Language, Translations> = {
       emergency: {
         title: "Urgence ou support 24/7 ?",
         subtitle: "Notre service client est disponible 24h/24 et 7j/7 pour toute urgence",
-        phoneButton: "Urgence : +33 6 12 34 56 78",
-        emailButton: "urgence@xoti-transport.com"
+        phoneButton: "Urgence : +49 176 93722675"
       }
     }
   },
@@ -1793,7 +1789,7 @@ export const translations: Record<Language, Translations> = {
         q2: '¿Con qué frecuencia se actualiza la información?',
         a2: 'La información de seguimiento se actualiza en tiempo real. Cada etapa importante se registra automáticamente.',
         q3: '¿Qué hacer si mi paquete parece bloqueado?',
-        a3: 'Contacta nuestro servicio al cliente al +33 1 23 45 67 89. Resolveremos rápidamente cualquier problema logístico.',
+        a3: 'Contacta nuestro servicio al cliente al +49 176 93722675. Resolveremos rápidamente cualquier problema logístico.',
         q4: '¿Puedo cambiar la dirección de entrega?',
         a4: 'Sí, mientras el paquete no esté en proceso de entrega final. Contáctanos para hacer el cambio.'
       }
@@ -2462,8 +2458,7 @@ export const translations: Record<Language, Translations> = {
       },
       contactInfo: {
         address: { title: "Dirección", content: "123 Avenue de l'Europe\n75001 París, Francia" },
-        phone: { title: "Teléfono", content: "+33 1 23 45 67 89\n+33 1 23 45 67 90" },
-        email: { title: "Email", content: "contact@xoti-transport.com\ndevis@xoti-transport.com" },
+        phone: { title: "Teléfono", content: "+49 176 93722675" },
         hours: { title: "Horarios", content: "Lun-Vie: 8h-18h\nSáb: 9h-12h\nDom: Cerrado" }
       },
       form: {
@@ -2504,8 +2499,7 @@ export const translations: Record<Language, Translations> = {
       emergency: {
         title: "¿Urgencia o soporte 24/7?",
         subtitle: "Nuestro servicio al cliente está disponible 24h/24 y 7d/7 para cualquier urgencia",
-        phoneButton: "Urgencia: +33 6 12 34 56 78",
-        emailButton: "urgence@xoti-transport.com"
+        phoneButton: "Urgencia: +49 176 93722675"
       }
     }
   },
@@ -2699,7 +2693,7 @@ export const translations: Record<Language, Translations> = {
         q2: 'Wie oft werden die Informationen aktualisiert?',
         a2: 'Die Tracking-Informationen werden in Echtzeit aktualisiert. Jeder wichtige Schritt wird automatisch erfasst.',
         q3: 'Was tun, wenn mein Paket blockiert erscheint?',
-        a3: 'Kontaktieren Sie unseren Kundenservice unter +33 1 23 45 67 89. Wir lösen schnell jedes logistische Problem.',
+        a3: 'Kontaktieren Sie unseren Kundenservice unter +49 176 93722675. Wir lösen schnell jedes logistische Problem.',
         q4: 'Kann ich die Lieferadresse ändern?',
         a4: 'Ja, solange das Paket nicht in der finalen Zustellung ist. Kontaktieren Sie uns für die Änderung.'
       }
@@ -3368,8 +3362,7 @@ export const translations: Record<Language, Translations> = {
       },
       contactInfo: {
         address: { title: "Adresse", content: "123 Avenue de l'Europe\n75001 Paris, Frankreich" },
-        phone: { title: "Telefon", content: "+33 1 23 45 67 89\n+33 1 23 45 67 90" },
-        email: { title: "E-Mail", content: "contact@xoti-transport.com\ndevis@xoti-transport.com" },
+        phone: { title: "Telefon", content: "+49 176 93722675" },
         hours: { title: "Öffnungszeiten", content: "Mo-Fr: 8h-18h\nSa: 9h-12h\nSo: Geschlossen" }
       },
       form: {
@@ -3410,8 +3403,7 @@ export const translations: Record<Language, Translations> = {
       emergency: {
         title: "Notfall oder 24/7 Support?",
         subtitle: "Unser Kundendienst ist 24 Stunden am Tag und 7 Tage die Woche für Notfälle verfügbar",
-        phoneButton: "Notfall: +33 6 12 34 56 78",
-        emailButton: "urgence@xoti-transport.com"
+        phoneButton: "Notfall: +49 176 93722675"
       }
     }
   },
@@ -3605,7 +3597,7 @@ export const translations: Record<Language, Translations> = {
         q2: 'Con quale frequenza vengono aggiornate le informazioni?',
         a2: 'Le informazioni di tracciamento sono aggiornate in tempo reale. Ogni fase importante viene registrata automaticamente.',
         q3: 'Cosa fare se il mio pacco sembra bloccato?',
-        a3: 'Contatta il nostro servizio clienti al +33 1 23 45 67 89. Risolveremo rapidamente qualsiasi problema logistico.',
+        a3: 'Contatta il nostro servizio clienti al +49 176 93722675. Risolveremo rapidamente qualsiasi problema logistico.',
         q4: 'Posso modificare l\'indirizzo di consegna?',
         a4: 'Sì, finché il pacco non è in fase di consegna finale. Contattaci per effettuare la modifica.'
       }
@@ -4274,8 +4266,7 @@ export const translations: Record<Language, Translations> = {
       },
       contactInfo: {
         address: { title: "Indirizzo", content: "123 Avenue de l'Europe\n75001 Parigi, Francia" },
-        phone: { title: "Telefono", content: "+33 1 23 45 67 89\n+33 1 23 45 67 90" },
-        email: { title: "Email", content: "contact@xoti-transport.com\ndevis@xoti-transport.com" },
+        phone: { title: "Telefono", content: "+49 176 93722675" },
         hours: { title: "Orari", content: "Lun-Ven: 8h-18h\nSab: 9h-12h\nDom: Chiuso" }
       },
       form: {
@@ -4316,8 +4307,7 @@ export const translations: Record<Language, Translations> = {
       emergency: {
         title: "Urgenza o supporto 24/7?",
         subtitle: "Il nostro servizio clienti è disponibile 24 ore su 24 e 7 giorni su 7 per qualsiasi urgenza",
-        phoneButton: "Urgenza: +33 6 12 34 56 78",
-        emailButton: "urgence@xoti-transport.com"
+        phoneButton: "Urgenza: +49 176 93722675"
       }
     }
   },
@@ -4511,7 +4501,7 @@ export const translations: Record<Language, Translations> = {
         q2: 'Com que frequência as informações são atualizadas?',
         a2: 'As informações de rastreamento são atualizadas em tempo real. Cada etapa importante é registrada automaticamente.',
         q3: 'O que fazer se minha encomenda parece travada?',
-        a3: 'Entre em contato com nosso atendimento no +33 1 23 45 67 89. Resolveremos rapidamente qualquer problema logístico.',
+        a3: 'Entre em contato com nosso atendimento no +49 176 93722675. Resolveremos rapidamente qualquer problema logístico.',
         q4: 'Posso alterar o endereço de entrega?',
         a4: 'Sim, desde que a encomenda não esteja em processo de entrega final. Entre em contato para fazer a alteração.'
       }
@@ -5180,8 +5170,7 @@ export const translations: Record<Language, Translations> = {
       },
       contactInfo: {
         address: { title: "Endereço", content: "123 Avenue de l'Europe\n75001 Paris, França" },
-        phone: { title: "Telefone", content: "+33 1 23 45 67 89\n+33 1 23 45 67 90" },
-        email: { title: "Email", content: "contact@xoti-transport.com\ndevis@xoti-transport.com" },
+        phone: { title: "Telefone", content: "+49 176 93722675" },
         hours: { title: "Horários", content: "Seg-Sex: 8h-18h\nSáb: 9h-12h\nDom: Fechado" }
       },
       form: {
@@ -5222,8 +5211,7 @@ export const translations: Record<Language, Translations> = {
       emergency: {
         title: "Urgência ou suporte 24/7?",
         subtitle: "Nosso atendimento ao cliente está disponível 24 horas por dia, 7 dias por semana para qualquer urgência",
-        phoneButton: "Urgência: +33 6 12 34 56 78",
-        emailButton: "urgence@xoti-transport.com"
+        phoneButton: "Urgência: +49 176 93722675"
       }
     }
   }

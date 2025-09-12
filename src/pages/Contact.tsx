@@ -26,11 +26,6 @@ export default function Contact() {
       content: t.contactPage.contactInfo.phone.content
     },
     {
-      icon: Mail,
-      title: t.contactPage.contactInfo.email.title,
-      content: t.contactPage.contactInfo.email.content
-    },
-    {
       icon: Clock,
       title: t.contactPage.contactInfo.hours.title,
       content: t.contactPage.contactInfo.hours.content
@@ -38,7 +33,6 @@ export default function Contact() {
   ];
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     company: '',
     phone: '',
     service: '',
@@ -60,7 +54,7 @@ export default function Contact() {
         description: t.contactPage.form.successMessage,
       });
       
-      setFormData({ name: '', email: '', company: '', phone: '', service: '', message: '' });
+      setFormData({ name: '', company: '', phone: '', service: '', message: '' });
     } catch (error) {
       toast({
         title: t.contactPage.form.errorTitle,
@@ -136,13 +130,11 @@ export default function Contact() {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="email">{t.contactPage.form.fields.email}</Label>
+                        <Label htmlFor="company">{t.contactPage.form.fields.company}</Label>
                         <Input
-                          id="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                          required
+                          id="company"
+                          value={formData.company}
+                          onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
                         />
                       </div>
                     </div>
@@ -266,14 +258,10 @@ export default function Contact() {
           <p className="text-white/90 mb-6">
             {t.contactPage.emergency.subtitle}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Button size="lg" variant="secondary">
               <Phone className="mr-2 h-4 w-4" />
               {t.contactPage.emergency.phoneButton}
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-              <Mail className="mr-2 h-4 w-4" />
-              {t.contactPage.emergency.emailButton}
             </Button>
           </div>
         </div>
