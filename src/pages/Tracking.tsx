@@ -8,7 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/data/translations';
 import { supabase } from '@/integrations/supabase/client';
-import { Search, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckCircle, AlertCircle, Weight, Shield, AlertTriangle, FileSignature, Euro, Zap, CreditCard, Hash, ImageIcon, User, Edit } from 'lucide-react';
+import { Search, Package, MapPin, Calendar, Truck, Phone, Clock, CheckCircle, AlertCircle, Weight, Shield, AlertTriangle, FileSignature, Euro, Zap, CreditCard, Hash, ImageIcon, User, Edit } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ShipmentMap from '@/components/ShipmentMap';
 import ManualLocationUpdate from '@/components/ManualLocationUpdate';
@@ -266,7 +266,7 @@ const Tracking = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="font-semibold mb-3 flex items-center gap-2">
-                    <Mail className="h-4 w-4" />
+                    <User className="h-4 w-4" />
                     {t.tracking.sender}
                   </h3>
                   <div className="space-y-2 text-sm">

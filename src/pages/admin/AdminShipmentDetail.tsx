@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, Package, MapPin, Calendar, Truck, Phone, Mail, Clock, CheckCircle, AlertCircle, User, Euro } from "lucide-react";
+import { ArrowLeft, Package, MapPin, Calendar, Truck, Phone, Clock, CheckCircle, AlertCircle, User, Euro } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import ShipmentMap from "@/components/ShipmentMap";
 import UpdateLocationForm from "@/components/UpdateLocationForm";
@@ -287,7 +287,7 @@ export default function AdminShipmentDetail() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="font-semibold mb-3 flex items-center gap-2">
-                    <Mail className="h-4 w-4" />
+                    <User className="h-4 w-4" />
                     Expéditeur
                   </h3>
                   <div className="space-y-2 text-sm">

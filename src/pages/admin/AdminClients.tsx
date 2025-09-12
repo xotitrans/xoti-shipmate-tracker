@@ -3,11 +3,10 @@ import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { Package, Search, UserPlus, Mail, Phone, Calendar } from 'lucide-react';
+import { Package, Search, UserPlus, Phone, Calendar } from 'lucide-react';
 
 interface Client {
   id: string;
-  email: string;
   first_name: string | null;
   last_name: string | null;
   phone: string | null;
@@ -44,7 +43,7 @@ export default function AdminClients() {
       
       const clientsData = (data || []).map(profile => ({
         id: profile.user_id,
-        email: 'Email protégé',
+        
         first_name: profile.first_name,
         last_name: profile.last_name,
         phone: profile.phone,
@@ -61,7 +60,6 @@ export default function AdminClients() {
 
   const filteredClients = clients.filter(client =>
     `${client.first_name || ''} ${client.last_name || ''}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    client.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
     (client.phone && client.phone.includes(searchTerm))
   );
 
@@ -87,7 +85,7 @@ export default function AdminClients() {
         <div className="relative">
           <Search className="h-4 w-4 absolute left-3 top-3 text-muted-foreground" />
           <Input
-            placeholder="Rechercher par nom, email ou téléphone..."
+            placeholder="Rechercher par nom ou téléphone..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10"
@@ -120,10 +118,6 @@ export default function AdminClients() {
                       : 'Nom non renseigné'
                     }
                   </h3>
-                  <div className="flex items-center gap-2 text-muted-foreground mt-1">
-                    <Mail className="h-4 w-4" />
-                    <span>{client.email}</span>
-                  </div>
                   {client.phone && (
                     <div className="flex items-center gap-2 text-muted-foreground mt-1">
                       <Phone className="h-4 w-4" />

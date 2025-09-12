@@ -214,10 +214,6 @@ export default function AdminNewShipment() {
               <Input id="senderPhone" name="senderPhone" type="tel" placeholder="+49 176 93722675" required />
             </div>
             <div>
-              <Label htmlFor="senderEmail">Email</Label>
-              <Input id="senderEmail" name="senderEmail" type="email" placeholder="expediteur@example.com" />
-            </div>
-            <div>
               <Label htmlFor="senderCity">Ville *</Label>
               <Input id="senderCity" name="senderCity" required />
             </div>
@@ -249,10 +245,6 @@ export default function AdminNewShipment() {
             <div>
               <Label htmlFor="recipientPhone">Téléphone *</Label>
               <Input id="recipientPhone" name="recipientPhone" type="tel" placeholder="+49 176 93722675" required />
-            </div>
-            <div>
-              <Label htmlFor="recipientEmail">Email</Label>
-              <Input id="recipientEmail" name="recipientEmail" type="email" placeholder="destinataire@example.com" />
             </div>
             <div>
               <Label htmlFor="recipientCity">Ville *</Label>
