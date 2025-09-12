@@ -211,7 +211,7 @@ export default function AdminNewShipment() {
             </div>
             <div>
               <Label htmlFor="senderPhone">Téléphone *</Label>
-              <Input id="senderPhone" name="senderPhone" type="tel" placeholder="+31626018693" required />
+              <Input id="senderPhone" name="senderPhone" type="tel" placeholder="+49 176 93722675" required />
             </div>
             <div>
               <Label htmlFor="senderEmail">Email</Label>
@@ -248,7 +248,7 @@ export default function AdminNewShipment() {
             </div>
             <div>
               <Label htmlFor="recipientPhone">Téléphone *</Label>
-              <Input id="recipientPhone" name="recipientPhone" type="tel" placeholder="+31626018693" required />
+              <Input id="recipientPhone" name="recipientPhone" type="tel" placeholder="+49 176 93722675" required />
             </div>
             <div>
               <Label htmlFor="recipientEmail">Email</Label>
@@ -404,7 +404,7 @@ export default function AdminNewShipment() {
                 id="emergencyContactPhone" 
                 name="emergencyContactPhone" 
                 type="tel" 
-                placeholder="+31626018693"
+                placeholder="+49 176 93722675"
               />
             </div>
           </CardContent>

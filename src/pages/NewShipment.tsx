@@ -239,7 +239,7 @@ const NewShipment = () => {
                   id="recipientPhone" 
                   name="recipientPhone" 
                   type="tel"
-                  placeholder="+33 4 56 78 90 12"
+                  placeholder="+49 176 93722675"
                   required 
                 />
               </div>

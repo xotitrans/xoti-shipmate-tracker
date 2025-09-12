@@ -10,7 +10,6 @@ export default function AdminSettings() {
   const { toast } = useToast();
   const [settings, setSettings] = useState({
     companyName: "LogiTrack",
-    companyEmail: "contact@logitrack.com",
     defaultCurrency: "EUR",
     trackingPrefix: "LT"
   });
@@ -50,15 +49,6 @@ export default function AdminSettings() {
                 id="companyName"
                 value={settings.companyName}
                 onChange={(e) => handleInputChange('companyName', e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="companyEmail">Email de contact</Label>
-              <Input
-                id="companyEmail"
-                type="email"
-                value={settings.companyEmail}
-                onChange={(e) => handleInputChange('companyEmail', e.target.value)}
               />
             </div>
           </CardContent>
