@@ -4,8 +4,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Package, Plus, Search } from "lucide-react";
+import { Package, Plus, Search, Trash2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import { useToast } from "@/hooks/use-toast";
 
 interface Shipment {
   id: string;
@@ -22,6 +24,8 @@ export default function AdminShipments() {
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     const fetchShipments = async () => {
@@ -42,6 +46,53 @@ export default function AdminShipments() {
 
     fetchShipments();
   }, []);
+
+  const handleDeleteShipment = async (shipmentId: string, trackingNumber: string) => {
+    setDeletingId(shipmentId);
+    
+    try {
+      // Delete tracking history first (foreign key constraint)
+      const { error: historyError } = await supabase
+        .from('tracking_history')
+        .delete()
+        .eq('shipment_id', shipmentId);
+
+      if (historyError) throw historyError;
+
+      // Delete shipment photos
+      const { error: photosError } = await supabase
+        .from('shipment_photos')
+        .delete()
+        .eq('shipment_id', shipmentId);
+
+      if (photosError) throw photosError;
+
+      // Delete the shipment
+      const { error: shipmentError } = await supabase
+        .from('shipments')
+        .delete()
+        .eq('id', shipmentId);
+
+      if (shipmentError) throw shipmentError;
+
+      // Update local state
+      setShipments(prev => prev.filter(s => s.id !== shipmentId));
+      
+      toast({
+        title: "Succès",
+        description: `L'envoi ${trackingNumber} a été supprimé avec succès.`,
+      });
+    } catch (error) {
+      console.error('Error deleting shipment:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible de supprimer cet envoi. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   const filteredShipments = shipments.filter(shipment =>
     shipment.tracking_number.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -178,6 +229,36 @@ export default function AdminShipments() {
                           Modifier
                         </Button>
                       </Link>
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                            disabled={deletingId === shipment.id}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>Confirmer la suppression</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              Êtes-vous sûr de vouloir supprimer l'envoi <strong>{shipment.tracking_number}</strong> ?
+                              Cette action est irréversible et supprimera également tout l'historique de suivi associé.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Annuler</AlertDialogCancel>
+                            <AlertDialogAction
+                              onClick={() => handleDeleteShipment(shipment.id, shipment.tracking_number)}
+                              className="bg-red-600 hover:bg-red-700"
+                            >
+                              Supprimer
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
                     </div>
                   </div>
                 </div>

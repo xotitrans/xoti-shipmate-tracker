@@ -5,9 +5,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
-import { Plus, Package, Clock, Truck, CheckCircle, AlertCircle } from 'lucide-react';
+import { Plus, Package, Clock, Truck, CheckCircle, AlertCircle, Trash2 } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { useLanguageNavigation } from '@/hooks/useLanguageNavigation';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 
 interface Shipment {
   id: string;
@@ -25,6 +26,7 @@ const Dashboard = () => {
   const { navigateWithLanguage, getLinkWithLanguage } = useLanguageNavigation();
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [isLoadingShipments, setIsLoadingShipments] = useState(true);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   // Redirect if not authenticated
   if (!loading && !user) {
@@ -57,6 +59,53 @@ const Dashboard = () => {
       console.error('Error fetching shipments:', error);
     } finally {
       setIsLoadingShipments(false);
+    }
+  };
+
+  const handleDeleteShipment = async (shipmentId: string, trackingNumber: string) => {
+    setDeletingId(shipmentId);
+    
+    try {
+      // Delete tracking history first (foreign key constraint)
+      const { error: historyError } = await supabase
+        .from('tracking_history')
+        .delete()
+        .eq('shipment_id', shipmentId);
+
+      if (historyError) throw historyError;
+
+      // Delete shipment photos
+      const { error: photosError } = await supabase
+        .from('shipment_photos')
+        .delete()
+        .eq('shipment_id', shipmentId);
+
+      if (photosError) throw photosError;
+
+      // Delete the shipment
+      const { error: shipmentError } = await supabase
+        .from('shipments')
+        .delete()
+        .eq('id', shipmentId);
+
+      if (shipmentError) throw shipmentError;
+
+      // Update local state
+      setShipments(prev => prev.filter(s => s.id !== shipmentId));
+      
+      toast({
+        title: "Succès",
+        description: `L'envoi ${trackingNumber} a été supprimé avec succès.`,
+      });
+    } catch (error) {
+      console.error('Error deleting shipment:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible de supprimer cet envoi. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -216,13 +265,45 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <div className="text-right">
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={() => navigateWithLanguage(`tracking?number=${shipment.tracking_number}`)}
-                    >
-                      Suivre
-                    </Button>
+                    <div className="flex gap-2 justify-end">
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => navigateWithLanguage(`tracking?number=${shipment.tracking_number}`)}
+                      >
+                        Suivre
+                      </Button>
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                            disabled={deletingId === shipment.id}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>Confirmer la suppression</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              Êtes-vous sûr de vouloir supprimer l'envoi <strong>{shipment.tracking_number}</strong> ?
+                              Cette action est irréversible et supprimera également tout l'historique de suivi associé.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Annuler</AlertDialogCancel>
+                            <AlertDialogAction
+                              onClick={() => handleDeleteShipment(shipment.id, shipment.tracking_number)}
+                              className="bg-red-600 hover:bg-red-700"
+                            >
+                              Supprimer
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    </div>
                     {shipment.estimated_delivery && (
                       <p className="text-sm text-muted-foreground mt-1">
                         Livraison prévue: {new Date(shipment.estimated_delivery).toLocaleDateString('fr-FR')}
