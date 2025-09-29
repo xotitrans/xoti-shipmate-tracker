@@ -29,7 +29,7 @@ export default function AdminClients() {
     console.log('Fetching clients...');
     try {
       const { data, error } = await supabase
-        .from('profiles')
+        .from('profiles' as any)
         .select(`
           user_id,
           first_name,
@@ -41,9 +41,8 @@ export default function AdminClients() {
 
       if (error) throw error;
       
-      const clientsData = (data || []).map(profile => ({
+      const clientsData = (data || []).map((profile: any) => ({
         id: profile.user_id,
-        
         first_name: profile.first_name,
         last_name: profile.last_name,
         phone: profile.phone,
