@@ -94,7 +94,6 @@ export default function AdminNewShipment() {
         current_location: formData.get('currentAddress') as string,
         current_latitude: parseFloat(formData.get('latitude') as string) || null,
         current_longitude: parseFloat(formData.get('longitude') as string) || null,
-        google_maps_link: formData.get('mapsLink') as string,
         
         // Emergency contact
         emergency_contact_name: formData.get('emergencyContactName') as string,
@@ -111,7 +110,6 @@ export default function AdminNewShipment() {
         special_instructions: formData.get('specialInstructions') as string,
         delivery_instructions: formData.get('deliveryInstructions') as string,
         preferred_delivery_time: formData.get('preferredDeliveryTime') as string,
-        internal_notes: formData.get('internalNotes') as string,
         
         // Priority and options
         priority_level: formData.get('priorityLevel') as 'low' | 'normal' | 'high' | 'urgent',
