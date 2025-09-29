@@ -133,8 +133,11 @@ const NewShipment = () => {
         return;
       }
 
+      console.log("✅ Shipment created successfully:", data);
+
       // Upload photos if any
       if (photos.length > 0) {
+        console.log("📸 Uploading photos...");
         for (const photo of photos) {
           const fileName = `${user.id}/${Date.now()}-${photo.name}`;
           const { error: uploadError } = await supabase.storage
@@ -169,11 +172,17 @@ const NewShipment = () => {
         }
       }
 
+      console.log("🎉 Success! Showing toast and redirecting...");
       toast({
-        title: "Expédition créée",
+        title: "Expédition créée avec succès !",
         description: `Numéro de suivi: ${data.tracking_number}`,
       });
-      navigateWithLanguage('dashboard');
+      
+      // Force redirect after a short delay to ensure toast is shown
+      setTimeout(() => {
+        console.log("🚀 Redirecting to dashboard...");
+        navigateWithLanguage('dashboard');
+      }, 1000);
     } catch (error) {
       toast({
         title: "Erreur",
