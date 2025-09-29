@@ -137,15 +137,23 @@ const NewShipment = () => {
 
       // Upload photos if any
       if (photos.length > 0) {
-        console.log("📸 Uploading photos...");
-        for (const photo of photos) {
-          const fileName = `${user.id}/${Date.now()}-${photo.name}`;
-          const { error: uploadError } = await supabase.storage
+        console.log("📸 Starting photo upload process...", photos.length, "photos to upload");
+        
+        for (let i = 0; i < photos.length; i++) {
+          const photo = photos[i];
+          console.log(`📸 Uploading photo ${i + 1}/${photos.length}:`, photo.name);
+          
+          const fileName = `${user.id}/${data.id}/${Date.now()}-${photo.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+          console.log("📁 File path:", fileName);
+          
+          const { data: uploadData, error: uploadError } = await supabase.storage
             .from('shipment-photos')
             .upload(fileName, photo);
 
+          console.log("📤 Upload result:", { uploadData, uploadError });
+
           if (uploadError) {
-            console.error('Error uploading photo:', uploadError);
+            console.error('❌ Error uploading photo:', uploadError);
             toast({
               title: "Erreur upload photo",
               description: `Impossible d'uploader ${photo.name}: ${uploadError.message}`,
@@ -154,22 +162,40 @@ const NewShipment = () => {
             continue;
           }
 
+          console.log("✅ Photo uploaded successfully, getting public URL...");
           const { data: { publicUrl } } = supabase.storage
             .from('shipment-photos')
             .getPublicUrl(fileName);
 
-          const { error: insertError } = await supabase
+          console.log("🔗 Public URL:", publicUrl);
+
+          const { data: photoRecord, error: insertError } = await supabase
             .from('shipment_photos')
             .insert({
               shipment_id: data.id,
               photo_url: publicUrl,
-              uploaded_by: user.id
-            });
+              uploaded_by: user.id,
+              description: `Photo ${i + 1} pour l'expédition ${data.tracking_number}`
+            })
+            .select()
+            .single();
+
+          console.log("💾 Photo record insert result:", { photoRecord, insertError });
 
           if (insertError) {
-            console.error('Error inserting photo record:', insertError);
+            console.error('❌ Error inserting photo record:', insertError);
+            toast({
+              title: "Erreur enregistrement photo",
+              description: `Impossible d'enregistrer la photo ${photo.name}`,
+              variant: "destructive",
+            });
+          } else {
+            console.log("✅ Photo record saved successfully");
           }
         }
+        console.log("📸 Photo upload process completed");
+      } else {
+        console.log("📸 No photos to upload");
       }
 
       console.log("🎉 Success! Showing toast and redirecting...");
