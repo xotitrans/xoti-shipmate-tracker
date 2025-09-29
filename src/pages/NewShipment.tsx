@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useAuth } from '@/contexts/AuthContext';
@@ -42,11 +41,9 @@ const NewShipment = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log('=== FORM SUBMIT TRIGGERED ===');
     e.preventDefault();
     
     if (!user) {
-      console.error('No user found');
       toast({
         title: "Erreur d'authentification",
         description: "Vous devez être connecté pour créer un envoi",
@@ -55,7 +52,6 @@ const NewShipment = () => {
       return;
     }
 
-    console.log('Starting shipment creation for user:', user.id);
     setIsSubmitting(true);
     
     const formData = new FormData(e.currentTarget);
@@ -97,8 +93,6 @@ const NewShipment = () => {
     };
 
     try {
-      console.log('Inserting shipment data:', shipmentData);
-      
       const { data, error } = await supabase
         .from('shipments')
         .insert(shipmentData)
@@ -106,7 +100,6 @@ const NewShipment = () => {
         .single();
 
       if (error) {
-        console.error('Shipment creation error:', error);
         toast({
           title: "Erreur",
           description: "Impossible de créer l'expédition: " + error.message,
@@ -114,8 +107,6 @@ const NewShipment = () => {
         });
         return;
       }
-
-      console.log('Shipment created successfully:', data);
 
       // Upload photos if any
       if (photos.length > 0) {
@@ -159,14 +150,12 @@ const NewShipment = () => {
       });
       navigateWithLanguage('dashboard');
     } catch (error) {
-      console.error('Unexpected error creating shipment:', error);
       toast({
         title: "Erreur",
         description: "Une erreur inattendue s'est produite: " + (error instanceof Error ? error.message : 'Erreur inconnue'),
         variant: "destructive",
       });
     } finally {
-      console.log('Setting isSubmitting to false');
       setIsSubmitting(false);
     }
   };
@@ -463,19 +452,18 @@ const NewShipment = () => {
                     placeholder="100.00"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="currency">Devise</Label>
-                  <Select name="currency" defaultValue="EUR">
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="EUR">EUR</SelectItem>
-                      <SelectItem value="USD">USD</SelectItem>
-                      <SelectItem value="GBP">GBP</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+                 <div className="space-y-2">
+                   <Label htmlFor="currency">Devise</Label>
+                   <select 
+                     name="currency" 
+                     defaultValue="EUR"
+                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                   >
+                     <option value="EUR">EUR</option>
+                     <option value="USD">USD</option>
+                     <option value="GBP">GBP</option>
+                   </select>
+                 </div>
               </div>
             </CardContent>
           </Card>
@@ -515,20 +503,19 @@ const NewShipment = () => {
               <CardDescription>Niveau de priorité de l'expédition</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="priorityLevel">Niveau de priorité</Label>
-                <Select name="priorityLevel" defaultValue="normal">
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="low">Faible</SelectItem>
-                    <SelectItem value="normal">Normal</SelectItem>
-                    <SelectItem value="high">Élevé</SelectItem>
-                    <SelectItem value="urgent">Urgent</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+               <div className="space-y-2">
+                 <Label htmlFor="priorityLevel">Niveau de priorité</Label>
+                 <select 
+                   name="priorityLevel" 
+                   defaultValue="normal"
+                   className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                 >
+                   <option value="low">Faible</option>
+                   <option value="normal">Normal</option>
+                   <option value="high">Élevé</option>
+                   <option value="urgent">Urgent</option>
+                 </select>
+               </div>
             </CardContent>
           </Card>
 
@@ -550,36 +537,34 @@ const NewShipment = () => {
                     placeholder="50.00"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="paymentMethod">Mode de paiement</Label>
-                  <Select name="paymentMethod">
-                    <SelectTrigger>
-                      <SelectValue placeholder="Sélectionner" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="credit_card">Carte de crédit</SelectItem>
-                      <SelectItem value="bank_transfer">Virement</SelectItem>
-                      <SelectItem value="cash">Espèces</SelectItem>
-                      <SelectItem value="check">Chèque</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+                 <div className="space-y-2">
+                   <Label htmlFor="paymentMethod">Mode de paiement</Label>
+                   <select 
+                     name="paymentMethod"
+                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                   >
+                     <option value="">Sélectionner</option>
+                     <option value="credit_card">Carte de crédit</option>
+                     <option value="bank_transfer">Virement</option>
+                     <option value="cash">Espèces</option>
+                     <option value="check">Chèque</option>
+                   </select>
+                 </div>
               </div>
               
-              <div className="space-y-2">
-                <Label htmlFor="paymentStatus">Statut de paiement</Label>
-                <Select name="paymentStatus" defaultValue="pending">
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="pending">En attente</SelectItem>
-                    <SelectItem value="paid">Payé</SelectItem>
-                    <SelectItem value="failed">Échoué</SelectItem>
-                    <SelectItem value="refunded">Remboursé</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+               <div className="space-y-2">
+                 <Label htmlFor="paymentStatus">Statut de paiement</Label>
+                 <select 
+                   name="paymentStatus" 
+                   defaultValue="pending"
+                   className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                 >
+                   <option value="pending">En attente</option>
+                   <option value="paid">Payé</option>
+                   <option value="failed">Échoué</option>
+                   <option value="refunded">Remboursé</option>
+                 </select>
+               </div>
             </CardContent>
           </Card>
 
@@ -669,7 +654,6 @@ const NewShipment = () => {
             type="submit" 
             className="w-full" 
             disabled={isSubmitting}
-            onClick={() => console.log('Button clicked!')}
           >
             {isSubmitting ? "Création en cours..." : "Créer l'expédition"}
           </Button>
