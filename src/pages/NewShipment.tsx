@@ -43,8 +43,17 @@ const NewShipment = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!user) return;
+    if (!user) {
+      console.error('No user found');
+      toast({
+        title: "Erreur d'authentification",
+        description: "Vous devez être connecté pour créer un envoi",
+        variant: "destructive",
+      });
+      return;
+    }
 
+    console.log('Starting shipment creation for user:', user.id);
     setIsSubmitting(true);
     
     const formData = new FormData(e.currentTarget);
@@ -86,6 +95,8 @@ const NewShipment = () => {
     };
 
     try {
+      console.log('Inserting shipment data:', shipmentData);
+      
       const { data, error } = await supabase
         .from('shipments')
         .insert(shipmentData)
@@ -93,6 +104,7 @@ const NewShipment = () => {
         .single();
 
       if (error) {
+        console.error('Shipment creation error:', error);
         toast({
           title: "Erreur",
           description: "Impossible de créer l'expédition: " + error.message,
@@ -100,6 +112,8 @@ const NewShipment = () => {
         });
         return;
       }
+
+      console.log('Shipment created successfully:', data);
 
       // Upload photos if any
       if (photos.length > 0) {
@@ -143,13 +157,14 @@ const NewShipment = () => {
       });
       navigateWithLanguage('dashboard');
     } catch (error) {
-      console.error('Error creating shipment:', error);
+      console.error('Unexpected error creating shipment:', error);
       toast({
         title: "Erreur",
-        description: "Une erreur inattendue s'est produite",
+        description: "Une erreur inattendue s'est produite: " + (error instanceof Error ? error.message : 'Erreur inconnue'),
         variant: "destructive",
       });
     } finally {
+      console.log('Setting isSubmitting to false');
       setIsSubmitting(false);
     }
   };
