@@ -284,17 +284,17 @@ const NewShipment = () => {
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="transportType">Type de transport *</Label>
-                <Select name="transportType" required>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Sélectionnez un type de transport" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="road">Transport routier</SelectItem>
-                    <SelectItem value="air">Transport aérien</SelectItem>
-                    <SelectItem value="sea">Transport maritime</SelectItem>
-                    <SelectItem value="express">Express</SelectItem>
-                  </SelectContent>
-                </Select>
+                <select 
+                  name="transportType" 
+                  required
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  <option value="">Sélectionnez un type de transport</option>
+                  <option value="road">Transport routier</option>
+                  <option value="air">Transport aérien</option>
+                  <option value="sea">Transport maritime</option>
+                  <option value="express">Express</option>
+                </select>
               </div>
               
               <div className="grid grid-cols-2 gap-4">
