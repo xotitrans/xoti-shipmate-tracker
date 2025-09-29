@@ -140,11 +140,19 @@ const Tracking = () => {
         .order('timestamp', { ascending: false });
 
       // Fetch shipment photos
+      console.log("📸 Fetching photos for shipment ID:", shipment.id);
       const { data: photos, error: photosError } = await supabase
         .from('shipment_photos')
         .select('*')
         .eq('shipment_id', shipment.id)
         .order('created_at', { ascending: false });
+
+      console.log("📸 Photos fetch result:", { photos, photosError });
+      if (photosError) {
+        console.error("❌ Error fetching photos:", photosError);
+      } else {
+        console.log("✅ Found", photos?.length || 0, "photos");
+      }
 
       setTrackingResult(shipment);
       setTrackingHistory(history || []);
