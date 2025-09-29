@@ -42,7 +42,9 @@ const NewShipment = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log('=== FORM SUBMIT TRIGGERED ===');
     e.preventDefault();
+    
     if (!user) {
       console.error('No user found');
       toast({
@@ -663,7 +665,12 @@ const NewShipment = () => {
             </CardContent>
           </Card>
 
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
+          <Button 
+            type="submit" 
+            className="w-full" 
+            disabled={isSubmitting}
+            onClick={() => console.log('Button clicked!')}
+          >
             {isSubmitting ? "Création en cours..." : "Créer l'expédition"}
           </Button>
         </div>
