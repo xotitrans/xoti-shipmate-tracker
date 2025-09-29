@@ -104,23 +104,35 @@ const NewShipment = () => {
       // Upload photos if any
       if (photos.length > 0) {
         for (const photo of photos) {
-          const fileName = `${Date.now()}-${photo.name}`;
+          const fileName = `${user.id}/${Date.now()}-${photo.name}`;
           const { error: uploadError } = await supabase.storage
             .from('shipment-photos')
             .upload(fileName, photo);
 
-          if (!uploadError) {
-            const { data: { publicUrl } } = supabase.storage
-              .from('shipment-photos')
-              .getPublicUrl(fileName);
+          if (uploadError) {
+            console.error('Error uploading photo:', uploadError);
+            toast({
+              title: "Erreur upload photo",
+              description: `Impossible d'uploader ${photo.name}: ${uploadError.message}`,
+              variant: "destructive",
+            });
+            continue;
+          }
 
-            await supabase
-              .from('shipment_photos')
-              .insert({
-                shipment_id: data.id,
-                photo_url: publicUrl,
-                uploaded_by: user.id
-              });
+          const { data: { publicUrl } } = supabase.storage
+            .from('shipment-photos')
+            .getPublicUrl(fileName);
+
+          const { error: insertError } = await supabase
+            .from('shipment_photos')
+            .insert({
+              shipment_id: data.id,
+              photo_url: publicUrl,
+              uploaded_by: user.id
+            });
+
+          if (insertError) {
+            console.error('Error inserting photo record:', insertError);
           }
         }
       }
