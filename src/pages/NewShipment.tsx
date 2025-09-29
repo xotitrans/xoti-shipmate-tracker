@@ -679,6 +679,7 @@ const NewShipment = () => {
             type="submit" 
             className="w-full" 
             disabled={isSubmitting}
+            onClick={() => console.log("🔥 BUTTON CLICKED!")}
           >
             {isSubmitting ? "Création en cours..." : "Créer l'expédition"}
           </Button>
